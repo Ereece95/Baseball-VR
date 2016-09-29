@@ -443,22 +443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258c51f7d1093054db7795a87c7f506d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
-  hand: {fileID: 0}
+  ball: {fileID: 2060218688}
+  hand: {fileID: 226672424}
 --- !u!1 &2060218688 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 9e0d7c64622350e4aba762741b571399, type: 3}
   m_PrefabInternal: {fileID: 96438904}
---- !u!114 &2060218692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2060218688}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258c51f7d1093054db7795a87c7f506d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ball: {fileID: 2060218688}
-  hand: {fileID: 226672424}

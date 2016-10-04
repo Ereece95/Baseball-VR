@@ -32,7 +32,7 @@ public class Ball : MonoBehaviour {
         {
             //when x reaches a spesific value it enables the tral and moves the ball
             trail.enabled = true;
-            ball.transform.Translate(0f, -0.25f, -2f);
+            ball.transform.Translate(0f, -0.03125f, -0.25f);
 
         }
         //increments x to determine when to relase the ball

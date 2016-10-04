@@ -13,16 +13,16 @@ public class Ball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(x<50)
+        if (x < 70)
         {
-           ball.transform.position = hand.transform.position;
+            ball.transform.position = hand.transform.position;
         }
         else
         {
-           ball.transform.Translate(0f, -1f*Time.deltaTime, -1f * Time.deltaTime);
-           
+            ball.transform.Translate(0f * Time.deltaTime, -0.5f * Time.deltaTime, -2f * Time.deltaTime);
+
         }
         x++;
-       
+
     }
 }

@@ -19,17 +19,23 @@ public class Ball : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        //an if statment to have the ball released at a certain time
         if (x < 70)
         {
+            //sets the position of the ball to the pitchers hand while the
+            //throwing animation is running
             ball.transform.position = hand.transform.position;
         }
         else
         {
+            //when x reaches a spesific value it enables the tral and moves the ball
             trail.enabled = true;
             ball.transform.Translate(0f * Time.deltaTime, -0.5f * Time.deltaTime, -2f * Time.deltaTime);
 
         }
+        //increments x to determine when to relase the ball
         x++;
 
     }

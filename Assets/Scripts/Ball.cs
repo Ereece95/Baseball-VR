@@ -27,7 +27,7 @@ public class Ball : MonoBehaviour {
         else
         {
             trail.enabled = true;
-            ball.transform.Translate(0f * Time.deltaTime, -0.5f * Time.deltaTime, -2f * Time.deltaTime);
+            ball.transform.Translate(0f, -0.25f, -2f);
 
         }
         x++;

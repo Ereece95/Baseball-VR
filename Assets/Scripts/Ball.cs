@@ -4,11 +4,18 @@ using System.Collections;
 public class Ball : MonoBehaviour {
     public GameObject ball;
     public GameObject hand;
+    private TrailRenderer trail;
     int x=0;
-	// Use this for initialization
-	void Start ()
+
+    void Awake()
     {
-       
+        trail = gameObject.GetComponent<TrailRenderer>();
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        trail.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -19,6 +26,7 @@ public class Ball : MonoBehaviour {
         }
         else
         {
+            trail.enabled = true;
             ball.transform.Translate(0f * Time.deltaTime, -0.5f * Time.deltaTime, -2f * Time.deltaTime);
 
         }

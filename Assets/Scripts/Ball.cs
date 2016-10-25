@@ -6,7 +6,9 @@ public class Ball : MonoBehaviour {
     public GameObject hand;
     private TrailRenderer trail;
     int x=0;
-
+    public Transform target;
+    public Vector3 path;
+    public float speed;
     void Awake()
     {
         trail = gameObject.GetComponent<TrailRenderer>();
@@ -31,8 +33,11 @@ public class Ball : MonoBehaviour {
         else
         {
             //when x reaches a spesific value it enables the tral and moves the ball
+            
+            float step = speed * Time.deltaTime;
             trail.enabled = true;
-            ball.transform.Translate(0f, -0.03125f, -0.25f);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+            //ball.transform.Translate(0f, -0.03125f, -0.25f);
 
         }
         //increments x to determine when to relase the ball

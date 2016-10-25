@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     //Timer
     private float time = 0.0f;
     private float delay = 15.0f;    //15 seconds
+    private int HandleNextPitch;
 
     void Awake()
     {
@@ -58,12 +59,12 @@ public class GameController : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
-        StartButtonScript.startButtonClicked += HandleStartButton;  //HandleStartButton is called every time the event fires
+        NextPitchScript.nextPitchClicked += HandleNextPitchButton; //NextPitchButton is called every time the event fire
     }
 
     void OnDisable()
     {
-        StartButtonScript.startButtonClicked -= HandleStartButton;  //HandleStartButton is called every time the event fires
+        NextPitchScript.nextPitchClicked -= HandleNextPitchButton;  //HandleStartButton is called every time the event fires
     }
 
     void Start()
@@ -98,13 +99,11 @@ public class GameController : MonoBehaviour
 
     }
 
-
-    private void HandleStartButton()
+    private void HandleNextPitchButton()
     {
         SceneManager.LoadScene("TylerScene");
         currentEvent = gameEvents.pitchThrown;
     }
-
 
     private void HandlePitchThrown()
     {

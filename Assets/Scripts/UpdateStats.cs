@@ -26,6 +26,7 @@ public class UpdateStats : MonoBehaviour {
         {
             hits++;
             hitsText.text = hits.ToString();
+
         }
         //Strikes
         if (Input.GetKeyDown(KeyCode.S))

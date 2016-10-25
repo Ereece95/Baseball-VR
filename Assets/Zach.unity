@@ -3151,11 +3151,10 @@ MonoBehaviour:
   target: {fileID: 0}
   path:
   - {fileID: 621435787}
+  - {fileID: 2090742336}
+  - {fileID: 1511668035}
   - {fileID: 1923224779}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 20
+  speed: 25
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0

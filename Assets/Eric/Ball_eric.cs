@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/*
 public class Ball : MonoBehaviour {
     public GameObject ball;
     public GameObject hand;
@@ -37,11 +37,13 @@ public class Ball : MonoBehaviour {
         }
         //increments x to determine when to relase the ball
         x++;
-
+        /*
         if (Input.GetMouseButtonUp(0))
         {
             transform.position = Vector3.zero;
         }
+        
 
     }
 }
+*/

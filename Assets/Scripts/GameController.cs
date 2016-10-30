@@ -2,16 +2,21 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
+using MonsterLove.StateMachine;
 
 /// <summary>
 /// Game Controller - Singleton pattern used to ensure only 1 game controller is instantiated
 ///     Sets up delegates for message passing
 ///     See: https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial/writing-game-manager
+/// 
+/// State Machine can be found at
+///    https://github.com/thefuntastic/Unity3d-Finite-State-Machine
+///    See specifically the built in Methods
 /// </summary>
 public class GameController : MonoBehaviour
 {
 
-    //Events we will product
+    //Events we will produce
     public delegate void gameEventHandler(int scoreMod);    ///<Set up event
     public static event gameEventHandler pitchCompleted;   //Call pitchCompleted
 
@@ -25,18 +30,21 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// The states the game may be in
     /// </summary>
-    public enum gameEvents
+    public enum States
     {
-        inactive = 0,
-        pitchBeforeThrow,
-        pitchBeingThrown,
-        pitchThrown,
-        pitchCaught,
-        pitchHit,
-        loadScene
+        Init = 0,
+        StartClick,
+        MainScene,
+        ChooseOptions,
+        ThrowPitch,
+        ThrowPitchDone,
+        BallHit,
+        BallNotHit,
+        Delay,
+        ExitGame
     }
 
-    public gameEvents currentEvent = gameEvents.inactive;   //Start inactive
+    private StateMachine<States> gcFSM;
 
     //Timer
     private float time = 0.0f;
@@ -51,6 +59,9 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);  //persist across levels
 
+        //Initialize State Machine Engine		
+        gcFSM = StateMachine<States>.Initialize(this, States.Init);
+
 
     }
 
@@ -59,53 +70,78 @@ public class GameController : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
-        NextPitchScript.nextPitchClicked += HandleNextPitchButton; //NextPitchButton is called every time the event fire
+        UIEvents.startButtonClicked += EventStartButtonClicked;
+        UIEvents.exitButtonClicked += EventExitButtonClicked;
+        UIEvents.nextPitchClicked += EventNextPitchButton; //NextPitchButton is called every time the event fire
     }
 
     void OnDisable()
     {
-        NextPitchScript.nextPitchClicked -= HandleNextPitchButton;  //HandleStartButton is called every time the event fires
-    }
-
-    void Start()
-    {
+        UIEvents.startButtonClicked -= EventStartButtonClicked;
+        UIEvents.nextPitchClicked -= EventNextPitchButton;  //HandleStartButton is called every time the event fires
+        UIEvents.nextPitchClicked -= EventNextPitchButton; //NextPitchButton is called every time the event fire
     }
 
     void Update()
     {
+        var state = gcFSM.State;
 
-        switch (currentEvent)
+        switch (state)
         {
-            case gameEvents.inactive:
-                currentEvent = gameEvents.loadScene;
+            case States.Init:   //Wait until event happens
                 break;
 
-            case gameEvents.loadScene:
-                SceneManager.LoadScene("STARTMENU");
-                currentEvent = gameEvents.pitchThrown;
-                time = 0;
+            case States.StartClick:
+                SceneManager.LoadScene("TylerSceneDH");
+                gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
-            case gameEvents.pitchThrown:
+
+            case States.ThrowPitch:
                 //play animation to throw pitch
-                HandlePitchThrown();
+                HandleThrowPitch();
                 break;
 
-            case gameEvents.pitchHit:
-                //play hit animation
+            case States.ThrowPitchDone:
+                //Wait for event to break out of this state (Next Pitch Button or Exit Game)
+                break;
+
+            case States.ExitGame:
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
                 break;
 
         }
 
     }
 
-    private void HandleNextPitchButton()
+    /// <summary>
+    /// Start Button was Clicked
+    /// </summary>
+    private void EventStartButtonClicked()
     {
-        SceneManager.LoadScene("TylerScene");
-        currentEvent = gameEvents.pitchThrown;
+        gcFSM.ChangeState(States.StartClick);
     }
 
-    private void HandlePitchThrown()
+    /// <summary>
+    /// Exit Button was clicked
+    /// </summary>
+    private void EventExitButtonClicked()
+    {
+        gcFSM.ChangeState(States.ExitGame);
+    }
+    private void EventNextPitchButton()
+    {
+        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
+    }
+
+    /// <summary>
+    /// State Machine Logic for ThrowPitch
+    /// </summary>
+    private void HandleThrowPitch()
     {
         //A timer to run the animation  //TODO: FIX this to be more efficient
         time += Time.deltaTime;
@@ -115,9 +151,7 @@ public class GameController : MonoBehaviour
         if (time < delay) return;
 
         time = 0f;
-        SceneManager.LoadScene("TylerScene");
-
-
+        gcFSM.ChangeState(States.ThrowPitchDone);
 
     }
 }

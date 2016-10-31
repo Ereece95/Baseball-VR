@@ -46,11 +46,11 @@ public class GameController : MonoBehaviour
 
     private StateMachine<States> gcFSM;
 
-    //Timer
-    private float time = 0.0f;
-    private float delay = 15.0f;    //15 seconds
-    private int HandleNextPitch;
 
+    /// <summary>
+    /// Implement Singleton
+    /// Initialize StateMachine
+    /// </summary>
     void Awake()
     {
         //Implement a Singleton
@@ -70,16 +70,17 @@ public class GameController : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
+
         UIEvents.startButtonClicked += EventStartButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
-        UIEvents.nextPitchClicked += EventNextPitchButton; //NextPitchButton is called every time the event fire
+        UIEvents.nextPitchClicked += EventNextPitchButton; 
     }
 
     void OnDisable()
     {
         UIEvents.startButtonClicked -= EventStartButtonClicked;
-        UIEvents.nextPitchClicked -= EventNextPitchButton;  //HandleStartButton is called every time the event fires
-        UIEvents.nextPitchClicked -= EventNextPitchButton; //NextPitchButton is called every time the event fire
+        UIEvents.nextPitchClicked -= EventNextPitchButton;  
+        UIEvents.nextPitchClicked -= EventNextPitchButton; 
     }
 
     void Update()
@@ -133,6 +134,11 @@ public class GameController : MonoBehaviour
     {
         gcFSM.ChangeState(States.ExitGame);
     }
+
+    /// <summary>
+    /// Next Pitch Button Clicked
+    /// TODO: Update to animation instead of reload scene
+    /// </summary>
     private void EventNextPitchButton()
     {
         gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
@@ -143,15 +149,18 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        //A timer to run the animation  //TODO: FIX this to be more efficient
-        time += Time.deltaTime;
-
-        Debug.Log("time= " + time.ToString());
-
-        if (time < delay) return;
-
-        time = 0f;
         gcFSM.ChangeState(States.ThrowPitchDone);
+        Timer(15);  ///<Wait for animation to play
 
+    }
+
+    /// <summary>
+    /// Co-routine implementing a simple Timer
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    private IEnumerator Timer(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

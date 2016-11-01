@@ -10,7 +10,7 @@ public class UpdateStats : MonoBehaviour {
 
     int hits, strikes, balls = 0;
     [SerializeField]
-    private Text hitsText, strikesText, ballsText = null;
+    private Text hitsText, strikesText, ballsText;
 	
     //Sets the stats to 0 and displays in-game
 	void Start () {

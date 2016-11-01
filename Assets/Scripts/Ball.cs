@@ -8,7 +8,9 @@ public class Ball : MonoBehaviour {
     int x=0;
     public Transform target;
     public Transform[] path;
-    public float speed;
+    public Transform[] pathArray;
+    public float speed, throws;
+
    
     void Awake()
     {
@@ -38,7 +40,7 @@ public class Ball : MonoBehaviour {
             trail.enabled = true;
             //when x reaches a spesific value it enables the tral and moves the ball
             
-
+            
             if(ball.transform.position == path[i].position)
             {
                 i++;
@@ -56,5 +58,9 @@ public class Ball : MonoBehaviour {
         //increments x to determine when to relase the ball
         x++;
 
+    }
+    void changePaths()
+    {
+        
     }
 }

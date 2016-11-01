@@ -3586,19 +3586,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1625257632}
   hand: {fileID: 1963956624}
-  target: {fileID: 0}
-  path:
-  - {fileID: 621435787}
-  - {fileID: 1694308174}
-  - {fileID: 1231981693}
-  - {fileID: 1966982494}
-  - {fileID: 540353553}
-  - {fileID: 1952132273}
-  - {fileID: 1856657583}
-  - {fileID: 610152548}
-  - {fileID: 614335640}
-  - {fileID: 1345935962}
+  target: {fileID: 1227862418}
+  path: []
   speed: 25
+  throws: 0
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -4195,6 +4186,7 @@ MonoBehaviour:
   target: {fileID: 164442930}
   path: []
   speed: 0
+  throws: 0
 --- !u!1 &1966982493
 GameObject:
   m_ObjectHideFlags: 0

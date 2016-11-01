@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4469248, g: 0.49678648, b: 0.5750846, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 610186131}
-        m_MethodName: ExitButtonClicked
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 610186126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304a5ff8d62556941b9aa13e567e9ded, type: 3}
+  m_Script: {fileID: 11500000, guid: 32bf6930d852bf348975137cd128478a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &631710131
@@ -675,7 +675,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1080273810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304a5ff8d62556941b9aa13e567e9ded, type: 3}
+  m_Script: {fileID: 11500000, guid: cae6b5288b058634fa2e10f9bcf8eaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1245771644
@@ -889,6 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168f32ba9b2173544b4ef3e4a7fd7273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEvent: 0
 --- !u!4 &1915692742
 Transform:
   m_ObjectHideFlags: 0

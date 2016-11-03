@@ -9,16 +9,19 @@ public class Ball : MonoBehaviour {
     //private Transform[] path = new Transform[11];
     public Transform[] pathArray;
     public float speed;//, throws;
+    bool hit;
+    private Rigidbody RB;
 
-   
     void Awake()
     {
+        hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
     }
 
     // Use this for initialization
     void Start ()
     {
+        RB = GetComponent<Rigidbody>();
         trail.enabled = false;
     }
     int i = 0;
@@ -38,6 +41,8 @@ public class Ball : MonoBehaviour {
             float step = speed * Time.deltaTime;
             trail.enabled = true;
             //when x reaches a spesific value it enables the tral and moves the ball
+
+
             int Paths=(Random.Range(0, 2));
 
             int num = pathArray[Paths].childCount;
@@ -59,8 +64,18 @@ public class Ball : MonoBehaviour {
                 }
                 
             }
-                
-                    transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+            if (Input.GetKeyDown("space"))
+            {
+                hit = true;
+                RB.useGravity = true;
+                RB.AddForce(transform.rotation * Vector3.forward * 1000f);
+            }
+
+            if (!hit)
+            {
+                transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+            }
+            //transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
 
 
         }
@@ -68,8 +83,11 @@ public class Ball : MonoBehaviour {
         x++;
 
     }
-   // void changePaths()
-   // {
-        
+    // void changePaths()
+    // {
+
     //}
+
+
+    //RB.velocity = Vector3.zero;
 }

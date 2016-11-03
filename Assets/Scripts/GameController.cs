@@ -45,6 +45,8 @@ public class GameController : MonoBehaviour
     }
 
     private StateMachine<States> gcFSM;
+    private AudioClip hit;
+    private AudioSource audio;
 
 
     /// <summary>
@@ -73,14 +75,17 @@ public class GameController : MonoBehaviour
 
         UIEvents.startButtonClicked += EventStartButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
-        UIEvents.nextPitchClicked += EventNextPitchButton; 
+        UIEvents.nextPitchClicked += EventNextPitchButton;
+        //Ball.ballHit += EventBallHit;
+
+        audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     }
 
     void OnDisable()
     {
         UIEvents.startButtonClicked -= EventStartButtonClicked;
-        UIEvents.nextPitchClicked -= EventNextPitchButton;  
-        UIEvents.nextPitchClicked -= EventNextPitchButton; 
+        UIEvents.nextPitchClicked -= EventNextPitchButton;
+        UIEvents.nextPitchClicked -= EventNextPitchButton;
     }
 
     void Update()
@@ -108,11 +113,11 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.ExitGame:
-                #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-                #else
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
                     Application.Quit();
-                #endif
+#endif
                 break;
 
         }
@@ -162,5 +167,11 @@ public class GameController : MonoBehaviour
     private IEnumerator Timer(float time)
     {
         yield return new WaitForSeconds(time);
+    }
+
+    private void EventBallHit()
+    {
+        gcFSM.ChangeState(States.BallHit);
+        audio.PlayOneShot(hit, 0.7F);
     }
 }

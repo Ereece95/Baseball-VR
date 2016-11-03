@@ -11,16 +11,19 @@ public class Ball : MonoBehaviour
     public Transform[] path;
     public Transform[] pathArray;
     public float speed, throws;
-
+    bool hit;
+    private Rigidbody RB;
 
     void Awake()
     {
+        hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
     }
 
     // Use this for initialization
     void Start()
     {
+        RB = GetComponent<Rigidbody>();
         trail.enabled = false;
     }
     int i = 0;
@@ -42,21 +45,23 @@ public class Ball : MonoBehaviour
             //when x reaches a spesific value it enables the tral and moves the ball
 
 
-            if (ball.transform.position == path[i].position)
+            
+            if (Input.GetKeyDown("space"))
             {
-                i++;
+                hit = true;
+                RB.useGravity = true;
+                RB.AddForce(transform.rotation*Vector3.forward*1000f);
             }
 
-            transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
-            if(Input.GetMouseButtonDown(0))
+            if(!hit)
             {
-                transform.position = Vector3.zero;
+                transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
             }
 
+            //RB.velocity = Vector3.zero;
+         
 
 
-
-            //ball.transform.Translate(0f, -0.03125f, -0.25f);
 
         }
         //increments x to determine when to relase the ball

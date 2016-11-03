@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     bool hit;
     private Rigidbody RB;
 
+    
     void Awake()
     {
         hit = false;
@@ -48,9 +49,11 @@ public class Ball : MonoBehaviour
             
             if (Input.GetKeyDown("space"))
             {
+                int r = (Random.Range(600, 1800));
+                float hitForce = (1 * r);
                 hit = true;
                 RB.useGravity = true;
-                RB.AddForce(transform.rotation*Vector3.forward*1000f);
+                RB.AddForce(transform.rotation*Vector3.forward*hitForce);
             }
 
             if(!hit)

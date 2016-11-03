@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour {
     public GameObject hand;
     private TrailRenderer trail;
     int x=0;
-    private Transform[] path = new Transform[11];
+    //private Transform[] path = new Transform[11];
     public Transform[] pathArray;
     public float speed;//, throws;
 
@@ -38,16 +38,26 @@ public class Ball : MonoBehaviour {
             float step = speed * Time.deltaTime;
             trail.enabled = true;
             //when x reaches a spesific value it enables the tral and moves the ball
-            for(int j = 0; j < 11; j ++ )
+            int Paths=(Random.Range(0, 2));
+
+            int num = pathArray[Paths].childCount;
+
+            Transform[] path = new Transform[num];
+
+            for (int j = 0; j < num; j ++ )
             {
-                path[j] = pathArray[1].GetChild(j);
+                path[j] = pathArray[Paths].GetChild(j);
 
             }
             
 
             if(ball.transform.position == path[i].position)
             {
-                i++;
+                if (i < num)
+                {
+                    i++;
+                }
+                
             }
                 
                     transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);

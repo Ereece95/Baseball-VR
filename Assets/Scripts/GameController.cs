@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
     private AudioClip hit;
     private AudioSource audio;
 
-
     /// <summary>
     /// Implement Singleton
     /// Initialize StateMachine
@@ -86,6 +85,7 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked -= EventStartButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
+        //Ball.ballHit -= EventBallHit;
     }
 
     void Update()
@@ -173,5 +173,6 @@ public class GameController : MonoBehaviour
     {
         gcFSM.ChangeState(States.BallHit);
         audio.PlayOneShot(hit, 0.7F);
+
     }
 }

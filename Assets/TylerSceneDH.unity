@@ -820,8 +820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88aef05ddaea70744bcc739ce6f670a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsText: {fileID: 1102274156}
-  strikesText: {fileID: 2044737412}
 --- !u!1 &169860611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,6 +3861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1625257632}
   hand: {fileID: 1963956624}
+  path:
+  - {fileID: 2048305061}
+  speed: 10
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -4722,6 +4723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 402549156}
   hand: {fileID: 1963956624}
+  path: []
+  speed: 0
 --- !u!1 &2032764202
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,9 @@ public class Ball : MonoBehaviour {
     public GameObject hand;
     private TrailRenderer trail;
     int x=0;
-    public Transform target;
-    public Transform[] path;
+    private Transform[] path;
     public Transform[] pathArray;
-    public float speed, throws;
+    public float speed;//, throws;
 
    
     void Awake()
@@ -41,6 +40,7 @@ public class Ball : MonoBehaviour {
             //when x reaches a spesific value it enables the tral and moves the ball
             
             
+
             if(ball.transform.position == path[i].position)
             {
                 i++;
@@ -48,19 +48,14 @@ public class Ball : MonoBehaviour {
                 
                     transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
 
-               
-                
-            
-           
-            //ball.transform.Translate(0f, -0.03125f, -0.25f);
 
         }
         //increments x to determine when to relase the ball
         x++;
 
     }
-    void changePaths()
-    {
+   // void changePaths()
+   // {
         
-    }
+    //}
 }

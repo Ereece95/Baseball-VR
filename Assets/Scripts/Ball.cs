@@ -11,11 +11,17 @@ public class Ball : MonoBehaviour {
     public float speed;//, throws;
     bool hit;
     private Rigidbody RB;
+    public Transform[] path;
+    int num;
+    int Paths;
+
+    
 
     void Awake()
     {
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
+        Paths = (Random.Range(0, 2));
     }
 
     // Use this for initialization
@@ -23,6 +29,9 @@ public class Ball : MonoBehaviour {
     {
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
+        num = pathArray[Paths].childCount;
+
+        path = new Transform[num];
     }
     int i = 0;
     // Update is called once per frame
@@ -43,11 +52,7 @@ public class Ball : MonoBehaviour {
             //when x reaches a spesific value it enables the tral and moves the ball
 
 
-            int Paths=(Random.Range(0, 2));
-
-            int num = pathArray[Paths].childCount;
-
-            Transform[] path = new Transform[num];
+            
 
             for (int j = 0; j < num; j ++ )
             {
@@ -58,7 +63,7 @@ public class Ball : MonoBehaviour {
 
             if(ball.transform.position == path[i].position)
             {
-                if (i < num)
+                if (i != num -1 )
                 {
                     i++;
                 }

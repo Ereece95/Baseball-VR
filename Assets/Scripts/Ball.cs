@@ -53,7 +53,16 @@ public class Ball : MonoBehaviour
                 float hitForce = (1 * r);
                 hit = true;
                 RB.useGravity = true;
-                RB.AddForce(transform.rotation*Vector3.forward*hitForce);
+
+                //This block will generate a random direction and angle for ball to travel
+                var rotationVector = transform.rotation.eulerAngles;
+                int rotationY = (Random.Range(0, 90));
+                int rotationX = (Random.Range(-10, -60));
+                rotationVector.y = rotationY;
+                rotationVector.x = rotationX;
+                transform.rotation = Quaternion.Euler(rotationVector);
+
+                RB.AddForce(transform.rotation * Vector3.forward * hitForce);
             }
 
             if(!hit)
@@ -61,7 +70,7 @@ public class Ball : MonoBehaviour
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
             }
 
-            //RB.velocity = Vector3.zero;
+           
          
 
 
@@ -70,5 +79,13 @@ public class Ball : MonoBehaviour
         //increments x to determine when to relase the ball
         x++;
 
+    }
+    //When the ball hits the ground it will stop rolling for easier viewing of the distance hit
+    void OnCollisionEnter(Collision Col)
+    {
+        if(Col.gameObject.name == "Field")
+        {
+            RB.velocity = Vector3.zero;
+        }
     }
 }

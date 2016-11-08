@@ -4,6 +4,25 @@ using System.Collections;
 using System.Collections.Generic;   //Lists
 using MonsterLove.StateMachine;
 
+
+/// <summary>
+/// The states the game may be in
+/// </summary>
+public enum States
+{
+    Init = 0,
+    StartClick,
+    MainScene,
+    ChooseOptions,
+    ThrowPitch,
+    ThrowPitchDone,
+    BallHit,
+    BallNotHit,
+    Delay,
+    ExitGame
+}
+
+
 /// <summary>
 /// Game Controller - Singleton pattern used to ensure only 1 game controller is instantiated
 ///     Sets up delegates for message passing
@@ -27,22 +46,7 @@ public class GameController : MonoBehaviour
     public static GameController gc = null; ///<Used for singleton design pattern
 
 
-    /// <summary>
-    /// The states the game may be in
-    /// </summary>
-    public enum States
-    {
-        Init = 0,
-        StartClick,
-        MainScene,
-        ChooseOptions,
-        ThrowPitch,
-        ThrowPitchDone,
-        BallHit,
-        BallNotHit,
-        Delay,
-        ExitGame
-    }
+
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
@@ -174,5 +178,10 @@ public class GameController : MonoBehaviour
         gcFSM.ChangeState(States.BallHit);
         audio.PlayOneShot(hit, 0.7F);
 
+    }
+
+    public States GetState()
+    {
+        return gcFSM.State;
     }
 }

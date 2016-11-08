@@ -19,7 +19,7 @@ public class Ball : MonoBehaviour {
     {
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
-        Paths = (Random.Range(0, 2));
+        Paths = (Random.Range(-1, 3));
     }
 
     // Use this for initialization

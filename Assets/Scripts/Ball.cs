@@ -15,8 +15,6 @@ public class Ball : MonoBehaviour {
     int num;
     int Paths;
 
-    
-
     void Awake()
     {
         hit = false;
@@ -49,50 +47,57 @@ public class Ball : MonoBehaviour {
         {
             float step = speed * Time.deltaTime;
             trail.enabled = true;
-            //when x reaches a spesific value it enables the tral and moves the ball
-
-
+            //when x reaches a spesific value it enables the trail and moves the ball
             
-
             for (int j = 0; j < num; j ++ )
             {
                 path[j] = pathArray[Paths].GetChild(j);
 
             }
-            
 
-            if(ball.transform.position == path[i].position)
+            if (ball.transform.position == path[i].position)
             {
                 if (i != num -1 )
                 {
                     i++;
                 }
-                
             }
+
             if (Input.GetKeyDown("space"))
             {
+                int r = (Random.Range(600, 1800));
+                float hitForce = (1 * r);
                 hit = true;
                 RB.useGravity = true;
-                RB.AddForce(transform.rotation * Vector3.forward * 1000f);
+
+                //This block will generate a random direction and angle for ball to travel
+                var rotationVector = transform.rotation.eulerAngles;
+                int rotationY = (Random.Range(0, 90));
+                int rotationX = (Random.Range(-10, -60));
+                rotationVector.y = rotationY;
+                rotationVector.x = rotationX;
+                transform.rotation = Quaternion.Euler(rotationVector);
+
+                RB.AddForce(transform.rotation * Vector3.forward * hitForce);
             }
 
             if (!hit)
             {
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
             }
-            //transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
-
-
+            
         }
         //increments x to determine when to relase the ball
         x++;
 
     }
-    // void changePaths()
-    // {
-
-    //}
-
-
-    //RB.velocity = Vector3.zero;
+    //Stop the ball from moving when it contacts the field
+    void OnCollisionEnter(Collision Col)
+    {
+        if (Col.gameObject.name == "Field")
+        {
+            RB.velocity = Vector3.zero;
+        }
+    }
+  
 }

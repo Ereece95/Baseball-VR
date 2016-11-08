@@ -98,7 +98,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("TylerSceneDH");
+                SceneManager.LoadScene("MasterScene");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 

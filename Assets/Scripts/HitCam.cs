@@ -27,7 +27,7 @@ public class HitCam : MonoBehaviour {
             cam2.enabled = true;
             transform.LookAt(hitball);
         }
-        if (gc.GetState() == States.BallHit)
+        if (gc.GetState() != States.BallHit)
         {
             cam1.enabled = true;
             cam2.enabled = false;

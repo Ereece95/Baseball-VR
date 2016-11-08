@@ -16,14 +16,21 @@ public class HitCam : MonoBehaviour {
         hitball = GameObject.Find("baseball_ball").transform;
         cam1.enabled = true;
         cam2.enabled = false;
-        //gcFSM = GameObject.Find("GameController").GetComponent("GameController");
+        gcFSM = GameObject.Find("GameController").GetComponent<GameController>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //if (gcFSM.State == BallHit)
-        cam1.enabled = false;
-        cam2.enabled = true;
-        transform.LookAt(hitball);
+        if (gcFSM.State == BallHit)
+        {
+            cam1.enabled = false;
+            cam2.enabled = true;
+            transform.LookAt(hitball);
+        }
+        if (gcFSM.State == BallHit)
+        {
+            cam1.enabled = true;
+            cam2.enabled = false;
+        }
 	}
 }

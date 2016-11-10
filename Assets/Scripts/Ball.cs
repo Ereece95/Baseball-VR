@@ -15,6 +15,8 @@ public class Ball : MonoBehaviour
     public Transform[] path;
     int num;
     int Paths;
+    public delegate void BallHit();
+    public static event BallHit ballHit;
 
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
@@ -81,6 +83,7 @@ public class Ball : MonoBehaviour
 
             if (Input.GetKeyDown("space"))
             {
+                ballHit();
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);
                 hit = true;

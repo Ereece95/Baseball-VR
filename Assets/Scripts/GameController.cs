@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked += EventStartButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
         UIEvents.nextPitchClicked += EventNextPitchButton;
-        //Ball.ballHit += EventBallHit;
+        Ball.ballHit += EventBallHit;
 
         audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     }
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked -= EventStartButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
-        //Ball.ballHit -= EventBallHit;
+        Ball.ballHit -= EventBallHit;
     }
 
     void Update()
@@ -176,8 +176,8 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         gcFSM.ChangeState(States.BallHit);
-        audio.PlayOneShot(hit, 0.7F);
-
+        //  audio.PlayOneShot(hit, 0.7F);
+        UpdateStats.incrementStats(true);
     }
 
     public States GetState()

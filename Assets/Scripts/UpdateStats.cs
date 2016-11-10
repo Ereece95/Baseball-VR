@@ -8,6 +8,7 @@ using System.Collections;
 
 public class UpdateStats : MonoBehaviour {
 
+  
     int hits, strikes = 0;
     [SerializeField]
     private Text hitsText, strikesText = null;
@@ -23,26 +24,49 @@ public class UpdateStats : MonoBehaviour {
 	/// <summary>
     /// Temporarily increments stat counts upon button press
     /// </summary>
-	void Update () {
-        //Hits
-        if(Input.GetKeyDown(KeyCode.H))
+	//void Update () {
+ //       //Hits
+ //       if(Input.GetKeyDown(KeyCode.H))
+ //       {
+ //           hits++;
+ //           hitsText.text = hits.ToString();
+
+ //       }
+ //       //Strikes
+ //       if (Input.GetKeyDown(KeyCode.S))
+ //       {
+ //           strikes++;
+ //           strikesText.text = strikes.ToString();
+ //       }
+ //       if(strikes == 8 || strikes == 9)
+ //       {
+ //           strikesText.color = Color.yellow;
+ //       }else if(strikes >= 10)
+ //       {
+ //           strikesText.color = Color.red;
+ //       }
+ //   }
+    public void IncrementStats(bool hit)
+    {
+        if (hit)
         {
             hits++;
             hitsText.text = hits.ToString();
+        }
+        else
+        {
+           strikes++;
+           strikesText.text = strikes.ToString();
 
-        }
-        //Strikes
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            strikes++;
-            strikesText.text = strikes.ToString();
-        }
-        if(strikes == 8 || strikes == 9)
-        {
-            strikesText.color = Color.yellow;
-        }else if(strikes >= 10)
-        {
-            strikesText.color = Color.red;
+           if (strikes == 8 || strikes == 9)
+            {
+                strikesText.color = Color.yellow;
+            }
+            else if (strikes >= 10)
+            {
+                strikesText.color = Color.red;
+            }
         }
     }
+  
 }

@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour
     private StateMachine<States> gcFSM;
     private AudioClip hit;
     private AudioSource audio;
+    private UpdateStats stats;
 
     /// <summary>
     /// Implement Singleton
@@ -150,6 +151,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
+        EventBallHit();
         gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
     }
 
@@ -175,9 +177,9 @@ public class GameController : MonoBehaviour
 
     private void EventBallHit()
     {
+        audio.PlayOneShot(audio.clip, 0.7F);
+        stats.IncrementStats(true);
         gcFSM.ChangeState(States.BallHit);
-        //  audio.PlayOneShot(hit, 0.7F);
-        UpdateStats.incrementStats(true);
     }
 
     public States GetState()

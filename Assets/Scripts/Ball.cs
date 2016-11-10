@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     public Transform[] path;
     int num;
     int Paths;
-
+ 
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -111,7 +111,7 @@ public class Ball : MonoBehaviour
     /// <summary>
     /// the ball stops when it hits the ground
     /// </summary>
-    /// <param name="Col"></param>
+    /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
     {
         if (Col.gameObject.name == "Field")

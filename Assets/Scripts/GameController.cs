@@ -166,7 +166,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Co-routine implementing a simple Timer
     /// </summary>
-    /// <param name="time"></param>
+    /// <param name="time">To get the ball to throw after a certain amount of time automatically</param>
     /// <returns></returns>
     private IEnumerator Timer(float time)
     {

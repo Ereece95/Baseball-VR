@@ -126,7 +126,8 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.BallHit:
-                gcFSM.ChangeState(States.WaitForInput);
+                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
+                                                        // or EventExitButtonClicked
                 break;
 
             case States.BallNotHit:

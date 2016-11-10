@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         audioS = audioObject.GetComponent("AudioSource") as AudioSource;
         DontDestroyOnLoad(audioObject);
 
-
+        stats = gameObject.AddComponent<UpdateStats>();
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 

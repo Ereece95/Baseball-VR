@@ -11,7 +11,7 @@ public class UpdateStats : MonoBehaviour {
   
     int hits, strikes = 0;
     [SerializeField]
-    private Text hitsText, strikesText = null;
+    private Text hitsText, strikesText;
 
     
     /// <summary>

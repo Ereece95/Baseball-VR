@@ -7,56 +7,83 @@ using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace CsvToCSharpClass.Library
-{
-    public class Pitcher
+
+
+public class Pitcher
     {
-        public static string CSharpClassCodeFromCsvFile(string filePath, string delimiter = ",", string classAttribute = "", string propertyAttribute = "")
+    //The first line in the read in file: Stat names
+    string totalString = "";
+    //The second line in the read in file: Stat nu,bers
+    string totalString2 = "";
+    StringReader read = new StringReader("MLB_Stats.csv");
+
+    //Dictionary for the stats
+    Dictionary<string, float> stats = new Dictionary<string, float>();
+
+
+        public Pitcher()
         {
-            //if (string.IsNullOrWhiteSpace(propertyAttribute) == false)
-               // propertyAttribute += "\n\t";
-           // if (string.IsNullOrWhiteSpace(propertyAttribute) == false)
-               // classAttribute += "\n";
 
-            string[] lines = File.ReadAllLines(filePath);
-            string[] columnNames = lines.First().Split(',').Select(str => str.Trim()).ToArray();
-            string[] data = lines.Skip(1).ToArray();
+        //takes in the two lines
+        totalString = read.ReadLine();
+        totalString2 = read.ReadLine();
 
-            string className = Path.GetFileNameWithoutExtension(filePath);
-            // use StringBuilder for better performance
-            string code = String.Format("{0}public class {1} {{ \n", classAttribute, className);
+        int temp = totalString.Length;
 
-            for (int columnIndex = 0; columnIndex < columnNames.Length; columnIndex++)
+
+        for(int i=0;i<temp; i++)
+        {
+            //gets the name of the stat and the value of that stat
+            stats[getStatName()] =  getStat();
+        }
+        }
+    //A method that gets a stat name
+    string getStatName()
+    {
+        string statName = "";
+        int i=0;
+        while(true)
+        {
+            if(totalString.Substring(i,1)==",")
             {
-                var columnName = Regex.Replace(columnNames[columnIndex], @"[\s\.]", string.Empty, RegexOptions.IgnoreCase);
-                if (string.IsNullOrEmpty(columnName))
-                    columnName = "Column" + (columnIndex + 1);
-                //code += "\t" + GetVariableDeclaration(data, columnIndex, columnName, propertyAttribute) + "\n\n";
+                break;
             }
-
-            code += "}\n";
-            return code;
+            statName = totalString.Substring(0,i);
+            i++;
         }
 
-    };
-}
-public class Stat
-{
-    string name;
-    float stat;
 
-    public Stat(string n, float s)
-    {
-        name = n;
-        stat = s;
+        totalString.Substring(i, totalString.Length);
+
+        return statName;
     }
-
+    //A method that gets one stat value
     float getStat()
     {
-        return stat;
+        float num = 0;
+
+        int i = 0;
+        string temp = "";
+        while (true)
+        {
+            
+            if (totalString2.Substring(i, 1) == ",")
+            {
+                break;
+            }
+            temp= totalString2.Substring(0, i);
+          
+
+            i++;
+        }
+        float.TryParse(temp, out num);
+
+        totalString.Substring(i, totalString.Length);
+
+        return num;
     }
-    string getName()
-    {
-        return name;
-    }
+
 };
+
+
+

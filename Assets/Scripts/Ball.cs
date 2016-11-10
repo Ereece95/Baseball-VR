@@ -16,6 +16,11 @@ public class Ball : MonoBehaviour
     int num;
     int Paths;
 
+    /// <summary>
+    /// The random number is set for whether curveball, changeup, and fastball
+    /// and whether the ball is hit is set to false
+    /// </summary>
+
     void Awake()
     {
         hit = false;
@@ -24,6 +29,10 @@ public class Ball : MonoBehaviour
     }
 
     // Use this for initialization
+    /// <summary>
+    /// num gets the child count of the random path of either changeup, curveball, or fastball chosen
+    ///
+    /// </summary>
     void Start()
     {
         RB = GetComponent<Rigidbody>();
@@ -34,6 +43,12 @@ public class Ball : MonoBehaviour
     }
     int i = 0;
     // Update is called once per frame
+    /// <summary>
+    /// The ball follows the hand position until the animation is done
+    /// The ball then iterates through the array that it was assigned too
+    /// and when the spacebar is hit the ball is sent in a random direction
+    /// and with a random force with r
+    /// </summary>
     void Update()
     {
 
@@ -93,6 +108,10 @@ public class Ball : MonoBehaviour
 
     }
     //Stop the ball from moving when it contacts the field
+    /// <summary>
+    /// the ball stops when it hits the ground
+    /// </summary>
+    /// <param name="Col"></param>
     void OnCollisionEnter(Collision Col)
     {
         if (Col.gameObject.name == "Field")

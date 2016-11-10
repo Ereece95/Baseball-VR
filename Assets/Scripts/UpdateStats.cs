@@ -11,14 +11,18 @@ public class UpdateStats : MonoBehaviour {
     int hits, strikes = 0;
     [SerializeField]
     private Text hitsText, strikesText = null;
-	
-    //Sets the stats to 0 and displays in-game
-	void Start () {
+
+    
+    /// <summary>
+    /// Sets the stats to 0 and displays in-game
+    /// </summary>
+    void Start () {
         hitsText.text = hits.ToString();
         strikesText.text = strikes.ToString();
-	}
-	
-	//Temporarily increments stat counts upon button press
+    }
+	/// <summary>
+    /// Temporarily increments stat counts upon button press
+    /// </summary>
 	void Update () {
         //Hits
         if(Input.GetKeyDown(KeyCode.H))

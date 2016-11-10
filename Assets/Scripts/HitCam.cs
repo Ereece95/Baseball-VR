@@ -10,6 +10,9 @@ public class HitCam : MonoBehaviour {
     private GameController gc;
 
     // Use this for initialization
+    /// <summary>
+    /// Initiates the cameras
+    /// </summary>
     void Start () {
         cam1 = GameObject.Find("Main Camera").GetComponent<Camera>();
         cam2 = GameObject.Find("Hit View Camera").GetComponent<Camera>();
@@ -20,6 +23,9 @@ public class HitCam : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+    /// <summary>
+    /// Switches cameras to follow ball until the travel is done
+    /// </summary>
 	void Update () {
         if (gc.GetState() == States.BallHit)
         {

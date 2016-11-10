@@ -11,7 +11,9 @@ public class Ball : MonoBehaviour {
     public float speed;//, throws;
     bool hit;
     private Rigidbody RB;
-    public Transform[] path;
+    private Transform[] path;
+    public Animation Throw;
+    private Animation anim;
     int num;
     int Paths;
 
@@ -35,13 +37,18 @@ public class Ball : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-         
+        //float check = Throw["Take 001"].time;
+        
         //an if statment to have the ball released at a certain time
-        if (x < 70)
+        if (Throw["Take 001"].time < 1.50023f)
         {
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
-            ball.transform.position = hand.transform.position;
+            if(Throw["Take 001"].time != Throw["Take 001"].length)
+            {
+                ball.transform.position = hand.transform.position;
+            }
+            
         }
         else
         {
@@ -92,6 +99,7 @@ public class Ball : MonoBehaviour {
 
     }
     //Stop the ball from moving when it contacts the field
+    ///
     void OnCollisionEnter(Collision Col)
     {
         if (Col.gameObject.name == "Field")

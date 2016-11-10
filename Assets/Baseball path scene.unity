@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.57508564, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 7322690}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: 5.65, y: 0.57, z: 5.71}
+  m_LocalPosition: {x: 5.53, y: 0.48, z: 5.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []
@@ -2699,6 +2699,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 167338109}
   m_RootOrder: 11
+--- !u!111 &915095110 stripped
+Animation:
+  m_PrefabParentObject: {fileID: 11100000, guid: fb93480891663f9439f1ed10dcdbce73,
+    type: 3}
+  m_PrefabInternal: {fileID: 1963956622}
 --- !u!1 &922090399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,7 +4546,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553500626}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: 6.24, y: 0.4, z: 6.22}
+  m_LocalPosition: {x: 6.04, y: -0.12, z: 6.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []
@@ -4648,7 +4653,7 @@ MonoBehaviour:
   - {fileID: 955254561}
   - {fileID: 1119321473}
   speed: 20
-  path: []
+  Throw: {fileID: 915095110}
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -5093,7 +5098,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1824470475}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: 6.47, y: 0.12, z: 6.57}
+  m_LocalPosition: {x: 6.07, y: -0.01, z: 6.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []

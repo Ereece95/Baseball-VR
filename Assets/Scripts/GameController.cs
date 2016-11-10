@@ -50,8 +50,9 @@ public class GameController : MonoBehaviour
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
-    private AudioSource audio;
+    private AudioSource audioS;
     private UpdateStats stats;
+    private GameObject audioObject;
 
     /// <summary>
     /// Implement Singleton
@@ -64,6 +65,11 @@ public class GameController : MonoBehaviour
         else if (gc != this) Destroy(gameObject);  //kill it if another instance exists
 
         DontDestroyOnLoad(gameObject);  //persist across levels
+
+        audioObject = GameObject.Find("Audio Source");
+        audioS = audioObject.GetComponent("AudioSource") as AudioSource;
+        DontDestroyOnLoad(audioObject);
+
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -82,7 +88,8 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked += EventNextPitchButton;
         Ball.ballHit += EventBallHit;
 
-        audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        if (audioS == null) Debug.Log("No AudioSource Found");
+            
     }
 
     void OnDisable()
@@ -115,6 +122,10 @@ public class GameController : MonoBehaviour
 
             case States.ThrowPitchDone:
                 //Wait for event to break out of this state (Next Pitch Button or Exit Game)
+                break;
+
+            case States.BallHit:
+                gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
             case States.ExitGame:
@@ -151,7 +162,6 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        EventBallHit();
         gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
     }
 
@@ -177,7 +187,7 @@ public class GameController : MonoBehaviour
 
     private void EventBallHit()
     {
-        audio.PlayOneShot(audio.clip, 0.7F);
+        audioS.PlayOneShot(audioS.clip, 0.7F);
         stats.IncrementStats(true);
         gcFSM.ChangeState(States.BallHit);
     }

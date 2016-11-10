@@ -83,7 +83,6 @@ public class Ball : MonoBehaviour
 
             if (Input.GetKeyDown("space"))
             {
-                ballHit();
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);
                 hit = true;
@@ -98,6 +97,7 @@ public class Ball : MonoBehaviour
                 transform.rotation = Quaternion.Euler(rotationVector);
 
                 RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                ballHit();
             }
 
             if (!hit)

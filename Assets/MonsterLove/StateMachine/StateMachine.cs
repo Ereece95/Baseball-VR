@@ -31,19 +31,25 @@ using Object = System.Object;
 
 namespace MonsterLove.StateMachine
 {
+    
 	public enum StateTransition
 	{
 		Safe,
 		Overwrite,
 	}
-
+    /// <summary>
+    /// 
+    /// </summary>
 	public interface IStateMachine
 	{
 		MonoBehaviour Component { get; }
 		StateMapping CurrentStateMap { get; }
 		bool IsInTransition { get; }
 	}
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
 	public class StateMachine<T> : IStateMachine where T : struct, IConvertible, IComparable
 	{
 		public event Action<T> Changed;
@@ -65,6 +71,11 @@ namespace MonsterLove.StateMachine
 		private IEnumerator enterRoutine;
 		private IEnumerator queuedChange;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="engine"></param>
+        /// <param name="component"></param>
 		public StateMachine(StateMachineRunner engine, MonoBehaviour component)
 		{
 			this.engine = engine;
@@ -162,7 +173,13 @@ namespace MonsterLove.StateMachine
 			//Create nil state mapping
 			currentState = new StateMapping(null);
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="V"></typeparam>
+        /// <param name="method"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
 		private V CreateDelegate<V>(MethodInfo method, Object target) where V : class
 		{
 			var ret = (Delegate.CreateDelegate(typeof(V), target, method) as V);
@@ -174,12 +191,19 @@ namespace MonsterLove.StateMachine
 			return ret;
 
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newState"></param>
 		public void ChangeState(T newState)
 		{
 			ChangeState(newState, StateTransition.Safe);
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newState"></param>
+        /// <param name="transition"></param>
 		public void ChangeState(T newState, StateTransition transition)
 		{
 			if (stateLookup == null)
@@ -276,7 +300,12 @@ namespace MonsterLove.StateMachine
 				isInTransition = false;
 			}
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newState"></param>
+        /// <param name="transition"></param>
+        /// <returns></returns>
 		private IEnumerator ChangeToNewStateRoutine(StateMapping newState, StateTransition transition)
 		{
 			destinationState = newState; //Chache this so that we can overwrite it and hijack a transition
@@ -332,7 +361,11 @@ namespace MonsterLove.StateMachine
 
 			isInTransition = false;
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nextState"></param>
+        /// <returns></returns>
 		IEnumerator WaitForPreviousTransition(StateMapping nextState)
 		{
 			while (isInTransition)

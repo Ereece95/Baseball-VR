@@ -34,6 +34,7 @@ public class Ball : MonoBehaviour {
         path = new Transform[num];
     }
     int i = 0;
+    float num24 = 0f;
     // Update is called once per frame
     void Update ()
     {
@@ -44,7 +45,7 @@ public class Ball : MonoBehaviour {
         {
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
-            if(Throw["Take 001"].time != Throw["Take 001"].length)
+            if(Throw["Take 001"].time != num24)
             {
                 ball.transform.position = hand.transform.position;
             }

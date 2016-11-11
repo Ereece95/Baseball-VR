@@ -18,6 +18,8 @@ public class UpdateStats : MonoBehaviour {
     /// Sets the stats to 0 and displays in-game
     /// </summary>
     void Start () {
+
+
         hitsText.text = hits.ToString();
         strikesText.text = strikes.ToString();
     }

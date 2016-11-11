@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
         stats = gameObject.AddComponent<UpdateStats>();
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-
+           
 
     }
 
@@ -88,6 +88,7 @@ public class GameController : MonoBehaviour
         UIEvents.exitButtonClicked += EventExitButtonClicked;
         UIEvents.nextPitchClicked += EventNextPitchButton;
         Ball.ballHit += EventBallHit;
+        Ball.ballNotHit += EventBallNotHit;
 
         if (audioS == null) Debug.Log("No AudioSource Found");
             
@@ -99,6 +100,8 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         Ball.ballHit -= EventBallHit;
+        Ball.ballNotHit -= EventBallNotHit;
+
     }
 
     void Update()
@@ -198,7 +201,11 @@ public class GameController : MonoBehaviour
         stats.IncrementStats(true);
         gcFSM.ChangeState(States.BallHit);
     }
-
+    private void EventBallNotHit()
+    {
+        stats.IncrementStats(false);
+        gcFSM.ChangeState(States.BallNotHit);
+    }
     public States GetState()
     {
         return gcFSM.State;

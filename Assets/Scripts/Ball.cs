@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
     int Paths;
     public delegate void BallHit();
     public static event BallHit ballHit;
+    public static event BallHit ballNotHit;
 
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
@@ -103,6 +104,9 @@ public class Ball : MonoBehaviour
             if (!hit)
             {
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+                //need if statement know when ball hits catcher and then call ballNotHit()
+                //if(Vector3.Distance(ball.transform.postion, "Catcher Point" distance) = 0)
+                //    ballNotHit();
             }
 
         }

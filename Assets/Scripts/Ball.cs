@@ -105,7 +105,7 @@ public class Ball : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
                 //need if statement know when ball hits catcher and then call ballNotHit()
-                //if(Vector3.Distance(ball.transform.postion, "Catcher Point" distance) = 0)
+               
                 //    ballNotHit();
             }
 
@@ -126,5 +126,10 @@ public class Ball : MonoBehaviour
             RB.velocity = Vector3.zero;
         }
     }
+    void OnTriggerEnter(Collider catcher)
+    {
+        ballNotHit();
+    }
+
 
 }

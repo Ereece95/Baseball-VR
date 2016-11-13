@@ -17,39 +17,47 @@ public class UpdateStats : MonoBehaviour {
     /// <summary>
     /// Sets the stats to 0 and displays in-game
     /// </summary>
-    void Start () {
+    //void Start () {
 
-
-        hitsText.text = hits.ToString();
-        strikesText.text = strikes.ToString();
-    }
-	/// <summary>
+    //    hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
+    //    strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
+    //    //hitsText.text = hits.ToString();
+    //    //strikesText.text = strikes.ToString();
+    //}
+    /// <summary>
     /// Temporarily increments stat counts upon button press
     /// </summary>
-	//void Update () {
- //       //Hits
- //       if(Input.GetKeyDown(KeyCode.H))
- //       {
- //           hits++;
- //           hitsText.text = hits.ToString();
+    //void Update()
+    //{
+    //   // hitsText.text = hits.ToString();
+    //   // strikesText.text = strikes.ToString();
+    //}
+    //    //Hits
+    //    //if (Input.GetKeyDown(KeyCode.H))
+    //    //{
+    //    //    hits++;
+    //        hitsText.text = hits.ToString();
 
- //       }
- //       //Strikes
- //       if (Input.GetKeyDown(KeyCode.S))
- //       {
- //           strikes++;
- //           strikesText.text = strikes.ToString();
- //       }
- //       if(strikes == 8 || strikes == 9)
- //       {
- //           strikesText.color = Color.yellow;
- //       }else if(strikes >= 10)
- //       {
- //           strikesText.color = Color.red;
- //       }
- //   }
+    //   // }
+    //    //Strikes
+    //    //if (Input.GetKeyDown(KeyCode.S))
+    //    //{
+    //    //    strikes++;
+    //        strikesText.text = strikes.ToString();
+    //  //  }
+    // //   if (strikes == 8 || strikes == 9)
+    //  //  {
+    ////        strikesText.color = Color.yellow;
+    // //   }
+    // //   else if (strikes >= 10)
+    //  //  {
+    // //       strikesText.color = Color.red;
+    //  //  }
+    //}
     public void IncrementStats(bool hit)
     {
+        hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
+        strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
         if (hit)
         {
             hits++;

@@ -993,9 +993,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 186726796}
+  - 135: {fileID: 186726797}
   m_Layer: 0
   m_Name: Catcher point
-  m_TagString: Untagged
+  m_TagString: Catcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1013,6 +1014,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 814096993}
   m_RootOrder: 11
+--- !u!135 &186726797
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 186726795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &192615867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,9 +1674,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 508967953}
+  - 135: {fileID: 508967954}
   m_Layer: 0
   m_Name: Catcher point
-  m_TagString: Untagged
+  m_TagString: Catcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1681,6 +1695,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 777430758}
   m_RootOrder: 11
+--- !u!135 &508967954
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 508967952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &521124804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,9 +3015,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 982861002}
+  - 135: {fileID: 982861003}
   m_Layer: 0
   m_Name: Catcher point
-  m_TagString: Untagged
+  m_TagString: Catcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3009,6 +3036,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1363947409}
   m_RootOrder: 1
+--- !u!135 &982861003
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 982861001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1011672852
 GameObject:
   m_ObjectHideFlags: 0

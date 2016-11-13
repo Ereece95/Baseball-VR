@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+    int hits, strikes = 0;
 
     /// <summary>
     /// Implement Singleton
@@ -198,12 +199,12 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
-        stats.IncrementStats(true);
+       // stats.IncrementStats(true);
         gcFSM.ChangeState(States.BallHit);
     }
     private void EventBallNotHit()
     {
-        stats.IncrementStats(false);
+       // stats.IncrementStats(false);
         gcFSM.ChangeState(States.BallNotHit);
     }
     public States GetState()

@@ -31,6 +31,7 @@ public class HitCam : MonoBehaviour {
         {
             cam1.enabled = false;
             cam2.enabled = true;
+            //cam2.targetDisplay.displays[0];
             transform.LookAt(hitball);
         }
         if (gc.GetState() != States.WaitForInput)

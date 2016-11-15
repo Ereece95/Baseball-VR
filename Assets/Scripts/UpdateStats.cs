@@ -12,6 +12,7 @@ public class UpdateStats : MonoBehaviour {
   
     int hits = 0, strikes = 0;
     [SerializeField]
+    private GameObject stats;
     private Text hitsText, strikesText;
 
     void OnEnable()
@@ -33,6 +34,7 @@ public class UpdateStats : MonoBehaviour {
 
     void Start()
     {
+
     }
 
     void Update()

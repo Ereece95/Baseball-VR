@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
 
 
 
+
     private StateMachine<States> gcFSM;
     private AudioClip hit;
     private AudioSource audioS;

@@ -86,7 +86,9 @@ public class UpdateStats : MonoBehaviour {
     //  //  }
     //}
 
-
+    /// <summary>
+    /// 
+    /// </summary>
     public void EventBallNotHit()
     {
         strikes++;
@@ -94,7 +96,9 @@ public class UpdateStats : MonoBehaviour {
         strikesText.text = strikes.ToString();
         CheckStats();
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public void EventBallHit()
     {
         hits++;
@@ -102,7 +106,9 @@ public class UpdateStats : MonoBehaviour {
         hitsText.text = hits.ToString();
         CheckStats();
     }
-    // You will have to update calling parameters
+    /// <summary>
+    /// 
+    /// </summary>
     private void CheckStats()
     {
 

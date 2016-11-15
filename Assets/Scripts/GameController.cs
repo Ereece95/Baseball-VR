@@ -92,7 +92,9 @@ public class GameController : MonoBehaviour
         if (audioS == null) Debug.Log("No AudioSource Found");
             
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     void OnDisable()
     {
         UIEvents.startButtonClicked -= EventStartButtonClicked;
@@ -102,7 +104,9 @@ public class GameController : MonoBehaviour
         Ball.ballNotHit -= EventBallNotHit;
 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     void Update()
     {
         var state = gcFSM.State;

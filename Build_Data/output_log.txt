@@ -2,88 +2,411 @@ Initialize engine version: 5.4.0f3 (a6d8d714de6f)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: AMD Radeon HD 7000 series (ID=0x6778)
+    Renderer: AMD Radeon HD 5450 (ID=0x68f9)
     Vendor:   ATI
-    VRAM:     1008 MB
+    VRAM:     2296 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.179 seconds
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\System.dll (this message is harmless)
-desktop: 1280x1024 60Hz; virtual: 2560x1024 at 0,0
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.078 seconds
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\zmeisel\Source\Repos\CS203L-2016-Baseball\Build_Data\Managed\System.dll (this message is harmless)
+desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.482593 ms
-NullReferenceException: Object reference not set to an instance of an object
-  at GameController.OnEnable () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
+UnloadTime: 0.703798 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 19c4 -> priority: 1 
+  Thread -> id: 2384 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 8.382279 ms
+UnloadTime: 5.920551 ms
 
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 800.
-Total: 0.868629 ms (FindLiveObjects: 0.082914 ms CreateObjectMapping: 0.024479 ms MarkObjects: 0.380223 ms  DeleteObjects: 0.379828 ms)
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 809.
+Total: 0.524038 ms (FindLiveObjects: 0.040741 ms CreateObjectMapping: 0.015239 ms MarkObjects: 0.238538 ms  DeleteObjects: 0.228586 ms)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GameController.EventBallHit () [0x00000] in <filename unknown>:0 
-  at GameController.EventNextPitchButton () [0x00000] in <filename unknown>:0 
-  at UIEvents.NextPitchClicked () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.UnityEvent.Invoke () [0x00000] in <filename unknown>:0 
-  at UnityEngine.UI.Button.Press () [0x00000] in <filename unknown>:0 
-  at UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) [0x00000] in <filename unknown>:0 
-  at UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
-  at UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
-UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
-UnityEngine.DebugLogHandler:LogException(Exception, Object)
-UnityEngine.Logger:LogException(Exception, Object)
-UnityEngine.Debug:LogException(Exception)
-UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
-UnityEngine.EventSystems.StandaloneInputModule:Process()
-UnityEngine.EventSystems.EventSystem:Update()
+strikes= 1
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GameController.EventBallHit () [0x00000] in <filename unknown>:0 
-  at GameController.EventNextPitchButton () [0x00000] in <filename unknown>:0 
-  at UIEvents.NextPitchClicked () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Events.UnityEvent.Invoke () [0x00000] in <filename unknown>:0 
-  at UnityEngine.UI.Button.Press () [0x00000] in <filename unknown>:0 
-  at UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) [0x00000] in <filename unknown>:0 
-  at UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
-  at UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
-UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
-UnityEngine.DebugLogHandler:LogException(Exception, Object)
-UnityEngine.Logger:LogException(Exception, Object)
-UnityEngine.Debug:LogException(Exception)
-UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
-UnityEngine.EventSystems.StandaloneInputModule:Process()
-UnityEngine.EventSystems.EventSystem:Update()
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.321448 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 840.
+Total: 0.740185 ms (FindLiveObjects: 0.061578 ms CreateObjectMapping: 0.022703 ms MarkObjects: 0.364494 ms  DeleteObjects: 0.290476 ms)
+
+hits= 1
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.449270 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 869.
+Total: 0.606143 ms (FindLiveObjects: 0.044784 ms CreateObjectMapping: 0.021770 ms MarkObjects: 0.287988 ms  DeleteObjects: 0.251289 ms)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.433409 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 898.
+Total: 0.758534 ms (FindLiveObjects: 0.115692 ms CreateObjectMapping: 0.034521 ms MarkObjects: 0.353609 ms  DeleteObjects: 0.254088 ms)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.445227 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 927.
+Total: 0.650927 ms (FindLiveObjects: 0.046650 ms CreateObjectMapping: 0.022081 ms MarkObjects: 0.329662 ms  DeleteObjects: 0.252222 ms)
+
+strikes= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.369654 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 956.
+Total: 0.905949 ms (FindLiveObjects: 0.065621 ms CreateObjectMapping: 0.032033 ms MarkObjects: 0.463393 ms  DeleteObjects: 0.343657 ms)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.504629 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 985.
+Total: 0.688248 ms (FindLiveObjects: 0.049449 ms CreateObjectMapping: 0.022703 ms MarkObjects: 0.363561 ms  DeleteObjects: 0.251911 ms)
+
+strikes= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.434031 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1014.
+Total: 1.008580 ms (FindLiveObjects: 0.073085 ms CreateObjectMapping: 0.032966 ms MarkObjects: 0.521861 ms  DeleteObjects: 0.379733 ms)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.149775 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1043.
+Total: 0.758534 ms (FindLiveObjects: 0.054425 ms CreateObjectMapping: 0.022392 ms MarkObjects: 0.399948 ms  DeleteObjects: 0.281457 ms)
+
+strikes= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.230325 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1072.
+Total: 0.849658 ms (FindLiveObjects: 0.057224 ms CreateObjectMapping: 0.022392 ms MarkObjects: 0.483919 ms  DeleteObjects: 0.285500 ms)
+
+hits= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.259559 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1101.
+Total: 0.823534 ms (FindLiveObjects: 0.059401 ms CreateObjectMapping: 0.022081 ms MarkObjects: 0.449087 ms  DeleteObjects: 0.292653 ms)
+
+hits= 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.267023 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1130.
+Total: 1.130493 ms (FindLiveObjects: 0.083659 ms CreateObjectMapping: 0.035454 ms MarkObjects: 0.638176 ms  DeleteObjects: 0.372269 ms)
+
+hits= 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 

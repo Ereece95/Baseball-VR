@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/tguthrie/Source/Repos/CS203L-2016-Baseball/Assets/Scenes/Zach.unity
+  isLoaded: 1
+  isActive: 1

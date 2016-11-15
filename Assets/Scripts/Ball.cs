@@ -15,7 +15,11 @@ public class Ball : MonoBehaviour
     public Transform[] path;
     int num;
     int Paths;
- 
+    public delegate void BallHit();
+    public static event BallHit ballHit;
+    public static event BallHit ballNotHit;
+    private GameController gc;
+    public Animation Throw;
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -40,6 +44,7 @@ public class Ball : MonoBehaviour
         num = pathArray[Paths].childCount;
 
         path = new Transform[num];
+        gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
     int i = 0;
     // Update is called once per frame
@@ -49,6 +54,7 @@ public class Ball : MonoBehaviour
     /// and when the spacebar is hit the ball is sent in a random direction
     /// and with a random force with r
     /// </summary>
+    float num24 = 0f;
     void Update()
     {
 
@@ -57,8 +63,16 @@ public class Ball : MonoBehaviour
         {
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
-            ball.transform.position = hand.transform.position;
-        }
+            if (Throw["Take 001"].time < 1.50023f)
+            {
+                //sets the position of the ball to the pitchers hand while the
+                //throwing animation is running
+                if (Throw["Take 001"].time != num24)
+                {
+                    ball.transform.position = hand.transform.position;
+                }
+            }
+            }
         else
         {
             float step = speed * Time.deltaTime;
@@ -79,7 +93,7 @@ public class Ball : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("space") && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             {
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);
@@ -95,11 +109,16 @@ public class Ball : MonoBehaviour
                 transform.rotation = Quaternion.Euler(rotationVector);
 
                 RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+
+                if (ballHit != null) ballHit();
             }
 
             if (!hit)
             {
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+                //need if statement know when ball hits catcher and then call ballNotHit()
+               
+                
             }
 
         }
@@ -119,5 +138,16 @@ public class Ball : MonoBehaviour
             RB.velocity = Vector3.zero;
         }
     }
-
-}
+    //Stop the ball when it hits catcher and registers a strike
+    /// <summary>
+    /// the ball stops when it hits the catcher and calls ballNotHit()
+    /// </summary>
+    /// <param name="catcher"></param>
+    void OnTriggerEnter(Collider catcher)
+    {
+        if (catcher.tag == "Catcher")
+        {
+            if (ballNotHit != null) ballNotHit();
+        }
+    }
+    }

@@ -18,6 +18,7 @@ public enum States
     ThrowPitchDone,
     BallHit,
     BallNotHit,
+    WaitForInput,
     Delay,
     ExitGame
 }
@@ -50,7 +51,9 @@ public class GameController : MonoBehaviour
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
-    private AudioSource audio;
+    private AudioSource audioS;
+    private UpdateStats stats;
+    private GameObject audioObject;
 
     /// <summary>
     /// Implement Singleton
@@ -64,9 +67,13 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);  //persist across levels
 
+        audioObject = GameObject.Find("Audio Source");
+        audioS = audioObject.GetComponent("AudioSource") as AudioSource;
+        DontDestroyOnLoad(audioObject);
+
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-
+           
 
     }
 
@@ -79,9 +86,11 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked += EventStartButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
         UIEvents.nextPitchClicked += EventNextPitchButton;
-        //Ball.ballHit += EventBallHit;
+        Ball.ballHit += EventBallHit;
+        Ball.ballNotHit += EventBallNotHit;
 
-        audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        if (audioS == null) Debug.Log("No AudioSource Found");
+            
     }
 
     void OnDisable()
@@ -89,7 +98,9 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked -= EventStartButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
-        //Ball.ballHit -= EventBallHit;
+        Ball.ballHit -= EventBallHit;
+        Ball.ballNotHit -= EventBallNotHit;
+
     }
 
     void Update()
@@ -114,6 +125,16 @@ public class GameController : MonoBehaviour
 
             case States.ThrowPitchDone:
                 //Wait for event to break out of this state (Next Pitch Button or Exit Game)
+                break;
+
+            case States.BallHit:
+                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
+                                                        // or EventExitButtonClicked
+                break;
+
+            case States.BallNotHit:
+                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
+                                                        // or EventExitButtonClicked
                 break;
 
             case States.ExitGame:
@@ -175,11 +196,13 @@ public class GameController : MonoBehaviour
 
     private void EventBallHit()
     {
+        audioS.PlayOneShot(audioS.clip, 0.7F);
         gcFSM.ChangeState(States.BallHit);
-        audio.PlayOneShot(hit, 0.7F);
-
     }
-
+    private void EventBallNotHit()
+    {
+        gcFSM.ChangeState(States.BallNotHit);
+    }
     public States GetState()
     {
         return gcFSM.State;

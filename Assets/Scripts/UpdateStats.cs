@@ -5,44 +5,116 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UpdateStats : MonoBehaviour {
 
-    int hits, strikes = 0;
+  
+    int hits = 0, strikes = 0;
     [SerializeField]
-    private Text hitsText, strikesText = null;
+    private Text hitsText, strikesText;
 
-    
+    void OnEnable()
+    {
+        Ball.ballHit += EventBallHit;
+        Ball.ballNotHit += EventBallNotHit;
+    }
+
+    void OnDisable()
+    {
+        Ball.ballHit -= EventBallHit;
+        Ball.ballNotHit -= EventBallNotHit;
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);  //Get score to persist
+    }
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+        //TODO: Move this to start but requires object be visible on startmenu
+        if (SceneManager.GetActiveScene().name == "MasterScene")
+        {
+            hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
+            strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
+        }
+    }
+
     /// <summary>
     /// Sets the stats to 0 and displays in-game
     /// </summary>
-    void Start () {
-        hitsText.text = hits.ToString();
-        strikesText.text = strikes.ToString();
-    }
-	/// <summary>
+    //void Start () {
+
+    //    hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
+    //    strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
+    //    //hitsText.text = hits.ToString();
+    //    //strikesText.text = strikes.ToString();
+    //}
+    /// <summary>
     /// Temporarily increments stat counts upon button press
     /// </summary>
-	void Update () {
-        //Hits
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            hits++;
-            hitsText.text = hits.ToString();
+    //void Update()
+    //{
+    //   // hitsText.text = hits.ToString();
+    //   // strikesText.text = strikes.ToString();
+    //}
+    //    //Hits
+    //    //if (Input.GetKeyDown(KeyCode.H))
+    //    //{
+    //    //    hits++;
+    //        hitsText.text = hits.ToString();
 
-        }
-        //Strikes
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            strikes++;
-            strikesText.text = strikes.ToString();
-        }
-        if(strikes == 8 || strikes == 9)
+    //   // }
+    //    //Strikes
+    //    //if (Input.GetKeyDown(KeyCode.S))
+    //    //{
+    //    //    strikes++;
+    //        strikesText.text = strikes.ToString();
+    //  //  }
+    // //   if (strikes == 8 || strikes == 9)
+    //  //  {
+    ////        strikesText.color = Color.yellow;
+    // //   }
+    // //   else if (strikes >= 10)
+    //  //  {
+    // //       strikesText.color = Color.red;
+    //  //  }
+    //}
+
+
+    public void EventBallNotHit()
+    {
+        strikes++;
+        Debug.Log("strikes= " + strikes);
+        strikesText.text = strikes.ToString();
+        CheckStats();
+    }
+
+    public void EventBallHit()
+    {
+        hits++;
+        Debug.Log("hits= " + hits);
+        hitsText.text = hits.ToString();
+        CheckStats();
+    }
+    // You will have to update calling parameters
+    private void CheckStats()
+    {
+
+        if (strikes == 8 || strikes == 9)
         {
             strikesText.color = Color.yellow;
-        }else if(strikes >= 10)
+        }
+        else if (strikes >= 10)
         {
             strikesText.color = Color.red;
         }
     }
 }
+  
+

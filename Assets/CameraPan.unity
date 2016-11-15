@@ -191,11 +191,11 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143949271}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d55f16a76af05e041bfe7d91d77999ee, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1846,10 +1846,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100162, guid: fb93480891663f9439f1ed10dcdbce73, type: 3}
   m_PrefabInternal: {fileID: 717649855}
---- !u!1 &717649857 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100090, guid: fb93480891663f9439f1ed10dcdbce73, type: 3}
-  m_PrefabInternal: {fileID: 717649855}
 --- !u!4 &717649858 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400090, guid: fb93480891663f9439f1ed10dcdbce73, type: 3}
@@ -1865,8 +1861,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258c51f7d1093054db7795a87c7f506d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 1210197861}
-  hand: {fileID: 717649857}
+  ball: {fileID: 0}
+  hand: {fileID: 0}
+  pathArray: []
+  speed: 0
+  path: []
 --- !u!1 &741857586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,10 +3031,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e0d7c64622350e4aba762741b571399, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1210197861 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 9e0d7c64622350e4aba762741b571399, type: 3}
-  m_PrefabInternal: {fileID: 1210197860}
 --- !u!1 &1250993092
 GameObject:
   m_ObjectHideFlags: 0
@@ -4378,8 +4373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258c51f7d1093054db7795a87c7f506d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 1597786180}
-  hand: {fileID: 717649857}
+  ball: {fileID: 0}
+  hand: {fileID: 0}
+  pathArray: []
+  speed: 0
+  path: []
 --- !u!96 &1597786182
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -4845,8 +4843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88aef05ddaea70744bcc739ce6f670a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsText: {fileID: 1857450279}
-  strikesText: {fileID: 741857587}
+  hitsText: {fileID: 0}
+  strikesText: {fileID: 0}
 --- !u!114 &1797002789
 MonoBehaviour:
   m_ObjectHideFlags: 0

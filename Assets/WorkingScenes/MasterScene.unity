@@ -4760,6 +4760,7 @@ MonoBehaviour:
   - {fileID: 814096993}
   speed: 15
   path: []
+  Throw: {fileID: 1963956627}
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -5708,6 +5709,32 @@ Prefab:
 --- !u!1 &1963956624 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100090, guid: fb93480891663f9439f1ed10dcdbce73, type: 3}
+  m_PrefabInternal: {fileID: 1963956622}
+--- !u!4 &1963956625 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400090, guid: fb93480891663f9439f1ed10dcdbce73, type: 3}
+  m_PrefabInternal: {fileID: 1963956622}
+--- !u!114 &1963956626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1963956623}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258c51f7d1093054db7795a87c7f506d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 402549156}
+  hand: {fileID: 1963956624}
+  pathArray: []
+  speed: 0
+  path: []
+  Throw: {fileID: 0}
+--- !u!111 &1963956627 stripped
+Animation:
+  m_PrefabParentObject: {fileID: 11100000, guid: fb93480891663f9439f1ed10dcdbce73,
+    type: 3}
   m_PrefabInternal: {fileID: 1963956622}
 --- !u!1 &2032764202
 GameObject:

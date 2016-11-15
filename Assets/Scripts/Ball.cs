@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
     public static event BallHit ballHit;
     public static event BallHit ballNotHit;
     private GameController gc;
+    public Animation Throw;
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -53,6 +54,7 @@ public class Ball : MonoBehaviour
     /// and when the spacebar is hit the ball is sent in a random direction
     /// and with a random force with r
     /// </summary>
+    float num24 = 0f;
     void Update()
     {
 
@@ -61,8 +63,16 @@ public class Ball : MonoBehaviour
         {
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
-            ball.transform.position = hand.transform.position;
-        }
+            if (Throw["Take 001"].time < 1.50023f)
+            {
+                //sets the position of the ball to the pitchers hand while the
+                //throwing animation is running
+                if (Throw["Take 001"].time != num24)
+                {
+                    ball.transform.position = hand.transform.position;
+                }
+            }
+            }
         else
         {
             float step = speed * Time.deltaTime;

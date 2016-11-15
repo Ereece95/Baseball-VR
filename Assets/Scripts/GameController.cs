@@ -171,7 +171,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
+        gcFSM.ChangeState(States.ThrowPitch);   //TODO: Eventually want ThrowPitch here. This is a hack
     }
 
     /// <summary>

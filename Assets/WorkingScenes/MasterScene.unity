@@ -993,10 +993,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 186726796}
-  - 135: {fileID: 186726797}
   m_Layer: 0
   m_Name: Catcher point
-  m_TagString: Catcher
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1008,24 +1007,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 186726795}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: -6.74, y: -1.99, z: -7.31}
+  m_LocalPosition: {x: -6.74, y: -1.6, z: -7.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []
   m_Father: {fileID: 814096993}
   m_RootOrder: 11
---- !u!135 &186726797
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 186726795}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &192615867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1661,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 508967953}
-  - 135: {fileID: 508967954}
   m_Layer: 0
   m_Name: Catcher point
   m_TagString: Catcher
@@ -1689,24 +1675,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 508967952}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: -6.74, y: -1.99, z: -7.31}
+  m_LocalPosition: {x: -6.74, y: -1.6, z: -7.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []
   m_Father: {fileID: 777430758}
   m_RootOrder: 11
---- !u!135 &508967954
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508967952}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &521124804
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,7 +3004,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 982861001}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: -6.74, y: -1.46, z: -7.31}
+  m_LocalPosition: {x: -6.74, y: -1.6, z: -7.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []
@@ -3046,7 +3020,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1011672852
 GameObject:
@@ -4665,7 +4639,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552714059}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &1552714061
 Behaviour:
   m_ObjectHideFlags: 0
@@ -4720,10 +4694,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552714059}
-  m_LocalRotation: {x: 0, y: 0.10452846, z: 0, w: 0.9945219}
-  m_LocalPosition: {x: 20, y: 10, z: -30}
+  m_LocalRotation: {x: 0, y: 0.13052616, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 20, y: 10, z: -26}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 12, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -5264,10 +5238,10 @@ RectTransform:
   - {fileID: 1729658164}
   m_Father: {fileID: 820690287}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0.055000003, y: 0.5}
-  m_AnchorMax: {x: 0.30750003, y: 0.5}
-  m_AnchoredPosition: {x: -28.5, y: 195.1}
-  m_SizeDelta: {x: 562, y: 516}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -60}
+  m_SizeDelta: {x: 764, y: 516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1740870142
 MonoBehaviour:

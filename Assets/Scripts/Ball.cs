@@ -18,7 +18,7 @@ public class Ball : MonoBehaviour
     public delegate void BallHit();
     public static event BallHit ballHit;
     public static event BallHit ballNotHit;
-
+    private GameController gc;
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -43,6 +43,7 @@ public class Ball : MonoBehaviour
         num = pathArray[Paths].childCount;
 
         path = new Transform[num];
+        gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
     int i = 0;
     // Update is called once per frame
@@ -82,7 +83,7 @@ public class Ball : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("space") && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             {
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);
@@ -126,10 +127,16 @@ public class Ball : MonoBehaviour
             RB.velocity = Vector3.zero;
         }
     }
+    //Stop the ball when it hits catcher and registers a strike
+    /// <summary>
+    /// the ball stops when it hits the catcher and calls ballNotHit()
+    /// </summary>
+    /// <param name="catcher"></param>
     void OnTriggerEnter(Collider catcher)
     {
-        ballNotHit();
+        if (catcher.tag == "Catcher")
+        {
+            ballNotHit();
+        }
     }
-
-
-}
+    }

@@ -13,7 +13,6 @@ public class UpdateStats : MonoBehaviour {
     [SerializeField]
     private Text hitsText, strikesText;
 
-    
     /// <summary>
     /// Sets the stats to 0 and displays in-game
     /// </summary>

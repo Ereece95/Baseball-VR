@@ -5,13 +5,45 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UpdateStats : MonoBehaviour {
 
   
-    int hits, strikes = 0;
+    int hits = 0, strikes = 0;
     [SerializeField]
     private Text hitsText, strikesText;
+
+    void OnEnable()
+    {
+        Ball.ballHit += EventBallHit;
+        Ball.ballNotHit += EventBallNotHit;
+    }
+
+    void OnDisable()
+    {
+        Ball.ballHit -= EventBallHit;
+        Ball.ballNotHit -= EventBallNotHit;
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);  //Get score to persist
+    }
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+        //TODO: Move this to start but requires object be visible on startmenu
+        if (SceneManager.GetActiveScene().name == "MasterScene")
+        {
+            hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
+            strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
+        }
+    }
 
     /// <summary>
     /// Sets the stats to 0 and displays in-game
@@ -53,29 +85,36 @@ public class UpdateStats : MonoBehaviour {
     // //       strikesText.color = Color.red;
     //  //  }
     //}
-    public void IncrementStats(bool hit)
-    {
-        hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
-        strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
-        if (hit)
-        {
-            hits++;
-            hitsText.text = hits.ToString();
-        }
-        else
-        {
-           strikes++;
-           strikesText.text = strikes.ToString();
 
-           if (strikes == 8 || strikes == 9)
-            {
-                strikesText.color = Color.yellow;
-            }
-            else if (strikes >= 10)
-            {
-                strikesText.color = Color.red;
-            }
+
+    public void EventBallNotHit()
+    {
+        strikes++;
+        Debug.Log("strikes= " + strikes);
+        strikesText.text = strikes.ToString();
+        CheckStats();
+    }
+
+    public void EventBallHit()
+    {
+        hits++;
+        Debug.Log("hits= " + hits);
+        hitsText.text = hits.ToString();
+        CheckStats();
+    }
+    // You will have to update calling parameters
+    private void CheckStats()
+    {
+
+        if (strikes == 8 || strikes == 9)
+        {
+            strikesText.color = Color.yellow;
+        }
+        else if (strikes >= 10)
+        {
+            strikesText.color = Color.red;
         }
     }
-  
 }
+  
+

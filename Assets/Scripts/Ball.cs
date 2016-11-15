@@ -99,7 +99,8 @@ public class Ball : MonoBehaviour
                 transform.rotation = Quaternion.Euler(rotationVector);
 
                 RB.AddForce(transform.rotation * Vector3.forward * hitForce);
-                ballHit();
+
+                if (ballHit != null) ballHit();
             }
 
             if (!hit)
@@ -107,7 +108,7 @@ public class Ball : MonoBehaviour
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
                 //need if statement know when ball hits catcher and then call ballNotHit()
                
-                //    ballNotHit();
+                
             }
 
         }
@@ -136,7 +137,7 @@ public class Ball : MonoBehaviour
     {
         if (catcher.tag == "Catcher")
         {
-            ballNotHit();
+            if (ballNotHit != null) ballNotHit();
         }
     }
     }

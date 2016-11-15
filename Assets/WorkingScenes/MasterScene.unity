@@ -4814,6 +4814,7 @@ MonoBehaviour:
   - {fileID: 814096993}
   speed: 15
   path: []
+  Throw: {fileID: 1963956627}
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -5787,6 +5788,12 @@ MonoBehaviour:
   pathArray: []
   speed: 0
   path: []
+  Throw: {fileID: 0}
+--- !u!111 &1963956627 stripped
+Animation:
+  m_PrefabParentObject: {fileID: 11100000, guid: fb93480891663f9439f1ed10dcdbce73,
+    type: 3}
+  m_PrefabInternal: {fileID: 1963956622}
 --- !u!1 &2032764202
 GameObject:
   m_ObjectHideFlags: 0

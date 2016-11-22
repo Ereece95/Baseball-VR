@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
     private UpdateStats stats;
     private GameObject audioObject;
 
+
     /// <summary>
     /// Implement Singleton
     /// Initialize StateMachine

@@ -46,12 +46,10 @@ public class GameController : MonoBehaviour
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
-    private AudioSource audio;
-    private Animation pitch; 
-
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+
 
     /// <summary>
     /// Implement Singleton
@@ -71,7 +69,7 @@ public class GameController : MonoBehaviour
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-           
+
 
     }
 
@@ -88,7 +86,7 @@ public class GameController : MonoBehaviour
         Ball.ballNotHit += EventBallNotHit;
 
         if (audioS == null) Debug.Log("No AudioSource Found");
-            
+
     }
     /// <summary>
     /// 
@@ -173,7 +171,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
+        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
     }
 
     /// <summary>
@@ -181,7 +179,6 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        pitch.Play("Take 001");
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
 

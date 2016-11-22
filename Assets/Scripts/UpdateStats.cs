@@ -88,7 +88,7 @@ public class UpdateStats : MonoBehaviour {
     //  //  }
     //}
 
-    
+
     public void EventBallNotHit()
     {
         strikes++;

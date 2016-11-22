@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// The code for the ball following a path at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It also stops the ball when it hits the ground for now.
+/// </summary>
 public class Ball : MonoBehaviour
 {
     public GameObject ball;

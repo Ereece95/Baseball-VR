@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Buttons like start exit and next pitch for the UI
+/// </summary>
 public class UIEvents : MonoBehaviour {
 
     public delegate void buttonHandler();

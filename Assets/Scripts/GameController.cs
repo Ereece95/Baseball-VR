@@ -25,13 +25,8 @@ public enum States
 
 
 /// <summary>
-/// Game Controller - Singleton pattern used to ensure only 1 game controller is instantiated
-///     Sets up delegates for message passing
-///     See: https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial/writing-game-manager
-/// 
-/// State Machine can be found at
-///    https://github.com/thefuntastic/Unity3d-Finite-State-Machine
-///    See specifically the built in Methods
+/// Switch between states so it only runs certain items when in the correct state
+/// States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame
 /// </summary>
 public class GameController : MonoBehaviour
 {

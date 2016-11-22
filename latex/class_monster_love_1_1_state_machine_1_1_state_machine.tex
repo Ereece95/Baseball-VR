@@ -1,0 +1,173 @@
+\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine}{}\section{Monster\+Love.\+State\+Machine.\+State\+Machine$<$ T $>$ Class Template Reference}
+\label{class_monster_love_1_1_state_machine_1_1_state_machine}\index{Monster\+Love.\+State\+Machine.\+State\+Machine$<$ T $>$@{Monster\+Love.\+State\+Machine.\+State\+Machine$<$ T $>$}}
+
+
+ 
+
+
+Inheritance diagram for Monster\+Love.\+State\+Machine.\+State\+Machine$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_monster_love_1_1_state_machine_1_1_state_machine}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine_a1c1fa13eb29ff5c43b54944ad74f09b5}{State\+Machine} (\hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine_runner}{State\+Machine\+Runner} engine, Mono\+Behaviour component)
+\item 
+void \hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine_a4c3fe2a0163ddeeeb7d20175e012add8}{Change\+State} (T new\+State)
+\item 
+void \hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine_a7c0c6b5a0c4337fa9a35169c57ef0c0d}{Change\+State} (T new\+State, State\+Transition transition)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine}{State\+Machine}$<$ T $>$ \hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine_aa5d979a87e17102286c25da522ea7740}{Initialize} (Mono\+Behaviour component)
+\begin{DoxyCompactList}\small\item\em Inspects a Mono\+Behaviour for state methods as definied by the supplied Enum, and returns a state\+Machine instance used to trasition states. \end{DoxyCompactList}\item 
+static \hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine}{State\+Machine}$<$ T $>$ \hyperlink{class_monster_love_1_1_state_machine_1_1_state_machine_a238623b813feb3922c0c72a0b299dbd3}{Initialize} (Mono\+Behaviour component, T start\+State)
+\begin{DoxyCompactList}\small\item\em Inspects a Mono\+Behaviour for state methods as definied by the supplied Enum, and returns a state\+Machine instance used to trasition states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+T {\bfseries Last\+State}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_ac02c23ab9b5944badc94389462281a59}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_ac02c23ab9b5944badc94389462281a59}
+
+\item 
+T {\bfseries State}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a018bfc4e211cfea0d547dfd6a98d248f}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a018bfc4e211cfea0d547dfd6a98d248f}
+
+\item 
+bool {\bfseries Is\+In\+Transition}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a382601aae07298c7530c44cb87256de5}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a382601aae07298c7530c44cb87256de5}
+
+\item 
+\hyperlink{class_monster_love_1_1_state_machine_1_1_state_mapping}{State\+Mapping} {\bfseries Current\+State\+Map}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a0f70a6f171987b6afeae80d29b3f82b3}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a0f70a6f171987b6afeae80d29b3f82b3}
+
+\item 
+Mono\+Behaviour {\bfseries Component}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a1ffd2a6d5c8f3a09fd4438fad9e719bc}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a1ffd2a6d5c8f3a09fd4438fad9e719bc}
+
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Action$<$ T $>$ {\bfseries Changed}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a9b07cb5dd00587bfb83a7dd9666a3142}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a9b07cb5dd00587bfb83a7dd9666a3142}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em struct}]\item[{\em T} : {\em I\+Convertible}]\item[{\em T} : {\em I\+Comparable}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}!State\+Machine@{State\+Machine}}
+\index{State\+Machine@{State\+Machine}!Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}}
+\subsubsection[{\texorpdfstring{State\+Machine(\+State\+Machine\+Runner engine, Mono\+Behaviour component)}{StateMachine(StateMachineRunner engine, MonoBehaviour component)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Monster\+Love.\+State\+Machine.\+State\+Machine}$<$ T $>$.{\bf State\+Machine} (
+\begin{DoxyParamCaption}
+\item[{{\bf State\+Machine\+Runner}}]{engine, }
+\item[{Mono\+Behaviour}]{component}
+\end{DoxyParamCaption}
+)}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a1c1fa13eb29ff5c43b54944ad74f09b5}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a1c1fa13eb29ff5c43b54944ad74f09b5}
+
+
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & \\
+\hline
+{\em component} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}!Change\+State@{Change\+State}}
+\index{Change\+State@{Change\+State}!Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}}
+\subsubsection[{\texorpdfstring{Change\+State(\+T new\+State)}{ChangeState(T newState)}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Monster\+Love.\+State\+Machine.\+State\+Machine}$<$ T $>$.Change\+State (
+\begin{DoxyParamCaption}
+\item[{T}]{new\+State}
+\end{DoxyParamCaption}
+)}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a4c3fe2a0163ddeeeb7d20175e012add8}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a4c3fe2a0163ddeeeb7d20175e012add8}
+
+
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & \\
+\hline
+\end{DoxyParams}
+\index{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}!Change\+State@{Change\+State}}
+\index{Change\+State@{Change\+State}!Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}}
+\subsubsection[{\texorpdfstring{Change\+State(\+T new\+State, State\+Transition transition)}{ChangeState(T newState, StateTransition transition)}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Monster\+Love.\+State\+Machine.\+State\+Machine}$<$ T $>$.Change\+State (
+\begin{DoxyParamCaption}
+\item[{T}]{new\+State, }
+\item[{State\+Transition}]{transition}
+\end{DoxyParamCaption}
+)}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a7c0c6b5a0c4337fa9a35169c57ef0c0d}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a7c0c6b5a0c4337fa9a35169c57ef0c0d}
+
+
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & \\
+\hline
+{\em transition} & \\
+\hline
+\end{DoxyParams}
+\index{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}}
+\subsubsection[{\texorpdfstring{Initialize(\+Mono\+Behaviour component)}{Initialize(MonoBehaviour component)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf State\+Machine}$<$T$>$ {\bf Monster\+Love.\+State\+Machine.\+State\+Machine}$<$ T $>$.Initialize (
+\begin{DoxyParamCaption}
+\item[{Mono\+Behaviour}]{component}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_aa5d979a87e17102286c25da522ea7740}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_aa5d979a87e17102286c25da522ea7740}
+
+
+Inspects a Mono\+Behaviour for state methods as definied by the supplied Enum, and returns a state\+Machine instance used to trasition states. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & The component with defined state methods\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A valid state\+Machine instance to manage Mono\+Behaviour state transitions
+\end{DoxyReturn}
+\index{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Monster\+Love\+::\+State\+Machine\+::\+State\+Machine@{Monster\+Love\+::\+State\+Machine\+::\+State\+Machine}}
+\subsubsection[{\texorpdfstring{Initialize(\+Mono\+Behaviour component, T start\+State)}{Initialize(MonoBehaviour component, T startState)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf State\+Machine}$<$T$>$ {\bf Monster\+Love.\+State\+Machine.\+State\+Machine}$<$ T $>$.Initialize (
+\begin{DoxyParamCaption}
+\item[{Mono\+Behaviour}]{component, }
+\item[{T}]{start\+State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_monster_love_1_1_state_machine_1_1_state_machine_a238623b813feb3922c0c72a0b299dbd3}{}\label{class_monster_love_1_1_state_machine_1_1_state_machine_a238623b813feb3922c0c72a0b299dbd3}
+
+
+Inspects a Mono\+Behaviour for state methods as definied by the supplied Enum, and returns a state\+Machine instance used to trasition states. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & The component with defined state methods\\
+\hline
+{\em start\+State} & The default starting state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A valid state\+Machine instance to manage Mono\+Behaviour state transitions
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Monster\+Love/\+State\+Machine/State\+Machine.\+cs\end{DoxyCompactItemize}

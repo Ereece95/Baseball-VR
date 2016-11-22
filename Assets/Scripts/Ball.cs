@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
     public static event BallHit ballNotHit;
     private GameController gc;
     public Animation Throw;
+    public Transform plate;
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -45,6 +46,7 @@ public class Ball : MonoBehaviour
 
         path = new Transform[num];
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
+        plate = GameObject.Find("Home Plate").transform;
     }
     int i = 0;
     // Update is called once per frame
@@ -108,7 +110,7 @@ public class Ball : MonoBehaviour
                 rotationVector.x = rotationX;
                 transform.rotation = Quaternion.Euler(rotationVector);
 
-                RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                RB.AddForce(transform.rotation * Vector3.forward * 1700/*hitForce*/);
 
                 if (ballHit != null) ballHit();
             }
@@ -137,6 +139,8 @@ public class Ball : MonoBehaviour
         {
             RB.velocity = Vector3.zero;
         }
+        float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+        
     }
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>

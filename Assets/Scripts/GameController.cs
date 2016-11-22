@@ -52,7 +52,6 @@ public class GameController : MonoBehaviour
     private StateMachine<States> gcFSM;
     private AudioClip hit;
     private AudioSource audio;
-    private Animation pitch; 
 
     private AudioSource audioS;
     private UpdateStats stats;
@@ -116,7 +115,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("MasterScene");
+                SceneManager.LoadScene("TylerSceneDH");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -174,7 +173,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
+        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
     }
 
     /// <summary>
@@ -182,7 +181,6 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        pitch.Play("Take 001");
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
 

@@ -63,7 +63,7 @@ public class Ball : MonoBehaviour
         {
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
-            if (Throw["Take 001"].time < 1.25023f)
+            if (Throw["Take 001"].time < 1.50023f)
             {
                 //sets the position of the ball to the pitchers hand while the
                 //throwing animation is running

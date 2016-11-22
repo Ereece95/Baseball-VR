@@ -51,11 +51,10 @@ public class GameController : MonoBehaviour
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
-    private AudioSource audio;
-
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+
 
     /// <summary>
     /// Implement Singleton
@@ -75,7 +74,7 @@ public class GameController : MonoBehaviour
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-           
+
 
     }
 
@@ -92,9 +91,11 @@ public class GameController : MonoBehaviour
         Ball.ballNotHit += EventBallNotHit;
 
         if (audioS == null) Debug.Log("No AudioSource Found");
-            
-    }
 
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     void OnDisable()
     {
         UIEvents.startButtonClicked -= EventStartButtonClicked;
@@ -104,7 +105,9 @@ public class GameController : MonoBehaviour
         Ball.ballNotHit -= EventBallNotHit;
 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     void Update()
     {
         var state = gcFSM.State;
@@ -115,7 +118,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("TylerSceneDH");
+                SceneManager.LoadScene("MasterScene");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 

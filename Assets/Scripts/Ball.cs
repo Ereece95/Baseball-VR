@@ -93,7 +93,7 @@ public class Ball : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown("space") && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
+            if (Input.GetMouseButtonDown(0) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             {
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);

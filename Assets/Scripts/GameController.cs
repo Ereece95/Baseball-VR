@@ -90,8 +90,6 @@ public class GameController : MonoBehaviour
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
 
-        if (audioS == null) Debug.Log("No AudioSource Found");
-
     }
     /// <summary>
     /// 
@@ -129,7 +127,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.ThrowPitchDone:
-                //Wait for event to break out of this state (Next Pitch Button or Exit Game)
+                //Wait for event to break out of this state (BallHit or BallNotHit)
                 break;
 
             case States.BallHit:

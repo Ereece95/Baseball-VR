@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(audioObject);
 
         Strike = GameObject.Find("AudioStrike");
-        audioStrike = Strike.GetComponent<AudioSource>();
+       audioStrike = Strike.GetComponent<AudioSource>();
         DontDestroyOnLoad(Strike);
 
         //Initialize State Machine Engine		

@@ -49,6 +49,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+    private GameObject Strike;
+    private AudioSource audioStrike;
 
 
     /// <summary>
@@ -64,8 +66,12 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         audioObject = GameObject.Find("Audio Source");
-        audioS = audioObject.GetComponent("AudioSource") as AudioSource;
+        audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
+
+        Strike = GameObject.Find("AudioStrike");
+        audioStrike = Strike.GetComponent<AudioSource>();
+        DontDestroyOnLoad(Strike);
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -201,6 +207,7 @@ public class GameController : MonoBehaviour
     }
     private void EventBallNotHit()
     {
+        audioStrike.PlayOneShot(audioStrike.clip, 0.7F);
         gcFSM.ChangeState(States.BallNotHit);
     }
     public States GetState()

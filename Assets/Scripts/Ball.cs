@@ -115,7 +115,16 @@ public class Ball : MonoBehaviour
 
                 if (ballHit != null) ballHit();
             }
-
+            if (hit)
+            {
+                if (ball.transform.position.y <= 0.25)
+                {
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.GetComponent<Renderer>().material.color = Color.red;
+                    cube.transform.localScale = new Vector3(1f, 0.25f, 1f);
+                    cube.transform.position = ball.transform.position;
+                }
+            }
             if (!hit)
             {
                 transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);

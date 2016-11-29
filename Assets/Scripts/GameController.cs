@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;   //Lists
 using MonsterLove.StateMachine;
 
-
 /// <summary>
 /// The states the game may be in
 /// </summary>
@@ -54,6 +53,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+    List<HitStats> hitStats = null;
+    HitStats hs = null;
 
     /// <summary>
     /// Implement Singleton
@@ -73,8 +74,8 @@ public class GameController : MonoBehaviour
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-           
 
+        hitStats = new List<HitStats>();
     }
 
     /// <summary>
@@ -88,7 +89,7 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked += EventNextPitchButton;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
-
+        Ball.distanceHit += OnHitDistanceEvent;
         if (audioS == null) Debug.Log("No AudioSource Found");
             
     }
@@ -98,6 +99,7 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked -= EventStartButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
+        Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
 
@@ -198,6 +200,7 @@ public class GameController : MonoBehaviour
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
         gcFSM.ChangeState(States.BallHit);
+        
     }
     private void EventBallNotHit()
     {
@@ -206,5 +209,15 @@ public class GameController : MonoBehaviour
     public States GetState()
     {
         return gcFSM.State;
+    }
+
+    void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun)
+    {
+        hs = new HitStats();
+        hs.distance = distance;
+        hs.isFoul = isFoul;
+        hs.isHomerun = isHomerun;
+
+        hitStats.Add(hs);
     }
 }

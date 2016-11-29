@@ -21,6 +21,9 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
+
+    public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
+    public static event hitEvent distanceHit;   
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -135,12 +138,23 @@ public class Ball : MonoBehaviour
     /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
     {
+        bool isFoul = true;
+        bool isHomerun = false;
         if (Col.gameObject.name == "Field")
         {
             RB.velocity = Vector3.zero;
+            if ((ball.transform.position.x >= 19.9) && (ball.transform.position.z >= 19.9))
+            {
+                isFoul = false;
+            }
+            else
+            {
+                isFoul = true;
+            }
         }
         float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-        
+       
+        if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
     }
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>

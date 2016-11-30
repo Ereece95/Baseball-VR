@@ -140,6 +140,13 @@ public class Ball : MonoBehaviour
     {
         bool isFoul = true;
         bool isHomerun = false;
+
+        if(Col.gameObject.name == "Foul Pole")
+        {
+            isHomerun = true;
+            RB.velocity = Vector3.zero;
+            RB.useGravity = false;
+        }
         if (Col.gameObject.name == "Field")
         {
             RB.velocity = Vector3.zero;

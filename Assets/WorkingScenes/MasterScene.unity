@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.57508564, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.496787, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3131,7 +3131,7 @@ GameObject:
   - 136: {fileID: 1033612797}
   - 23: {fileID: 1033612796}
   m_Layer: 0
-  m_Name: Foul Pole - Left
+  m_Name: Foul Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4815,6 +4815,7 @@ MonoBehaviour:
   speed: 15
   path: []
   Throw: {fileID: 1963956627}
+  plate: {fileID: 0}
 --- !u!96 &1625257634
 TrailRenderer:
   m_ObjectHideFlags: 0
@@ -5789,6 +5790,7 @@ MonoBehaviour:
   speed: 0
   path: []
   Throw: {fileID: 0}
+  plate: {fileID: 0}
 --- !u!111 &1963956627 stripped
 Animation:
   m_PrefabParentObject: {fileID: 11100000, guid: fb93480891663f9439f1ed10dcdbce73,

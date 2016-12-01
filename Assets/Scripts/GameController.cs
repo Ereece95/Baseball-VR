@@ -186,7 +186,7 @@ public class GameController : MonoBehaviour
     private void HandleThrowPitch()
     {
         gcFSM.ChangeState(States.ThrowPitchDone);
-        Timer(15);  ///<Wait for animation to play
+        Timer(50000);  ///<Wait for animation to play
 
     }
 

@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     public float speed;//, throws;
     bool hit;
     private Rigidbody RB;
-    public Transform[] path;
+    public Transform[] path ;
     int num;
     int Paths;
     public delegate void BallHit();
@@ -45,9 +45,16 @@ public class Ball : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
-        shift(pathArray);
+        
         path = new Transform[num];
+        for (int j = 0; j < num; j++)
+        {
+            path[j] = pathArray[Paths].GetChild(j);
+
+        }
+        shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
+
     }
     int i = 0;
     // Update is called once per frame
@@ -82,11 +89,7 @@ public class Ball : MonoBehaviour
             trail.enabled = true;
             //when x reaches a spesific value it enables the trail and moves the ball
 
-            for (int j = 0; j < num; j++)
-            {
-                path[j] = pathArray[Paths].GetChild(j);
-
-            }
+           
 
             if (ball.transform.position == path[i].position)
             {
@@ -153,18 +156,27 @@ public class Ball : MonoBehaviour
             if (ballNotHit != null) ballNotHit();
         }
     }
-    void shift(Transform[]PathArray)
+    void shift()
     {
-        int quadrent =1;
+        int quadrent =1, x1, y1, z1;
+
         switch(quadrent)
         {
             case 1:
                 for (int j = 0; j < num; j++)
                 {
-
-                    pathArray[Paths].GetChild(j).transform.position = new Vector3(0,0,0);
+                    if(j == num-2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y+.2f , path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                    
 
                 }
+                path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
                 break;
             case 2:
 
@@ -188,7 +200,7 @@ public class Ball : MonoBehaviour
 
                 break;
             case 9:
-                quadrent = 2;
+                
                 break;
 
         }

@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     private TrailRenderer trail;
     int x = 0;
     //private Transform[] path = new Transform[11];
-    private Transform[] pathArray;
+    public Transform[] pathArray;
     public float speed;//, throws;
     bool hit;
     private Rigidbody RB;
@@ -30,9 +30,9 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
-        pathArray[0] = transform.Find("Changeup path");
-        pathArray[1] = transform.Find("Fastball path");
-        pathArray[2] = transform.Find("Curveball path");
+        //pathArray[0] = transform.Find("Changeup path");
+        //pathArray[1] = transform.Find("Fastball path");
+        //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         Paths = (Random.Range(0, 3));

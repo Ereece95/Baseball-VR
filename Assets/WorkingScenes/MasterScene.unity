@@ -4808,6 +4808,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1625257632}
   hand: {fileID: 1963956624}
+  pathArray:
+  - {fileID: 777430758}
+  - {fileID: 1363947409}
+  - {fileID: 814096993}
   speed: 15
   path:
   - {fileID: 0}
@@ -5784,6 +5788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 402549156}
   hand: {fileID: 1963956624}
+  pathArray: []
   speed: 0
   path: []
   Throw: {fileID: 0}

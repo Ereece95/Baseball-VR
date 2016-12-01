@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
     private GameObject audioObject;
     private GameObject Strike;
     private AudioSource audioStrike;
+    private GameObject Cheer;
+    private AudioSource audioCheer;
 
 
     /// <summary>
@@ -204,7 +206,8 @@ public class GameController : MonoBehaviour
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
         gcFSM.ChangeState(States.BallHit);
-    }
+        audioCheer.PlayOneShot(audioCheer.clip, 0.7F);
+}
     private void EventBallNotHit()
     {
         audioStrike.PlayOneShot(audioStrike.clip, 0.7F);

@@ -30,6 +30,9 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
+        //pathArray[0] = transform.Find("Changeup path");
+        //pathArray[1] = transform.Find("Fastball path");
+        //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         Paths = (Random.Range(0, 3));

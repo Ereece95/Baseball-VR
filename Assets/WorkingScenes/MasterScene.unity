@@ -4892,7 +4892,10 @@ MonoBehaviour:
   - {fileID: 1363947409}
   - {fileID: 814096993}
   speed: 15
-  path: []
+  path:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Throw: {fileID: 1963956627}
 --- !u!96 &1625257634
 TrailRenderer:

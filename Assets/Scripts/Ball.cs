@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
-
+        shift(pathArray);
         path = new Transform[num];
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
@@ -152,5 +152,46 @@ public class Ball : MonoBehaviour
         {
             if (ballNotHit != null) ballNotHit();
         }
+    }
+    void shift(Transform[]PathArray)
+    {
+        int quadrent =1;
+        switch(quadrent)
+        {
+            case 1:
+                for (int j = 0; j < num; j++)
+                {
+
+                    pathArray[Paths].GetChild(j).transform.position = new Vector3(0,0,0);
+
+                }
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+
+                break;
+            case 9:
+                quadrent = 2;
+                break;
+
+        }
+
     }
     }

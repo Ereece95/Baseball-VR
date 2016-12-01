@@ -138,29 +138,41 @@ public class Ball : MonoBehaviour
     /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
     {
-        bool isFoul = true;
+        bool isFoul = false;
         bool isHomerun = false;
 
         if(Col.gameObject.name == "Foul Pole")
         {
             isHomerun = true;
+            isFoul = false;
             RB.velocity = Vector3.zero;
             RB.useGravity = false;
+            Debug.Log("Foul Pole");
         }
-        if (Col.gameObject.name == "Field")
+        else if(Col.gameObject.tag == "Homerun")
+        {
+            isHomerun = true;
+            isFoul = false;
+            RB.velocity = Vector3.zero;
+            Debug.Log("Homerun");
+        }
+        else if (Col.gameObject.tag == "Field")
         {
             RB.velocity = Vector3.zero;
             if ((ball.transform.position.x >= 19.9) && (ball.transform.position.z >= 19.9))
             {
                 isFoul = false;
+                Debug.Log("Fair ball");
+
             }
             else
             {
                 isFoul = true;
+                Debug.Log("Foul ball");
             }
         }
         float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-       
+        Debug.Log("Distance = " + (int)distance);
         if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
     }
     //Stop the ball when it hits catcher and registers a strike

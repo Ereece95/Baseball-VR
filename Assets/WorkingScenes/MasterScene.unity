@@ -1625,6 +1625,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -80
       objectReference: {fileID: 0}
+    - target: {fileID: 112722, guid: c913aeed955d9684c8197cc24eb2b4e0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c913aeed955d9684c8197cc24eb2b4e0, type: 2}
   m_IsPrefabParent: 0
@@ -1644,6 +1648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorObject: {fileID: 421818065}
+  bat: {fileID: 112722, guid: c913aeed955d9684c8197cc24eb2b4e0, type: 2}
 --- !u!4 &421818065 stripped
 Transform:
   m_PrefabParentObject: {fileID: 472352, guid: c913aeed955d9684c8197cc24eb2b4e0, type: 2}

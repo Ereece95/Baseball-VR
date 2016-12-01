@@ -9,20 +9,24 @@ public class Bat : MonoBehaviour {
     private GameController gc;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
+        bat.GetComponent<Renderer>().enabled = true;
         Cursor.visible = false;
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (gc.GetState() == States.ThrowPitch)
+        if (gc.GetState() == States.ThrowPitch || gc.GetState() == States.ThrowPitchDone)
         {
+            Cursor.visible = false;
+            bat.GetComponent<Renderer>().enabled = true;
             batFollowCursor();
         }
         else
         {
-            //bat.enabled = false;
+            Cursor.visible = true;
+            bat.GetComponent<Renderer>().enabled = false;
         }
 	}
 

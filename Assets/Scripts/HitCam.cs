@@ -27,7 +27,7 @@ public class HitCam : MonoBehaviour {
     /// Switches cameras to follow ball until the travel is done
     /// </summary>
 	void Update () {
-        if (gc.GetState() == States.WaitForInput)
+        if (gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
         {
             cam1.enabled = false;
             cam2.enabled = true;

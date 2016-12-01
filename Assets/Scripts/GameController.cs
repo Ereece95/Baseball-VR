@@ -17,6 +17,7 @@ public enum States
     ThrowPitchDone,
     BallHit,
     BallNotHit,
+    WaitForCollision,
     WaitForInput,
     Delay,
     ExitGame
@@ -130,13 +131,14 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.BallHit:
-                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
-                                                        // or EventExitButtonClicked
+                gcFSM.ChangeState(States.WaitForCollision);
                 break;
 
             case States.BallNotHit:
                 gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
                                                         // or EventExitButtonClicked
+                break;
+            case States.WaitForInput:
                 break;
 
             case States.ExitGame:
@@ -213,12 +215,14 @@ public class GameController : MonoBehaviour
 
     void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun)
     {
+        gcFSM.ChangeState(States.WaitForInput);
         hs = new HitStats();
         hs.distance = distance;
         hs.isFoul = isFoul;
         hs.isHomerun = isHomerun;
 
         hitStats.Add(hs);
-        Debug.Log("HIT ADDDED" + distance);
+        Debug.Log("HIT ADDDED" + distance);          
+                                  
     }
 }

@@ -113,7 +113,7 @@ public class Ball : MonoBehaviour
                 rotationVector.x = rotationX;
                 transform.rotation = Quaternion.Euler(rotationVector);
 
-                RB.AddForce(transform.rotation * Vector3.forward * 1700/*hitForce*/);
+                RB.AddForce(transform.rotation * Vector3.forward * hitForce);
 
                 if (ballHit != null) ballHit();
             }
@@ -131,6 +131,29 @@ public class Ball : MonoBehaviour
         x++;
 
     }
+    //Stop the ball when it hits catcher and registers a strike
+    /// <summary>
+    /// the ball stops when it hits the catcher and calls ballNotHit()
+    /// </summary>
+    /// <param name="catcher"></param>
+    void OnTriggerEnter(Collider collision)
+    {
+        bool isHomerun = false;
+        bool isFoul = false;
+        if (collision.tag == "Catcher")
+        {
+            if (ballNotHit != null) ballNotHit();
+        }
+        if ((collision.tag == "Homerun") && (gc.GetState() == States.WaitForCollision))
+        {
+            isHomerun = true;
+            isFoul = false;
+            RB.velocity = Vector3.zero;
+            Debug.Log("Homerun");
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+        }
+    }
     //Stop the ball from moving when it contacts the field
     /// <summary>
     /// the ball stops when it hits the ground
@@ -141,22 +164,15 @@ public class Ball : MonoBehaviour
         bool isFoul = false;
         bool isHomerun = false;
 
-        if(Col.gameObject.name == "Foul Pole")
-        {
-            isHomerun = true;
-            isFoul = false;
-            RB.velocity = Vector3.zero;
-            RB.useGravity = false;
-            Debug.Log("Foul Pole");
-        }
-        if (Col.gameObject.tag == "Homerun")
-        {
-            isHomerun = true;
-            isFoul = false;
-            RB.velocity = Vector3.zero;
-            Debug.Log("Homerun");
-        }
-       else if (Col.gameObject.name == "Field")
+        //if(Col.gameObject.name == "Foul Pole")
+        //{
+        //    isHomerun = true;
+        //    isFoul = false;
+        //    RB.velocity = Vector3.zero;
+        //    RB.useGravity = false;
+        //    Debug.Log("Foul Pole");
+        //}
+       if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
         {
             RB.velocity = Vector3.zero;
             if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
@@ -171,25 +187,10 @@ public class Ball : MonoBehaviour
                 Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
                 
             }
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
         }
-        float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-        Debug.Log("Distance = " + (int)distance);
-        if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+        
     }
-    //Stop the ball when it hits catcher and registers a strike
-    /// <summary>
-    /// the ball stops when it hits the catcher and calls ballNotHit()
-    /// </summary>
-    /// <param name="catcher"></param>
-    void OnTriggerEnter(Collider collision)
-    {
-        bool isFoul = false;
-        bool isHomerun = false;
-
-        if (collision.tag == "Catcher")
-        {
-            if (ballNotHit != null) ballNotHit();
-        }
-       
-    }
+   
     }

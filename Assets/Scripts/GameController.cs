@@ -219,5 +219,6 @@ public class GameController : MonoBehaviour
         hs.isHomerun = isHomerun;
 
         hitStats.Add(hs);
+        Debug.Log("HIT ADDDED" + distance);
     }
 }

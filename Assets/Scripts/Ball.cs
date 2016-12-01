@@ -149,26 +149,27 @@ public class Ball : MonoBehaviour
             RB.useGravity = false;
             Debug.Log("Foul Pole");
         }
-        else if(Col.gameObject.tag == "Homerun")
+        if (Col.gameObject.tag == "Homerun")
         {
             isHomerun = true;
             isFoul = false;
             RB.velocity = Vector3.zero;
             Debug.Log("Homerun");
         }
-        else if (Col.gameObject.tag == "Field")
+       else if (Col.gameObject.name == "Field")
         {
             RB.velocity = Vector3.zero;
-            if ((ball.transform.position.x >= 19.9) && (ball.transform.position.z >= 19.9))
+            if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
             {
                 isFoul = false;
-                Debug.Log("Fair ball");
+                Debug.Log("Fair ball" + ball.transform.position.x + " " + ball.transform.position.z);
 
             }
             else
             {
                 isFoul = true;
-                Debug.Log("Foul ball");
+                Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
+                
             }
         }
         float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
@@ -180,11 +181,15 @@ public class Ball : MonoBehaviour
     /// the ball stops when it hits the catcher and calls ballNotHit()
     /// </summary>
     /// <param name="catcher"></param>
-    void OnTriggerEnter(Collider catcher)
+    void OnTriggerEnter(Collider collision)
     {
-        if (catcher.tag == "Catcher")
+        bool isFoul = false;
+        bool isHomerun = false;
+
+        if (collision.tag == "Catcher")
         {
             if (ballNotHit != null) ballNotHit();
         }
+       
     }
     }

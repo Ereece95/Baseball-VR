@@ -158,14 +158,14 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent =1, x1, y1, z1;
+        int quadrent =9;
 
         switch(quadrent)
         {
             case 1:
                 for (int j = 0; j < num; j++)
                 {
-                    if(j == num-2)
+                    if(num == 2 || j == num-2)
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y+.2f , path[j].transform.position.z);
                     }
@@ -176,31 +176,106 @@ public class Ball : MonoBehaviour
                     
 
                 }
-                path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
+               // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
                 break;
             case 2:
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x , path[j].transform.position.y + .2f, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y, path[j].transform.position.z);
+                    }
 
+
+                }
+               // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
                 break;
+                
             case 3:
 
-                break;
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                }
+                 break;
             case 4:
-
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                }
                 break;
             case 5:
-
+               
                 break;
             case 6:
-
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                }
                 break;
             case 7:
-
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                }
                 break;
             case 8:
-
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                }
                 break;
             case 9:
-                
+                for (int j = 0; j < num; j++)
+                {
+                    if (num == 2 || j == num - 2)
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                    }
+                    else
+                    {
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                    }
+                }
                 break;
 
         }

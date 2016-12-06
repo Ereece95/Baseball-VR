@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
@@ -11,8 +12,10 @@ public class Ball : MonoBehaviour
     private TrailRenderer trail;
     int x = 0;
     //private Transform[] path = new Transform[11];
+    public Transform start;
     public Transform[] pathArray;
     public float speed;//, throws;
+    public Text DistDisplay;
     bool hit;
     private Rigidbody RB;
     public Transform[] path;
@@ -121,8 +124,23 @@ public class Ball : MonoBehaviour
                 {
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.GetComponent<Renderer>().material.color = Color.red;
-                    cube.transform.localScale = new Vector3(1f, 0.25f, 1f);
+                    cube.transform.localScale = new Vector3(1f, 0.005f, 1f);
                     cube.transform.position = ball.transform.position;
+
+
+                    
+
+                    float dist;
+
+                   
+                         dist = Vector3.Distance(start.position, ball.transform.position);
+                    
+                   
+                    double dist2 = System.Convert.ToDouble(dist);
+                    dist2 = System.Math.Truncate(dist2);
+                    DistDisplay.text= "Distance: "+(dist.ToString())+" m";
+                    Debug.Log(dist2);
+                    
                 }
             }
             if (!hit)

@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
         audioStrike = Strike.GetComponent<AudioSource>();
         DontDestroyOnLoad(Strike);
 
-        Cheer = GameObject.Find("audioCheer");
+        Cheer = GameObject.Find("AudioCheer");
         audioCheer = Cheer.GetComponent<AudioSource>();
         DontDestroyOnLoad(Cheer);
 
@@ -190,7 +190,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        pitch.Play("Take 001");
+        //pitch.Play("Take 001");
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }

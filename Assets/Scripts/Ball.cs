@@ -130,16 +130,16 @@ public class Ball : MonoBehaviour
 
                     
 
-                    float dist;
+                    
 
                    
-                         dist = Vector3.Distance(start.position, ball.transform.position);
+                    float dist = Vector3.Distance(start.position, ball.transform.position);
                     
                    
                     double dist2 = System.Convert.ToDouble(dist);
-                    dist2 = System.Math.Truncate(dist2);
-                    DistDisplay.text= "Distance: "+(dist.ToString())+" m";
-                    Debug.Log(dist2);
+                    dist2 = System.Math.Round(dist2,2);
+                    DistDisplay.text= "Distance: "+(dist2.ToString())+" m";
+                    
                     
                 }
             }

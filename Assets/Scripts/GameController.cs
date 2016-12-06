@@ -20,7 +20,8 @@ public enum States
     BallNotHit,
     WaitForInput,
     Delay,
-    ExitGame
+    ExitGame,
+    StatsGot
 }
 
 
@@ -141,6 +142,11 @@ public class GameController : MonoBehaviour
             case States.BallNotHit:
                 gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
                                                         // or EventExitButtonClicked
+                break;
+
+            case States.StatsGot:
+
+
                 break;
 
             case States.ExitGame:

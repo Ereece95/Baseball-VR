@@ -2,7 +2,11 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
+using System.Timers;
+using System.Linq;
+using UnityEngine.UI;
 using MonsterLove.StateMachine;
+
 
 /// <summary>
 /// The states the game may be in
@@ -57,6 +61,7 @@ public class GameController : MonoBehaviour
     public CanvasGroup endStatsCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
+    private Text topStats1, topStats2;
 
     /// <summary>
     /// Implement Singleton
@@ -78,6 +83,8 @@ public class GameController : MonoBehaviour
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
         hitStats = new List<HitStats>();
+        topStats1 = GameObject.Find("Top1").GetComponent<Text>();
+        topStats2 = GameObject.Find("Top2").GetComponent<Text>();
     }
 
     /// <summary>
@@ -167,18 +174,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
-
-
-
-        //Fade in stats at end of game
-        for (float x = 0; x <= 1; x = +.1f)
-        {
-            endStatsCanvas.alpha = x;
-        }
-        //TODO: will need to hide other panels that are visible through this panel
-        //TODO: also add some sort of timer to close out game
-
-
+        DisplayExitStats();
         gcFSM.ChangeState(States.ExitGame);
     }
 
@@ -237,5 +233,46 @@ public class GameController : MonoBehaviour
         hitStats.Add(hs);
         Debug.Log("HIT ADDDED" + distance);          
                                   
+    }
+    void DisplayExitStats()
+    {
+        int count = 1;
+        string stats1 = "";
+        string stats2 = "";
+        List<HitStats> sortedList = hitStats.OrderBy(o => o.distance).ToList();
+      
+            foreach (HitStats hs in sortedList)
+            {
+            if (count <= 5)
+            {
+                if (!hs.isFoul)
+                {
+                    stats1 = stats1 + count + ". " + hs.distance + "\n";
+                    count++;
+                }
+            }
+            if (count > 5 && count <= 10)
+            {
+                stats2 = stats2 + count + ". " + hs.distance + "\n";
+                count++;
+            }
+            else
+            {
+                break;
+            }
+            }
+        topStats1.text = stats1;
+        topStats2.text = stats2;
+
+        //Fade in stats at end of game
+        for (float x = 0; x <= 1; x = +.1f)
+        {
+            endStatsCanvas.alpha = x;
+        }
+        //TODO: will need to hide other panels that are visible through this panel
+
+        Timer myTimer = new Timer();
+        myTimer.Interval = 5000;
+        myTimer.Start();
     }
 }

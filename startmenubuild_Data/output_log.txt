@@ -1,0 +1,46 @@
+Initialize engine version: 5.4.0f3 (a6d8d714de6f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K2200 (ID=0x13ba)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.160 seconds
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\amccracken\Source\Repos\CS203L-2016-Baseball\startmenubuild_Data\Managed\System.dll (this message is harmless)
+desktop: 1280x1024 60Hz; virtual: 2560x1024 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.661800 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1690 -> priority: 1 
+hits= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.777101 ms
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 915.
+Total: 0.742580 ms (FindLiveObjects: 0.055288 ms CreateObjectMapping: 0.139047 ms MarkObjects: 0.280081 ms  DeleteObjects: 0.267501 ms)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+strikes= 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+

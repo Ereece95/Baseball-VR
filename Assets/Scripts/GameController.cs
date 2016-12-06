@@ -54,6 +54,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+    private GameObject startmenu;
+    private GameObject startbg;
 
 
     /// <summary>
@@ -67,6 +69,9 @@ public class GameController : MonoBehaviour
         else if (gc != this) Destroy(gameObject);  //kill it if another instance exists
 
         DontDestroyOnLoad(gameObject);  //persist across levels
+
+        startmenu = GameObject.Find("StartMenu"); //to disable after start
+        startbg = GameObject.Find("SF Scene Elements"); //to disable after start
 
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent("AudioSource") as AudioSource;
@@ -157,6 +162,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventStartButtonClicked()
     {
+        startmenu.SetActive(false);
+        Destroy(startbg);
         gcFSM.ChangeState(States.StartClick);
     }
 

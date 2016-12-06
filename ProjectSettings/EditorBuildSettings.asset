@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/STARTMENU.unity
   - enabled: 0
     path: Assets/TylerSceneDH.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/WorkingScenes/STARTMENU.unity
   - enabled: 1
     path: Assets/WorkingScenes/MasterScene.unity

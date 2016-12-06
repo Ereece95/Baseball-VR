@@ -33,6 +33,7 @@ public class Ball : MonoBehaviour
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         Paths = (Random.Range(0, 3));
+        
     }
 
     // Use this for initialization
@@ -69,11 +70,10 @@ public class Ball : MonoBehaviour
     {
 
         //an if statment to have the ball released at a certain time
-        if (x < 70)
-        {
+       
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
-            if (Throw["Take 001"].time < 1.50023f)
+            if (Throw["Take 001"].time < 1.40023f)
             {
                 //sets the position of the ball to the pitchers hand while the
                 //throwing animation is running
@@ -81,19 +81,18 @@ public class Ball : MonoBehaviour
                 {
                     ball.transform.position = hand.transform.position;
                 }
-            }
-            }
+            }    
         else
         {
             float step = speed * Time.deltaTime;
             trail.enabled = true;
             //when x reaches a spesific value it enables the trail and moves the ball
 
-           
 
-            if (ball.transform.position == path[i].position)
+
+            if (ball.transform.position.x == path[i].position.x)
             {
-                if (i != num - 1)
+                if (i != num + 1)
                 {
                     i++;
                 }
@@ -121,15 +120,15 @@ public class Ball : MonoBehaviour
 
             if (!hit)
             {
-                transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+                    ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+
                 //need if statement know when ball hits catcher and then call ballNotHit()
-               
-                
+
             }
 
         }
-        //increments x to determine when to relase the ball
-        x++;
+        
+      
 
     }
     //Stop the ball from moving when it contacts the field

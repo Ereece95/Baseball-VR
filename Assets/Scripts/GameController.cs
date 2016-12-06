@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+    public CanvasGroup endStatsCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
 
@@ -166,6 +167,18 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
+
+
+
+        //Fade in stats at end of game
+        for (float x = 0; x <= 1; x = +.1f)
+        {
+            endStatsCanvas.alpha = x;
+        }
+        //TODO: will need to hide other panels that are visible through this panel
+        //TODO: also add some sort of timer to close out game
+
+
         gcFSM.ChangeState(States.ExitGame);
     }
 

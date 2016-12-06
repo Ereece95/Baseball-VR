@@ -41,9 +41,6 @@ public class GameController : MonoBehaviour
 
     public static GameController gc = null; ///<Used for singleton design pattern
 
-
-
-
     private StateMachine<States> gcFSM;
     private AudioClip hit;
     private AudioSource audioS;
@@ -53,6 +50,7 @@ public class GameController : MonoBehaviour
     private AudioSource audioStrike;
     private GameObject Cheer;
     private AudioSource audioCheer;
+    private Animation pitch;
 
 
     /// <summary>
@@ -179,7 +177,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
+        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
     }
 
     /// <summary>
@@ -187,9 +185,9 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
+        pitch.Play("Take 001");
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
-
     }
 
     /// <summary>

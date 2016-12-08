@@ -36,7 +36,7 @@ public class Ball : MonoBehaviour
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         //Paths = (Random.Range(0, 4));
-        Paths = 3;
+        Paths = 2;
         
     }
 
@@ -104,7 +104,7 @@ public class Ball : MonoBehaviour
 
             if (ball.transform.position.x == path[i].position.x)
             {
-                if (i != num + 1)
+                if (i != num -1 )
                 {
                     i++;
                 }
@@ -171,7 +171,7 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent =6;
+        int quadrent =5;
 
         switch(quadrent)
         {

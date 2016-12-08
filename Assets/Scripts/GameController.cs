@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
 using MonsterLove.StateMachine;
-
+using System;
 
 /// <summary>
 /// The states the game may be in
@@ -52,8 +52,6 @@ public class GameController : MonoBehaviour
     private GameObject Strike;
     private AudioSource audioStrike;
     private GameObject startmenu;
-    private GameObject startbg;
-
 
     /// <summary>
     /// Implement Singleton
@@ -68,14 +66,13 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         startmenu = GameObject.Find("StartMenu"); //to disable after start
-        startbg = GameObject.Find("SF Scene Elements"); //to disable after start
 
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
 
         Strike = GameObject.Find("AudioStrike");
-       audioStrike = Strike.GetComponent<AudioSource>();
+        audioStrike = Strike.GetComponent<AudioSource>();
         DontDestroyOnLoad(Strike);
 
         //Initialize State Machine Engine		
@@ -163,9 +160,16 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventStartButtonClicked()
     {
-        startmenu.SetActive(false);
-        Destroy(startbg);
-        gcFSM.ChangeState(States.StartClick);
+        try
+        {
+            startmenu.SetActive(false);
+            GameObject.Destroy(startmenu);
+            gcFSM.ChangeState(States.StartClick);
+        }
+        catch (Exception e)
+        {
+            Debug.Log("destroy failed: " + e.ToString());
+        }
     }
 
     /// <summary>

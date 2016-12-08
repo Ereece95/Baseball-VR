@@ -58,10 +58,10 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
-    public CanvasGroup endStatsCanvas;
+    public GameObject endStats;
+    //private CanvasGroup endStatsCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
-    [SerializeField]
     private Text topStats1, topStats2;
 
     /// <summary>
@@ -84,16 +84,19 @@ public class GameController : MonoBehaviour
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
         hitStats = new List<HitStats>();
-        //topStats1 = GameObject.Find("Top1").GetComponent<Text>();
-        //topStats2 = GameObject.Find("Top2").GetComponent<Text>();
+        
         //topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
-        //topStats2 = GameObject.Find("EndStats/Top2").GetComponent<Text>();
+        
+        endStats = GameObject.Find("EndStats");
+        topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
+        topStats2 = GameObject.Find("EndStats/Top2").GetComponent<Text>();
+        //endStatsCanvas = endStats.GetComponent("CanvasGroup") as CanvasGroup;
+        
     }
-
-    /// <summary>
-    /// Events we will listen for
-    /// </summary>
-    void OnEnable()
+        /// <summary>
+        /// Events we will listen for
+        /// </summary>
+        void OnEnable()
     {
 
         UIEvents.startButtonClicked += EventStartButtonClicked;
@@ -239,14 +242,14 @@ public class GameController : MonoBehaviour
     }
     void DisplayExitStats()
     {
-        
+
         int count = 1;
         string stats1 = "";
         string stats2 = "";
         List<HitStats> sortedList = hitStats.OrderBy(o => o.distance).ToList();
-      
-            foreach (HitStats hs in sortedList)
-            {
+
+        foreach (HitStats hs in sortedList)
+        {
             if (count <= 5)
             {
                 if (!hs.isFoul)
@@ -264,14 +267,14 @@ public class GameController : MonoBehaviour
             {
                 break;
             }
-            }
+        }
         topStats1.text = stats1;
         topStats2.text = stats2;
 
         //Fade in stats at end of game
         for (float x = 0; x <= 1; x = +.1f)
         {
-            endStatsCanvas.alpha = x;
+            //endStatsCanvas.alpha = x;
         }
         //TODO: will need to hide other panels that are visible through this panel
 

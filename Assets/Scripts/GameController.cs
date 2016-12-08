@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
     public CanvasGroup endStatsCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
+    [SerializeField]
     private Text topStats1, topStats2;
 
     /// <summary>
@@ -83,8 +84,10 @@ public class GameController : MonoBehaviour
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
         hitStats = new List<HitStats>();
-        topStats1 = GameObject.Find("Top1").GetComponent<Text>();
-        topStats2 = GameObject.Find("Top2").GetComponent<Text>();
+        //topStats1 = GameObject.Find("Top1").GetComponent<Text>();
+        //topStats2 = GameObject.Find("Top2").GetComponent<Text>();
+        //topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
+        //topStats2 = GameObject.Find("EndStats/Top2").GetComponent<Text>();
     }
 
     /// <summary>
@@ -236,6 +239,7 @@ public class GameController : MonoBehaviour
     }
     void DisplayExitStats()
     {
+        
         int count = 1;
         string stats1 = "";
         string stats2 = "";

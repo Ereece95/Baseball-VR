@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
     private GameObject audioObject;
     private GameObject Strike;
     private AudioSource audioStrike;
-
     private GameObject Cheer;
     private AudioSource audioCheer;
     private Animation pitch;
@@ -80,8 +79,6 @@ public class GameController : MonoBehaviour
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-
-
     }
 
     /// <summary>
@@ -190,7 +187,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        //pitch.Play("Take 001");
+        //pitch = GetComponent<Animation>();
+        pitch.Play("Take 001");
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }
@@ -209,8 +207,9 @@ public class GameController : MonoBehaviour
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
         gcFSM.ChangeState(States.BallHit);
-        audioCheer.PlayOneShot(audioCheer.clip, 0.9F);
-}
+        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
+        gcFSM.ChangeState(States.BallHit);
+    }
     private void EventBallNotHit()
     {
         audioStrike.PlayOneShot(audioStrike.clip, 0.7F);

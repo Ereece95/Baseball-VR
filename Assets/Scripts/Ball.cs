@@ -35,8 +35,8 @@ public class Ball : MonoBehaviour
         //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
-        Paths = (Random.Range(0, 4));
-        
+        //Paths = (Random.Range(0, 4));
+        Paths = 2;
         
     }
 
@@ -171,9 +171,9 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent = (Random.Range(1, 10));
+        int quadrent =5;
 
-        switch (quadrent)
+        switch(quadrent)
         {
             case 1:
                 for (int j = 0; j < num; j++)

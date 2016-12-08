@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Increment the balls hit and the misses
+/// </summary>
 public class UpdateStats : MonoBehaviour {
 
   
@@ -94,7 +96,7 @@ public class UpdateStats : MonoBehaviour {
         strikesText.text = strikes.ToString();
         CheckStats();
     }
-
+ 
     public void EventBallHit()
     {
         hits++;
@@ -102,7 +104,9 @@ public class UpdateStats : MonoBehaviour {
         hitsText.text = hits.ToString();
         CheckStats();
     }
-    // You will have to update calling parameters
+    /// <summary>
+    /// Change the color when the number gets high enough
+    /// </summary>
     private void CheckStats()
     {
 

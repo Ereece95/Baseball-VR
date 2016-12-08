@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+/// <summary>
+/// Have the camera follow the ball so you can watch it when it is hit 
+/// </summary>
 public class HitCam : MonoBehaviour {
 
     private Camera cam1;

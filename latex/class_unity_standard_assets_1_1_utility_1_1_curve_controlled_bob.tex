@@ -1,0 +1,42 @@
+\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob}{}\section{Unity\+Standard\+Assets.\+Utility.\+Curve\+Controlled\+Bob Class Reference}
+\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob}\index{Unity\+Standard\+Assets.\+Utility.\+Curve\+Controlled\+Bob@{Unity\+Standard\+Assets.\+Utility.\+Curve\+Controlled\+Bob}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Setup} (Camera camera, float bob\+Base\+Interval)\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a3b1649ee246f1a06344616af46499348}{}\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a3b1649ee246f1a06344616af46499348}
+
+\item 
+Vector3 {\bfseries Do\+Head\+Bob} (float speed)\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a7fd3c545ac32c1b10ad2f9ccdfbd35e4}{}\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a7fd3c545ac32c1b10ad2f9ccdfbd35e4}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries Horizontal\+Bob\+Range} = 0.\+33f\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a4a062657e88865ddd6aba8e4c2c32039}{}\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a4a062657e88865ddd6aba8e4c2c32039}
+
+\item 
+float {\bfseries Vertical\+Bob\+Range} = 0.\+33f\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a2637563a3238c5a79883cf4a7dce659d}{}\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a2637563a3238c5a79883cf4a7dce659d}
+
+\item 
+Animation\+Curve {\bfseries Bobcurve}
+\item 
+float {\bfseries Verticalto\+Horizontal\+Ratio} = 1f\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_aa3953c97210c97fbc387ab06fa9ae0ee}{}\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_aa3953c97210c97fbc387ab06fa9ae0ee}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\index{Unity\+Standard\+Assets\+::\+Utility\+::\+Curve\+Controlled\+Bob@{Unity\+Standard\+Assets\+::\+Utility\+::\+Curve\+Controlled\+Bob}!Bobcurve@{Bobcurve}}
+\index{Bobcurve@{Bobcurve}!Unity\+Standard\+Assets\+::\+Utility\+::\+Curve\+Controlled\+Bob@{Unity\+Standard\+Assets\+::\+Utility\+::\+Curve\+Controlled\+Bob}}
+\subsubsection[{\texorpdfstring{Bobcurve}{Bobcurve}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+Curve Unity\+Standard\+Assets.\+Utility.\+Curve\+Controlled\+Bob.\+Bobcurve}\hypertarget{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a11a0684cea298938d69397023f88b0ae}{}\label{class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob_a11a0684cea298938d69397023f88b0ae}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{keyword}{new} AnimationCurve(\textcolor{keyword}{new} Keyframe(0f, 0f), \textcolor{keyword}{new} Keyframe(0.5f, 1f),
+                                                            \textcolor{keyword}{new} Keyframe(1f, 0f), \textcolor{keyword}{new} Keyframe(1.5f, -1f),
+                                                            \textcolor{keyword}{new} Keyframe(2f, 0f))
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Standard Assets/\+Utility/Curve\+Controlled\+Bob.\+cs\end{DoxyCompactItemize}

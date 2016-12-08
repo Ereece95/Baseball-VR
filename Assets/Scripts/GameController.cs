@@ -25,13 +25,8 @@ public enum States
 
 
 /// <summary>
-/// Game Controller - Singleton pattern used to ensure only 1 game controller is instantiated
-///     Sets up delegates for message passing
-///     See: https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial/writing-game-manager
-/// 
-/// State Machine can be found at
-///    https://github.com/thefuntastic/Unity3d-Finite-State-Machine
-///    See specifically the built in Methods
+/// Switch between states so it only runs certain items when in the correct state
+/// States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame
 /// </summary>
 public class GameController : MonoBehaviour
 {
@@ -54,6 +49,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioS;
     private UpdateStats stats;
     private GameObject audioObject;
+    private GameObject Strike;
+    private AudioSource audioStrike;
     private GameObject startmenu;
     private GameObject startbg;
 
@@ -74,8 +71,12 @@ public class GameController : MonoBehaviour
         startbg = GameObject.Find("SF Scene Elements"); //to disable after start
 
         audioObject = GameObject.Find("Audio Source");
-        audioS = audioObject.GetComponent("AudioSource") as AudioSource;
+        audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
+
+        Strike = GameObject.Find("AudioStrike");
+       audioStrike = Strike.GetComponent<AudioSource>();
+        DontDestroyOnLoad(Strike);
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -211,6 +212,7 @@ public class GameController : MonoBehaviour
     }
     private void EventBallNotHit()
     {
+        audioStrike.PlayOneShot(audioStrike.clip, 0.7F);
         gcFSM.ChangeState(States.BallNotHit);
     }
     public States GetState()

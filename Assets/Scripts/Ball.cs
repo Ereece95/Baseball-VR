@@ -30,6 +30,9 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
+        //pathArray[0] = transform.Find("Changeup path");
+        //pathArray[1] = transform.Find("Fastball path");
+        //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         //Paths = (Random.Range(0, 4));
@@ -107,7 +110,7 @@ public class Ball : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown("space") && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
+            if (Input.GetMouseButtonDown(0) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             {
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);

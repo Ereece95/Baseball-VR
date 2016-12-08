@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
+
 /// <summary>
 /// The code for the ball following a path at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It also stops the ball when it hits the ground for now.
 /// </summary>
@@ -11,6 +12,7 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     private TrailRenderer trail;
     int x = 0;
+    public static bool flagVis=false;
     //private Transform[] path = new Transform[11];
     public Transform start;
     public Transform[] pathArray;
@@ -120,7 +122,9 @@ public class Ball : MonoBehaviour
             }
             if (hit)
             {
-                if (ball.transform.position.y <= 0.25)
+                
+               // flagVis+=
+                if (ball.transform.position.y <= 0.25&&flagVis)
                 {
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.GetComponent<Renderer>().material.color = Color.red;
@@ -128,11 +132,6 @@ public class Ball : MonoBehaviour
                     cube.transform.position = ball.transform.position;
 
 
-                    
-
-                    
-
-                   
                     float dist = Vector3.Distance(start.position, ball.transform.position);
                     
                    

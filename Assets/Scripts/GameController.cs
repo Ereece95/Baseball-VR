@@ -5,6 +5,7 @@ using System.Collections.Generic;   //Lists
 using MonsterLove.StateMachine;
 
 
+
 /// <summary>
 /// The states the game may be in
 /// </summary>
@@ -21,7 +22,8 @@ public enum States
     WaitForInput,
     Delay,
     ExitGame,
-    StatsGot
+    StatsGot,
+    FlagClick
 }
 
 
@@ -52,7 +54,7 @@ public class GameController : MonoBehaviour
     private GameObject audioObject;
     private GameObject Strike;
     private AudioSource audioStrike;
-
+    
 
     /// <summary>
     /// Implement Singleton
@@ -149,6 +151,11 @@ public class GameController : MonoBehaviour
 
                 break;
 
+            case States.FlagClick:
+
+                getFlagVis();
+                break;
+
             case States.ExitGame:
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
@@ -219,5 +226,22 @@ public class GameController : MonoBehaviour
     public States GetState()
     {
         return gcFSM.State;
+    }
+
+    private void EventFlagButton()
+    {
+        gcFSM.ChangeState(States.FlagClick);
+    }
+    public void getFlagVis()
+    {
+        if(Ball.flagVis)
+        {
+            EventBallHit.getFlagVis = false;
+        }
+        else
+        {
+            EventBallHit.getFlagVis = true;
+        }
+        
     }
 }

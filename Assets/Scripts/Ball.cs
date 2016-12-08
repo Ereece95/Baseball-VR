@@ -32,7 +32,8 @@ public class Ball : MonoBehaviour
     {
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
-        Paths = (Random.Range(0, 3));
+        //Paths = (Random.Range(0, 4));
+        Paths = 3;
         
     }
 
@@ -66,13 +67,16 @@ public class Ball : MonoBehaviour
     /// and with a random force with r
     /// </summary>
     float num24 = 0f;
+    bool contin = false;
     void Update()
     {
 
         //an if statment to have the ball released at a certain time
-       
-            //sets the position of the ball to the pitchers hand while the
-            //throwing animation is running
+
+        //sets the position of the ball to the pitchers hand while the
+        //throwing animation is running
+        if (contin == false)
+        {
             if (Throw["Take 001"].time < 1.40023f)
             {
                 //sets the position of the ball to the pitchers hand while the
@@ -81,7 +85,12 @@ public class Ball : MonoBehaviour
                 {
                     ball.transform.position = hand.transform.position;
                 }
-            }    
+            }
+            else
+            {
+                contin = true;
+            }
+        }
         else
         {
             float step = speed * Time.deltaTime;
@@ -120,7 +129,9 @@ public class Ball : MonoBehaviour
 
             if (!hit)
             {
-                    ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+
+                ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+
 
                 //need if statement know when ball hits catcher and then call ballNotHit()
 
@@ -157,7 +168,7 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent =9;
+        int quadrent =6;
 
         switch(quadrent)
         {

@@ -104,7 +104,7 @@ public class Ball : MonoBehaviour
 
             if (ball.transform.position.x == path[i].position.x)
             {
-                if (i != num + 1)
+                if (i != num -1)
                 {
                     i++;
                 }

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.57508564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5111,7 +5111,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1468748296}
   m_Layer: 0
-  m_Name: Sinker (1)
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5515,6 +5515,7 @@ MonoBehaviour:
   - {fileID: 1363947409}
   - {fileID: 814096993}
   - {fileID: 270423229}
+  - {fileID: 1468748296}
   speed: 15
   path:
   - {fileID: 0}

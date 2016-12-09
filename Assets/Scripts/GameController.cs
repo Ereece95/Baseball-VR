@@ -37,8 +37,6 @@ public class GameController : MonoBehaviour
 
     //Events we will listen for go in OnEnable()
 
-
-
     public static GameController gc = null; ///<Used for singleton design pattern
 
     private StateMachine<States> gcFSM;
@@ -51,7 +49,7 @@ public class GameController : MonoBehaviour
     private GameObject Cheer;
     private AudioSource audioCheer;
     private Animation pitch;
-
+    private GameObject Pitcher;
 
     /// <summary>
     /// Implement Singleton
@@ -187,9 +185,13 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        //pitch = GetComponent<Animation>();
-        pitch.Play("Take 001");
-        gcFSM.ChangeState(States.ThrowPitchDone);
+        Pitcher = GameObject.Find("WBP_pitch 1");
+        if(Pitcher != null)
+        {
+            pitch = Pitcher.GetComponent<Animation>();
+            pitch.Play("Take 001");
+        }
+            gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }
 

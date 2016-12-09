@@ -27,6 +27,15 @@ public class Ball : MonoBehaviour
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
     /// </summary>
+    /// 
+    void OnEnable()
+    {
+        UIEvents.nextPitchClicked += rethrowpitch;
+    }
+    void OnDisable()
+    {
+        UIEvents.nextPitchClicked -= rethrowpitch;
+    }
 
     void Awake()
     {
@@ -90,7 +99,7 @@ public class Ball : MonoBehaviour
                 path[j] = pathArray[Paths].GetChild(j);
 
             }
-
+            
             if (ball.transform.position == path[i].position)
             {
                 if (i != num - 1)
@@ -155,5 +164,16 @@ public class Ball : MonoBehaviour
         {
             if (ballNotHit != null) ballNotHit();
         }
+    }
+
+    void rethrowpitch()
+    {
+        x = 0;
+        trail.Clear();
+        RB.useGravity = false; //resets the ball physics for next pitch
+        RB.velocity = Vector3.zero;
+        trail.enabled = false;
+        hit = false;
+        i = 0;
     }
     }

@@ -171,7 +171,7 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent =5;
+        int quadrent =7;
 
         switch(quadrent)
         {
@@ -227,11 +227,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                 }
                 break;
@@ -256,11 +256,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                 }
                 break;

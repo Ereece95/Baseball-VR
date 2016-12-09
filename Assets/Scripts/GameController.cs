@@ -71,9 +71,9 @@ public class GameController : MonoBehaviour
         audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
 
-        Strike = GameObject.Find("AudioStrike");
-        audioStrike = Strike.GetComponent<AudioSource>();
-        DontDestroyOnLoad(Strike);
+//JG: Null reference
+//        audioStrike = Strike.GetComponent<AudioSource>();
+//        DontDestroyOnLoad(Strike);
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -119,7 +119,8 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("MasterScene");
+                //JG: Loading this on top of the existing scene causes problems
+ //               SceneManager.LoadScene("MasterScene");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -162,8 +163,9 @@ public class GameController : MonoBehaviour
     {
         try
         {
-            startmenu.SetActive(false);
-            GameObject.Destroy(startmenu);
+            //startmenu.SetActive(false);
+            Debug.Log("EventStartButtonClicked");
+            GameObject.DestroyImmediate(startmenu);
             gcFSM.ChangeState(States.StartClick);
         }
         catch (Exception e)
@@ -177,6 +179,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
+        Debug.Log("EventExitButtonClicked");
         gcFSM.ChangeState(States.ExitGame);
     }
 
@@ -186,6 +189,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
+        Debug.Log("EventNextPitchButton");
         gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
     }
 
@@ -194,6 +198,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
+        Debug.Log("HandleThrowPitch");
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
 
@@ -211,12 +216,14 @@ public class GameController : MonoBehaviour
 
     private void EventBallHit()
     {
+        Debug.Log("EventBallHit");
         audioS.PlayOneShot(audioS.clip, 0.7F);
         gcFSM.ChangeState(States.BallHit);
     }
     private void EventBallNotHit()
     {
-        audioStrike.PlayOneShot(audioStrike.clip, 0.7F);
+        //        audioStrike.PlayOneShot(audioStrike.clip, 0.7F);
+        Debug.Log("EventBallNotHit");
         gcFSM.ChangeState(States.BallNotHit);
     }
     public States GetState()

@@ -27,6 +27,15 @@ public class Ball : MonoBehaviour
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
     /// </summary>
+    /// 
+    void OnEnable()
+    {
+        UIEvents.nextPitchClicked += rethrowpitch;
+    }
+    void OnDisable()
+    {
+        UIEvents.nextPitchClicked -= rethrowpitch;
+    }
 
     void Awake()
     {
@@ -72,14 +81,6 @@ public class Ball : MonoBehaviour
     float num24 = 0f;
     bool contin = false;
 
-    void OnEnable()
-    {
-        UIEvents.nextPitchClicked += rethrowpitch;
-    }
-    void OnDisable()
-    {
-        UIEvents.nextPitchClicked -= rethrowpitch;
-    }
     void Update()
     {
 

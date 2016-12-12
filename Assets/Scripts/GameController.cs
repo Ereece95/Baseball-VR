@@ -37,12 +37,7 @@ public class GameController : MonoBehaviour
 
     //Events we will listen for go in OnEnable()
 
-
-
     public static GameController gc = null; ///<Used for singleton design pattern
-
-
-
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
@@ -55,7 +50,6 @@ public class GameController : MonoBehaviour
     private AudioSource audioCheer;
     private Animation pitch;
     private GameObject Pitcher;
-
 
     /// <summary>
     /// Implement Singleton
@@ -83,8 +77,6 @@ public class GameController : MonoBehaviour
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-
-
     }
 
     /// <summary>
@@ -199,7 +191,6 @@ public class GameController : MonoBehaviour
         }
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
-
     }
 
     /// <summary>
@@ -216,6 +207,8 @@ public class GameController : MonoBehaviour
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
         audioCheer.PlayOneShot(audioCheer.clip, 0.7F);
+        gcFSM.ChangeState(States.BallHit);
+        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
     }
     private void EventBallNotHit()

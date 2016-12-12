@@ -111,7 +111,6 @@ public class Ball : MonoBehaviour
                 }
             }
 
-            //if (Input.GetMouseButtonDown(0) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             if (collideBat == true && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             {
                 int r = (Random.Range(600, 1800));
@@ -130,7 +129,7 @@ public class Ball : MonoBehaviour
                 RB.AddForce(transform.rotation * Vector3.forward * hitForce);
 
                 if (ballHit != null) ballHit();
-                collideBat = false;
+                collideBat = false;  //reset for next pitch
             }
 
             if (!hit)
@@ -146,6 +145,7 @@ public class Ball : MonoBehaviour
 
     }
     //Stop the ball from moving when it contacts the field
+    //Or initiates hit when ball contacts bat
     /// <summary>
     /// the ball stops when it hits the ground
     /// </summary>
@@ -158,7 +158,7 @@ public class Ball : MonoBehaviour
         }
         if (Col.gameObject.name == "baseball_bat_regular")
         {
-            collideBat = setTrue();
+            collideBat = true;
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -174,10 +174,6 @@ public class Ball : MonoBehaviour
         }
     }
 
-    bool setTrue()
-    {
-        return true;
-    }
     void shift()
     {
         int quadrent = (Random.Range(1, 10));

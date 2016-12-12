@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     public float speed;//, throws;
     bool hit;
     private Rigidbody RB;
-    public Transform[] path ;
+    public Transform[] path;
     int num;
     int Paths;
     public delegate void BallHit();
@@ -35,10 +35,9 @@ public class Ball : MonoBehaviour
         //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
-        //Paths = (Random.Range(0, 4));
-        Paths = 3;
+        Paths = (Random.Range(0, 5));
         
-        
+
     }
 
     // Use this for initialization
@@ -51,7 +50,7 @@ public class Ball : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
-        
+
         path = new Transform[num];
         for (int j = 0; j < num; j++)
         {
@@ -105,7 +104,7 @@ public class Ball : MonoBehaviour
 
             if (ball.transform.position.x == path[i].position.x)
             {
-                if (i != num -1)
+                if (i != num - 1)
                 {
                     i++;
                 }
@@ -142,8 +141,8 @@ public class Ball : MonoBehaviour
             }
 
         }
-        
-      
+
+
 
     }
     //Stop the ball from moving when it contacts the field
@@ -173,33 +172,31 @@ public class Ball : MonoBehaviour
     void shift()
     {
         int quadrent = (Random.Range(1, 10));
-       // quadrent = 5;
 
-
-        switch(quadrent)
+        switch (quadrent)
         {
             case 1:
                 for (int j = 0; j < num; j++)
                 {
-                    if(num == 2 || j == num-2)
+                    if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y+.2f , path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y + .2f, path[j].transform.position.z);
                     }
                     else
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
-                    
+
 
                 }
-               // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
+                // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
                 break;
             case 2:
                 for (int j = 0; j < num; j++)
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x , path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .2f, path[j].transform.position.z);
                     }
                     else
                     {
@@ -208,9 +205,9 @@ public class Ball : MonoBehaviour
 
 
                 }
-               // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
+                // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
                 break;
-                
+
             case 3:
 
                 for (int j = 0; j < num; j++)
@@ -224,22 +221,22 @@ public class Ball : MonoBehaviour
                         path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                 }
-                 break;
+                break;
             case 4:
                 for (int j = 0; j < num; j++)
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                 }
                 break;
             case 5:
-               
+
                 break;
             case 6:
                 for (int j = 0; j < num; j++)
@@ -259,11 +256,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y - .2f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                 }
                 break;
@@ -297,4 +294,4 @@ public class Ball : MonoBehaviour
         }
 
     }
-    }
+}

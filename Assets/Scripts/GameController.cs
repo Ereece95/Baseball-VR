@@ -50,6 +50,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioCheer;
     private Animation pitch;
     private GameObject Pitcher;
+    private GameObject startmenu;
+    private GameObject startmenubg;
 
     /// <summary>
     /// Implement Singleton
@@ -74,6 +76,9 @@ public class GameController : MonoBehaviour
         Cheer = GameObject.Find("AudioCheer");
         audioCheer = Cheer.GetComponent<AudioSource>();
         DontDestroyOnLoad(Cheer);
+
+        startmenu = GameObject.Find("StartMenu");
+        startmenubg = GameObject.Find("SF Scene Elements");
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -117,7 +122,6 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("MasterScene");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -158,6 +162,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventStartButtonClicked()
     {
+        DestroyImmediate(startmenubg);
+        DestroyImmediate(startmenu);
         gcFSM.ChangeState(States.StartClick);
     }
 

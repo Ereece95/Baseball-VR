@@ -312,13 +312,14 @@ public class Ball : MonoBehaviour
     }
     void rethrowpitch()
     {
-         x = 0;
-         trail.Clear();
-         RB.useGravity = false; //resets the ball physics for next pitch
-         RB.velocity = Vector3.zero;
-         trail.enabled = false;
-         hit = false;
-         i = 0;
+        ball.transform.position = hand.transform.position;
+        x = 0;
+        trail.Clear();
+        RB.useGravity = false; //resets the ball physics for next pitch
+        RB.velocity = Vector3.zero;
+        trail.enabled = false;
+        hit = false;
+        i = 0;
     }
    
 }

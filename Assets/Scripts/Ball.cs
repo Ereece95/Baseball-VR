@@ -36,7 +36,8 @@ public class Ball : MonoBehaviour
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         //Paths = (Random.Range(0, 4));
-        Paths = 4;
+        Paths = 3;
+        
         
     }
 
@@ -171,7 +172,9 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent =7;
+        int quadrent = (Random.Range(1, 10));
+       // quadrent = 5;
+
 
         switch(quadrent)
         {
@@ -180,11 +183,11 @@ public class Ball : MonoBehaviour
                 {
                     if(num == 2 || j == num-2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y+.2f , path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y+.2f , path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
                     
 

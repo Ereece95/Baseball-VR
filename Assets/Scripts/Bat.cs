@@ -10,8 +10,8 @@ public class Bat : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        bat.GetComponent<Renderer>().enabled = true;
-        Cursor.visible = false;
+        bat.GetComponent<Renderer>().enabled = false;
+        Cursor.visible = true;
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 	

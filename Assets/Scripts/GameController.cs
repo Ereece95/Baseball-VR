@@ -208,8 +208,6 @@ public class GameController : MonoBehaviour
         audioS.PlayOneShot(audioS.clip, 0.7F);
         audioCheer.PlayOneShot(audioCheer.clip, 0.7F);
         gcFSM.ChangeState(States.BallHit);
-        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
-        gcFSM.ChangeState(States.BallHit);
     }
     private void EventBallNotHit()
     {

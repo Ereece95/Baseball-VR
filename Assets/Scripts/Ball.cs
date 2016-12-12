@@ -71,6 +71,7 @@ public class Ball : MonoBehaviour
 
     }
     int i = 0;
+    bool collideBat = false;
     // Update is called once per frame
     /// <summary>
     /// The ball follows the hand position until the animation is done
@@ -120,7 +121,7 @@ public class Ball : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonDown(0) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
+            if (collideBat == true && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
             {
                 int r = (Random.Range(600, 1800));
                 float hitForce = (1 * r);
@@ -138,16 +139,14 @@ public class Ball : MonoBehaviour
                 RB.AddForce(transform.rotation * Vector3.forward * hitForce);
 
                 if (ballHit != null) ballHit();
+                collideBat = false;  //reset for next pitch
             }
 
             if (!hit)
             {
 
                 ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
-
-
-                //need if statement know when ball hits catcher and then call ballNotHit()
-
+                
             }
 
         }
@@ -156,6 +155,7 @@ public class Ball : MonoBehaviour
 
     }
     //Stop the ball from moving when it contacts the field
+    //Or initiates hit when ball contacts bat
     /// <summary>
     /// the ball stops when it hits the ground
     /// </summary>
@@ -165,6 +165,10 @@ public class Ball : MonoBehaviour
         if (Col.gameObject.name == "Field")
         {
             RB.velocity = Vector3.zero;
+        }
+        if (Col.gameObject.name == "baseball_bat_regular")
+        {
+            collideBat = true;
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -179,6 +183,7 @@ public class Ball : MonoBehaviour
             if (ballNotHit != null) ballNotHit();
         }
     }
+
     void shift()
     {
         int quadrent = (Random.Range(1, 10));

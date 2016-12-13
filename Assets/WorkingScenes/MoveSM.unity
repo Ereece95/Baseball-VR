@@ -2126,6 +2126,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Throw: {fileID: 541731086}
+  plate: {fileID: 0}
 --- !u!135 &354803353
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2635,6 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168f32ba9b2173544b4ef3e4a7fd7273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endStats: {fileID: 0}
 --- !u!4 &508056981
 Transform:
   m_ObjectHideFlags: 0
@@ -2930,6 +2932,7 @@ MonoBehaviour:
   speed: 0
   path: []
   Throw: {fileID: 0}
+  plate: {fileID: 0}
 --- !u!1 &564458086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8879,7 +8882,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Farthest Hit: '
+  m_Text: 
 --- !u!222 &1789864236
 CanvasRenderer:
   m_ObjectHideFlags: 0

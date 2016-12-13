@@ -127,6 +127,11 @@ public class UpdateStats : MonoBehaviour {
             strikesText.color = Color.red;
         }
     }
+    public int GetNumPitches()
+    {
+        int numPitches = strikes + hits;
+        return numPitches;
+    }
 }
   
 

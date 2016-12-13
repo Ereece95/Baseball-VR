@@ -85,6 +85,8 @@ public class Ball : MonoBehaviour
             }
         else
         {
+            
+
             float step = speed * Time.deltaTime;
             trail.enabled = true;
             //when x reaches a spesific value it enables the trail and moves the ball
@@ -124,8 +126,13 @@ public class Ball : MonoBehaviour
             }
             if (hit)
             {
+                float dist = Vector3.Distance(start.position, ball.transform.position);
 
-               
+
+                double dist2 = System.Convert.ToDouble(dist);
+                dist2 = System.Math.Round(dist2, 2);
+                DistDisplay.text = "Distance: " + (dist2.ToString()) + " m";
+
                 if (ball.transform.position.y <= 0.25&&flagVis)
                 {
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -134,12 +141,7 @@ public class Ball : MonoBehaviour
                     cube.transform.position = ball.transform.position;
 
 
-                    float dist = Vector3.Distance(start.position, ball.transform.position);
-                    
-                   
-                    double dist2 = System.Convert.ToDouble(dist);
-                    dist2 = System.Math.Round(dist2,2);
-                    DistDisplay.text= "Distance: "+(dist2.ToString())+" m";
+                  
                     
                     
                 }

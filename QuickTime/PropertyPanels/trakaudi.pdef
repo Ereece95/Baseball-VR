@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Annotations"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   style="background-color: white;">
+
+ <hbox pack="center" style="margin:20px">
+
+	<vbox align="end" style="margin:4px">
+
+		<hbox align="start" pack="end" style="height:32px;">
+			<label id="lvol" value="#401" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+
+		<hbox align="start" style="height:32px;">
+			<label id="lbal" align="right" value="#402" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+
+		<hbox align="start" style="height:32px;">
+			<label id="lbas" align="right" value="#403" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+
+		<hbox align="start" style="height:32px;">
+			<label id="ltre" align="right" value="#404" style="text-align: right;" />
+		</hbox>
+		
+	</vbox>
+	
+	<vbox>
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="volm" label="Volume Slider" style="width: 200px;" flex="1"/>
+		</hbox>
+				
+		<hbox align="start" pack="left">
+   			<label id="l001" value="-∞ db" style="text-align: left"/>
+   			<label id="l002" value="+0 db" style="text-align: center;" flex="1"/>
+   			<label id="l003" value="+6 db" style="text-align: right"/>
+		</hbox>
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="baln" label="Balance Slider" style="width: 200px;"/>
+		</hbox>
+
+		<hbox align="start" pack="left">
+   			<label id="l004" value="#405" style="text-align: left"/>
+   			<label id="l005" value="#406" style="text-align: center;" flex="1"/>
+   			<label id="l006" value="#407" style="text-align: right"/>
+		</hbox>
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="bass" label="Bass Slider"  style="width: 200px;" flex="1"/>
+		</hbox>
+		
+		<hbox align="start" pack="left">
+   			<label id="l007" value="#408" style="text-align: left"/>
+   			<label id="l008" value="" style="text-align: center;" flex="1"/>
+   			<label id="l009" value="#409" style="text-align: right"/>
+		</hbox>
+
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="trbl" label="Treble Slider" style="width: 200px;" flex="1"/>
+		</hbox>
+		
+		<hbox align="start" pack="left">
+   			<label id="l010" value="#408" style="text-align: left"/>
+   			<label id="l011" value="" style="text-align: center;" flex="1"/>
+   			<label id="l012" value="#409" style="text-align: right"/>
+		</hbox>
+
+
+	</vbox>
+	 
+	<vbox/>
+	<vbox style="min-width:80">
+		<checkbox id="mute" label="Mute" style="width: 50px;" />
+		<checkbox id="solo" label="Solo" style="width: 50px;" />
+	</vbox>
+
+	<hbox style="min-height: 150px; max-height: 150px">
+	<vbox  style="min-height: 150px; max-height: 150px" flex="1">
+		<listbox id="lvss" style="min-width: 170px" flex="1">
+		<listhead>
+			<listheader label="Channel"/>
+			<listheader label="Field"/>
+		</listhead>
+
+		<listcols>
+			<listcol flex="1"/>
+			<listcol flex="2"/>
+		</listcols>
+		<listitem>
+			<listcell label="1"/>
+			<listcell label="Discrete-1"/>
+		</listitem>
+		</listbox>
+	</vbox>
+	</hbox>
+
+ </hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="taud:appl" clsid="29866AED-1E14-417D-BA0F1A2BE6F5A19E">
+    <pps:controls>
+
+
+	<pps:control id="mute" type="ckbx" property="audi:mute" notification="audi:mute"
+		label="#410"
+		tooltip="#412"
+	/>
+
+	<pps:control id="solo" type="ckbx" property="cust:solo"
+		label="#411"
+		tooltip="#413"
+	/>
+
+	<pps:control id="volm" type="sldH" property="soun:svol" notification="audi:cvol"
+		min="0" 
+		max="512"
+		tickFrequency="256"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#414"
+	/>
+
+	<pps:control id="baln" type="sldH" property="audi:bala" 
+		min="-1.0" 
+		max="1.0" 
+		tickFrequency="1.0"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#415"
+	/>
+
+	<pps:control id="bass" type="sldH" property="audi:bass" 
+		min="-256" 
+		max="256" 
+		tickFrequency="256"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#416"
+	/>
+
+	<pps:control id="trbl" type="sldH" property="audi:trbl" 
+		min="-256" 
+		max="256" 
+		tickFrequency="256"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#417"
+	/>
+
+	<pps:control id="lvss" type="lvue" property="cust:chnl"
+		onchange="ApplyChange"
+	>
+		<columns>
+			<column id="chnl" type="labl" align="0"
+				header="#418"
+			/>
+			<column id="asgn" type="lkup" align="0" valuedatatype="long"
+				header="#419"
+				optionsproperty="cust:chas"
+			/>
+		</columns>
+		
+	</pps:control>
+
+    </pps:controls>
+    
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>xx</key>
+		<dict>
+		</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

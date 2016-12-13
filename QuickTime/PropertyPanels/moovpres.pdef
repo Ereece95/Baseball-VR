@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Movie Test"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:pps="http://www.apple.com/quicktime/pps"
+   style="background-color: white;">
+
+ <hbox pack="center" style="margin:20px">
+
+	<vbox>
+		<hbox>
+			<vbox>
+				<label id="l001" value="#207" style="text-align: right; margin:5px; width: 120px;" />
+			</vbox>
+			<vbox>
+				<checkbox id="play" label="Auto play..." style="margin:5px" />
+				<checkbox id="full" label="Enter fullscreen..." style="margin:5px" />
+				<checkbox id="clos" label="Auto close..." style="margin:5px" />
+				<checkbox id="quit" label="Auto quit..." style="margin:5px" />
+        <hbox>
+          <checkbox id="conf" label="Conform Aperture to:" style="margin:5px" />
+            <menulist id="apmd" style="width:200px; margin:2px" />
+        </hbox>
+			</vbox>
+		</hbox>
+    
+		<spacer />
+	
+		<hbox align="center">
+			<label id="l012" value="#208" style="text-align:right; margin:5px; width:160px;" />
+			<menulist id="ctrl" style="width:200px; margin:2px;" />
+		</hbox>
+	</vbox>
+
+ </hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="misc:appl" clsid="29866AED-1E14-417D-BA0F1A2BE6F5A19E">
+
+	<!-- Control definitions -->
+    <pps:controls>
+
+		<pps:control id="play" type="ckbx" property="nrml:play"
+			label="#201"
+		/>
+		<pps:control id="full" type="ckbx" property="cust:fopn"
+			label="#202"
+		/>
+		<pps:control id="clos" type="ckbx" property="nrml:aclo"
+			label="#203"
+		/>
+		<pps:control id="quit" type="ckbx" property="nrml:aqui"
+			label="#204"
+		/>
+    <pps:control id="conf" type="ckbx" property="cust:conf"
+      label="#210"
+    />
+
+    <pps:control id="apmd" type="cmbl" property="cust:apmd"
+      tooltip="#212"
+      valuedatatype="code"
+      optionsproperty="cust:apms"
+    />
+		
+		<pps:control id="ctrl" type="cmbl" property="meta:ctyp"
+			tooltip="#205"
+			options="#206"
+			valuedatatype="code"
+			values=" std,STpn,none,qtvr,stna"
+			value=" std"
+		/>
+
+
+    </pps:controls>
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+	<!-- English -->
+	<key>en</key>
+	<dict>
+	</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

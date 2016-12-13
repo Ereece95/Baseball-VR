@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Resources"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:pps="http://www.apple.com/quicktime/pps"
+   style="background-color: white;">
+
+<hbox pack="left" style="margin:20px">
+
+	<groupbox style="min-width:150px; max-width:150px; padding:10px; margin:5px" flex="1">
+		<caption id="gbx1" label="#601" style="color:blue"/>
+		<vbox align="center">
+			<hbox align="center" style="margin:2px">
+				<label id="dr01" value="#602" style="text-align: right; width: 70px; margin:2px" />
+				<label id="drct" 
+					style="text-align: right; min-width: 48px; max-width: 48px; margin:2px" 
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:drct"
+				/>
+			</hbox>
+			<hbox align="center" style="margin:2px">
+				<label id="dr02" value="#603" style="text-align: right; width: 70px; margin:2px" />
+				<label id="drav" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px" 
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:drav"
+				/>
+			</hbox>
+			<hbox align="center" style="margin:2px">
+				<label id="dr03" value="#604" style="text-align: right; width: 70px; margin:2px" />
+				<label id="drmx" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px" 
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:drmx"
+				/>
+			</hbox>
+			<vbox id="drgf" style="min-width: 130px; max-width: 130px; min-height: 65px; max-height: 65px"/>
+		</vbox>
+	</groupbox>
+
+	<groupbox style="min-width:150px; max-width:150px; padding:10px; margin:5px" flex="1">
+		<caption id="gbx2" label="#605" style="color:blue"/>
+		<vbox align="center">
+			<hbox align="center" style="margin:2px">
+				<label id="pl01" value="#602" style="text-align: right; width: 70px; margin:2px" />
+				<label id="plct" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px" 
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:plct"
+				/>
+			</hbox>
+			<hbox align="center" style="margin:2px">
+				<label id="pl02" value="#603" style="text-align: right; width: 70px; margin:2px" />
+				<label id="plav" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px"
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:plav"
+				/>
+			</hbox>
+			<hbox align="center" style="margin:2px">
+				<label id="pl03" value="#604" style="text-align: right; width: 70px; margin:2px" />
+				<label id="plmx" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px"
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:plmx"
+				/>
+			</hbox>
+			<vbox id="plgf" style="min-width: 130px; max-width: 130px; min-height: 65px; max-height: 65px"/>
+		</vbox>
+	</groupbox>
+
+	<groupbox style="min-width:150px; max-width:150px; padding:10px; margin:5px" flex="1">
+		<caption id="gbx3" label="#606" style="color:blue"/>
+		<vbox align="center">
+			<hbox align="center" style="margin:2px">
+				<label id="bs01" value="#602" style="text-align: right; width: 70px; margin:2px" />
+				<label id="bsct" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px"
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:bsct"
+				/>
+			</hbox>
+			<hbox align="center" style="margin:2px">
+				<label id="bs02" value="#603" style="text-align: right; width: 70px; margin:2px" />
+				<label id="bsav" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px"
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:bsav"
+				/>
+			</hbox>
+			<hbox align="center" style="margin:2px">
+				<label id="bs03" value="#604" style="text-align: right; width: 70px; margin:2px" />
+				<label id="bsmx" style="text-align: right; min-width: 48px; max-width: 48px; margin:2px"
+					valuedatatype="sing" valueformat="%.2f"
+					property="cust:bsmx"
+				/>
+			</hbox>
+			<vbox id="bsgf" style="min-width: 130px; max-width: 130px; min-height: 65px; max-height: 65px"/>
+		</vbox>
+	</groupbox>
+
+</hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="strm:appl">
+    <pps:controls>
+        
+		<pps:control id="drgf" type="pict" property="cust:drgf"/>
+		
+		<pps:control id="plgf" type="pict" property="cust:plgf"/>
+		
+		<pps:control id="bsgf" type="pict" property="cust:bsgf"/>
+		
+    </pps:controls>
+    
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>en</key>
+		<dict>
+		</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

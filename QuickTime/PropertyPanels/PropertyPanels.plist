@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- General Property Panel Settings -->
+	<key>Settings</key>
+	<dict>
+		<key>ResourceBaseID</key>
+		<integer>20000</integer>
+		<key>ShowDebugToolTips</key>
+		<false/>
+		<key>LayoutOutlinesVisible</key>
+		<false/>
+	</dict>
+
+	<!-- QuickTime Objects for inspection and associated lists of Property Panels -->
+    <key>QTObjects</key>
+	<dict>
+		
+		<key>moov:****</key>
+		<dict>
+			<key>Name</key>
+			<string>Movie Base</string>
+			<key>PropertyPanels</key>
+			<array>
+				<string>anno:anno</string>
+				<string>rsrc:rsrc</string>
+				<string>moov:audi:ears:chst</string>
+				<string>moov:pres</string>
+			</array>
+		</dict>		
+		
+		<key>trak:****</key>
+		<dict>
+			<key>Name</key>
+			<string>Track Base</string>
+			<key>PropertyPanels</key>
+			<array>
+				<string>anno:anno</string>
+				<string>rsrc:rsrc</string>
+				<string>trak:visl:eyes:chst</string>
+				<string>trak:audi:ears:chst</string>
+				<string>trak:strm:str?:chst</string>
+				<string>trak:othr</string>
+				<string>trak:hint:hint:type</string>
+			</array>
+		</dict>	
+			
+	</dict>
+
+	<!-- Property Panels -->
+    <key>PropertyPanels</key>
+	<dict>
+		<key>anno:anno</key>
+		<dict>
+			<key>Name</key>
+			<string>Annotations</string>
+			<key>NameResourceID</key>
+			<string>#1000</string>
+			<key>ResourceID</key>
+			<integer>1</integer>
+		</dict>
+		<key>rsrc:rsrc</key>
+		<dict>
+			<key>Name</key>
+			<string>Resources</string>
+			<key>NameResourceID</key>
+			<string>#1001</string>
+			<key>ResourceID</key>
+			<integer>2</integer>
+		</dict>				
+		<key>moov:audi</key>
+		<dict>
+			<key>Name</key>
+			<string>Audio Settings</string>
+			<key>NameResourceID</key>
+			<string>#1002</string>
+			<key>ResourceID</key>
+			<integer>3</integer>
+		</dict>				
+		<key>moov:pres</key>
+		<dict>
+			<key>Name</key>
+			<string>Presentation</string>
+			<key>NameResourceID</key>
+			<string>#1003</string>
+			<key>ResourceID</key>
+			<integer>4</integer>
+		</dict>				
+		<key>trak:visl</key>
+		<dict>
+			<key>Name</key>
+			<string>Visual Settings</string>
+			<key>NameResourceID</key>
+			<string>#1004</string>
+			<key>ResourceID</key>
+			<integer>5</integer>
+		</dict>				
+		<key>trak:othr</key>
+		<dict>
+			<key>Name</key>
+			<string>Other Settings</string>
+			<key>NameResourceID</key>
+			<string>#1005</string>
+			<key>ResourceID</key>
+			<integer>6</integer>
+		</dict>				
+		<key>trak:audi</key>
+		<dict>
+			<key>Name</key>
+			<string>Audio Settings</string>
+			<key>NameResourceID</key>
+			<string>#1006</string>
+			<key>ResourceID</key>
+			<integer>7</integer>
+		</dict>
+		<key>moov:test</key>
+		<dict>
+			<key>Name</key>
+			<string>Test Property Panel</string>
+			<key>NameResourceID</key>
+			<string>#1007</string>
+			<key>ResourceID</key>
+			<integer>8</integer>
+		</dict>	
+		<key>trak:strm</key>
+		<dict>
+			<key>Name</key>
+			<string>Statistics</string>
+			<key>NameResourceID</key>
+			<string>#1008</string>
+			<key>ResourceID</key>
+			<integer>9</integer>
+		</dict>	
+		<key>trak:hint</key>
+		<dict>
+			<key>Name</key>
+			<string>Streaming Hints</string>
+			<key>NameResourceID</key>
+			<string>#1009</string>
+			<key>ResourceID</key>
+			<integer>10</integer>
+		</dict>		
+	</dict>
+	
+	<!-- Localized strings -->
+	<key>StringTable</key>
+	<dict>
+	
+		<!-- English XX -->
+		<key>xx</key>
+		<dict>
+			<key>1000</key><string>Annotations **</string>		
+			<key>1001</key><string>Resources **</string>
+			<key>1002</key><string>Audio Settings **</string>
+			<key>1003</key><string>Presentation **</string>
+			<key>1004</key><string>Visual Settings **</string>
+			<key>1005</key><string>Other Settings **</string>
+			<key>1006</key><string>Audio Settings **</string>
+			<key>1007</key><string>Test Property Panel **</string>
+			<key>1008</key><string>Statistics **</string>
+			<key>1009</key><string>Streaming Hints **</string>
+		</dict>	
+							
+	</dict>
+</dict>
+</plist>
+ 

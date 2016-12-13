@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Resources"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:pps="http://www.apple.com/quicktime/pps"
+   style="background-color: white;">
+
+<hbox pack="left" style="margin:20px">
+
+	<vbox flex="1">
+		
+		<hbox style="min-width:300" flex="1">
+			<listbox id="lrsr" style="" flex="1">
+				<listhead>
+					<listheader label="Name"/>
+					<listheader label="Source"/>
+				</listhead>
+
+				<listcols>
+					<listcol flex="1"/>
+					<listcol flex="5"/>
+				</listcols>
+				<listitem>
+					<listcell label="1"/>
+					<listcell label="Discrete-1"/>
+				</listitem>
+			</listbox>
+		</hbox>
+	
+	</vbox>
+
+
+</hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="rsrc:appl">
+    <pps:controls>
+    
+	<pps:control id="lrsr" type="lvue" property="cust:rsrc">
+		
+		<columns>
+			<column id="name" type="labl" align="0"
+				header="#301"
+			/>
+			<column id="srce" type="labl" align="0"
+				header="#302"
+			/>
+		</columns>
+		
+	</pps:control>
+	
+    </pps:controls>
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>en</key>
+		<dict>
+		</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

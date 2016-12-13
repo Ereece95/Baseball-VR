@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Annotations"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:pps="http://www.apple.com/quicktime/pps"
+   style="background-color: white;">
+
+<hbox pack="left" style="margin:20px">
+
+	<vbox flex="1">
+		
+		<hbox style="min-width:300" flex="1">
+			<listbox id="lann" style="" flex="1">
+				<listhead>
+					<listheader label="Annotation..."/>
+					<listheader label="Value..."/>
+				</listhead>
+
+				<listcols>
+					<listcol flex="1"/>
+					<listcol flex="5"/>
+				</listcols>
+				<listitem>
+					<listcell label="1"/>
+					<listcell label="Discrete-1"/>
+				</listitem>
+			</listbox>
+		</hbox>
+		
+		<spacer style="height:5"/>
+		
+		<hbox style="min-width:300">
+			<button id="adda" label="Add Annotation..." style="min-width:60; margin:2px;" />
+			<label flex="1"/>
+			<button id="brmv" label="Remove Selected Annotations..." style="padding:2px;" />
+		</hbox>
+	
+	</vbox>
+
+
+</hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="anno:appl">
+    <pps:controls>
+    
+	<pps:control id="lann" type="lvue" property="cust:anno">
+		
+		<columns>
+			<column id="anno" type="lkup" align="0" valuedatatype="code"
+				header="#101"
+				options="#102"
+				values="albm,arts,auth,cmmt,cprt,cdat,desc,dtor,keyw,name,prod,soft,year"
+				uniquevalues="true"
+			/>
+			<column id="valu" type="edit" align="0"
+				header="#103"
+			/>	
+		</columns>
+		
+	</pps:control>
+	
+	<pps:control id="adda" type="cmbl"
+		tooltip="#104"
+		options="#105"
+		valuedatatype="code"
+		values="null,albm,arts,auth,cmmt,cprt,cdat,desc,dtor,keyw,name,prod,soft,year"
+		value="null"
+		ondropdown="UpdateListState[lann]"
+		oncloseup="ListViewAppendRow[lann]"
+	/>
+	
+	<pps:control id="brmv" type="butn" source="cust:remv" 
+		label="#106"
+		onclick="ListViewRemoveSelectedRows[lann]"
+	/>
+
+    </pps:controls>
+    
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>xx</key>
+		<dict>
+		</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

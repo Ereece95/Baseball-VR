@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Track Other"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   style="background-color: white;">
+
+ <hbox pack="center" style="margin:20px">
+
+			<vbox>
+				<hbox pack="end" align="center" style="height:30px">
+					<label id="l001" value="#501" style="text-align: right" />
+				</hbox>
+				<hbox pack="end" align="center" style="height:30px">
+					<label id="l002" value="#502" style="text-align: right" />
+				</hbox>
+				<hbox pack="end" align="center" style="height:20px">
+					<label id="l003" value="" style="text-align: right" />
+				</hbox>
+				<hbox pack="end" align="center" style="height:30px">
+					<label id="l004" value="#503" style="text-align: right" />
+				</hbox>
+			</vbox>
+			<vbox style="max-width:4px"/>
+			<vbox>
+				<hbox align="center" style="height:30px">
+					<menulist id="lang" style="width:200"></menulist>
+				</hbox>
+				<hbox align="center" style="height:30px">
+					<menulist id="alt " style="width:200"></menulist>
+				</hbox>
+				<hbox align="center" style="height:20px">
+					<label id="l005" value="" style="text-align: right" />
+				</hbox>
+				<hbox align="center" style="height:30px">
+					<menulist id="chap" style="width:200"></menulist>
+				</hbox>
+				<spacer style="height:20px"/>
+				<checkbox id="chnt" label="Cache..." style="margin:5px" />
+				<hbox align="start">
+					<spacer style="width:20px"/>
+					<vbox>
+						<label id="l008" style="max-width:240px; min-height: 45px; word-wrap:break-word" value="#506" />
+					</vbox>
+				</hbox>
+
+
+			</vbox>
+
+ </hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="misc:appl" clsid="29866AED-1E14-417D-BA0F1A2BE6F5A19E">
+    <pps:controls>
+
+	
+	<pps:control id="lang" type="cmbl" property="nrml:lang"
+		tooltip="#508"
+		options="#509"
+		valuedatatype="long"
+		values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35"
+		value="enen"
+	/>
+	
+	<pps:control id="alt " type="cmbl" property="cust:altt"
+		tooltip="#510"
+		valuedatatype="code"
+		optionsproperty="cust:alts"
+	/>
+	
+	<pps:control id="chap" type="cmbl" property="cust:chpt"
+		tooltip="#511"
+		valuedatatype="code"
+		optionsproperty="cust:chps"
+	/>
+	
+	<pps:control id="chnt" type="ckbx" property="trak:chnt"
+		label="#513"
+	/>
+	
+    </pps:controls>
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>xx</key>
+		<dict>
+		</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

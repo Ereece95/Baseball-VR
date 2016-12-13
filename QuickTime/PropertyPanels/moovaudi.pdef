@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Annotations"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   style="background-color: white;">
+
+ <hbox pack="center" style="margin:20px">
+
+	<vbox align="end" style="margin:4px">
+
+		<hbox align="start" style="height:32px;">
+			<label id="lvol" value="#701" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+
+		<hbox align="start" style="height:32px;">
+			<label id="lbal" align="right" value="#702" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+
+		<hbox align="start" style="height:32px;">
+			<label id="lbas" align="right" value="#703" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+
+		<hbox align="start" style="height:32px;">
+			<label id="ltre" align="right" value="#704" style="text-align: right;" />
+		</hbox>
+		
+		<hbox>
+			<label id="blnk" value=""/>
+		</hbox>
+	</vbox>
+	
+	<vbox>
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="volm" label="Volume Slider" style="width: 200px;" flex="1"/>
+		</hbox>
+		
+		<hbox align="start" pack="left">
+   			<label id="l001" value="-∞ db" style="text-align: left"/>
+   			<label id="l002" value="+0 db" style="text-align: center;" flex="1"/>
+   			<label id="l003" value="+6 db" style="text-align: right"/>
+		</hbox>
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="baln" label="Balance Slider" style="width: 200px;"/>
+		</hbox>
+
+		<hbox align="start" pack="left">
+   			<label id="l004" value="#705" style="text-align: left"/>
+   			<label id="l005" value="#706" style="text-align: center;" flex="1"/>
+   			<label id="l006" value="#707" style="text-align: right"/>
+		</hbox>
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="bass" label="Bass Slider"  style="width: 200px;" flex="1"/>
+		</hbox>
+		
+		<hbox align="start" pack="left">
+   			<label id="l007" value="#708" style="text-align: left"/>
+   			<label id="l008" value="" style="text-align: center;" flex="1"/>
+   			<label id="l009" value="#709" style="text-align: right"/>
+		</hbox>
+
+
+		<hbox pack="start" style="height:32px;">
+   			<button id="trbl" label="Treble Slider" style="width: 200px;" flex="1"/>
+		</hbox>
+		
+		<hbox align="start" pack="left">
+   			<label id="l010" value="#708" style="text-align: left"/>
+   			<label id="l011" value="" style="text-align: center;" flex="1"/>
+   			<label id="l012" value="#709" style="text-align: right"/>
+		</hbox>
+
+	</vbox>
+
+	<vbox style="width:20px;" />
+
+	<vbox style="margin:4px">
+		<checkbox id="mute" label="Mute"/>
+	</vbox>
+
+ </hbox>
+
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="base:appl" clsid="29866AED-1E14-417D-BA0F1A2BE6F5A19E">
+    <pps:controls>
+	
+	<pps:control id="mute" type="ckbx" property="audi:mute" notification="audi:mute"
+		label="#710"
+		tooltip="#711"
+	/>
+
+
+	<pps:control id="volm" type="sldH" property="audi:svol" notification="audi:cvol"
+		min="0" 
+		max="512"
+		tickFrequency="256"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#712"
+	/>
+
+	<pps:control id="baln" type="sldH" property="audi:bala" 
+		min="-1.0" 
+		max="1.0" 
+		tickFrequency="1.0"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#713"
+	/>
+
+	<pps:control id="bass" type="sldH" property="audi:bass" 
+		min="-8.0" 
+		max="8.0" 
+		tickFrequency="8.0"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#714"
+	/>
+
+	<pps:control id="trbl" type="sldH" property="audi:trbl"
+		min="-8.0" 
+		max="8.0" 
+		tickFrequency="8.0"
+		lineSize="8"
+		pageSize="32"
+		tooltip="#715"
+	/>
+
+
+    </pps:controls>
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>xx</key>
+		<dict>
+		</dict>	
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+ </window>

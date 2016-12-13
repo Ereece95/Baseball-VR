@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+ <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+ <!DOCTYPE window>
+ <window title="Visual Settings"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   xmlns:pps="http://www.apple.com/quicktime/pps"
+   style="background-color: white;">
+
+<hbox pack="center" style="margin:20px">
+	<vbox>
+		<hbox>
+		
+			<groupbox style="min-width:220px; max-width:220px; padding:10px; margin:5px" flex="1">
+				<caption id="gbx1" label="#801" style="color:blue"/>
+				<groupbox style="margin:2px; padding:2px" flex="1">
+					<vbox id="mask" style="margin:2px; background-color:white" flex="1"/>
+				</groupbox>
+				<hbox align="end" style="margin:2px">
+					<button id="bchs" label="Choose..." style="height: 20px; min-width: 50px"/>
+					<spacer flex="1"/>
+					<button id="bclr" label="Clear" style="height: 20px; min-width: 50px"/>
+					<button id="binv" label="Invert" style="height: 20px; min-width: 50px"/>
+				</hbox>
+			</groupbox>
+	
+			<groupbox style="min-width:320px; max-width:320px; padding:10px; margin:5px">
+				<caption id="gbx2" label="#802" style="color:blue"/>
+
+				<hbox align="center" style="margin:2px">
+					<label id="l001" value="#803" style="text-align: right; width: 90px; margin:2px" />
+					<label id="aszw" value="320" style="text-align: center; min-width: 40px; max-width: 40px; margin:2px" property="cust:aszw"/>
+					<label id="l005" value="x" style="text-align: center; min-width: 16px; max-width: 16px; margin:2px" />
+					<label id="aszh" value="240" style="text-align: center; min-width: 40px; max-width: 40px; margin:2px" property="cust:aszh"/>
+					<label id="l008" value="#804" style="text-align: left; margin:4px"/>
+				</hbox>
+
+				<hbox align="center" style="margin:2px">
+					<label id="l017" value="#840" style="text-align: right; width: 90px; margin:2px" />
+					<label id="widt" value="320" style="text-align: center; min-width: 40px; max-width: 40px; margin:2px" property="area:widt"/>
+					<label id="l018" value="x" style="text-align: center; min-width: 16px; max-width: 16px; margin:2px" />
+					<label id="hght" value="240" style="text-align: center; min-width: 40px; max-width: 40px; margin:2px" property="area:hght"/>
+					<label id="l019" value="#841" style="text-align: left; margin:4px"/>
+				</hbox>
+
+				<hbox align="center" pack="start" style="margin:2px">
+					<label id="l002" value="#805" style="text-align: right; width: 90px; margin:2px"/>
+					<textbox id="sizw" style="min-width: 40px; max-width: 40px; margin:2px" />
+					<label id="l006" value="x" style="text-align: center; min-width: 16px; max-width: 16px; margin:2px" />
+					<textbox id="sizh" style="min-width: 40px; max-width: 40px; margin:2px"/>
+					<menulist id="unit" style="min-width: 60px; margin:2px">
+					<menupopup>
+						<menuitem label="pixels" selected="true"/>
+						<menuitem label="percent"/>
+					</menupopup>
+					</menulist>
+				</hbox>
+
+				<hbox align="left" style="margin:2px">
+					<label value="" style="text-align: right; width: 90px; margin:2px" />
+					<checkbox id="cbpa" label="Preserve Aspect Ratio" style="min-width: 140px; margin:2px"/>
+				</hbox>
+
+				<hbox align="center" style="margin:2px">
+					<label id="l003" value="#806" style="text-align: right; width: 90px; margin:2px" />
+					<textbox id="offh" style="width: 40px; margin:2px"/>
+					<label id="l007" value="x" style="text-align: center; width: 16px; margin:2px" />
+					<textbox id="offv" style="width: 40px; margin:2px"/>
+					<label id="l009" value="#804" style="margin:2px"/>
+				</hbox>
+
+				<hbox align="center" style="margin:2px">
+					<label id="l004" value="#807" style="text-align: right; width: 90px; margin:2px" />
+					<button id="flpH" style="min-width: 30px; max-width: 30px; min-height: 30px; max-height: 30px; margin:2px" />
+					<button id="flpV" style="min-width: 30px; max-width: 30px; min-height: 30px; max-height: 30px; margin:2px" />
+					<button id="roCW" style="min-width: 30px; max-width: 30px; min-height: 30px; max-height: 30px; margin:2px" />
+					<button id="roCC" style="min-width: 30px; max-width: 30px; min-height: 30px; max-height: 30px; margin:2px" />
+				</hbox>
+
+				<hbox align="center" style="margin:2px">
+					<label value="" style="text-align: right; width: 90px; margin:2px" />
+					<button id="btnr" label="Reset" style="height: 20px; min-width: 50px" />
+				</hbox>
+				
+			</groupbox>
+
+		</hbox> 
+
+		<hbox>
+			<vbox style="margin:5px; min-width:230px; max-width:230px" align="center">
+				<hbox style="min-width:220px; max-width:220px;" align="center" pack="center">
+					<label id="l012" value="#808" style="min-width:20px;"/>
+					<spacer flex="1" style="min-width:2px; max-width:2px;"/>
+					<menulist id="trns" style="min-width: 60px; margin:2px" />
+				</hbox>
+				<hbox style="min-width:220px; max-width:220px;" align="start" pack="end">
+					<label id="l013" value="#809" style="visibility:hidden"/>
+					<spacer flex="1"/>
+					<vbox>
+						<button id="trnl" style="min-width:80px; visibility:hidden" label="Transparency Level" flex="1"/>
+						<hbox align="start" pack="start">
+   							<label id="l014" value="0%" style="text-align: left; width:50px; visibility:hidden"/>
+   							<label id="l015" value="" style="text-align: center; visibility:hidden" flex="1"/>
+   							<label id="l016" value="100%" style="text-align: right; width:50px; visibility:hidden"/>
+						</hbox>			
+					</vbox>
+				</hbox>	
+			</vbox>
+			
+			
+			
+			<vbox style="margin:5px; min-width:320px; max-width:320px" >
+				<hbox style="" >
+					<vbox style="margin:2px;">
+						<hbox align="center">
+							<label id="l010" value="#810"/>
+							<spacer style="max-width: 3px;"/>
+							<button id="layr" label="Layer" style="max-width: 60px;"/>
+						</hbox>
+						<label id="l011" style="max-width:175px; min-height: 60px; word-wrap:break-word" value="#811"/>
+					</vbox>
+					<vbox flex="1" style="max-width:3px;"/>
+					<vbox>
+						<checkbox id="cbhq" label="High Quality"/>
+						<checkbox id="cbsf" label="Single Field"/>
+						<checkbox id="cbde" label="Deinterlace"/>
+					</vbox>
+		
+				</hbox>
+			</vbox>
+		</hbox>
+	</vbox>
+</hbox>
+
+<!-- Property Panel Definition -->
+<pps:panel id="test" helpercomponent="visl:appl">
+    <pps:controls>
+
+	<pps:control id="sizw" type="edtD" property="cust:widt" notification="spce:size"
+		maxlength="9"
+		textalign="center"
+		tooltip="#812"
+	/>
+	<pps:control id="sizh" type="edtD" property="cust:hght" notification="spce:size"
+		maxlength="9"
+		textalign="center"
+		tooltip="#813"
+	/>
+
+	<pps:control id="offh" type="edtN" property="area:left"
+		maxlength="5"
+		textalign="center"
+		tooltip="#814"
+	/>
+	<pps:control id="offv" type="edtN" property="area:top "
+		maxlength="5"
+		textalign="center"
+		tooltip="#815"
+	/>
+
+  <pps:control id="flpH" type="butn" property="cust:flpH"
+		icon="750"
+		tooltip="#816"
+		onclick="SetProp"
+	/>
+	<pps:control id="flpV" type="butn" property="cust:flpV"
+		icon="751"
+		tooltip="#817"
+		onclick="SetProp"
+	/>
+
+	<pps:control id="roCW" type="butn" property="cust:roCW"
+		icon="753"
+		tooltip="#818"
+		onclick="SetProp"
+	/>
+	<pps:control id="roCC" type="butn" property="cust:roCC"
+		icon="752"
+		tooltip="#819"
+		onclick="SetProp"
+	/>
+
+	<pps:control id="cbpa" type="ckbx" property="cust:paro" label="#820" />
+
+	<pps:control id="cbhq" type="ckbx" property="imag:hqty" label="#821" />
+	<pps:control id="cbsf" type="ckbx" property="imag:sfld" label="#822" />
+	<pps:control id="cbde" type="ckbx" property="imag:lace" label="#823" />
+
+	<pps:control id="btnr" type="butn" property="cust:rset" 
+		label="#824"
+		tooltip="#825"
+	/>
+
+	<pps:control id="layr" type="updn" property="nrml:layr" 
+		min="-255" 
+		max="255" 
+		tooltip="#826"
+	/>
+
+	<pps:control id="unit" type="cmbl" property="cust:unit"
+		tooltip="#827"
+		options="#828"
+		valuedatatype="code"
+		values="pixl,pcnt"
+		value="pixl"
+	/>
+
+	<pps:control id="bclr" type="butn" property="cust:mskx"
+		label="#829"
+		tooltip="#830"
+		onclick="SetProp"
+	/>
+
+	<pps:control id="binv" type="butn" property="cust:mski"
+		label="#831"
+		tooltip="#832"
+		onclick="SetProp"
+	/>
+
+	<pps:control id="bchs" type="butn" property="cust:mskf"
+		label="#833"
+		tooltip="#834"
+		onclick="#835"
+	/>
+	
+	<pps:control id="trns" type="cmbl" property="cust:trns"
+		tooltip="#836"
+		options="#837"
+		valuedatatype="long"
+		values="0,32,257,258,260,64"
+	/>
+	
+	<pps:control id="mask" type="pict" property="cust:mask"
+		tooltip="#838"
+	/>
+	
+	<pps:control id="trnl" type="sldH" property="cust:trnl"
+		min="0" 
+		max="65535"
+		value="32767"
+		tickFrequency="0"
+		lineSize="5"
+		pageSize="10"
+		tooltip="#839"
+		style="visibility:hidden"
+	/>
+
+    </pps:controls>
+    
+    <!-- Localized strings -->
+    <pps:stringtable>
+	<plist>
+	<dict>
+			
+		<!-- English -->
+		<key>xx</key>
+		<dict>
+		</dict>
+							
+	</dict>
+	</plist>
+	</pps:stringtable>
+	
+</pps:panel>
+
+</window>

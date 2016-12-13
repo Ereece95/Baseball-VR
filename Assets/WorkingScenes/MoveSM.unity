@@ -139,7 +139,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0
 --- !u!222 &5471097
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3670,7 +3670,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 716711155}
-  - 135: {fileID: 716711156}
+  - 65: {fileID: 716711156}
   m_Layer: 0
   m_Name: Catcher point
   m_TagString: Catcher
@@ -3685,14 +3685,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 716711154}
   m_LocalRotation: {x: -0, y: -0.39417118, z: -0, w: 0.9190371}
-  m_LocalPosition: {x: -6.74, y: -1.6, z: -7.31}
+  m_LocalPosition: {x: -6.789, y: -1.478, z: -7.361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -46.446003, z: 0}
   m_Children: []
   m_Father: {fileID: 307305036}
   m_RootOrder: 1
---- !u!135 &716711156
-SphereCollider:
+--- !u!65 &716711156
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -3701,7 +3701,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &720492809
 GameObject:
@@ -7856,7 +7856,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0
 --- !u!1 &1647566688
 GameObject:
   m_ObjectHideFlags: 0

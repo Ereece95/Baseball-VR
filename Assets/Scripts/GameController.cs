@@ -50,6 +50,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioCheer;
     private Animation pitch;
     private GameObject Pitcher;
+    private GameObject startmenu;
+    private GameObject startmenubg; //start menu background needs to be destroyed separately after start
 
     /// <summary>
     /// Implement Singleton
@@ -74,6 +76,9 @@ public class GameController : MonoBehaviour
         Cheer = GameObject.Find("AudioCheer");
         audioCheer = Cheer.GetComponent<AudioSource>();
         DontDestroyOnLoad(Cheer);
+
+        startmenu = GameObject.Find("StartMenu");
+        startmenubg = GameObject.Find("SF Scene Elements");
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -117,7 +122,6 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("MasterScene");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -158,6 +162,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventStartButtonClicked()
     {
+        DestroyImmediate(startmenu);
+        DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
     }
 
@@ -189,7 +195,7 @@ public class GameController : MonoBehaviour
             pitch = Pitcher.GetComponent<Animation>();
             pitch.Play("Take 001");
         }
-            gcFSM.ChangeState(States.ThrowPitchDone);
+        gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }
 
@@ -206,7 +212,6 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
-        gcFSM.ChangeState(States.BallHit);
         audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
     }

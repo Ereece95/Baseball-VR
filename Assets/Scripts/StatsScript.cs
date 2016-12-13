@@ -25,9 +25,12 @@ public class StatsScript : MonoBehaviour
 
     public TextAsset file;
 
+    
     void Start()
     {
         Load(file);
+
+        Debug.Log(Find_Player("").FB_R);
     }
 
 
@@ -51,6 +54,8 @@ public class StatsScript : MonoBehaviour
         public string SL_L;
         public string SI_R;
         public string SI_L;
+        
+       
 
     }
 
@@ -69,11 +74,13 @@ public class StatsScript : MonoBehaviour
 
     public void Load(TextAsset csv)
     {
+      
         rowList.Clear();
         string[][] grid = CsvParser2.Parse(csv.text);
         for (int i = 1; i < grid.Length; i++)
         {
             Row row = new Row();
+            
             row.Player = grid[i][0];
             row.TotalPitchesThrown = grid[i][1];
             row.TotalFastballs = grid[i][2];

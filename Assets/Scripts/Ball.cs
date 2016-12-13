@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     private TrailRenderer trail;
     int x = 0;
-    public static bool flagVis=false;
+    public static bool flagVis;
     //private Transform[] path = new Transform[11];
     public Transform start;
     public Transform[] pathArray;
@@ -28,6 +28,7 @@ public class Ball : MonoBehaviour
     public static event BallHit ballNotHit;
     private GameController gc;
     public Animation Throw;
+    
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
@@ -38,6 +39,7 @@ public class Ball : MonoBehaviour
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         Paths = (Random.Range(0, 3));
+        flagVis = true;
     }
 
     // Use this for initialization
@@ -122,8 +124,8 @@ public class Ball : MonoBehaviour
             }
             if (hit)
             {
-                
-               // flagVis+=
+
+               
                 if (ball.transform.position.y <= 0.25&&flagVis)
                 {
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);

@@ -39,6 +39,18 @@ public class UIEvents : MonoBehaviour {
 
     public void FlagsButtonClicked()
     {
+        Debug.Log("Clicked");
+
+        if (Ball.flagVis)
+        {
+            Ball.flagVis = false;
+           
+        }
+        else if (!Ball.flagVis)
+        {
+            Ball.flagVis = true;
+            
+        }
         if (flagsButtonClicked != null)
             flagsButtonClicked();
     }

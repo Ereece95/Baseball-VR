@@ -153,7 +153,7 @@ public class GameController : MonoBehaviour
 
             case States.FlagClick:
 
-                getFlagVis();
+                EventFlagButton();
                 break;
 
             case States.ExitGame:
@@ -230,18 +230,9 @@ public class GameController : MonoBehaviour
 
     private void EventFlagButton()
     {
+        
         gcFSM.ChangeState(States.FlagClick);
-    }
-    public void getFlagVis()
-    {
-        if(Ball.flagVis)
-        {
-            EventBallHit.getFlagVis = false;
-        }
-        else
-        {
-            EventBallHit.getFlagVis = true;
-        }
         
     }
+    
 }

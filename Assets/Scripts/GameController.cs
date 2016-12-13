@@ -37,12 +37,7 @@ public class GameController : MonoBehaviour
 
     //Events we will listen for go in OnEnable()
 
-
-
     public static GameController gc = null; ///<Used for singleton design pattern
-
-
-
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
@@ -51,7 +46,10 @@ public class GameController : MonoBehaviour
     private GameObject audioObject;
     private GameObject Strike;
     private AudioSource audioStrike;
-
+    private GameObject Cheer;
+    private AudioSource audioCheer;
+    private Animation pitch;
+    private GameObject Pitcher;
 
     /// <summary>
     /// Implement Singleton
@@ -70,13 +68,15 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(audioObject);
 
         Strike = GameObject.Find("AudioStrike");
-       audioStrike = Strike.GetComponent<AudioSource>();
+        audioStrike = Strike.GetComponent<AudioSource>();
         DontDestroyOnLoad(Strike);
+
+        Cheer = GameObject.Find("AudioCheer");
+        audioCheer = Cheer.GetComponent<AudioSource>();
+        DontDestroyOnLoad(Cheer);
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
-
-
     }
 
     /// <summary>
@@ -175,7 +175,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
+        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
     }
 
     /// <summary>
@@ -183,9 +183,14 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
-        gcFSM.ChangeState(States.ThrowPitchDone);
+        Pitcher = GameObject.Find("WBP_pitch 1");
+        if(Pitcher != null)
+        {
+            pitch = Pitcher.GetComponent<Animation>();
+            pitch.Play("Take 001");
+        }
+            gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
-
     }
 
     /// <summary>
@@ -201,6 +206,8 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
+        gcFSM.ChangeState(States.BallHit);
+        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
     }
     private void EventBallNotHit()

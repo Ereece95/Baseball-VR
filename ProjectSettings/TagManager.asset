@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Catcher
   - Homerun
+  - Field
   layers:
   - Default
   - TransparentFX

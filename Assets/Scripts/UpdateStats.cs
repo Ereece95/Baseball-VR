@@ -15,11 +15,13 @@ public class UpdateStats : MonoBehaviour {
     int hits = 0, strikes = 0;
     [SerializeField]
     private Text hitsText, strikesText;
+   // private GameController gc;
 
     void OnEnable()
     {
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
+       // gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 
     void OnDisable()
@@ -30,21 +32,27 @@ public class UpdateStats : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);  //Get score to persist
+       DontDestroyOnLoad(gameObject);  //Get score to persist
+       
     }
 
     void Start()
     {
+
+        //TODO: Move this to start but requires object be visible on startmenu
+        //if (gc.GetState() == States.StartClick)
+        //{
+        //    hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
+        //    strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
+        //}
+       // strikesText.text = strikes.ToString();
+        //hitsText.text = hits.ToString();
     }
 
     void Update()
     {
-        //TODO: Move this to start but requires object be visible on startmenu
-        if (SceneManager.GetActiveScene().name == "MasterScene")
-        {
-            hitsText = GameObject.Find("HitsScore").GetComponent<Text>();
-            strikesText = GameObject.Find("StrikesScore").GetComponent<Text>();
-        }
+        strikesText.text = strikes.ToString();
+        hitsText.text = hits.ToString();
     }
 
     /// <summary>

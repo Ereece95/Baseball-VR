@@ -141,6 +141,7 @@ public class Ball : MonoBehaviour
                     RB.AddForce(transform.rotation * Vector3.forward * hitForce);
 
                 if (ballHit != null) ballHit();
+                collideBat = false;
             }
 
                 if (!hit)

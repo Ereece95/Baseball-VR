@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+
 /// <summary>
 /// Increment the balls hit and the misses
 /// </summary>
@@ -111,6 +112,20 @@ public class UpdateStats : MonoBehaviour {
         Debug.Log("hits= " + hits);
         hitsText.text = hits.ToString();
         CheckStats();
+    }
+    public void EventFlagButton()
+    {
+       
+        if (Ball.flagVis)
+        {
+            Ball.flagVis = false;
+            
+        }
+        else if (!Ball.flagVis)
+        {
+            Ball.flagVis = true;
+            
+        }
     }
     /// <summary>
     /// Change the color when the number gets high enough

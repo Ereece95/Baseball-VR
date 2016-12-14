@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using MonsterLove.StateMachine;
 
 
+
 /// <summary>
 /// The states the game may be in
 /// </summary>
@@ -24,7 +25,9 @@ public enum States
     WaitForCollision,
     WaitForInput,
     Delay,
-    ExitGame
+    ExitGame,
+    StatsGot,
+    FlagClick
 }
 
 
@@ -163,6 +166,16 @@ public class GameController : MonoBehaviour
                                                         // or EventExitButtonClicked
                 break;
             case States.WaitForInput:
+                break;
+
+            case States.StatsGot:
+
+
+                break;
+
+            case States.FlagClick:
+
+                EventFlagButton();
                 break;
 
             case States.ExitGame:

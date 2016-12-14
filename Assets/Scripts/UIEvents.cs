@@ -10,6 +10,7 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler startButtonClicked;
     public static event buttonHandler nextPitchClicked;
     public static event buttonHandler exitButtonClicked;
+    public static event buttonHandler flagsButtonClicked;
 
     /// <summary>
     /// Send event when start button clicked. Listened for in GameController
@@ -36,4 +37,21 @@ public class UIEvents : MonoBehaviour {
             nextPitchClicked();           //Fire the event
     }
 
+    public void FlagsButtonClicked()
+    {
+        Debug.Log("Clicked");
+
+        if (Ball.flagVis)
+        {
+            Ball.flagVis = false;
+           
+        }
+        else if (!Ball.flagVis)
+        {
+            Ball.flagVis = true;
+            
+        }
+        if (flagsButtonClicked != null)
+            flagsButtonClicked();
+    }
 }

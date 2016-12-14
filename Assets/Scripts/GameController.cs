@@ -2,6 +2,9 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
+using System.Timers;
+using System.Linq;
+using UnityEngine.UI;
 using MonsterLove.StateMachine;
 
 
@@ -18,6 +21,7 @@ public enum States
     ThrowPitchDone,
     BallHit,
     BallNotHit,
+    WaitForCollision,
     WaitForInput,
     Delay,
     ExitGame
@@ -37,12 +41,7 @@ public class GameController : MonoBehaviour
 
     //Events we will listen for go in OnEnable()
 
-
-
     public static GameController gc = null; ///<Used for singleton design pattern
-
-
-
 
     private StateMachine<States> gcFSM;
     private AudioClip hit;
@@ -51,8 +50,17 @@ public class GameController : MonoBehaviour
     private GameObject audioObject;
     private GameObject Strike;
     private AudioSource audioStrike;
-
-
+    private GameObject Cheer;
+    private AudioSource audioCheer;
+    private Animation pitch;
+    private GameObject Pitcher;
+    private GameObject startmenu;
+    private GameObject startmenubg; //start menu background needs to be destroyed separately after start
+    public GameObject endStats;
+    //private CanvasGroup endStatsCanvas;
+    List<HitStats> hitStats = null;
+    HitStats hs = null;
+    private Text topStats1, topStats2;
     /// <summary>
     /// Implement Singleton
     /// Initialize StateMachine
@@ -70,19 +78,33 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(audioObject);
 
         Strike = GameObject.Find("AudioStrike");
-       audioStrike = Strike.GetComponent<AudioSource>();
+        audioStrike = Strike.GetComponent<AudioSource>();
         DontDestroyOnLoad(Strike);
+
+        Cheer = GameObject.Find("AudioCheer");
+        audioCheer = Cheer.GetComponent<AudioSource>();
+        DontDestroyOnLoad(Cheer);
+
+        startmenu = GameObject.Find("StartMenu");
+        startmenubg = GameObject.Find("SF Scene Elements");
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
-
+        hitStats = new List<HitStats>();
+        
+        //topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
+        
+        endStats = GameObject.Find("EndStats");
+        topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
+        topStats2 = GameObject.Find("EndStats/Top2").GetComponent<Text>();
+        //endStatsCanvas = endStats.GetComponent("CanvasGroup") as CanvasGroup;
+        
     }
-
-    /// <summary>
-    /// Events we will listen for
-    /// </summary>
-    void OnEnable()
+        /// <summary>
+        /// Events we will listen for
+        /// </summary>
+        void OnEnable()
     {
 
         UIEvents.startButtonClicked += EventStartButtonClicked;
@@ -90,7 +112,8 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked += EventNextPitchButton;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
-
+        Ball.distanceHit += OnHitDistanceEvent;
+            
     }
     /// <summary>
     /// 
@@ -100,6 +123,7 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked -= EventStartButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
+        Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
 
@@ -117,7 +141,6 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.StartClick:
-                SceneManager.LoadScene("MasterScene");
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -132,13 +155,14 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.BallHit:
-                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
-                                                        // or EventExitButtonClicked
+                gcFSM.ChangeState(States.WaitForCollision);
                 break;
 
             case States.BallNotHit:
                 gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
                                                         // or EventExitButtonClicked
+                break;
+            case States.WaitForInput:
                 break;
 
             case States.ExitGame:
@@ -158,6 +182,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventStartButtonClicked()
     {
+        DestroyImmediate(startmenu);
+        DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
     }
 
@@ -166,6 +192,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
+        DisplayExitStats();
         gcFSM.ChangeState(States.ExitGame);
     }
 
@@ -175,7 +202,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventNextPitchButton()
     {
-        gcFSM.ChangeState(States.StartClick);   //TODO: Eventually want ThrowPitch here. This is a hack
+        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
     }
 
     /// <summary>
@@ -183,9 +210,14 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void HandleThrowPitch()
     {
+        Pitcher = GameObject.Find("WBP_pitch 1");
+        if(Pitcher != null)
+        {
+            pitch = Pitcher.GetComponent<Animation>();
+            pitch.Play("Take 001");
+        }
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
-
     }
 
     /// <summary>
@@ -201,7 +233,9 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
+        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
+        
     }
     private void EventBallNotHit()
     {
@@ -211,5 +245,60 @@ public class GameController : MonoBehaviour
     public States GetState()
     {
         return gcFSM.State;
+    }
+
+    void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun)
+    {
+        gcFSM.ChangeState(States.WaitForInput);
+        hs = new HitStats();
+        hs.distance = distance;
+        hs.isFoul = isFoul;
+        hs.isHomerun = isHomerun;
+
+        hitStats.Add(hs);
+        Debug.Log("HIT ADDDED" + distance);          
+                                  
+    }
+    void DisplayExitStats()
+    {
+
+        int count = 1;
+        string stats1 = "";
+        string stats2 = "";
+        List<HitStats> sortedList = hitStats.OrderBy(o => o.distance).ToList();
+
+        foreach (HitStats hs in sortedList)
+        {
+            if (count <= 5)
+            {
+                if (!hs.isFoul)
+                {
+                    stats1 = stats1 + count + ". " + hs.distance + "\n";
+                    count++;
+                }
+            }
+            if (count > 5 && count <= 10)
+            {
+                stats2 = stats2 + count + ". " + hs.distance + "\n";
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        topStats1.text = stats1;
+        topStats2.text = stats2;
+
+        //Fade in stats at end of game
+        for (float x = 0; x <= 1; x = +.1f)
+        {
+            //endStatsCanvas.alpha = x;
+        }
+        //TODO: will need to hide other panels that are visible through this panel
+
+        Timer myTimer = new Timer();
+        myTimer.Interval = 5000;
+        myTimer.Start();
     }
 }

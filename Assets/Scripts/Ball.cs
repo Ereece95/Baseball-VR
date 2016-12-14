@@ -23,10 +23,23 @@ public class Ball : MonoBehaviour
     public static event BallHit ballNotHit;
     private GameController gc;
     public Animation Throw;
+    public Transform plate;
+
+    public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
+    public static event hitEvent distanceHit;   
     /// <summary>
     /// The random number is set for whether curveball, changeup, and fastball
     /// and whether the ball is hit is set to false
     /// </summary>
+    /// 
+    void OnEnable()
+    {
+        UIEvents.nextPitchClicked += rethrowpitch;
+    }
+    void OnDisable()
+    {
+        UIEvents.nextPitchClicked -= rethrowpitch;
+    }
 
     void Awake()
     {
@@ -59,9 +72,10 @@ public class Ball : MonoBehaviour
         }
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
-
+        plate = GameObject.Find("Home Plate").transform;
     }
     int i = 0;
+    bool collideBat = false; //to tell update if ball collided with bat
     // Update is called once per frame
     /// <summary>
     /// The ball follows the hand position until the animation is done
@@ -73,88 +87,128 @@ public class Ball : MonoBehaviour
     bool contin = false;
     void Update()
     {
-
-        //an if statment to have the ball released at a certain time
-
-        //sets the position of the ball to the pitchers hand while the
-        //throwing animation is running
-        if (contin == false)
+        if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
         {
-            if (Throw["Take 001"].time < 1.40023f)
+            //an if statment to have the ball released at a certain time
+
+            //sets the position of the ball to the pitchers hand while the
+            //throwing animation is running
+            if (contin == false)
             {
-                //sets the position of the ball to the pitchers hand while the
-                //throwing animation is running
-                if (Throw["Take 001"].time != num24)
+                if (Throw["Take 001"].time < 1.40023f)
                 {
-                    ball.transform.position = hand.transform.position;
+                    //sets the position of the ball to the pitchers hand while the
+                    //throwing animation is running
+                    if (Throw["Take 001"].time != num24)
+                    {
+                        ball.transform.position = hand.transform.position;
+                    }
+                }
+                else
+                {
+                    contin = true;
                 }
             }
             else
             {
-                contin = true;
-            }
-        }
-        else
-        {
-            float step = speed * Time.deltaTime;
-            trail.enabled = true;
-            //when x reaches a spesific value it enables the trail and moves the ball
+                float step = speed * Time.deltaTime;
+                trail.enabled = true;
+                //when x reaches a spesific value it enables the trail and moves the ball
 
 
 
-            if (ball.transform.position.x == path[i].position.x)
-            {
-                if (i != num - 1)
+                if (ball.transform.position.x == path[i].position.x)
                 {
-                    i++;
+                    if (i != num - 1)
+                    {
+                        i++;
+                    }
                 }
+
+                if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
+                {
+                    int r = (Random.Range(600, 1800));
+                    float hitForce = (1 * r);
+                    hit = true;
+                    RB.useGravity = true;
+
+                    //This block will generate a random direction and angle for ball to travel
+                    var rotationVector = transform.rotation.eulerAngles;
+                    int rotationY = (Random.Range(0, 90));
+                    int rotationX = (Random.Range(-10, -60));
+                    rotationVector.y = rotationY;
+                    rotationVector.x = rotationX;
+                    transform.rotation = Quaternion.Euler(rotationVector);
+
+                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    collideBat = false;
+                    if (ballHit != null) ballHit();
+                }
+
+                if (!hit)
+                {
+
+                    ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+
+
+                    //need if statement know when ball hits catcher and then call ballNotHit()
+
+                }
+
             }
-
-            if (Input.GetMouseButtonDown(0) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
-            {
-                int r = (Random.Range(600, 1800));
-                float hitForce = (1 * r);
-                hit = true;
-                RB.useGravity = true;
-
-                //This block will generate a random direction and angle for ball to travel
-                var rotationVector = transform.rotation.eulerAngles;
-                int rotationY = (Random.Range(0, 90));
-                int rotationX = (Random.Range(-10, -60));
-                rotationVector.y = rotationY;
-                rotationVector.x = rotationX;
-                transform.rotation = Quaternion.Euler(rotationVector);
-
-                RB.AddForce(transform.rotation * Vector3.forward * hitForce);
-
-                if (ballHit != null) ballHit();
-            }
-
-            if (!hit)
-            {
-
-                ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
-
-
-                //need if statement know when ball hits catcher and then call ballNotHit()
-
-            }
-
         }
-
 
 
     }
+    //Stop the ball when it hits catcher and registers a strike
+    /// <summary>
+    /// the ball stops when it hits the catcher and calls ballNotHit()
+    /// </summary>
+    /// <param name="catcher"></param>
+    void OnTriggerEnter(Collider collision)
+    {
+        bool isHomerun = false;
+        bool isFoul = false;
+        if (collision.tag == "Catcher")
+        {
+            if (ballNotHit != null) ballNotHit();
+        }
+        if ((collision.tag == "Homerun") && (gc.GetState() == States.WaitForCollision))
+        {
+            isHomerun = true;
+            isFoul = false;
+            RB.velocity = Vector3.zero;
+            Debug.Log("Homerun");
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+        }
+    }
     //Stop the ball from moving when it contacts the field
+    //Or initiates hit when ball contacts bat
     /// <summary>
     /// the ball stops when it hits the ground
     /// </summary>
     /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
     {
-        if (Col.gameObject.name == "Field")
+        bool isFoul = false;
+        bool isHomerun = false;
+
+        //if(Col.gameObject.name == "Foul Pole")
+        //{
+        //    isHomerun = true;
+        //    isFoul = false;
+        //    RB.velocity = Vector3.zero;
+        //    RB.useGravity = false;
+        //    Debug.Log("Foul Pole");
+        //}
+       if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
         {
             RB.velocity = Vector3.zero;
+        }
+        if (Col.gameObject.name == "baseball_bat_regular")
+        {
+            collideBat = true;
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -167,6 +221,20 @@ public class Ball : MonoBehaviour
         if (catcher.tag == "Catcher")
         {
             if (ballNotHit != null) ballNotHit();
+            if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
+            {
+                isFoul = false;
+                Debug.Log("Fair ball" + ball.transform.position.x + " " + ball.transform.position.z);
+
+            }
+            else
+            {
+                isFoul = true;
+                Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
+                
+            }
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
         }
     }
     void shift()
@@ -294,4 +362,16 @@ public class Ball : MonoBehaviour
         }
 
     }
-}
+    void rethrowpitch()
+    {
+        ball.transform.position = hand.transform.position;
+        x = 0;
+        trail.Clear();
+        RB.useGravity = false; //resets the ball physics for next pitch
+        RB.velocity = Vector3.zero;
+        trail.enabled = false;
+        hit = false;
+        i = 0;
+    }
+   
+    }

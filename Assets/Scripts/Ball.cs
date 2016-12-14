@@ -148,35 +148,35 @@ public class Ball : MonoBehaviour
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }
-                if (hit)
+            if (hit)
+            {
+                float dist = Vector3.Distance(start.position, ball.transform.position);
+
+
+                double dist2 = System.Convert.ToDouble(dist);
+                dist2 = System.Math.Round(dist2, 2);
+                DistDisplay.text = "Distance: " + (dist2.ToString()) + " m";
+
+                if (ball.transform.position.y <= 0.25&&flagVis)
                 {
-                    float dist = Vector3.Distance(start.position, ball.transform.position);
-
-
-                    double dist2 = System.Convert.ToDouble(dist);
-                    dist2 = System.Math.Round(dist2, 2);
-                    DistDisplay.text = "Distance: " + (dist2.ToString()) + " m";
-
-                    if (ball.transform.position.y <= 0.25 && flagVis)
-                    {
-                        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        cube.GetComponent<Renderer>().material.color = Color.red;
-                        cube.transform.localScale = new Vector3(1f, 0.005f, 1f);
-                        cube.transform.position = ball.transform.position;
-                    }
-                }
-                if (!hit)
-                {
-
-                    ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
-
-
-                    //need if statement know when ball hits catcher and then call ballNotHit()
-
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    cube.GetComponent<Renderer>().material.color = Color.red;
+                    cube.transform.localScale = new Vector3(1f, 0.005f, 1f);
+                    cube.transform.position = ball.transform.position;
                 }
             }
+            if (!hit)
+            {
 
+                ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+
+
+                //need if statement know when ball hits catcher and then call ballNotHit()
+
+            }
         }
+
+
     }
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>

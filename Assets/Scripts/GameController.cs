@@ -340,5 +340,11 @@ public class GameController : MonoBehaviour
         //myTimer.Interval = 50000;
         //myTimer.Start();
     }
+    private void EventFlagButton()
+    {
+
+        gcFSM.ChangeState(States.FlagClick);
+
+    }
 
 }

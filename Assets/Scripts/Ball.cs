@@ -170,9 +170,6 @@ public class Ball : MonoBehaviour
 
                     ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
 
-
-                    //need if statement know when ball hits catcher and then call ballNotHit()
-
                 }
             }
 

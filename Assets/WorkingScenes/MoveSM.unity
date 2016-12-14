@@ -687,7 +687,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 980837316}
-  - {fileID: 150000882}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
@@ -1191,7 +1190,7 @@ GameObject:
   - 222: {fileID: 150000884}
   - 114: {fileID: 150000883}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DistanceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1204,16 +1203,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 150000881}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 75.06799}
-  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2566.002}
+  m_LocalScale: {x: 499.99994, y: 499.99994, z: 499.99997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 53104732}
-  m_RootOrder: 1
+  m_Father: {fileID: 980837316}
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 248.67596, y: 61.718536}
-  m_SizeDelta: {x: -639.99994, y: -290.3931}
+  m_AnchoredPosition: {x: 274338, y: -22799.268}
+  m_SizeDelta: {x: -603.99994, y: -471.75894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150000883
 MonoBehaviour:
@@ -2135,7 +2134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 354803351}
   hand: {fileID: 541731084}
-  start: {fileID: 354803356}
+  start: {fileID: 1836536468}
   pathArray:
   - {fileID: 1886092914}
   - {fileID: 307305036}
@@ -2143,13 +2142,13 @@ MonoBehaviour:
   - {fileID: 1858177662}
   - {fileID: 350091738}
   speed: 15
-  DistDisplay: {fileID: 0}
+  DistDisplay: {fileID: 150000883}
   path:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   Throw: {fileID: 541731086}
-  plate: {fileID: 0}
+  plate: {fileID: 1836536468}
 --- !u!135 &354803353
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2227,10 +2226,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!4 &354803356 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 9e0d7c64622350e4aba762741b571399, type: 3}
-  m_PrefabInternal: {fileID: 354803350}
 --- !u!1 &389051776
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,6 +5059,7 @@ RectTransform:
   - {fileID: 1220579158}
   - {fileID: 1187602351}
   - {fileID: 1967164216}
+  - {fileID: 150000882}
   m_Father: {fileID: 53104732}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
@@ -5614,7 +5610,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 318629, y: -224932.81}
+  m_AnchoredPosition: {x: 317277, y: -112230}
   m_SizeDelta: {x: 71, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187602352

@@ -37,21 +37,12 @@ public class UIEvents : MonoBehaviour {
             nextPitchClicked();           //Fire the event
     }
 
-    public void FlagsButtonClicked()
+    /// <summary>
+    /// Send event when hide flags button clicked. Listened for in GameController
+    /// </summary>
+    public void FlagsButtonClicked()     //must be public to see in the button's onClick() method
     {
-        Debug.Log("Clicked");
-
-        if (Ball.flagVis)
-        {
-            Ball.flagVis = false;
-           
-        }
-        else if (!Ball.flagVis)
-        {
-            Ball.flagVis = true;
-            
-        }
-        if (flagsButtonClicked != null)
-            flagsButtonClicked();
+        if (flagsButtonClicked != null)  //make sure someone is listening
+            flagsButtonClicked();        //Fire the event
     }
 }

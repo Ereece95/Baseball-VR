@@ -150,10 +150,10 @@ public class Ball : MonoBehaviour
                 }
                 if (hit)
                 {
-                    float dist = Vector3.Distance(start.position, ball.transform.position);
+                    float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
                     double dist2 = System.Convert.ToDouble(dist);
                     dist2 = System.Math.Round(dist2, 2);
-                    DistDisplay.text = "Distance: " + (dist2.ToString()) + " m";
+                    DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
 
                     if (ball.transform.position.y <= 0.25 && flagVis)
                     {

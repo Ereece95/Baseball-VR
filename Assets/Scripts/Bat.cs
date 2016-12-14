@@ -23,7 +23,7 @@ public class Bat : MonoBehaviour {
             bat.GetComponent<Renderer>().enabled = true;
             batFollowCursor();
         }
-        else
+        else if (gc.GetState() == States.WaitForInput || gc.GetState() == States.WaitForCollision)
         {
             Cursor.visible = true;
             bat.GetComponent<Renderer>().enabled = false;

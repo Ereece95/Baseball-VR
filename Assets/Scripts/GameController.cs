@@ -27,8 +27,7 @@ public enum States
     WaitForInput,
     Delay,
     ExitGame,
-    StatsGot,
-    FlagClick
+    StatsGot
 }
 
 
@@ -119,6 +118,7 @@ public class GameController : MonoBehaviour
         UIEvents.startButtonClicked += EventStartButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
         UIEvents.nextPitchClicked += EventNextPitchButton;
+        UIEvents.flagsButtonClicked += EventFlagButton;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -130,8 +130,9 @@ public class GameController : MonoBehaviour
     void OnDisable()
     {
         UIEvents.startButtonClicked -= EventStartButtonClicked;
+        UIEvents.exitButtonClicked -= EventExitButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
-        UIEvents.nextPitchClicked -= EventNextPitchButton;
+        UIEvents.flagsButtonClicked -= EventFlagButton;
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
@@ -171,17 +172,14 @@ public class GameController : MonoBehaviour
                 gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
                                                         // or EventExitButtonClicked
                 break;
+
+            case States.WaitForCollision:
+                break;
+
             case States.WaitForInput:
                 break;
 
             case States.StatsGot:
-
-
-                break;
-
-            case States.FlagClick:
-
-                EventFlagButton();
                 break;
 
             case States.ExitGame:
@@ -342,8 +340,13 @@ public class GameController : MonoBehaviour
     }
     private void EventFlagButton()
     {
-
-        gcFSM.ChangeState(States.FlagClick);
-
+        if (Ball.flagVis)
+        {
+            Ball.flagVis = false;
+        }
+        else if (!Ball.flagVis)
+        {
+            Ball.flagVis = true;
+        }
     }
 }

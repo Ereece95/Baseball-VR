@@ -202,7 +202,6 @@ public class Ball : MonoBehaviour
         }
     }
     //Stop the ball from moving when it contacts the field
-    //Or initiates hit when ball contacts bat
     /// <summary>
     /// the ball stops when it hits the ground
     /// </summary>
@@ -220,25 +219,9 @@ public class Ball : MonoBehaviour
         //    RB.useGravity = false;
         //    Debug.Log("Foul Pole");
         //}
-       if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
+        if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
         {
             RB.velocity = Vector3.zero;
-        }
-        if (Col.gameObject.name == "baseball_bat_regular")
-        {
-            collideBat = true;
-        }
-    }
-    //Stop the ball when it hits catcher and registers a strike
-    /// <summary>
-    /// the ball stops when it hits the catcher and calls ballNotHit()
-    /// </summary>
-    /// <param name="catcher"></param>
-    void OnTriggerEnter(Collider catcher)
-    {
-        if (catcher.tag == "Catcher")
-        {
-            if (ballNotHit != null) ballNotHit();
             if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
             {
                 isFoul = false;
@@ -249,11 +232,16 @@ public class Ball : MonoBehaviour
             {
                 isFoul = true;
                 Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
-                
+
             }
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
         }
+        if (Col.gameObject.name == "baseball_bat_regular")
+        {
+            collideBat = true;
+        }
+
     }
     void shift()
     {

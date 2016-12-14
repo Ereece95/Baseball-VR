@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
+using System;
 using System.Timers;
 using System.Linq;
 using UnityEngine.UI;
@@ -60,10 +61,10 @@ public class GameController : MonoBehaviour
     private GameObject startmenu;
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
     public GameObject endStats;
-    //private CanvasGroup endStatsCanvas;
+    private CanvasGroup endStatsCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
-    private Text topStats1, topStats2;
+    private Text topStats1, topStats2, farthestHit, averageHit, battingAvgHit;
     /// <summary>
     /// Implement Singleton
     /// Initialize StateMachine
@@ -96,12 +97,17 @@ public class GameController : MonoBehaviour
 
         hitStats = new List<HitStats>();
         
-        //topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
-        
+        topStats1 = GameObject.Find("Top1").GetComponent<Text>();
+        topStats2 = GameObject.Find("Top2").GetComponent<Text>();
+        farthestHit = GameObject.Find("Farthest").GetComponent<Text>();
+        averageHit = GameObject.Find("Average").GetComponent<Text>();
+        battingAvgHit = GameObject.Find("BattingAvg").GetComponent<Text>();
+
+
         endStats = GameObject.Find("EndStats");
-        topStats1 = GameObject.Find("EndStats/Top1").GetComponent<Text>();
-        topStats2 = GameObject.Find("EndStats/Top2").GetComponent<Text>();
-        //endStatsCanvas = endStats.GetComponent("CanvasGroup") as CanvasGroup;
+
+
+        endStatsCanvas = endStats.GetComponent<CanvasGroup>();
         
     }
         /// <summary>
@@ -179,11 +185,11 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.ExitGame:
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                    Application.Quit();
-#endif
+//#if UNITY_EDITOR
+//                UnityEditor.EditorApplication.isPlaying = false;
+//#else
+//                    Application.Quit();
+//#endif
                 break;
 
         }
@@ -205,7 +211,14 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
-        DisplayExitStats();
+        Debug.Log("In Exit Button CLicked Function");
+        //try
+        //{
+            DisplayExitStats();
+        //}catch (Exception e)
+        //{
+        //    Debug.Log("Display Stats Failed: " + e.ToString());
+        //}
         gcFSM.ChangeState(States.ExitGame);
     }
 
@@ -278,40 +291,54 @@ public class GameController : MonoBehaviour
         int count = 1;
         string stats1 = "";
         string stats2 = "";
-        List<HitStats> sortedList = hitStats.OrderBy(o => o.distance).ToList();
+        string farthest = "";
+        string average = "Average Hit: ";
+        int farthestInt = 0;
+       // int numPitches = stats.GetNumPitches();
+        int totalDistance = 0;
+        int averageDistance = 0;
+        float battingAverage = 0f;
+        
+        hitStats = hitStats.OrderByDescending(o => o.distance).ToList();
 
-        foreach (HitStats hs in sortedList)
+        foreach (HitStats hs in hitStats)
         {
+            totalDistance = totalDistance + hs.distance;
             if (count <= 5)
             {
+                if (count == 1)
+                {
+                    farthestInt = hs.distance;
+                    farthest = "Farthest Hit: " + farthestInt + " Ft";
+                }
                 if (!hs.isFoul)
                 {
-                    stats1 = stats1 + count + ". " + hs.distance + "\n";
+                    stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
                     count++;
                 }
             }
-            if (count > 5 && count <= 10)
+            else if (count > 5 && count <= 10)
             {
-                stats2 = stats2 + count + ". " + hs.distance + "\n";
+                stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
                 count++;
             }
-            else
-            {
-                break;
-            }
         }
+        averageDistance = totalDistance / count;
+        averageHit.text = average + averageDistance;
         topStats1.text = stats1;
         topStats2.text = stats2;
+        farthestHit.text = farthest;
 
         //Fade in stats at end of game
-        for (float x = 0; x <= 1; x = +.1f)
-        {
-            //endStatsCanvas.alpha = x;
-        }
+        //for (float x = 0; x <= 1; x = +.1f)
+        //{
+            endStatsCanvas.alpha = 1;
+        //}
         //TODO: will need to hide other panels that are visible through this panel
-
-        Timer myTimer = new Timer();
-        myTimer.Interval = 5000;
-        myTimer.Start();
+        //Timer(280);
+        //Timer myTimer = new Timer();
+        //myTimer.Interval = 50000;
+        //myTimer.Start();
     }
+
 }

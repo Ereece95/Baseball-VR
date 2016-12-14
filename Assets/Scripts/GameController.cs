@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
     public static GameController gc = null; ///<Used for singleton design pattern
 
     private StateMachine<States> gcFSM;
+    private Ball ball;
     private AudioClip hit;
     private AudioSource audioS;
     private UpdateStats stats;
@@ -75,6 +76,8 @@ public class GameController : MonoBehaviour
         else if (gc != this) Destroy(gameObject);  //kill it if another instance exists
 
         DontDestroyOnLoad(gameObject);  //persist across levels
+
+        ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
 
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
@@ -343,10 +346,12 @@ public class GameController : MonoBehaviour
         if (Ball.flagVis)
         {
             Ball.flagVis = false;
+            ball.showBallFlags();
         }
         else if (!Ball.flagVis)
         {
             Ball.flagVis = true;
+            ball.hideBallFlags();
         }
     }
 }

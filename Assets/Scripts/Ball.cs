@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 
 /// <summary>
@@ -29,6 +30,9 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
+    public GameObject[] Flags; //array of flags to track where ball landed
+    public int flagcount = 0;  //count to keep track of size of array and to create a new object in array each time
+    List<GameObject>  _flags = new List<GameObject>();
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
     public static event hitEvent distanceHit;   
@@ -154,20 +158,10 @@ public class Ball : MonoBehaviour
                     double dist2 = System.Convert.ToDouble(dist);
                     dist2 = System.Math.Round(dist2, 2);
                     DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
-
-                    if (ball.transform.position.y <= 0.25 && flagVis)
-                    {
-                        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        cube.GetComponent<Renderer>().material.color = Color.red;
-                        cube.transform.localScale = new Vector3(1f, 0.005f, 1f);
-                        cube.transform.position = ball.transform.position;
-                    }
                 }
                 if (!hit)
                 {
-
                     ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
-
                 }
             }
 
@@ -216,6 +210,12 @@ public class Ball : MonoBehaviour
         //}
         if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
         {
+            GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            flag.GetComponent<Renderer>().material.color = Color.red;
+            flag.transform.localScale = new Vector3(1f, 0.005f, 1f);
+            flag.transform.position = ball.transform.position;
+            _flags.Add(flag);
+
             RB.velocity = Vector3.zero;
             if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
             {
@@ -374,5 +374,20 @@ public class Ball : MonoBehaviour
         hit = false;
         i = 0;
     }
-   
+
+    public void hideBallFlags()
+    {
+        for (int i = 0; i < _flags.Count; ++i)
+        {
+            _flags[i].GetComponent<Renderer>().enabled = false;
+        }
     }
+    public void showBallFlags()
+    {
+        for (int i = 0; i < _flags.Count; ++i)
+        {
+            _flags[i].GetComponent<Renderer>().enabled = true;
+        }
+    }
+
+}

@@ -27,6 +27,7 @@ public enum States
     WaitForInput,
     Delay,
     ExitGame,
+    ShowingGameStats,
     StatsGot
 }
 
@@ -63,6 +64,7 @@ public class GameController : MonoBehaviour
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
+    private CanvasGroup gameCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -113,6 +115,7 @@ public class GameController : MonoBehaviour
 
 
         endStatsCanvas = endStats.GetComponent<CanvasGroup>();
+        gameCanvas = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
         
     }
         /// <summary>
@@ -128,6 +131,7 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked += EventNextPitchButton;
         UIEvents.flagsButtonClicked += EventFlagButton;
         UIEvents.pitchTypeButtonClicked += EventPitchTypeButton;
+        UIEvents.endGameStatsClicked += EventDisplayExitStats;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -145,6 +149,7 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.flagsButtonClicked -= EventFlagButton;
         UIEvents.pitchTypeButtonClicked -= EventPitchTypeButton;
+        UIEvents.endGameStatsClicked -= EventDisplayExitStats;
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
@@ -195,12 +200,15 @@ public class GameController : MonoBehaviour
             case States.StatsGot:
                 break;
 
+            case States.ShowingGameStats:
+                break;                                  //Stay here until end game stats button is clicked
+
             case States.ExitGame:
-//#if UNITY_EDITOR
-//                UnityEditor.EditorApplication.isPlaying = false;
-//#else
-//                    Application.Quit();
-//#endif
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit();
+#endif
                 break;
 
         }
@@ -241,10 +249,10 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
-        Debug.Log("In Exit Button CLicked Function");
+        //Debug.Log("In Exit Button CLicked Function");
         //try
         //{
-            DisplayExitStats();
+            //DisplayExitStats();
         //}catch (Exception e)
         //{
         //    Debug.Log("Display Stats Failed: " + e.ToString());
@@ -315,7 +323,7 @@ public class GameController : MonoBehaviour
         Debug.Log("HIT ADDDED" + distance);          
                                   
     }
-    void DisplayExitStats()
+    private void EventDisplayExitStats()
     {
 
         int count = 1;
@@ -363,7 +371,15 @@ public class GameController : MonoBehaviour
         //for (float x = 0; x <= 1; x = +.1f)
         //{
             endStatsCanvas.alpha = 1;
+            gameCanvas.interactable = true;
+            gameCanvas.blocksRaycasts = true;
         //}
+
+        gameCanvas.interactable = false;
+        gameCanvas.alpha = 0;
+        gameCanvas.blocksRaycasts = false;
+        gcFSM.ChangeState(States.ShowingGameStats);
+
         //TODO: will need to hide other panels that are visible through this panel
         //Timer(280);
         //Timer myTimer = new Timer();

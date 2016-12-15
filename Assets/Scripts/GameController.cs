@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
-        dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitchButton") as DisplayPitch;
+        dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitch") as DisplayPitch;
 
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
@@ -386,6 +386,6 @@ public class GameController : MonoBehaviour
 
     private void EventPitchTypeButton()
     {
-        //dsplyPitch.toggleDisplay();
+        dsplyPitch.displayPitchType();
     }
 }

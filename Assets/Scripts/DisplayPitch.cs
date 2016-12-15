@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// Display what pitch is thrown
 /// </summary>
-public class TogglePanel : MonoBehaviour
+public class DisplayPitch : MonoBehaviour
 {
 
     public Canvas displayCanvas;
@@ -24,7 +24,6 @@ public class TogglePanel : MonoBehaviour
 
         // creat button listener for on click
         displayButton = displayButton.GetComponent<Button>();
-        //displayButton.onClick.AddListener(toggleDisplay); // listens for button click
 
         // Get ball object to call get pitch type function
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
@@ -35,15 +34,13 @@ public class TogglePanel : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (isHidden)
+        if (!isHidden)
         {
-            //TODO: add function call to ball to obtain pitch type
+            //TODO: add function to ball to obtain pitch type
             pitchText.text = "Pitch Type: ";
-            displayCanvas.enabled = true;
-            isHidden = false;
         }
     }
-    public void toggleDisplay()
+    public void displayPitchType()
     {
         if (isHidden)
         {

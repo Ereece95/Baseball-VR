@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Buttons like start exit and next pitch for the UI  
+<p>Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags  
  <a href="class_u_i_events.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for UIEvents:</div>
@@ -107,27 +107,46 @@ Inheritance diagram for UIEvents:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab297f62bccd2409aa695de14979daf0f"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> ()</td></tr>
 <tr class="separator:ab297f62bccd2409aa695de14979daf0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a557558561442fe826285077e38c95c24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a557558561442fe826285077e38c95c24">StartButtonClicked</a> ()</td></tr>
-<tr class="memdesc:a557558561442fe826285077e38c95c24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when start button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame ">GameController</a>  <a href="#a557558561442fe826285077e38c95c24">More...</a><br /></td></tr>
-<tr class="separator:a557558561442fe826285077e38c95c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c80cd4426008cc8c84ad4a524e6ce7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a10c80cd4426008cc8c84ad4a524e6ce7">EasyButtonClicked</a> ()</td></tr>
+<tr class="memdesc:a10c80cd4426008cc8c84ad4a524e6ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when Easy button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a>  <a href="#a10c80cd4426008cc8c84ad4a524e6ce7">More...</a><br /></td></tr>
+<tr class="separator:a10c80cd4426008cc8c84ad4a524e6ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd61162b65eb96874d1b952882fcdb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a8cd61162b65eb96874d1b952882fcdb1">MediumButtonClicked</a> ()</td></tr>
+<tr class="memdesc:a8cd61162b65eb96874d1b952882fcdb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when Medium button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a>  <a href="#a8cd61162b65eb96874d1b952882fcdb1">More...</a><br /></td></tr>
+<tr class="separator:a8cd61162b65eb96874d1b952882fcdb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73230a7a085d29a621593f0d07ab34a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a73230a7a085d29a621593f0d07ab34a2">HardButtonClicked</a> ()</td></tr>
+<tr class="memdesc:a73230a7a085d29a621593f0d07ab34a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when Hard button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a>  <a href="#a73230a7a085d29a621593f0d07ab34a2">More...</a><br /></td></tr>
+<tr class="separator:a73230a7a085d29a621593f0d07ab34a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0338efe693cac9a52735052eb08542c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a0338efe693cac9a52735052eb08542c2">ExitButtonClicked</a> ()</td></tr>
-<tr class="memdesc:a0338efe693cac9a52735052eb08542c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when exit button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame ">GameController</a>  <a href="#a0338efe693cac9a52735052eb08542c2">More...</a><br /></td></tr>
+<tr class="memdesc:a0338efe693cac9a52735052eb08542c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when exit button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a>  <a href="#a0338efe693cac9a52735052eb08542c2">More...</a><br /></td></tr>
 <tr class="separator:a0338efe693cac9a52735052eb08542c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f353ad5a99c77a80322945fe4c8e2eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a0f353ad5a99c77a80322945fe4c8e2eb">NextPitchClicked</a> ()</td></tr>
-<tr class="memdesc:a0f353ad5a99c77a80322945fe4c8e2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when next pitch button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame ">GameController</a>  <a href="#a0f353ad5a99c77a80322945fe4c8e2eb">More...</a><br /></td></tr>
+<tr class="memdesc:a0f353ad5a99c77a80322945fe4c8e2eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when next pitch button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a>  <a href="#a0f353ad5a99c77a80322945fe4c8e2eb">More...</a><br /></td></tr>
 <tr class="separator:a0f353ad5a99c77a80322945fe4c8e2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf0319203ea3b2d8999421a5d8d2d38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a1cf0319203ea3b2d8999421a5d8d2d38">FlagsButtonClicked</a> ()</td></tr>
+<tr class="memdesc:a1cf0319203ea3b2d8999421a5d8d2d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send event when hide flags button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a>  <a href="#a1cf0319203ea3b2d8999421a5d8d2d38">More...</a><br /></td></tr>
+<tr class="separator:a1cf0319203ea3b2d8999421a5d8d2d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd2c0120c66b38986e194cc8267f21e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#aafd2c0120c66b38986e194cc8267f21e">PitchTypeButtonClicked</a> ()</td></tr>
+<tr class="separator:aafd2c0120c66b38986e194cc8267f21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
 Events</h2></td></tr>
-<tr class="memitem:a3b54a281b07d285b2d65a6b98229cede"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a3b54a281b07d285b2d65a6b98229cede">startButtonClicked</a></td></tr>
-<tr class="separator:a3b54a281b07d285b2d65a6b98229cede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1544529b7f816993cfd210464362bb2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#ad1544529b7f816993cfd210464362bb2">easyButtonClicked</a></td></tr>
+<tr class="separator:ad1544529b7f816993cfd210464362bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4176171563d4ce0db2a3cb4c43698a20"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a4176171563d4ce0db2a3cb4c43698a20">mediumButtonClicked</a></td></tr>
+<tr class="separator:a4176171563d4ce0db2a3cb4c43698a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4e7a0cf10e37fa57a1c3f57672d420d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#aa4e7a0cf10e37fa57a1c3f57672d420d">hardButtonClicked</a></td></tr>
+<tr class="separator:aa4e7a0cf10e37fa57a1c3f57672d420d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af23690fd635e7f23542ca113ba6e5c61"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#af23690fd635e7f23542ca113ba6e5c61">nextPitchClicked</a></td></tr>
 <tr class="separator:af23690fd635e7f23542ca113ba6e5c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5b1e2172d13f95a98006179f96367c0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#ac5b1e2172d13f95a98006179f96367c0">exitButtonClicked</a></td></tr>
 <tr class="separator:ac5b1e2172d13f95a98006179f96367c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ecd6b7156c9c62069fecb2074f2c67"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#ae2ecd6b7156c9c62069fecb2074f2c67">flagsButtonClicked</a></td></tr>
+<tr class="separator:ae2ecd6b7156c9c62069fecb2074f2c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a881445f1853a936b98e326c2ba042ca7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_i_events.html#a881445f1853a936b98e326c2ba042ca7">pitchTypeButtonClicked</a></td></tr>
+<tr class="separator:a881445f1853a936b98e326c2ba042ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Buttons like start exit and next pitch for the UI </p>
+<div class="textblock"><p>Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags </p>
 
 <p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00007">7</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -146,6 +165,25 @@ Events</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a10c80cd4426008cc8c84ad4a524e6ce7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UIEvents.EasyButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send event when Easy button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a> </p>
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00021">21</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0338efe693cac9a52735052eb08542c2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -159,9 +197,66 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send event when exit button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame ">GameController</a> </p>
+<p>Send event when exit button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a> </p>
 
-<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00025">25</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00045">45</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1cf0319203ea3b2d8999421a5d8d2d38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UIEvents.FlagsButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send event when hide flags button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a> </p>
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00062">62</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a73230a7a085d29a621593f0d07ab34a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UIEvents.HardButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send event when Hard button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a> </p>
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00037">37</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8cd61162b65eb96874d1b952882fcdb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UIEvents.MediumButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send event when Medium button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a> </p>
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00029">29</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 
 </div>
 </div>
@@ -178,18 +273,18 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send event when next pitch button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame ">GameController</a> </p>
+<p>Send event when next pitch button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot ">GameController</a> </p>
 
-<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00033">33</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00053">53</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a557558561442fe826285077e38c95c24"></a>
+<a class="anchor" id="aafd2c0120c66b38986e194cc8267f21e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void UIEvents.StartButtonClicked </td>
+          <td class="memname">void UIEvents.PitchTypeButtonClicked </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -197,13 +292,33 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Send event when start button clicked. Listened for in <a class="el" href="class_game_controller.html" title="Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame ">GameController</a> </p>
-
-<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00017">17</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00068">68</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Event Documentation</h2>
+<a class="anchor" id="ad1544529b7f816993cfd210464362bb2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> UIEvents.easyButtonClicked</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00010">10</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ac5b1e2172d13f95a98006179f96367c0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +337,73 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00014">14</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae2ecd6b7156c9c62069fecb2074f2c67"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> UIEvents.flagsButtonClicked</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00015">15</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4e7a0cf10e37fa57a1c3f57672d420d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> UIEvents.hardButtonClicked</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00012">12</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4176171563d4ce0db2a3cb4c43698a20"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> UIEvents.mediumButtonClicked</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00011">11</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 
 </div>
 </div>
@@ -244,11 +425,11 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00011">11</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00013">13</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3b54a281b07d285b2d65a6b98229cede"></a>
+<a class="anchor" id="a881445f1853a936b98e326c2ba042ca7"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -256,7 +437,7 @@ Events</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> UIEvents.startButtonClicked</td>
+          <td class="memname"><a class="el" href="class_u_i_events.html#ab297f62bccd2409aa695de14979daf0f">buttonHandler</a> UIEvents.pitchTypeButtonClicked</td>
         </tr>
       </table>
   </td>
@@ -266,7 +447,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00010">10</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
+<p>Definition at line <a class="el" href="_u_i_events_8cs_source.html#l00016">16</a> of file <a class="el" href="_u_i_events_8cs_source.html">UIEvents.cs</a>.</p>
 
 </div>
 </div>
@@ -276,7 +457,7 @@ Events</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 22 2016 15:21:31 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 15 2016 13:50:25 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

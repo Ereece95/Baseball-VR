@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#events">Events</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -95,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>The code for the ball following a path at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It also stops the ball when it hits the ground for now.  
+<p>The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat  
  <a href="class_ball.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Ball:</div>
@@ -110,6 +111,13 @@ Inheritance diagram for Ball:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa7c5a9ef594c67b2e315ca6f9aa72946"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#aa7c5a9ef594c67b2e315ca6f9aa72946">BallHit</a> ()</td></tr>
 <tr class="separator:aa7c5a9ef594c67b2e315ca6f9aa72946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0d84bc63e64e13c31052231415af96"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a2d0d84bc63e64e13c31052231415af96">hitEvent</a> (int distance, bool isFoul, bool isHomerun)</td></tr>
+<tr class="memdesc:a2d0d84bc63e64e13c31052231415af96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up event.  <a href="#a2d0d84bc63e64e13c31052231415af96">More...</a><br /></td></tr>
+<tr class="separator:a2d0d84bc63e64e13c31052231415af96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a231e17090b160eb3474a0c17d64ba7f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a231e17090b160eb3474a0c17d64ba7f3">hideBallFlags</a> ()</td></tr>
+<tr class="separator:a231e17090b160eb3474a0c17d64ba7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a015534449de746bd8708b57c3ba71fe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a015534449de746bd8708b57c3ba71fe1">showBallFlags</a> ()</td></tr>
+<tr class="separator:a015534449de746bd8708b57c3ba71fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -117,14 +125,23 @@ Public Attributes</h2></td></tr>
 <tr class="separator:acad9ea662432b6ca6c5e64115950ac33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65a5e30cf4fcda0dc4c9aebe888ef3fe"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a65a5e30cf4fcda0dc4c9aebe888ef3fe">hand</a></td></tr>
 <tr class="separator:a65a5e30cf4fcda0dc4c9aebe888ef3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7828590a1cbbfd75697ed72cf8f8cc25"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a7828590a1cbbfd75697ed72cf8f8cc25">start</a></td></tr>
+<tr class="separator:a7828590a1cbbfd75697ed72cf8f8cc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60d5cb1763e8ef1e2931a95d0be72272"><td class="memItemLeft" align="right" valign="top">Transform[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a60d5cb1763e8ef1e2931a95d0be72272">pathArray</a></td></tr>
 <tr class="separator:a60d5cb1763e8ef1e2931a95d0be72272"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb8bc4c20b6a86a599a20661acb9a516"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#abb8bc4c20b6a86a599a20661acb9a516">speed</a></td></tr>
-<tr class="separator:abb8bc4c20b6a86a599a20661acb9a516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ae9770ce80db563a8c07483fb17c5d"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#ad1ae9770ce80db563a8c07483fb17c5d">DistDisplay</a></td></tr>
+<tr class="separator:ad1ae9770ce80db563a8c07483fb17c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0767f4424644cb44aa5741e8e06d799b"><td class="memItemLeft" align="right" valign="top">Transform[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a0767f4424644cb44aa5741e8e06d799b">path</a></td></tr>
 <tr class="separator:a0767f4424644cb44aa5741e8e06d799b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e4d6879c0e6b04fa780e101ac82554f"><td class="memItemLeft" align="right" valign="top">Animation&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a9e4d6879c0e6b04fa780e101ac82554f">Throw</a></td></tr>
 <tr class="separator:a9e4d6879c0e6b04fa780e101ac82554f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac0453872bc1a5f81c620e1d8e0a669"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a2ac0453872bc1a5f81c620e1d8e0a669">plate</a></td></tr>
+<tr class="separator:a2ac0453872bc1a5f81c620e1d8e0a669"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a03f451731a1b4b6d656dfcac441a0d75"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a03f451731a1b4b6d656dfcac441a0d75">flagVis</a></td></tr>
+<tr class="separator:a03f451731a1b4b6d656dfcac441a0d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
 Events</h2></td></tr>
@@ -132,23 +149,45 @@ Events</h2></td></tr>
 <tr class="separator:a58700e28710627524386272459258a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7761d1549a457fcbba713ea70d17afb8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_ball.html#aa7c5a9ef594c67b2e315ca6f9aa72946">BallHit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a7761d1549a457fcbba713ea70d17afb8">ballNotHit</a></td></tr>
 <tr class="separator:a7761d1549a457fcbba713ea70d17afb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8219f157afb6f4e3e4ee8650e8298981"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_ball.html#a2d0d84bc63e64e13c31052231415af96">hitEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a8219f157afb6f4e3e4ee8650e8298981">distanceHit</a></td></tr>
+<tr class="separator:a8219f157afb6f4e3e4ee8650e8298981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:aa67e6c2c30de319b7801058a2be9e86a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#aa67e6c2c30de319b7801058a2be9e86a">OnEnable</a> ()</td></tr>
+<tr class="separator:aa67e6c2c30de319b7801058a2be9e86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af36b225adb61b34a2f31f13e1357fbd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#af36b225adb61b34a2f31f13e1357fbd0">OnDisable</a> ()</td></tr>
+<tr class="separator:af36b225adb61b34a2f31f13e1357fbd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c01669ff303c1de83ef95db96dd555f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a8c01669ff303c1de83ef95db96dd555f">Awake</a> ()</td></tr>
-<tr class="memdesc:a8c01669ff303c1de83ef95db96dd555f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The random number is set for whether curveball, changeup, and fastball and whether the ball is hit is set to false  <a href="#a8c01669ff303c1de83ef95db96dd555f">More...</a><br /></td></tr>
+<tr class="memdesc:a8c01669ff303c1de83ef95db96dd555f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pitch from the stats with Paths and set the flags for when the ball hits the ground to true  <a href="#a8c01669ff303c1de83ef95db96dd555f">More...</a><br /></td></tr>
 <tr class="separator:a8c01669ff303c1de83ef95db96dd555f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99b273b68b3e68e7ecc547781c00f23a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a99b273b68b3e68e7ecc547781c00f23a">Start</a> ()</td></tr>
-<tr class="memdesc:a99b273b68b3e68e7ecc547781c00f23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">num gets the child count of the random path of either changeup, curveball, or fastball chosen  <a href="#a99b273b68b3e68e7ecc547781c00f23a">More...</a><br /></td></tr>
+<tr class="memdesc:a99b273b68b3e68e7ecc547781c00f23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">num gets the child count of the path for the pitch chosen while shifting it for the quadrant chosen  <a href="#a99b273b68b3e68e7ecc547781c00f23a">More...</a><br /></td></tr>
 <tr class="separator:a99b273b68b3e68e7ecc547781c00f23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a416edd5ceab970ca26f787363e7ccb22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a416edd5ceab970ca26f787363e7ccb22">Update</a> ()</td></tr>
+<tr class="memdesc:a416edd5ceab970ca26f787363e7ccb22"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ball follows the hand position until the animation is done The ball then iterates through the array that it was assigned too and when it collides with the bat the ball is sent in a random direction and with a random force with r  <a href="#a416edd5ceab970ca26f787363e7ccb22">More...</a><br /></td></tr>
 <tr class="separator:a416edd5ceab970ca26f787363e7ccb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991581c742652e59da25a3ae4b62f064"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a991581c742652e59da25a3ae4b62f064">OnTriggerEnter</a> (Collider collision)</td></tr>
+<tr class="memdesc:a991581c742652e59da25a3ae4b62f064"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ball stops when it hits the catcher and calls <a class="el" href="class_ball.html#a7761d1549a457fcbba713ea70d17afb8">ballNotHit()</a>  <a href="#a991581c742652e59da25a3ae4b62f064">More...</a><br /></td></tr>
+<tr class="separator:a991581c742652e59da25a3ae4b62f064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa92e020a685ff34b54f835d07242aab4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#aa92e020a685ff34b54f835d07242aab4">OnCollisionEnter</a> (Collision Col)</td></tr>
-<tr class="memdesc:aa92e020a685ff34b54f835d07242aab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ball stops when it hits the ground  <a href="#aa92e020a685ff34b54f835d07242aab4">More...</a><br /></td></tr>
+<tr class="memdesc:aa92e020a685ff34b54f835d07242aab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ball stops when it hits the ground Calculates the distance and places a flag so the user cna see where the ball touched the ground  <a href="#aa92e020a685ff34b54f835d07242aab4">More...</a><br /></td></tr>
 <tr class="separator:aa92e020a685ff34b54f835d07242aab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2846c1d19e4ab19a24bca5c284ccde67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a2846c1d19e4ab19a24bca5c284ccde67">OnTriggerEnter</a> (Collider catcher)</td></tr>
-<tr class="memdesc:a2846c1d19e4ab19a24bca5c284ccde67"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ball stops when it hits the catcher and calls <a class="el" href="class_ball.html#a7761d1549a457fcbba713ea70d17afb8">ballNotHit()</a>  <a href="#a2846c1d19e4ab19a24bca5c284ccde67">More...</a><br /></td></tr>
-<tr class="separator:a2846c1d19e4ab19a24bca5c284ccde67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3cc5af36ce03aebfaef626eb340c2ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#ae3cc5af36ce03aebfaef626eb340c2ea">shift</a> ()</td></tr>
+<tr class="memdesc:ae3cc5af36ce03aebfaef626eb340c2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the balls path to go into the quadrant decided by the pitchers stats  <a href="#ae3cc5af36ce03aebfaef626eb340c2ea">More...</a><br /></td></tr>
+<tr class="separator:ae3cc5af36ce03aebfaef626eb340c2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af588ead7231192ac859d84c1cdad818a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#af588ead7231192ac859d84c1cdad818a">rethrowpitch</a> ()</td></tr>
+<tr class="memdesc:af588ead7231192ac859d84c1cdad818a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets everything back to its initial value to rethrow the pitch  <a href="#af588ead7231192ac859d84c1cdad818a">More...</a><br /></td></tr>
+<tr class="separator:af588ead7231192ac859d84c1cdad818a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a258559bcb9c9b924a4e57080c3a86c5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a258559bcb9c9b924a4e57080c3a86c5a">ChangespeedE</a> ()</td></tr>
+<tr class="memdesc:a258559bcb9c9b924a4e57080c3a86c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Easy speed of 10  <a href="#a258559bcb9c9b924a4e57080c3a86c5a">More...</a><br /></td></tr>
+<tr class="separator:a258559bcb9c9b924a4e57080c3a86c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6006cb895c3d0b93a3f4c706cf0d1ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#af6006cb895c3d0b93a3f4c706cf0d1ae">ChangespeedM</a> ()</td></tr>
+<tr class="memdesc:af6006cb895c3d0b93a3f4c706cf0d1ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Medium speed of 15  <a href="#af6006cb895c3d0b93a3f4c706cf0d1ae">More...</a><br /></td></tr>
+<tr class="separator:af6006cb895c3d0b93a3f4c706cf0d1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ab32bc52776ce112b4e377534c85fb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a7ab32bc52776ce112b4e377534c85fb1">ChangespeedH</a> ()</td></tr>
+<tr class="memdesc:a7ab32bc52776ce112b4e377534c85fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hard speed of 20  <a href="#a7ab32bc52776ce112b4e377534c85fb1">More...</a><br /></td></tr>
+<tr class="separator:a7ab32bc52776ce112b4e377534c85fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -156,6 +195,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1384fabbf245440f9f6c1bff27aecc8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac97644d21ebae7027bd98125c2d518bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#ac97644d21ebae7027bd98125c2d518bd">x</a> = 0</td></tr>
 <tr class="separator:ac97644d21ebae7027bd98125c2d518bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8bc4c20b6a86a599a20661acb9a516"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#abb8bc4c20b6a86a599a20661acb9a516">speed</a></td></tr>
+<tr class="separator:abb8bc4c20b6a86a599a20661acb9a516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2e817c6eb45f2f72fa0c80e0c1ffcbd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#ac2e817c6eb45f2f72fa0c80e0c1ffcbd">throwspeed</a></td></tr>
+<tr class="separator:ac2e817c6eb45f2f72fa0c80e0c1ffcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64a29fb458100616844ce9e2ec5e6a2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a64a29fb458100616844ce9e2ec5e6a2b">hit</a></td></tr>
 <tr class="separator:a64a29fb458100616844ce9e2ec5e6a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8320da87394a0aa3c55eb92995ebe2ed"><td class="memItemLeft" align="right" valign="top">Rigidbody&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a8320da87394a0aa3c55eb92995ebe2ed">RB</a></td></tr>
@@ -166,16 +209,21 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a96f8b2c1b67f5d0c7a2e482eb8e60536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dd4927f78b2e47815581ef3f8bc6434"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_controller.html">GameController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a3dd4927f78b2e47815581ef3f8bc6434">gc</a></td></tr>
 <tr class="separator:a3dd4927f78b2e47815581ef3f8bc6434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f75f2d38ba09fe1edf45010145f0e8b"><td class="memItemLeft" align="right" valign="top">List&lt; GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a8f75f2d38ba09fe1edf45010145f0e8b">_flags</a> = new List&lt;GameObject&gt;()</td></tr>
+<tr class="separator:a8f75f2d38ba09fe1edf45010145f0e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1af93fff0c90b3fc74f00651000e3b78"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a1af93fff0c90b3fc74f00651000e3b78">i</a> = 0</td></tr>
 <tr class="separator:a1af93fff0c90b3fc74f00651000e3b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4964e7a69d913978219bcad5390f84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#a7d4964e7a69d913978219bcad5390f84">collideBat</a> = false</td></tr>
+<tr class="separator:a7d4964e7a69d913978219bcad5390f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7a7dfbe705c78f7a906ee5e987c70f4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#ac7a7dfbe705c78f7a906ee5e987c70f4">num24</a> = 0f</td></tr>
-<tr class="memdesc:ac7a7dfbe705c78f7a906ee5e987c70f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ball follows the hand position until the animation is done The ball then iterates through the array that it was assigned too and when the spacebar is hit the ball is sent in a random direction and with a random force with r  <a href="#ac7a7dfbe705c78f7a906ee5e987c70f4">More...</a><br /></td></tr>
 <tr class="separator:ac7a7dfbe705c78f7a906ee5e987c70f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c15ad6e83f718e11c26688a27885a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ball.html#af1c15ad6e83f718e11c26688a27885a0">contin</a> = false</td></tr>
+<tr class="separator:af1c15ad6e83f718e11c26688a27885a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The code for the ball following a path at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It also stops the ball when it hits the ground for now. </p>
+<div class="textblock"><p>The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat </p>
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00007">7</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00009">9</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a8c01669ff303c1de83ef95db96dd555f"></a>
 <div class="memitem">
@@ -198,9 +246,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The random number is set for whether curveball, changeup, and fastball and whether the ball is hit is set to false </p>
+<p>Get the pitch from the stats with Paths and set the flags for when the ball hits the ground to true </p>
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00031">31</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00054">54</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -216,6 +264,138 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a258559bcb9c9b924a4e57080c3a86c5a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.ChangespeedE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Easy speed of 10 </p>
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00401">401</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ab32bc52776ce112b4e377534c85fb1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.ChangespeedH </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Hard speed of 20 </p>
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00415">415</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af6006cb895c3d0b93a3f4c706cf0d1ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.ChangespeedM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Medium speed of 15 </p>
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00408">408</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a231e17090b160eb3474a0c17d64ba7f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.hideBallFlags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00420">420</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2d0d84bc63e64e13c31052231415af96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void Ball.hitEvent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isFoul</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isHomerun</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set up event. </p>
 
 </div>
 </div>
@@ -241,7 +421,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>the ball stops when it hits the ground </p>
+<p>the ball stops when it hits the ground Calculates the distance and places a flag so the user cna see where the ball touched the ground </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Col</td><td>Used to know when ball hits the field and when to stop it</td></tr>
@@ -249,11 +429,61 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00137">137</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00202">202</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2846c1d19e4ab19a24bca5c284ccde67"></a>
+<a class="anchor" id="af36b225adb61b34a2f31f13e1357fbd0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.OnDisable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00045">45</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa67e6c2c30de319b7801058a2be9e86a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.OnEnable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00038">38</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a991581c742652e59da25a3ae4b62f064"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -264,7 +494,7 @@ Private Attributes</h2></td></tr>
           <td class="memname">void Ball.OnTriggerEnter </td>
           <td>(</td>
           <td class="paramtype">Collider&#160;</td>
-          <td class="paramname"><em>catcher</em></td><td>)</td>
+          <td class="paramname"><em>collision</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -278,12 +508,83 @@ Private Attributes</h2></td></tr>
 <p>the ball stops when it hits the catcher and calls <a class="el" href="class_ball.html#a7761d1549a457fcbba713ea70d17afb8">ballNotHit()</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">catcher</td><td></td></tr>
+    <tr><td class="paramname">collision</td><td>Test to see where it landed and whether it was a homerun or not</td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00149">149</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00177">177</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af588ead7231192ac859d84c1cdad818a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.rethrowpitch </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets everything back to its initial value to rethrow the pitch </p>
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00376">376</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae3cc5af36ce03aebfaef626eb340c2ea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.shift </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Change the balls path to go into the quadrant decided by the pitchers stats </p>
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00248">248</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a015534449de746bd8708b57c3ba71fe1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ball.showBallFlags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00427">427</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -308,9 +609,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>num gets the child count of the random path of either changeup, curveball, or fastball chosen </p>
+<p>num gets the child count of the path for the pitch chosen while shifting it for the quadrant chosen </p>
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00043">43</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00070">70</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -335,11 +636,35 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00061">61</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>The ball follows the hand position until the animation is done The ball then iterates through the array that it was assigned too and when it collides with the bat the ball is sent in a random direction and with a random force with r </p>
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00097">97</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8f75f2d38ba09fe1edf45010145f0e8b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;GameObject&gt; Ball._flags = new List&lt;GameObject&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00033">33</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="acad9ea662432b6ca6c5e64115950ac33"></a>
 <div class="memitem">
 <div class="memproto">
@@ -350,7 +675,87 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00009">9</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00011">11</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7d4964e7a69d913978219bcad5390f84"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ball.collideBat = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00088">88</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af1c15ad6e83f718e11c26688a27885a0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ball.contin = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00090">90</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad1ae9770ce80db563a8c07483fb17c5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text Ball.DistDisplay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00021">21</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a03f451731a1b4b6d656dfcac441a0d75"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ball.flagVis</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00015">15</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -372,7 +777,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00024">24</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00030">30</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -386,7 +791,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00010">10</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00012">12</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -408,7 +813,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00016">16</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00022">22</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -430,7 +835,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00052">52</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00087">87</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -452,7 +857,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00019">19</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00025">25</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -474,9 +879,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The ball follows the hand position until the animation is done The ball then iterates through the array that it was assigned too and when the spacebar is hit the ball is sent in a random direction and with a random force with r </p>
-
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00060">60</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00089">89</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -490,7 +893,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00018">18</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00024">24</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -504,7 +907,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00014">14</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00018">18</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -526,7 +929,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00020">20</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00026">26</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ac0453872bc1a5f81c620e1d8e0a669"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform Ball.plate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00032">32</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -548,21 +965,43 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00017">17</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00023">23</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="abb8bc4c20b6a86a599a20661acb9a516"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">float Ball.speed</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00015">15</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00019">19</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7828590a1cbbfd75697ed72cf8f8cc25"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform Ball.start</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00017">17</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -576,7 +1015,29 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00025">25</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00031">31</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac2e817c6eb45f2f72fa0c80e0c1ffcbd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Ball.throwspeed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00020">20</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -598,7 +1059,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00011">11</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00013">13</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -620,7 +1081,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00012">12</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00014">14</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -643,7 +1104,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00022">22</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00028">28</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -665,7 +1126,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00023">23</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00029">29</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8219f157afb6f4e3e4ee8650e8298981"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ball.html#a2d0d84bc63e64e13c31052231415af96">hitEvent</a> Ball.distanceHit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_ball_8cs_source.html#l00036">36</a> of file <a class="el" href="_ball_8cs_source.html">Ball.cs</a>.</p>
 
 </div>
 </div>
@@ -675,7 +1158,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 22 2016 15:21:30 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 15 2016 13:50:22 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

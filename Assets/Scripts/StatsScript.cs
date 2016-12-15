@@ -2,12 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// The file with all the statistics from a pitcher is loaded and placed in vaiables
+/// </summary>
 public class StatsScript : MonoBehaviour
 {
 
     public TextAsset file;
 
-
+    /// <summary>
+    /// Loads the file where the stats are stored
+    /// </summary>
     void Start()
     {
         Load(file);

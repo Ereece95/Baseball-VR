@@ -5,8 +5,7 @@ using System.Collections.Generic;
 
 
 /// <summary>
-/// The code for the ball following a path at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It also stops the ball when it hits the ground for now.
-/// </summary>
+/// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
 public class Ball : MonoBehaviour
 {
     public GameObject ball;
@@ -35,11 +34,7 @@ public class Ball : MonoBehaviour
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
     public static event hitEvent distanceHit;   
-    /// <summary>
-    /// The random number is set for whether curveball, changeup, and fastball
-    /// and whether the ball is hit is set to false
-    /// </summary>
-    /// 
+    
     void OnEnable()
     {
         UIEvents.nextPitchClicked += rethrowpitch;
@@ -52,13 +47,13 @@ public class Ball : MonoBehaviour
         UIEvents.nextPitchClicked -= rethrowpitch;
     }
    
-
+    /// <summary>
+    /// Get the pitch from the stats with Paths
+    /// and set the flags for when the ball hits the ground to true
+    /// </summary>
     void Awake()
     {
        
-        //pathArray[0] = transform.Find("Changeup path");
-        //pathArray[1] = transform.Find("Fastball path");
-        //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
 
@@ -67,14 +62,13 @@ public class Ball : MonoBehaviour
         flagVis = true;
     }
 
-    // Use this for initialization
+   
     /// <summary>
-    /// num gets the child count of the random path of either changeup, curveball, or fastball chosen
-    ///
+    /// num gets the child count of the path for the pitch chosen
+    ///while shifting it for the quadrant chosen
     /// </summary>
     void Start()
     {
-        
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
@@ -87,22 +81,19 @@ public class Ball : MonoBehaviour
         }
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
-        
         plate = GameObject.Find("Home Plate").transform;
 
     }
     int i = 0;
     bool collideBat = false; //to tell update if ball collided with bat
-    // Update is called once per frame
+    float num24 = 0f;
+    bool contin = false;
     /// <summary>
     /// The ball follows the hand position until the animation is done
     /// The ball then iterates through the array that it was assigned too
-    /// and when the spacebar is hit the ball is sent in a random direction
+    /// and when it collides with the bat the ball is sent in a random direction
     /// and with a random force with r
     /// </summary>
-    float num24 = 0f;
-    bool contin = false;
-    
     void Update()
     {
       
@@ -182,7 +173,7 @@ public class Ball : MonoBehaviour
     /// <summary>
     /// the ball stops when it hits the catcher and calls ballNotHit()
     /// </summary>
-    /// <param name="catcher"></param>
+    /// <param name="collision">Test to see where it landed and whether it was a homerun or not</param>
     void OnTriggerEnter(Collider collision)
     {
         bool isHomerun = false;
@@ -204,6 +195,8 @@ public class Ball : MonoBehaviour
     //Stop the ball from moving when it contacts the field
     /// <summary>
     /// the ball stops when it hits the ground
+    /// Calculates the distance and places a flag so the user cna see where the ball touched the ground
+    /// 
     /// </summary>
     /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
@@ -249,6 +242,9 @@ public class Ball : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Change the balls path to go into the quadrant decided by the pitchers stats
+    /// </summary>
     void shift()
     {
         int quadrent = StatsState.qaudrent;
@@ -374,6 +370,9 @@ public class Ball : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Sets everything back to its initial value to rethrow the pitch
+    /// </summary>
     void rethrowpitch()
     {
         ball.transform.position = hand.transform.position;
@@ -396,14 +395,23 @@ public class Ball : MonoBehaviour
         }
         shift();
     }
+    /// <summary>
+    /// Easy speed of 10
+    /// </summary>
     void ChangespeedE()
     {
         speed = 10;
     }
+    /// <summary>
+    /// Medium speed of 15
+    /// </summary>
     void ChangespeedM()
     {
         speed = 15;
     }
+    /// <summary>
+    /// Hard speed of 20
+    /// </summary>
     void ChangespeedH()
     {
         speed = 20;

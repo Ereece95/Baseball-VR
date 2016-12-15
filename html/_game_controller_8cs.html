@@ -98,7 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html">GameController</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame  <a href="class_game_controller.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot  <a href="class_game_controller.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -114,9 +114,12 @@ Enumerations</h2></td></tr>
 <a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a577e083dd55bd87a8c790182b3bcae96">States.BallHit</a>, 
 <a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a52bfda5f84c21967387ded3a51088497">States.BallNotHit</a>, 
 <br />
-&#160;&#160;<a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a16232675bbffb09d55cae5d9f675d1d9">States.WaitForInput</a>, 
+&#160;&#160;<a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a4e54974111474ee4e1be3f64c9c8cbf4">States.WaitForCollision</a>, 
+<a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a16232675bbffb09d55cae5d9f675d1d9">States.WaitForInput</a>, 
 <a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a8f497c1a3d15af9e0c215019f26b887d">States.Delay</a>, 
-<a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a4166c4566d4ee3c335e2f09f7f0d5d0b">States.ExitGame</a>
+<a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a4166c4566d4ee3c335e2f09f7f0d5d0b">States.ExitGame</a>, 
+<br />
+&#160;&#160;<a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a85a5b5c4fe56d4fe6e4a07589fe40f59">States.StatsGot</a>
 <br />
  }<tr class="memdesc:a808e5cd4979462d3bbe3070d7d147444"><td class="mdescLeft">&#160;</td><td class="mdescRight">The states the game may be in  <a href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444">More...</a><br /></td></tr>
 </td></tr>
@@ -159,22 +162,26 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a808e5cd4979462d3bbe3070d7d147444a52bfda5f84c21967387ded3a51088497"></a>BallNotHit&#160;</td><td class="fielddoc">
 </td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a808e5cd4979462d3bbe3070d7d147444a4e54974111474ee4e1be3f64c9c8cbf4"></a>WaitForCollision&#160;</td><td class="fielddoc">
+</td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a808e5cd4979462d3bbe3070d7d147444a16232675bbffb09d55cae5d9f675d1d9"></a>WaitForInput&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a808e5cd4979462d3bbe3070d7d147444a8f497c1a3d15af9e0c215019f26b887d"></a>Delay&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a808e5cd4979462d3bbe3070d7d147444a4166c4566d4ee3c335e2f09f7f0d5d0b"></a>ExitGame&#160;</td><td class="fielddoc">
 </td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a808e5cd4979462d3bbe3070d7d147444a85a5b5c4fe56d4fe6e4a07589fe40f59"></a>StatsGot&#160;</td><td class="fielddoc">
+</td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00011">11</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00016">16</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 22 2016 15:21:27 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 15 2016 13:50:20 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

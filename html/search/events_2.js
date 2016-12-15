@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exitbuttonclicked',['exitButtonClicked',['../class_u_i_events.html#ac5b1e2172d13f95a98006179f96367c0',1,'UIEvents']]]
+  ['distancehit',['distanceHit',['../class_ball.html#a8219f157afb6f4e3e4ee8650e8298981',1,'Ball']]]
 ];

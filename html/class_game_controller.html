@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#events">Events</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -95,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame  
+<p>Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot  
  <a href="class_game_controller.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for GameController:</div>
@@ -113,6 +114,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5729636ec46fe598b2ee7515df81b216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a699a9e7d594774992e69abeb125a3dbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444">States</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a699a9e7d594774992e69abeb125a3dbd">GetState</a> ()</td></tr>
 <tr class="separator:a699a9e7d594774992e69abeb125a3dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a3f976dbbc6dc33239f3b99f769b758e3"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a3f976dbbc6dc33239f3b99f769b758e3">endStats</a></td></tr>
+<tr class="separator:a3f976dbbc6dc33239f3b99f769b758e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -136,10 +142,15 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a9dfacd55d5cf333c9e7a1776b235a813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a9dfacd55d5cf333c9e7a1776b235a813">OnDisable</a> ()</td></tr>
 <tr class="separator:a9dfacd55d5cf333c9e7a1776b235a813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a89277529cadb49af7d55eba3bbf056"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a5a89277529cadb49af7d55eba3bbf056">Update</a> ()</td></tr>
+<tr class="memdesc:a5a89277529cadb49af7d55eba3bbf056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch between states  <a href="#a5a89277529cadb49af7d55eba3bbf056">More...</a><br /></td></tr>
 <tr class="separator:a5a89277529cadb49af7d55eba3bbf056"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af94982e55af189bf357b1cd863d8b942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#af94982e55af189bf357b1cd863d8b942">EventStartButtonClicked</a> ()</td></tr>
-<tr class="memdesc:af94982e55af189bf357b1cd863d8b942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start Button was Clicked  <a href="#af94982e55af189bf357b1cd863d8b942">More...</a><br /></td></tr>
-<tr class="separator:af94982e55af189bf357b1cd863d8b942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e7143e1902f735c24f3d49e83760ec8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a4e7143e1902f735c24f3d49e83760ec8">EventEasyButtonClicked</a> ()</td></tr>
+<tr class="memdesc:a4e7143e1902f735c24f3d49e83760ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start Button was Clicked  <a href="#a4e7143e1902f735c24f3d49e83760ec8">More...</a><br /></td></tr>
+<tr class="separator:a4e7143e1902f735c24f3d49e83760ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca3fc4accd2c879df550407e3f7e617"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a0ca3fc4accd2c879df550407e3f7e617">EventMediumButtonClicked</a> ()</td></tr>
+<tr class="separator:a0ca3fc4accd2c879df550407e3f7e617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0113bf5f8628dd4d0db220aa2c0127de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a0113bf5f8628dd4d0db220aa2c0127de">EventHardButtonClicked</a> ()</td></tr>
+<tr class="separator:a0113bf5f8628dd4d0db220aa2c0127de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e5378f0c1a70b486eca2b5c8b220c5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a9e5378f0c1a70b486eca2b5c8b220c5f">EventExitButtonClicked</a> ()</td></tr>
 <tr class="memdesc:a9e5378f0c1a70b486eca2b5c8b220c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit Button was clicked  <a href="#a9e5378f0c1a70b486eca2b5c8b220c5f">More...</a><br /></td></tr>
 <tr class="separator:a9e5378f0c1a70b486eca2b5c8b220c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,28 +167,70 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a2a47ebf5e5e0446ff93739a319e4b657"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61ec555f888ea4345f892eea86bc57c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a61ec555f888ea4345f892eea86bc57c5">EventBallNotHit</a> ()</td></tr>
 <tr class="separator:a61ec555f888ea4345f892eea86bc57c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae89c69ed01ca798e0d02eac6c1ce73f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ae89c69ed01ca798e0d02eac6c1ce73f9">OnHitDistanceEvent</a> (int distance, bool isFoul, bool isHomerun)</td></tr>
+<tr class="separator:ae89c69ed01ca798e0d02eac6c1ce73f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc714a37c9bbb665560e9aa78f2c825"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#abdc714a37c9bbb665560e9aa78f2c825">DisplayExitStats</a> ()</td></tr>
+<tr class="separator:abdc714a37c9bbb665560e9aa78f2c825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f6e80edb45bf38932382acd01ec865"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a35f6e80edb45bf38932382acd01ec865">EventFlagButton</a> ()</td></tr>
+<tr class="separator:a35f6e80edb45bf38932382acd01ec865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d7c697f75bf122dac22be0418564eb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a0d7c697f75bf122dac22be0418564eb8">EventPitchTypeButton</a> ()</td></tr>
+<tr class="separator:a0d7c697f75bf122dac22be0418564eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:aa211fbf7484f7b8397139496b3d87ef3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_monster_love_1_1_state_machine_1_1_state_machine.html">StateMachine</a>&lt; <a class="el" href="_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444">States</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#aa211fbf7484f7b8397139496b3d87ef3">gcFSM</a></td></tr>
 <tr class="separator:aa211fbf7484f7b8397139496b3d87ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99013ba370f7f056535c56b1943def60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ball.html">Ball</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a99013ba370f7f056535c56b1943def60">ball</a></td></tr>
+<tr class="separator:a99013ba370f7f056535c56b1943def60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4be0f6d498e99b1bc6167e010ec7819"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_display_pitch.html">DisplayPitch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ad4be0f6d498e99b1bc6167e010ec7819">dsplyPitch</a></td></tr>
+<tr class="separator:ad4be0f6d498e99b1bc6167e010ec7819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9c3f838d1ddeddcbe3eb47c0ee972d9"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ab9c3f838d1ddeddcbe3eb47c0ee972d9">hit</a></td></tr>
 <tr class="separator:ab9c3f838d1ddeddcbe3eb47c0ee972d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae754af9323dbd6b5ee5c980d4e6e73d3"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ae754af9323dbd6b5ee5c980d4e6e73d3">audio</a></td></tr>
-<tr class="separator:ae754af9323dbd6b5ee5c980d4e6e73d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a279aa051b0d3aafc771e064a9761d5a2"><td class="memItemLeft" align="right" valign="top">Animation&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a279aa051b0d3aafc771e064a9761d5a2">pitch</a></td></tr>
-<tr class="separator:a279aa051b0d3aafc771e064a9761d5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85e0eef15990f27ec907f8419ed52719"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a85e0eef15990f27ec907f8419ed52719">audioS</a></td></tr>
 <tr class="separator:a85e0eef15990f27ec907f8419ed52719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33dceeeaa871dbc56a290e25d346f8d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_update_stats.html">UpdateStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a33dceeeaa871dbc56a290e25d346f8d9">stats</a></td></tr>
 <tr class="separator:a33dceeeaa871dbc56a290e25d346f8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f2437bcbad3756c49d47e107ecc9999"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a4f2437bcbad3756c49d47e107ecc9999">audioObject</a></td></tr>
 <tr class="separator:a4f2437bcbad3756c49d47e107ecc9999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac35f9ebd3f402a2e5d9d716e2e1bc128"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ac35f9ebd3f402a2e5d9d716e2e1bc128">Strike</a></td></tr>
+<tr class="separator:ac35f9ebd3f402a2e5d9d716e2e1bc128"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee31e6e65462a86e440769890ef122fb"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#aee31e6e65462a86e440769890ef122fb">audioStrike</a></td></tr>
+<tr class="separator:aee31e6e65462a86e440769890ef122fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085cfab59f73a627919a3dc9e55563bb"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a085cfab59f73a627919a3dc9e55563bb">Cheer</a></td></tr>
+<tr class="separator:a085cfab59f73a627919a3dc9e55563bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1585e61d6a917261adee28428610ca85"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a1585e61d6a917261adee28428610ca85">audioCheer</a></td></tr>
+<tr class="separator:a1585e61d6a917261adee28428610ca85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a279aa051b0d3aafc771e064a9761d5a2"><td class="memItemLeft" align="right" valign="top">Animation&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a279aa051b0d3aafc771e064a9761d5a2">pitch</a></td></tr>
+<tr class="separator:a279aa051b0d3aafc771e064a9761d5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c82297be346c9e337d4d7f1a676cd3"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a02c82297be346c9e337d4d7f1a676cd3">Pitcher</a></td></tr>
+<tr class="separator:a02c82297be346c9e337d4d7f1a676cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad826e92fb3ac4b4124d3ec925f251e66"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ad826e92fb3ac4b4124d3ec925f251e66">startmenu</a></td></tr>
+<tr class="separator:ad826e92fb3ac4b4124d3ec925f251e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a94f943fe2c0dff9baf25d0b2a17579"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a8a94f943fe2c0dff9baf25d0b2a17579">startmenubg</a></td></tr>
+<tr class="separator:a8a94f943fe2c0dff9baf25d0b2a17579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7271aefa9caa098ad785b1835db145da"><td class="memItemLeft" align="right" valign="top">CanvasGroup&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a7271aefa9caa098ad785b1835db145da">endStatsCanvas</a></td></tr>
+<tr class="separator:a7271aefa9caa098ad785b1835db145da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d9b87caba873be976ed25d00a36ee3"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_hit_stats.html">HitStats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a29d9b87caba873be976ed25d00a36ee3">hitStats</a> = null</td></tr>
+<tr class="separator:a29d9b87caba873be976ed25d00a36ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade735b3c17196a2c3eb743ff0c0f5d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_hit_stats.html">HitStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ade735b3c17196a2c3eb743ff0c0f5d12">hs</a> = null</td></tr>
+<tr class="separator:ade735b3c17196a2c3eb743ff0c0f5d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13559aec3e5f68dc2f4cc226c25cbee9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ball.html">Ball</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a13559aec3e5f68dc2f4cc226c25cbee9">Send</a> = null</td></tr>
+<tr class="separator:a13559aec3e5f68dc2f4cc226c25cbee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab14d55abc71905331a6f7a32251efd83"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ab14d55abc71905331a6f7a32251efd83">topStats1</a></td></tr>
+<tr class="separator:ab14d55abc71905331a6f7a32251efd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878e27f1c0969d20d56a93bfaacb6a8c"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a878e27f1c0969d20d56a93bfaacb6a8c">topStats2</a></td></tr>
+<tr class="separator:a878e27f1c0969d20d56a93bfaacb6a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabcc555ed0d75c53b210eb26b6bfc748"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#aabcc555ed0d75c53b210eb26b6bfc748">farthestHit</a></td></tr>
+<tr class="separator:aabcc555ed0d75c53b210eb26b6bfc748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a573ea80d0001bcbc2a328132a2c9d083"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a573ea80d0001bcbc2a328132a2c9d083">averageHit</a></td></tr>
+<tr class="separator:a573ea80d0001bcbc2a328132a2c9d083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d4299e830ac5e2ff5446101c125f4d"><td class="memItemLeft" align="right" valign="top">Text&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a69d4299e830ac5e2ff5446101c125f4d">battingAvgHit</a></td></tr>
+<tr class="separator:a69d4299e830ac5e2ff5446101c125f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Switch between states so it only runs certain items when in the correct state States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame </p>
+<div class="textblock"><p>Switch between states so it only runs certain items when in the correct state States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00031">31</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00038">38</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1dfa0b843c71b7013f101e200613e8b5"></a>
 <div class="memitem">
@@ -202,7 +255,32 @@ Private Attributes</h2></td></tr>
 
 <p>Implement Singleton Initialize StateMachine </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00060">60</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00074">74</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abdc714a37c9bbb665560e9aa78f2c825"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.DisplayExitStats </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00318">318</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -227,7 +305,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00200">200</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00289">289</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -252,7 +330,34 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00205">205</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00296">296</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e7143e1902f735c24f3d49e83760ec8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.EventEasyButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start Button was Clicked </p>
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00214">214</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -279,7 +384,82 @@ Private Attributes</h2></td></tr>
 
 <p>Exit Button was clicked </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00165">165</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00242">242</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a35f6e80edb45bf38932382acd01ec865"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.EventFlagButton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00373">373</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0113bf5f8628dd4d0db220aa2c0127de"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.EventHardButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00231">231</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ca3fc4accd2c879df550407e3f7e617"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.EventMediumButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00223">223</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -306,11 +486,11 @@ Private Attributes</h2></td></tr>
 
 <p>Next Pitch Button Clicked TODO: Update to animation instead of reload scene </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00174">174</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00259">259</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af94982e55af189bf357b1cd863d8b942"></a>
+<a class="anchor" id="a0d7c697f75bf122dac22be0418564eb8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -318,7 +498,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GameController.EventStartButtonClicked </td>
+          <td class="memname">void GameController.EventPitchTypeButton </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -331,9 +511,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Start Button was Clicked </p>
-
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00157">157</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00387">387</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -368,7 +546,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00209">209</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00301">301</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -396,7 +574,7 @@ Private Attributes</h2></td></tr>
 <p>State Machine Logic for ThrowPitch </p>
 <p>&lt;Wait for animation to play </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00182">182</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00267">267</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -423,7 +601,7 @@ Private Attributes</h2></td></tr>
 
 <p></p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00096">96</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00139">139</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -450,7 +628,49 @@ Private Attributes</h2></td></tr>
 
 <p>Events we will listen for </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00081">81</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00121">121</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae89c69ed01ca798e0d02eac6c1ce73f9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.OnHitDistanceEvent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isFoul</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isHomerun</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00306">306</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -485,7 +705,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00195">195</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00284">284</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -510,14 +730,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
+<p>Switch between states </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00108">108</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00156">156</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="ae754af9323dbd6b5ee5c980d4e6e73d3"></a>
+<a class="anchor" id="a1585e61d6a917261adee28428610ca85"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -525,7 +745,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">AudioSource GameController.audio</td>
+          <td class="memname">AudioSource GameController.audioCheer</td>
         </tr>
       </table>
   </td>
@@ -535,7 +755,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00049">49</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00059">59</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -557,7 +777,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00054">54</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00055">55</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -579,7 +799,197 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00052">52</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00053">53</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee31e6e65462a86e440769890ef122fb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource GameController.audioStrike</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00057">57</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a573ea80d0001bcbc2a328132a2c9d083"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text GameController.averageHit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00069">69</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a99013ba370f7f056535c56b1943def60"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ball.html">Ball</a> GameController.ball</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00050">50</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a69d4299e830ac5e2ff5446101c125f4d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text GameController.battingAvgHit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00069">69</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a085cfab59f73a627919a3dc9e55563bb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject GameController.Cheer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00058">58</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4be0f6d498e99b1bc6167e010ec7819"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_display_pitch.html">DisplayPitch</a> GameController.dsplyPitch</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00051">51</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3f976dbbc6dc33239f3b99f769b758e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject GameController.endStats</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00064">64</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7271aefa9caa098ad785b1835db145da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CanvasGroup GameController.endStatsCanvas</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00065">65</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aabcc555ed0d75c53b210eb26b6bfc748"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text GameController.farthestHit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00069">69</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -603,7 +1013,7 @@ Private Attributes</h2></td></tr>
 
 <p>Used for singleton design pattern. </p>
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00042">42</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00047">47</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -625,7 +1035,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00047">47</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00049">49</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -647,7 +1057,51 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00048">48</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00052">52</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a29d9b87caba873be976ed25d00a36ee3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_hit_stats.html">HitStats</a>&gt; GameController.hitStats = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00066">66</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ade735b3c17196a2c3eb743ff0c0f5d12"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_hit_stats.html">HitStats</a> GameController.hs = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00067">67</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -669,7 +1123,95 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00050">50</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00060">60</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a02c82297be346c9e337d4d7f1a676cd3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject GameController.Pitcher</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00061">61</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a13559aec3e5f68dc2f4cc226c25cbee9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ball.html">Ball</a> GameController.Send = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00068">68</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad826e92fb3ac4b4124d3ec925f251e66"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject GameController.startmenu</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00062">62</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a94f943fe2c0dff9baf25d0b2a17579"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject GameController.startmenubg</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00063">63</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -691,7 +1233,73 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00053">53</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00054">54</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac35f9ebd3f402a2e5d9d716e2e1bc128"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject GameController.Strike</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00056">56</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab14d55abc71905331a6f7a32251efd83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text GameController.topStats1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00069">69</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a878e27f1c0969d20d56a93bfaacb6a8c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Text GameController.topStats2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00069">69</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -714,7 +1322,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00036">36</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
+<p>Definition at line <a class="el" href="_game_controller_8cs_source.html#l00043">43</a> of file <a class="el" href="_game_controller_8cs_source.html">GameController.cs</a>.</p>
 
 </div>
 </div>
@@ -724,7 +1332,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 22 2016 15:21:30 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 15 2016 13:50:24 for Project Name Becomes Title of Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

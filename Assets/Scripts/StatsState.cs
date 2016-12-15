@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// To send and choose the pitch types and the qudrant where the ball goes
+/// </summary>
 public class StatsState : MonoBehaviour
 {
     public static int pitch;
@@ -9,6 +12,9 @@ public class StatsState : MonoBehaviour
     public string[] index;
 
     // Use this for initialization
+    /// <summary>
+    /// Get everything from the stats list and use them
+    /// </summary>
     void Start ()
     {
        s= new StatsScript();

@@ -1,5 +1,10 @@
 \hypertarget{class_u_i_events}{}\section{U\+I\+Events Class Reference}
 \label{class_u_i_events}\index{U\+I\+Events@{U\+I\+Events}}
+
+
+Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags  
+
+
 Inheritance diagram for U\+I\+Events\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,16 +17,31 @@ Inheritance diagram for U\+I\+Events\+:\begin{figure}[H]
 delegate void {\bfseries button\+Handler} ()\hypertarget{class_u_i_events_ab297f62bccd2409aa695de14979daf0f}{}\label{class_u_i_events_ab297f62bccd2409aa695de14979daf0f}
 
 \item 
-void \hyperlink{class_u_i_events_a557558561442fe826285077e38c95c24}{Start\+Button\+Clicked} ()
-\begin{DoxyCompactList}\small\item\em Send event when start button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_events_a10c80cd4426008cc8c84ad4a524e6ce7}{Easy\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Send event when Easy button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_events_a8cd61162b65eb96874d1b952882fcdb1}{Medium\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Send event when Medium button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_events_a73230a7a085d29a621593f0d07ab34a2}{Hard\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Send event when Hard button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
 void \hyperlink{class_u_i_events_a0338efe693cac9a52735052eb08542c2}{Exit\+Button\+Clicked} ()
 \begin{DoxyCompactList}\small\item\em Send event when exit button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
 void \hyperlink{class_u_i_events_a0f353ad5a99c77a80322945fe4c8e2eb}{Next\+Pitch\+Clicked} ()
-\begin{DoxyCompactList}\small\item\em Send event when next pitch button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send event when next pitch button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_events_a1cf0319203ea3b2d8999421a5d8d2d38}{Flags\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Send event when hide flags button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} \end{DoxyCompactList}\item 
+void {\bfseries Pitch\+Type\+Button\+Clicked} ()\hypertarget{class_u_i_events_aafd2c0120c66b38986e194cc8267f21e}{}\label{class_u_i_events_aafd2c0120c66b38986e194cc8267f21e}
+
+\end{DoxyCompactItemize}
 \subsection*{Events}
 \begin{DoxyCompactItemize}
 \item 
-static button\+Handler {\bfseries start\+Button\+Clicked}\hypertarget{class_u_i_events_a3b54a281b07d285b2d65a6b98229cede}{}\label{class_u_i_events_a3b54a281b07d285b2d65a6b98229cede}
+static button\+Handler {\bfseries easy\+Button\+Clicked}\hypertarget{class_u_i_events_ad1544529b7f816993cfd210464362bb2}{}\label{class_u_i_events_ad1544529b7f816993cfd210464362bb2}
+
+\item 
+static button\+Handler {\bfseries medium\+Button\+Clicked}\hypertarget{class_u_i_events_a4176171563d4ce0db2a3cb4c43698a20}{}\label{class_u_i_events_a4176171563d4ce0db2a3cb4c43698a20}
+
+\item 
+static button\+Handler {\bfseries hard\+Button\+Clicked}\hypertarget{class_u_i_events_aa4e7a0cf10e37fa57a1c3f57672d420d}{}\label{class_u_i_events_aa4e7a0cf10e37fa57a1c3f57672d420d}
 
 \item 
 static button\+Handler {\bfseries next\+Pitch\+Clicked}\hypertarget{class_u_i_events_af23690fd635e7f23542ca113ba6e5c61}{}\label{class_u_i_events_af23690fd635e7f23542ca113ba6e5c61}
@@ -29,10 +49,32 @@ static button\+Handler {\bfseries next\+Pitch\+Clicked}\hypertarget{class_u_i_ev
 \item 
 static button\+Handler {\bfseries exit\+Button\+Clicked}\hypertarget{class_u_i_events_ac5b1e2172d13f95a98006179f96367c0}{}\label{class_u_i_events_ac5b1e2172d13f95a98006179f96367c0}
 
+\item 
+static button\+Handler {\bfseries flags\+Button\+Clicked}\hypertarget{class_u_i_events_ae2ecd6b7156c9c62069fecb2074f2c67}{}\label{class_u_i_events_ae2ecd6b7156c9c62069fecb2074f2c67}
+
+\item 
+static button\+Handler {\bfseries pitch\+Type\+Button\+Clicked}\hypertarget{class_u_i_events_a881445f1853a936b98e326c2ba042ca7}{}\label{class_u_i_events_a881445f1853a936b98e326c2ba042ca7}
+
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags 
+
+
+
 \subsection{Member Function Documentation}
+\index{U\+I\+Events@{U\+I\+Events}!Easy\+Button\+Clicked@{Easy\+Button\+Clicked}}
+\index{Easy\+Button\+Clicked@{Easy\+Button\+Clicked}!U\+I\+Events@{U\+I\+Events}}
+\subsubsection[{\texorpdfstring{Easy\+Button\+Clicked()}{EasyButtonClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Easy\+Button\+Clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_u_i_events_a10c80cd4426008cc8c84ad4a524e6ce7}{}\label{class_u_i_events_a10c80cd4426008cc8c84ad4a524e6ce7}
+
+
+Send event when Easy button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
+
 \index{U\+I\+Events@{U\+I\+Events}!Exit\+Button\+Clicked@{Exit\+Button\+Clicked}}
 \index{Exit\+Button\+Clicked@{Exit\+Button\+Clicked}!U\+I\+Events@{U\+I\+Events}}
 \subsubsection[{\texorpdfstring{Exit\+Button\+Clicked()}{ExitButtonClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Exit\+Button\+Clicked (
@@ -44,6 +86,39 @@ static button\+Handler {\bfseries exit\+Button\+Clicked}\hypertarget{class_u_i_e
 
 Send event when exit button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
 
+\index{U\+I\+Events@{U\+I\+Events}!Flags\+Button\+Clicked@{Flags\+Button\+Clicked}}
+\index{Flags\+Button\+Clicked@{Flags\+Button\+Clicked}!U\+I\+Events@{U\+I\+Events}}
+\subsubsection[{\texorpdfstring{Flags\+Button\+Clicked()}{FlagsButtonClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Flags\+Button\+Clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_u_i_events_a1cf0319203ea3b2d8999421a5d8d2d38}{}\label{class_u_i_events_a1cf0319203ea3b2d8999421a5d8d2d38}
+
+
+Send event when hide flags button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
+
+\index{U\+I\+Events@{U\+I\+Events}!Hard\+Button\+Clicked@{Hard\+Button\+Clicked}}
+\index{Hard\+Button\+Clicked@{Hard\+Button\+Clicked}!U\+I\+Events@{U\+I\+Events}}
+\subsubsection[{\texorpdfstring{Hard\+Button\+Clicked()}{HardButtonClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Hard\+Button\+Clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_u_i_events_a73230a7a085d29a621593f0d07ab34a2}{}\label{class_u_i_events_a73230a7a085d29a621593f0d07ab34a2}
+
+
+Send event when Hard button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
+
+\index{U\+I\+Events@{U\+I\+Events}!Medium\+Button\+Clicked@{Medium\+Button\+Clicked}}
+\index{Medium\+Button\+Clicked@{Medium\+Button\+Clicked}!U\+I\+Events@{U\+I\+Events}}
+\subsubsection[{\texorpdfstring{Medium\+Button\+Clicked()}{MediumButtonClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Medium\+Button\+Clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_u_i_events_a8cd61162b65eb96874d1b952882fcdb1}{}\label{class_u_i_events_a8cd61162b65eb96874d1b952882fcdb1}
+
+
+Send event when Medium button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
+
 \index{U\+I\+Events@{U\+I\+Events}!Next\+Pitch\+Clicked@{Next\+Pitch\+Clicked}}
 \index{Next\+Pitch\+Clicked@{Next\+Pitch\+Clicked}!U\+I\+Events@{U\+I\+Events}}
 \subsubsection[{\texorpdfstring{Next\+Pitch\+Clicked()}{NextPitchClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Next\+Pitch\+Clicked (
@@ -54,17 +129,6 @@ Send event when exit button clicked. Listened for in \hyperlink{class_game_contr
 
 
 Send event when next pitch button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
-
-\index{U\+I\+Events@{U\+I\+Events}!Start\+Button\+Clicked@{Start\+Button\+Clicked}}
-\index{Start\+Button\+Clicked@{Start\+Button\+Clicked}!U\+I\+Events@{U\+I\+Events}}
-\subsubsection[{\texorpdfstring{Start\+Button\+Clicked()}{StartButtonClicked()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+I\+Events.\+Start\+Button\+Clicked (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}\hypertarget{class_u_i_events_a557558561442fe826285077e38c95c24}{}\label{class_u_i_events_a557558561442fe826285077e38c95c24}
-
-
-Send event when start button clicked. Listened for in \hyperlink{class_game_controller}{Game\+Controller} 
 
 
 

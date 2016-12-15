@@ -12,10 +12,13 @@ The Dweagle
 
 ### Items Implemented: 
 
-- Different pitch types
-- Retrieve the stats from MLB website
-- Have the camera pan to follow the ball
-- Have th eball randomly apply force in a random direction (For now)
-- Upgrade the GUI 
-- Implement a state machine
-- Keep track of hits and misses
+- More pitch types: {Slider and Sinker}
+- Use the stats from MLB website to throw pitches and where to go in the strike zone
+- Have flags appear when hit the ground
+- Have the ball randomly apply force in a random direction (For now)
+-Have ball collide with a bat rather than a spacebar press
+- Upgrade the GUI and add to it
+- Display the players stats upon leaving the game
+- Have a video comparison for good ways to swing a bat
+- Add Audio and more Art
+- Add different levels of difficulty

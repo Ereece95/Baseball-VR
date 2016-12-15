@@ -1,5 +1,10 @@
 \hypertarget{class_ball}{}\section{Ball Class Reference}
 \label{class_ball}\index{Ball@{Ball}}
+
+
+The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(\+For now). It displays a flag when it hits the ground and a collider of the bat  
+
+
 Inheritance diagram for Ball\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,6 +16,15 @@ Inheritance diagram for Ball\+:\begin{figure}[H]
 \item 
 delegate void {\bfseries Ball\+Hit} ()\hypertarget{class_ball_aa7c5a9ef594c67b2e315ca6f9aa72946}{}\label{class_ball_aa7c5a9ef594c67b2e315ca6f9aa72946}
 
+\item 
+delegate void \hyperlink{class_ball_a2d0d84bc63e64e13c31052231415af96}{hit\+Event} (int distance, bool is\+Foul, bool is\+Homerun)\hypertarget{class_ball_a2d0d84bc63e64e13c31052231415af96}{}\label{class_ball_a2d0d84bc63e64e13c31052231415af96}
+
+\begin{DoxyCompactList}\small\item\em Set up event. \end{DoxyCompactList}\item 
+void {\bfseries hide\+Ball\+Flags} ()\hypertarget{class_ball_a231e17090b160eb3474a0c17d64ba7f3}{}\label{class_ball_a231e17090b160eb3474a0c17d64ba7f3}
+
+\item 
+void {\bfseries show\+Ball\+Flags} ()\hypertarget{class_ball_a015534449de746bd8708b57c3ba71fe1}{}\label{class_ball_a015534449de746bd8708b57c3ba71fe1}
+
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -21,16 +35,28 @@ Game\+Object {\bfseries ball}\hypertarget{class_ball_acad9ea662432b6ca6c5e641159
 Game\+Object {\bfseries hand}\hypertarget{class_ball_a65a5e30cf4fcda0dc4c9aebe888ef3fe}{}\label{class_ball_a65a5e30cf4fcda0dc4c9aebe888ef3fe}
 
 \item 
+Transform {\bfseries start}\hypertarget{class_ball_a7828590a1cbbfd75697ed72cf8f8cc25}{}\label{class_ball_a7828590a1cbbfd75697ed72cf8f8cc25}
+
+\item 
 Transform\mbox{[}$\,$\mbox{]} {\bfseries path\+Array}\hypertarget{class_ball_a60d5cb1763e8ef1e2931a95d0be72272}{}\label{class_ball_a60d5cb1763e8ef1e2931a95d0be72272}
 
 \item 
-float {\bfseries speed}\hypertarget{class_ball_abb8bc4c20b6a86a599a20661acb9a516}{}\label{class_ball_abb8bc4c20b6a86a599a20661acb9a516}
+Text {\bfseries Dist\+Display}\hypertarget{class_ball_ad1ae9770ce80db563a8c07483fb17c5d}{}\label{class_ball_ad1ae9770ce80db563a8c07483fb17c5d}
 
 \item 
 Transform\mbox{[}$\,$\mbox{]} {\bfseries path}\hypertarget{class_ball_a0767f4424644cb44aa5741e8e06d799b}{}\label{class_ball_a0767f4424644cb44aa5741e8e06d799b}
 
 \item 
 Animation {\bfseries Throw}\hypertarget{class_ball_a9e4d6879c0e6b04fa780e101ac82554f}{}\label{class_ball_a9e4d6879c0e6b04fa780e101ac82554f}
+
+\item 
+Transform {\bfseries plate}\hypertarget{class_ball_a2ac0453872bc1a5f81c620e1d8e0a669}{}\label{class_ball_a2ac0453872bc1a5f81c620e1d8e0a669}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bfseries flag\+Vis}\hypertarget{class_ball_a03f451731a1b4b6d656dfcac441a0d75}{}\label{class_ball_a03f451731a1b4b6d656dfcac441a0d75}
 
 \end{DoxyCompactItemize}
 \subsection*{Events}
@@ -41,8 +67,14 @@ static Ball\+Hit {\bfseries ball\+Hit}\hypertarget{class_ball_a58700e28710627524
 \item 
 static Ball\+Hit {\bfseries ball\+Not\+Hit}\hypertarget{class_ball_a7761d1549a457fcbba713ea70d17afb8}{}\label{class_ball_a7761d1549a457fcbba713ea70d17afb8}
 
+\item 
+static \hyperlink{class_ball_a2d0d84bc63e64e13c31052231415af96}{hit\+Event} {\bfseries distance\+Hit}\hypertarget{class_ball_a8219f157afb6f4e3e4ee8650e8298981}{}\label{class_ball_a8219f157afb6f4e3e4ee8650e8298981}
+
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(\+For now). It displays a flag when it hits the ground and a collider of the bat 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -432,4 +432,31 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public string getPitchType()
+    {
+        string pitchType;
+        switch (Paths)
+        {
+            case 0:
+                pitchType = "Changeup";
+                break;
+            case 1:
+                pitchType = "Fastball";
+                break;
+            case 2:
+                pitchType = "Curveball";
+                break;
+            case 3:
+                pitchType = "Sinker";
+                break;
+            case 4:
+                pitchType = "Slider";
+                break;
+            default:
+                pitchType = "";
+                break;
+        }
+        return pitchType;
+    }
+
 }

@@ -13,6 +13,7 @@ public class DisplayPitch : MonoBehaviour
     public Text pitchText;
     public Ball ball;
     bool isHidden; // flag for when canvas is hidden
+    string pitchType; //type of pitch obtained from ball
     
                   
     void Start()
@@ -34,10 +35,11 @@ public class DisplayPitch : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //if pitch type is displayed, set pitch type at each new pitch and display
         if (!isHidden)
         {
-            //TODO: add function to ball to obtain pitch type
-            pitchText.text = "Pitch Type: ";
+            pitchType = ball.getPitchType();
+            pitchText.text = "Pitch Type: " + pitchType;
         }
     }
     public void displayPitchType()

@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
 
     private StateMachine<States> gcFSM;
     private Ball ball;
+    private DisplayPitch dsplyPitch;
     private AudioClip hit;
     private AudioSource audioS;
     private UpdateStats stats;
@@ -78,6 +79,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
+        dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitchButton") as DisplayPitch;
 
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
@@ -122,6 +124,7 @@ public class GameController : MonoBehaviour
         UIEvents.exitButtonClicked += EventExitButtonClicked;
         UIEvents.nextPitchClicked += EventNextPitchButton;
         UIEvents.flagsButtonClicked += EventFlagButton;
+        UIEvents.pitchTypeButtonClicked += EventPitchTypeButton;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -136,6 +139,7 @@ public class GameController : MonoBehaviour
         UIEvents.exitButtonClicked -= EventExitButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.flagsButtonClicked -= EventFlagButton;
+        UIEvents.pitchTypeButtonClicked -= EventPitchTypeButton;
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
@@ -353,5 +357,10 @@ public class GameController : MonoBehaviour
             Ball.flagVis = true;
             ball.hideBallFlags();
         }
+    }
+
+    private void EventPitchTypeButton()
+    {
+        //dsplyPitch.toggleDisplay();
     }
 }

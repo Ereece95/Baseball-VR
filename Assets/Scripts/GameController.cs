@@ -378,6 +378,7 @@ public class GameController : MonoBehaviour
         gameCanvas.interactable = false;
         gameCanvas.alpha = 0;
         gameCanvas.blocksRaycasts = false;
+
         gcFSM.ChangeState(States.ShowingGameStats);
 
         //TODO: will need to hide other panels that are visible through this panel

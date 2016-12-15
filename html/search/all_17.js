@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['waitforcollision',['WaitForCollision',['../_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a4e54974111474ee4e1be3f64c9c8cbf4',1,'GameController.cs']]],
   ['waitforinput',['WaitForInput',['../_game_controller_8cs.html#a808e5cd4979462d3bbe3070d7d147444a16232675bbffb09d55cae5d9f675d1d9',1,'GameController.cs']]],
   ['waitforprevioustransition',['WaitForPreviousTransition',['../class_monster_love_1_1_state_machine_1_1_state_machine.html#abea684cde3fafcf51961f0f34dafa6dc',1,'MonsterLove::StateMachine::StateMachine']]],
   ['water',['Water',['../class_unity_standard_assets_1_1_water_1_1_water.html',1,'UnityStandardAssets::Water']]],

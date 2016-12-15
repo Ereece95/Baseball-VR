@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Switching between the cursor and the bat 
+/// </summary>
 public class Bat : MonoBehaviour {
 
     public Transform cursorObject;
@@ -9,13 +12,18 @@ public class Bat : MonoBehaviour {
     private GameController gc;
 
     // Use this for initialization
+    /// <summary>
+    /// Get the bat and set the cursor to true for the main menu
+    /// </summary>
     void Start() {
         bat.GetComponent<Renderer>().enabled = false;
         Cursor.visible = true;
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 	
-	// Update is called once per frame
+	/// <summary>
+    /// Sets the cursor true or false and whether the bat is true or false bassed on the state
+    /// </summary>
 	void Update () {
         if (gc.GetState() == States.ThrowPitch || gc.GetState() == States.ThrowPitchDone)
         {

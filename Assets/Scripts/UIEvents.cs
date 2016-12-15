@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Buttons like start exit and next pitch for the UI
+/// Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags
 /// </summary>
 public class UIEvents : MonoBehaviour {
 
@@ -16,18 +16,24 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler pitchTypeButtonClicked;
 
     /// <summary>
-    /// Send event when start button clicked. Listened for in GameController
+    /// Send event when Easy button clicked. Listened for in GameController
     /// </summary>
     public void EasyButtonClicked()    //must be public to see in the button's onClick() method
     {
         if (easyButtonClicked != null)     //make sure someone is listening
             easyButtonClicked();       //Fire the event
     }
+    /// <summary>
+    /// Send event when Medium button clicked. Listened for in GameController
+    /// </summary>
     public void MediumButtonClicked()    //must be public to see in the button's onClick() method
     {
         if (mediumButtonClicked != null)     //make sure someone is listening
             mediumButtonClicked();       //Fire the event
     }
+    /// <summary>
+    /// Send event when Hard button clicked. Listened for in GameController
+    /// </summary>
     public void HardButtonClicked()    //must be public to see in the button's onClick() method
     {
         if (hardButtonClicked != null)     //make sure someone is listening

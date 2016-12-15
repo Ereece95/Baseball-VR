@@ -65,6 +65,7 @@ var searchData=
   ['m_5fvirtualaxes',['m_VirtualAxes',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_virtual_input.html#abb0e84e118d732a626c67adb78b26eff',1,'UnityStandardAssets::CrossPlatformInput::VirtualInput']]],
   ['m_5fvirtualbuttons',['m_VirtualButtons',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_virtual_input.html#adbc824b5db08f6929aee3be874bc76cb',1,'UnityStandardAssets::CrossPlatformInput::VirtualInput']]],
   ['m_5fwaterbase',['m_WaterBase',['../class_unity_standard_assets_1_1_water_1_1_specular_lighting.html#ad7a48a6eb345a29d85bbd1720d7dd15c',1,'UnityStandardAssets::Water::SpecularLighting']]],
+  ['make',['Make',['../class_sample_table_1_1_row.html#ab96a6b2d18ba2e4c32976dfdcb64ff4a',1,'SampleTable::Row']]],
   ['mapping',['mapping',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_tilt_input.html#a825e259327ff4204d651876bb30d22f9',1,'UnityStandardAssets::CrossPlatformInput::TiltInput']]],
   ['maxduration',['maxDuration',['../class_unity_standard_assets_1_1_utility_1_1_particle_system_destroyer.html#a8cfb6e6979b64567e06ab8da46415793',1,'UnityStandardAssets::Utility::ParticleSystemDestroyer']]],
   ['maxheight',['maxHeight',['../class_unity_standard_assets_1_1_utility_1_1_dynamic_shadow_settings.html#a7bd34b65a3aee3e55bfc86fdcb83d6f1',1,'UnityStandardAssets::Utility::DynamicShadowSettings']]],
@@ -76,6 +77,7 @@ var searchData=
   ['minshadowbias',['minShadowBias',['../class_unity_standard_assets_1_1_utility_1_1_dynamic_shadow_settings.html#acf6fe9ea39b4dd184d9f2d60ea4bc1d3',1,'UnityStandardAssets::Utility::DynamicShadowSettings']]],
   ['minshadowdistance',['minShadowDistance',['../class_unity_standard_assets_1_1_utility_1_1_dynamic_shadow_settings.html#aee0894c90bbed7f83d5ced9b3f4b72d7',1,'UnityStandardAssets::Utility::DynamicShadowSettings']]],
   ['mobilebuildtargetgroups',['mobileBuildTargetGroups',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_inspector_1_1_cross_platform_initialize.html#ac95391df5c28d34f646a8aecdae11383',1,'UnityStandardAssets::CrossPlatformInput::Inspector::CrossPlatformInitialize']]],
+  ['model',['Model',['../class_sample_table_1_1_row.html#a2eeb29fb0558cd3d9dad3bea0b7c5337',1,'SampleTable::Row']]],
   ['movementrange',['MovementRange',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_joystick.html#a7309ba63c7e16cfb230130b0ba1f8bd4',1,'UnityStandardAssets::CrossPlatformInput::Joystick']]],
   ['moveunitspersecond',['moveUnitsPerSecond',['../class_unity_standard_assets_1_1_utility_1_1_auto_move_and_rotate.html#ac1c663ec1f1d0f5f3659506a9738bd32',1,'UnityStandardAssets::Utility::AutoMoveAndRotate']]]
 ];

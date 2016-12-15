@@ -33,7 +33,7 @@ public enum States
 
 /// <summary>
 /// Switch between states so it only runs certain items when in the correct state
-/// States:Init,StartClick,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,ExitGame
+/// States:Init,StartClick,MainScene,ThrowPitch,ThrowPitchDone,BallHit,BallNoHit,WaitForCollision,WaitForInput,Delay,ExitGame,StatsGot
 /// </summary>
 public class GameController : MonoBehaviour
 {
@@ -151,9 +151,8 @@ public class GameController : MonoBehaviour
 
     }
     /// <summary>
-    /// 
+    /// Switch between states
     /// </summary>
-    
     void Update()
     {
         

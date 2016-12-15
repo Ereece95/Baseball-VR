@@ -1,7 +1,6 @@
 var searchData=
 [
   ['rb',['RB',['../class_ball.html#a8320da87394a0aa3c55eb92995ebe2ed',1,'Ball']]],
-  ['read',['read',['../class_pitcher.html#afe26f54e81b6c1dde9a7c19e97eb20ef',1,'Pitcher']]],
   ['reflection',['reflection',['../class_unity_standard_assets_1_1_water_1_1_water_tile.html#afbbdc233e3c3eb9bdb994cd649761f5d',1,'UnityStandardAssets::Water::WaterTile']]],
   ['reflectionmask',['reflectionMask',['../class_unity_standard_assets_1_1_water_1_1_planar_reflection.html#a9dc798eef2279794ab2d34242810a628',1,'UnityStandardAssets::Water::PlanarReflection']]],
   ['reflectionsampler',['reflectionSampler',['../class_unity_standard_assets_1_1_water_1_1_planar_reflection.html#a1677dea47658aae145100204e24cf51f',1,'UnityStandardAssets::Water::PlanarReflection']]],
@@ -17,5 +16,6 @@ var searchData=
   ['rotatedegreespersecond',['rotateDegreesPerSecond',['../class_unity_standard_assets_1_1_utility_1_1_auto_move_and_rotate.html#a44e784fd8e9253c3ae420024be95b0e2',1,'UnityStandardAssets::Utility::AutoMoveAndRotate']]],
   ['rotationdamping',['rotationDamping',['../class_unity_standard_assets_1_1_utility_1_1_smooth_follow.html#a117510234fa4fa563826bcaad2e6a10a',1,'UnityStandardAssets::Utility::SmoothFollow']]],
   ['rotationrange',['rotationRange',['../class_unity_standard_assets_1_1_utility_1_1_simple_mouse_rotator.html#af79ed9357370019db5ce36b6915d570f',1,'UnityStandardAssets::Utility::SimpleMouseRotator']]],
-  ['rotationspeed',['rotationSpeed',['../class_unity_standard_assets_1_1_utility_1_1_simple_mouse_rotator.html#afc9602d14db21096a9777a6eaba4fbb5',1,'UnityStandardAssets::Utility::SimpleMouseRotator']]]
+  ['rotationspeed',['rotationSpeed',['../class_unity_standard_assets_1_1_utility_1_1_simple_mouse_rotator.html#afc9602d14db21096a9777a6eaba4fbb5',1,'UnityStandardAssets::Utility::SimpleMouseRotator']]],
+  ['rowlist',['rowList',['../class_sample_table.html#a0e2341b71dfbf71d073d808b2673aa6f',1,'SampleTable.rowList()'],['../class_stats_script.html#a47a626c9c3dca68fed8ad2292144e9e7',1,'StatsScript.rowList()']]]
 ];

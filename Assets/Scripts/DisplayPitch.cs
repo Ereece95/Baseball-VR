@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/// <summary>
+/// Display what pitch is thrown
+/// </summary>
 public class DisplayPitch : MonoBehaviour
 {
 
@@ -10,7 +13,8 @@ public class DisplayPitch : MonoBehaviour
     public Text pitchText;
     public Ball ball;
     bool isHidden; // flag for when canvas is hidden
-                   // Use this for initialization
+    
+                  
     void Start()
     {
         // find canvas and disable on start
@@ -25,7 +29,9 @@ public class DisplayPitch : MonoBehaviour
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Displays what pitch was thrown with abutton click
+    /// </summary>
     void Update()
     {
         if (!isHidden)

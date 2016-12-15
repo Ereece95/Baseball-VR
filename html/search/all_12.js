@@ -2,7 +2,6 @@ var searchData=
 [
   ['random',['Random',['../_particle_system_destroyer_8cs.html#a832e8f52fca5a678819ec96269dcb532',1,'ParticleSystemDestroyer.cs']]],
   ['rb',['RB',['../class_ball.html#a8320da87394a0aa3c55eb92995ebe2ed',1,'Ball']]],
-  ['read',['read',['../class_pitcher.html#afe26f54e81b6c1dde9a7c19e97eb20ef',1,'Pitcher']]],
   ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
   ['reflection',['reflection',['../class_unity_standard_assets_1_1_water_1_1_water_tile.html#afbbdc233e3c3eb9bdb994cd649761f5d',1,'UnityStandardAssets::Water::WaterTile']]],
   ['reflectionmask',['reflectionMask',['../class_unity_standard_assets_1_1_water_1_1_planar_reflection.html#a9dc798eef2279794ab2d34242810a628',1,'UnityStandardAssets::Water::PlanarReflection']]],
@@ -28,12 +27,16 @@ var searchData=
   ['reset',['Reset',['../class_unity_standard_assets_1_1_utility_1_1_waypoint_progress_tracker.html#acb8d4867869050d7453fa0e51fee3547',1,'UnityStandardAssets::Utility::WaypointProgressTracker']]],
   ['resetcoroutine',['ResetCoroutine',['../class_unity_standard_assets_1_1_utility_1_1_object_resetter.html#a9f642e892d90f0720be3d1dbff5d8d93',1,'UnityStandardAssets::Utility::ObjectResetter']]],
   ['responsespeed',['responseSpeed',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_axis_touch_button.html#adf1bf30668ea4383040d07ebb00fb373',1,'UnityStandardAssets::CrossPlatformInput::AxisTouchButton']]],
+  ['rethrowpitch',['rethrowpitch',['../class_ball.html#af588ead7231192ac859d84c1cdad818a',1,'Ball']]],
   ['returntocentrespeed',['returnToCentreSpeed',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_axis_touch_button.html#a2a194c4af2b74c29b5388c9e0bffd4f5',1,'UnityStandardAssets::CrossPlatformInput::AxisTouchButton']]],
   ['rigidbody',['Rigidbody',['../class_unity_standard_assets_1_1_utility_1_1_object_resetter.html#a4cc58efe043a2ed96cff3522f942501f',1,'UnityStandardAssets::Utility::ObjectResetter']]],
   ['rotatedegreespersecond',['rotateDegreesPerSecond',['../class_unity_standard_assets_1_1_utility_1_1_auto_move_and_rotate.html#a44e784fd8e9253c3ae420024be95b0e2',1,'UnityStandardAssets::Utility::AutoMoveAndRotate']]],
   ['rotationdamping',['rotationDamping',['../class_unity_standard_assets_1_1_utility_1_1_smooth_follow.html#a117510234fa4fa563826bcaad2e6a10a',1,'UnityStandardAssets::Utility::SmoothFollow']]],
   ['rotationrange',['rotationRange',['../class_unity_standard_assets_1_1_utility_1_1_simple_mouse_rotator.html#af79ed9357370019db5ce36b6915d570f',1,'UnityStandardAssets::Utility::SimpleMouseRotator']]],
   ['rotationspeed',['rotationSpeed',['../class_unity_standard_assets_1_1_utility_1_1_simple_mouse_rotator.html#afc9602d14db21096a9777a6eaba4fbb5',1,'UnityStandardAssets::Utility::SimpleMouseRotator']]],
+  ['routepoint',['RoutePoint',['../struct_unity_standard_assets_1_1_utility_1_1_waypoint_circuit_1_1_route_point.html#a05785eab6554b476e8a3ac1908a3ecd8',1,'UnityStandardAssets::Utility::WaypointCircuit::RoutePoint']]],
   ['routepoint',['RoutePoint',['../struct_unity_standard_assets_1_1_utility_1_1_waypoint_circuit_1_1_route_point.html',1,'UnityStandardAssets::Utility::WaypointCircuit']]],
-  ['routepoint',['RoutePoint',['../struct_unity_standard_assets_1_1_utility_1_1_waypoint_circuit_1_1_route_point.html#a05785eab6554b476e8a3ac1908a3ecd8',1,'UnityStandardAssets::Utility::WaypointCircuit::RoutePoint']]]
+  ['row',['Row',['../class_stats_script_1_1_row.html',1,'StatsScript']]],
+  ['row',['Row',['../class_sample_table_1_1_row.html',1,'SampleTable']]],
+  ['rowlist',['rowList',['../class_sample_table.html#a0e2341b71dfbf71d073d808b2673aa6f',1,'SampleTable.rowList()'],['../class_stats_script.html#a47a626c9c3dca68fed8ad2292144e9e7',1,'StatsScript.rowList()']]]
 ];

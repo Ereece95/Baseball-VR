@@ -5,6 +5,7 @@ var searchData=
   ['destroynow',['DestroyNow',['../class_unity_standard_assets_1_1_utility_1_1_timed_object_destructor.html#a6c791fbd427b8cf06c1d65425c98aa77',1,'UnityStandardAssets::Utility::TimedObjectDestructor']]],
   ['disable',['Disable',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_inspector_1_1_cross_platform_initialize.html#a108c00b4317021552af98b607f4e8235',1,'UnityStandardAssets::CrossPlatformInput::Inspector::CrossPlatformInitialize']]],
   ['disablevalidate',['DisableValidate',['../class_unity_standard_assets_1_1_cross_platform_input_1_1_inspector_1_1_cross_platform_initialize.html#a6cbb9e548e48ffe15818db01e2508de5',1,'UnityStandardAssets::CrossPlatformInput::Inspector::CrossPlatformInitialize']]],
+  ['displayexitstats',['DisplayExitStats',['../class_game_controller.html#abdc714a37c9bbb665560e9aa78f2c825',1,'GameController']]],
   ['doactivatetrigger',['DoActivateTrigger',['../class_unity_standard_assets_1_1_utility_1_1_activate_trigger.html#a7d10473278baf38fb9d90bf381517832',1,'UnityStandardAssets::Utility::ActivateTrigger']]],
   ['dobobcycle',['DoBobCycle',['../class_unity_standard_assets_1_1_utility_1_1_lerp_controlled_bob.html#a22a2016a4d643696d81fc5e5d0809832',1,'UnityStandardAssets::Utility::LerpControlledBob']]],
   ['doheadbob',['DoHeadBob',['../class_unity_standard_assets_1_1_utility_1_1_curve_controlled_bob.html#a7fd3c545ac32c1b10ad2f9ccdfbd35e4',1,'UnityStandardAssets::Utility::CurveControlledBob']]],

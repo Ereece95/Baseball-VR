@@ -9,6 +9,10 @@ public class StatsScript : MonoBehaviour
 {
 
     public TextAsset file;
+    public static int pitch;
+    public static int qaudrent;
+    public string[] index;
+    
 
     /// <summary>
     /// Loads the file where the stats are stored
@@ -16,8 +20,22 @@ public class StatsScript : MonoBehaviour
     void Start()
     {
         Load(file);
-
        
+
+
+        index = new string[13];
+
+        index[0] = "Arrieta, J.";
+
+        for (int i = 1; i < 13; i++)
+        {
+            index[i] = i.ToString();
+        }
+
+        pitch = getPitchType();
+        Debug.Log(pitch);
+        qaudrent = setQuadrent();
+
     }
     public class Row
     {
@@ -332,4 +350,95 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    public int getPitchType()
+    {
+        int fbp;
+        int.TryParse(Find_Player(index[0]).TotalFastballs, out fbp);
+
+        int cbp;
+        int.TryParse(Find_Player(index[0]).TotalCurveballs, out cbp);
+
+        int chp;
+        int.TryParse(Find_Player(index[0]).TotalChangeups, out chp);
+
+        int slp;
+        int.TryParse(Find_Player(index[0]).TotalSliders, out slp);
+
+        int sip;
+        int.TryParse(Find_Player(index[0]).TotalSinkers, out sip);
+
+        int rand = Random.Range(1, 3115);
+
+        if (rand <= chp)
+        {
+            return 0;
+        }
+        else if (rand <= cbp)
+        {
+            return 1;
+        }
+        else if (rand <= slp)
+        {
+            return 2;
+        }
+        else if (rand <= fbp)
+        {
+            return 3;
+        }
+        else
+        {
+            return 4;
+        }
+
+    }
+    public double getQudrent(string p, int t)
+    {
+        double percent = -1;
+
+        if (t == 0)
+        {
+            percent = getCHStatR(p);   
+        }
+        else if (t == 1)
+        {
+            percent = getCVStatR(p); 
+        }
+        else if (t == 2)
+        {
+            percent = getSLStatR(p); 
+        }
+        else if (t == 3)
+        {
+            percent = getFBStatR(p);
+        }
+        else
+        {
+            percent = getSIStatR(p);
+        }
+        return percent;
+    }
+    public int setQuadrent()
+    {
+        double[] quad = new double[13];
+        for (int i = 0; i < 13; i++)
+        {
+            if (i != 0)
+            {
+                quad[i] = quad[i - 1] + getQudrent(index[i], pitch);
+            }
+            else
+            {
+                quad[i] = getQudrent(index[i], pitch);
+            }
+        }
+        int rand = Random.Range(0, 99);
+        for (int i = 0; i < 13; i++)
+        {
+            if (quad[i] >= rand)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

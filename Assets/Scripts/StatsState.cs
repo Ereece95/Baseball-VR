@@ -30,6 +30,7 @@ public class StatsState : MonoBehaviour
         }
 
         pitch = getPitchType();
+        Debug.Log(pitch);
         qaudrent=setQuadrent();
 
     }

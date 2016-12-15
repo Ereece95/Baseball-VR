@@ -2141,7 +2141,6 @@ MonoBehaviour:
   - {fileID: 1898420964}
   - {fileID: 1858177662}
   - {fileID: 350091738}
-  speed: 15
   DistDisplay: {fileID: 150000883}
   path:
   - {fileID: 0}
@@ -2948,7 +2947,6 @@ MonoBehaviour:
   hand: {fileID: 541731084}
   start: {fileID: 0}
   pathArray: []
-  speed: 0
   DistDisplay: {fileID: 0}
   path: []
   Throw: {fileID: 0}
@@ -4980,7 +4978,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 971644730}
-        m_MethodName: StartButtonClicked
+        m_MethodName: EasyButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8315,7 +8313,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1681238508}
-        m_MethodName: StartButtonClicked
+        m_MethodName: MediumButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10287,7 +10285,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2037665490}
-        m_MethodName: StartButtonClicked
+        m_MethodName: HardButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

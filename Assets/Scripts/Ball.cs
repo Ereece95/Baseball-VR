@@ -16,7 +16,8 @@ public class Ball : MonoBehaviour
     //private Transform[] path = new Transform[11];
     public Transform start;
     public Transform[] pathArray;
-    public float speed;//, throws;
+    private float speed;
+    private float throwspeed;//, throws;
     public Text DistDisplay;
     bool hit;
     private Rigidbody RB;
@@ -29,6 +30,7 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
+   
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
     public static event hitEvent distanceHit;   
@@ -40,14 +42,19 @@ public class Ball : MonoBehaviour
     void OnEnable()
     {
         UIEvents.nextPitchClicked += rethrowpitch;
+        UIEvents.easyButtonClicked += ChangespeedE;
+        UIEvents.mediumButtonClicked += ChangespeedM;
+        UIEvents.hardButtonClicked += ChangespeedH;
     }
     void OnDisable()
     {
         UIEvents.nextPitchClicked -= rethrowpitch;
     }
+   
 
     void Awake()
     {
+       
         //pathArray[0] = transform.Find("Changeup path");
         //pathArray[1] = transform.Find("Fastball path");
         //pathArray[2] = transform.Find("Curveball path");
@@ -64,6 +71,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Start()
     {
+        
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
@@ -76,7 +84,9 @@ public class Ball : MonoBehaviour
         }
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
+        
         plate = GameObject.Find("Home Plate").transform;
+
     }
     int i = 0;
     bool collideBat = false; //to tell update if ball collided with bat
@@ -89,8 +99,10 @@ public class Ball : MonoBehaviour
     /// </summary>
     float num24 = 0f;
     bool contin = false;
+    
     void Update()
     {
+      
         if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
         {
             //an if statment to have the ball released at a certain time
@@ -367,12 +379,35 @@ public class Ball : MonoBehaviour
     {
         ball.transform.position = hand.transform.position;
         x = 0;
+        contin = false;
         trail.Clear();
         RB.useGravity = false; //resets the ball physics for next pitch
         RB.velocity = Vector3.zero;
         trail.enabled = false;
         hit = false;
         i = 0;
+        Paths = (Random.Range(0, 5));
+        num = pathArray[Paths].childCount;
+
+        path = new Transform[num];
+        for (int j = 0; j < num; j++)
+        {
+            path[j] = pathArray[Paths].GetChild(j);
+
+        }
+        shift();
     }
-   
+    void ChangespeedE()
+    {
+        speed = 10;
     }
+    void ChangespeedM()
+    {
+        speed = 15;
+    }
+    void ChangespeedH()
+    {
+        speed = 20;
+    }
+
+}

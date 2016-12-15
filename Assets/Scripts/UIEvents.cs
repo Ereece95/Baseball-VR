@@ -7,7 +7,9 @@ using System.Collections;
 public class UIEvents : MonoBehaviour {
 
     public delegate void buttonHandler();
-    public static event buttonHandler startButtonClicked;
+    public static event buttonHandler easyButtonClicked;
+    public static event buttonHandler mediumButtonClicked;
+    public static event buttonHandler hardButtonClicked;
     public static event buttonHandler nextPitchClicked;
     public static event buttonHandler exitButtonClicked;
     public static event buttonHandler flagsButtonClicked;
@@ -15,10 +17,20 @@ public class UIEvents : MonoBehaviour {
     /// <summary>
     /// Send event when start button clicked. Listened for in GameController
     /// </summary>
-    public void StartButtonClicked()    //must be public to see in the button's onClick() method
+    public void EasyButtonClicked()    //must be public to see in the button's onClick() method
     {
-        if (startButtonClicked != null)     //make sure someone is listening
-            startButtonClicked();       //Fire the event
+        if (easyButtonClicked != null)     //make sure someone is listening
+            easyButtonClicked();       //Fire the event
+    }
+    public void MediumButtonClicked()    //must be public to see in the button's onClick() method
+    {
+        if (mediumButtonClicked != null)     //make sure someone is listening
+            mediumButtonClicked();       //Fire the event
+    }
+    public void HardButtonClicked()    //must be public to see in the button's onClick() method
+    {
+        if (hardButtonClicked != null)     //make sure someone is listening
+            hardButtonClicked();       //Fire the event
     }
     /// <summary>
     /// Send event when exit button clicked. Listened for in GameController

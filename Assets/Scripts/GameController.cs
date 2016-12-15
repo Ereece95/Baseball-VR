@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
     private CanvasGroup endStatsCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
+    Ball Send = null;
     private Text topStats1, topStats2, farthestHit, averageHit, battingAvgHit;
     /// <summary>
     /// Implement Singleton
@@ -115,7 +116,9 @@ public class GameController : MonoBehaviour
         void OnEnable()
     {
 
-        UIEvents.startButtonClicked += EventStartButtonClicked;
+        UIEvents.easyButtonClicked += EventEasyButtonClicked;
+        UIEvents.mediumButtonClicked += EventMediumButtonClicked;
+        UIEvents.hardButtonClicked += EventHardButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
         UIEvents.nextPitchClicked += EventNextPitchButton;
         UIEvents.flagsButtonClicked += EventFlagButton;
@@ -129,7 +132,9 @@ public class GameController : MonoBehaviour
     /// </summary>
     void OnDisable()
     {
-        UIEvents.startButtonClicked -= EventStartButtonClicked;
+        UIEvents.easyButtonClicked -= EventEasyButtonClicked;
+        UIEvents.mediumButtonClicked -= EventMediumButtonClicked;
+        UIEvents.hardButtonClicked -= EventHardButtonClicked;
         UIEvents.exitButtonClicked -= EventExitButtonClicked;
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.flagsButtonClicked -= EventFlagButton;
@@ -141,8 +146,10 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
+    
     void Update()
     {
+        
         var state = gcFSM.State;
 
         switch (state)
@@ -197,13 +204,32 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Start Button was Clicked
     /// </summary>
-    private void EventStartButtonClicked()
+    
+    private void EventEasyButtonClicked()
+    {
+
+        DestroyImmediate(startmenu);
+        DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.ThrowPitch);
+       
+       
+    }
+    private void EventMediumButtonClicked()
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
-    }
+        
 
+    }
+    private void EventHardButtonClicked()
+    {
+        DestroyImmediate(startmenu);
+        DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
+        
+
+    }
     /// <summary>
     /// Exit Button was clicked
     /// </summary>

@@ -30,6 +30,7 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
+    public StatsScript s;
     List<GameObject>  _flags = new List<GameObject>();
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
@@ -53,12 +54,12 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Awake()
     {
-       
+        s = new StatsScript();
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
 
-        Paths = StatsState.pitch;
-        Debug.Log(Paths);
+        Paths = StatsScript.pitch;
+        
         flagVis = true;
     }
 
@@ -247,7 +248,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void shift()
     {
-        int quadrent = StatsState.qaudrent;
+        int quadrent = StatsScript.qaudrent;
         Debug.Log(quadrent);
         switch (quadrent)
         {

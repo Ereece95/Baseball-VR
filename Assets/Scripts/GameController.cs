@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     public static GameController gc = null; ///<Used for singleton design pattern
 
     private StateMachine<States> gcFSM;
-     private Ball ball;
+    private Ball ball;
     private AudioClip hit;
     private AudioSource audioS;
     private UpdateStats stats;
@@ -75,6 +75,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
+        stats = GameObject.Find("Stats").GetComponent("Update Stats") as UpdateStats;
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
@@ -281,11 +282,12 @@ public class GameController : MonoBehaviour
         string stats2 = "";
         string farthest = "";
         string average = "Average Hit: ";
+        string batAvg = "Batting Average: ";
         int farthestInt = 0;
        // int numPitches = stats.GetNumPitches();
-        int totalDistance = 0;
-        int averageDistance = 0;
-        float battingAverage = 0f;
+        float totalDistance = 0;
+        float averageDistance = 0;
+        float battingAverage = 0;
         
         hitStats = hitStats.OrderByDescending(o => o.distance).ToList();
 
@@ -311,13 +313,14 @@ public class GameController : MonoBehaviour
                 count++;
             }
         }
-        battingAverage = totalDistance / stats.GetNumPitches();
+        battingAverage = (totalDistance / stats.GetNumPitches());
+        batAvg = batAvg + battingAverage;
         averageDistance = totalDistance / count;
         averageHit.text = average + averageDistance;
         topStats1.text = stats1;
         topStats2.text = stats2;
         farthestHit.text = farthest;
-        battingAvgHit.text = "" + battingAverage;
+        battingAvgHit.text = batAvg;
         
         endStatsCanvas.alpha = 1;
       

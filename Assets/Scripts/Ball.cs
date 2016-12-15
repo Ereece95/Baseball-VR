@@ -9,7 +9,6 @@ public class Ball : MonoBehaviour
     public GameObject ball;
     public GameObject hand;
     private TrailRenderer trail;
-    int x = 0;
     //private Transform[] path = new Transform[11];
     public Transform[] pathArray;
     public float speed;//, throws;
@@ -353,7 +352,6 @@ public class Ball : MonoBehaviour
     void rethrowpitch()
     {
         ball.transform.position = hand.transform.position;
-        x = 0;
         trail.Clear();
         RB.useGravity = false; //resets the ball physics for next pitch
         RB.velocity = Vector3.zero;

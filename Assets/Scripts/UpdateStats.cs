@@ -129,7 +129,8 @@ public class UpdateStats : MonoBehaviour {
     }
     public int GetNumPitches()
     {
-        int numPitches = strikes + hits;
+        int numPitches = 0;
+        numPitches = strikes + hits;
         return numPitches;
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
 using System;
-using System.Timers;
 using System.Linq;
 using UnityEngine.UI;
 using MonsterLove.StateMachine;
@@ -45,6 +44,7 @@ public class GameController : MonoBehaviour
     public static GameController gc = null; ///<Used for singleton design pattern
 
     private StateMachine<States> gcFSM;
+     private Ball ball;
     private AudioClip hit;
     private AudioSource audioS;
     private UpdateStats stats;
@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);  //persist across levels
 
+        ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
@@ -310,22 +311,18 @@ public class GameController : MonoBehaviour
                 count++;
             }
         }
+        battingAverage = totalDistance / stats.GetNumPitches();
         averageDistance = totalDistance / count;
         averageHit.text = average + averageDistance;
         topStats1.text = stats1;
         topStats2.text = stats2;
         farthestHit.text = farthest;
-
-        //Fade in stats at end of game
-        //for (float x = 0; x <= 1; x = +.1f)
-        //{
-            endStatsCanvas.alpha = 1;
-        //}
+        battingAvgHit.text = "" + battingAverage;
+        
+        endStatsCanvas.alpha = 1;
+      
         //TODO: will need to hide other panels that are visible through this panel
-        //Timer(280);
-        //Timer myTimer = new Timer();
-        //myTimer.Interval = 50000;
-        //myTimer.Start();
+        
     }
 
 }

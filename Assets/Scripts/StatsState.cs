@@ -3,7 +3,8 @@ using System.Collections;
 
 public class StatsState : MonoBehaviour
 {
-    public static int pitch = -1;
+    public static int pitch;
+    public static int qaudrent;
     public StatsScript s;
     public string[] index;
 
@@ -22,7 +23,8 @@ public class StatsState : MonoBehaviour
             index[i] = i.ToString();
         }
 
-
+        pitch = getPitchType();
+        qaudrent=setQuadrent();
 
     }
 	
@@ -53,28 +55,74 @@ public class StatsState : MonoBehaviour
 
         if(rand<=chp)
         {
-            return rand;
+            return 0;
         }
         else if(rand <=cbp)
         {
-            return rand;
+            return 1;
         }
         else if(rand<=slp)
         {
-            return rand;
+            return 2;
         }
         else if(rand<=fbp)
         {
-            return rand;
+            return 3;
         }
         else 
         {
-            return rand;
+            return 4;
         }
 
     }
-    public void getQudrent(string p)
+    public  double getQudrent(string p, int t)
     {
+        double percent = -1;
 
+        if(t==0)
+        {
+            double.TryParse(s.Find_Player(index[0]).TotalChangeups, out percent);
+        }
+        else if(t==1)
+        {
+            double.TryParse(s.Find_Player(index[0]).TotalCurveballs, out percent);
+        }
+        else if (t == 2)
+        {
+            double.TryParse(s.Find_Player(index[0]).TotalSliders, out percent);
+        }
+        else if (t == 3)
+        {
+            double.TryParse(s.Find_Player(index[0]).TotalFastballs, out percent);
+        }
+        else
+        {
+            double.TryParse(s.Find_Player(index[0]).TotalSinkers, out percent);
+        }
+        return percent;
+    }
+    public int setQuadrent()
+    {
+        double[] quad = new double[13];
+        for(int i=0;i<13;i++)
+        {
+            if (i != 0)
+            {
+                quad[i] = quad[i - 1] + getQudrent(index[i], pitch);
+            }
+            else
+            {
+                quad[i]= getQudrent(index[i], pitch);
+            }
+        }
+        int rand = Random.Range(0, 99);
+        for (int i = 0; i < 13; i++)
+        {
+            if (quad[i] >= rand)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }

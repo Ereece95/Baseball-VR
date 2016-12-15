@@ -61,7 +61,9 @@ public class Ball : MonoBehaviour
         //pathArray[2] = transform.Find("Curveball path");
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
-        Paths = (Random.Range(0, 5));
+
+        Paths = StatsState.pitch;
+        Debug.Log(Paths);
         flagVis = true;
     }
 
@@ -249,8 +251,8 @@ public class Ball : MonoBehaviour
     }
     void shift()
     {
-        int quadrent = (Random.Range(1, 10));
-
+        int quadrent = StatsState.qaudrent;
+        Debug.Log(quadrent);
         switch (quadrent)
         {
             case 1:

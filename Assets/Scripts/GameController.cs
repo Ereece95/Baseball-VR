@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
-        stats = GameObject.Find("Stats").GetComponent("Update Stats") as UpdateStats;
+        stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
         audioObject = GameObject.Find("Audio Source");
         audioS = audioObject.GetComponent<AudioSource>();
         DontDestroyOnLoad(audioObject);
@@ -278,13 +278,13 @@ public class GameController : MonoBehaviour
     {
 
         int count = 1;
+        int numHits = 0;
         string stats1 = "";
         string stats2 = "";
-        string farthest = "";
+        string farthest = "Farthest Hit: ";
         string average = "Average Hit: ";
         string batAvg = "Batting Average: ";
         int farthestInt = 0;
-       // int numPitches = stats.GetNumPitches();
         float totalDistance = 0;
         float averageDistance = 0;
         float battingAverage = 0;
@@ -293,30 +293,36 @@ public class GameController : MonoBehaviour
 
         foreach (HitStats hs in hitStats)
         {
-            totalDistance = totalDistance + hs.distance;
             if (count <= 5)
             {
                 if (count == 1)
                 {
                     farthestInt = hs.distance;
-                    farthest = "Farthest Hit: " + farthestInt + " Ft";
+                    farthest = farthest + farthestInt + " Ft";
                 }
                 if (!hs.isFoul)
                 {
                     stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
                     count++;
+                    totalDistance = totalDistance + hs.distance;
+                    numHits++;
                 }
             }
             else if (count > 5 && count <= 10)
             {
-                stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
-                count++;
+                if (!hs.isFoul)
+                {
+                    stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
+                    count++;
+                    totalDistance = totalDistance + hs.distance;
+                    numHits++;
+                }
             }
         }
-        battingAverage = (totalDistance / stats.GetNumPitches());
-        batAvg = batAvg + battingAverage;
-        averageDistance = totalDistance / count;
-        averageHit.text = average + averageDistance;
+        battingAverage = ( numHits / stats.GetNumPitches());
+        batAvg = batAvg + (Mathf.Round(battingAverage * 1000f) / 1000f);
+        averageDistance = totalDistance / (count - 1);
+        averageHit.text = average + averageDistance + " Ft";
         topStats1.text = stats1;
         topStats2.text = stats2;
         farthestHit.text = farthest;

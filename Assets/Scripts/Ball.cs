@@ -30,8 +30,6 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
-    public GameObject[] Flags; //array of flags to track where ball landed
-    public int flagcount = 0;  //count to keep track of size of array and to create a new object in array each time
     List<GameObject>  _flags = new List<GameObject>();
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event

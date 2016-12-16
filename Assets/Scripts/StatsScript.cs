@@ -25,7 +25,7 @@ public class StatsScript : MonoBehaviour
 
         index = new string[13];
 
-        index[0] = "Arrieta, J.";
+        index[0] = "0";
 
         for (int i = 1; i < 13; i++)
         {
@@ -33,7 +33,6 @@ public class StatsScript : MonoBehaviour
         }
 
         pitch = getPitchType();
-        Debug.Log(pitch);
         qaudrent = setQuadrent();
 
     }
@@ -431,8 +430,13 @@ public class StatsScript : MonoBehaviour
                 quad[i] = getQudrent(index[i], pitch);
             }
         }
-        int rand = Random.Range(0, 99);
-        for (int i = 0; i < 13; i++)
+        int rand;
+       
+            rand = Random.Range(0, 99);
+        
+        
+      
+        for (int i = 0; i < 9; i++)
         {
             if (quad[i] >= rand)
             {

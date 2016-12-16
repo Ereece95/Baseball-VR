@@ -379,11 +379,11 @@ public class StatsScript : MonoBehaviour
         sip *= 100;
 
         double[] pitches = new double[5];
-        pitches[0] = fbp;
-        pitches[1] = cbp;
-        pitches[2] = slp;
-        pitches[3] = chp;
-        pitches[4] = sip;
+        pitches[0] = chp;
+        pitches[1] = fbp;
+        pitches[2] = cbp;
+        pitches[3] = sip;
+        pitches[4] = slp;
         
 
         for(int i=0;i<5;i++)

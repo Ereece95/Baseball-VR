@@ -238,7 +238,7 @@ public class GameController : MonoBehaviour
 
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.ThrowPitch);
+        gcFSM.ChangeState(States.StartClick);
 
 
     }

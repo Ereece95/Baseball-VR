@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
     private CanvasGroup gameCanvas;
+    private CanvasGroup hitstrikeCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -116,6 +117,7 @@ public class GameController : MonoBehaviour
 
         endStatsCanvas = endStats.GetComponent<CanvasGroup>();
         gameCanvas = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
+        hitstrikeCanvas = GameObject.Find("Stats").GetComponent<CanvasGroup>();
 
     }
     /// <summary>
@@ -166,11 +168,21 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
-                //enableGameCanvas(false);
+                gameCanvas.interactable = false;
+                gameCanvas.alpha = 0;
+                gameCanvas.blocksRaycasts = false;
+                hitstrikeCanvas.interactable = false;
+                hitstrikeCanvas.alpha = 0;
+                hitstrikeCanvas.blocksRaycasts = false;
                 break;
 
             case States.StartClick:
-                //enableGameCanvas(true);
+                gameCanvas.interactable = true;
+                gameCanvas.alpha = 1;
+                gameCanvas.blocksRaycasts = true;
+                hitstrikeCanvas.interactable = true;
+                hitstrikeCanvas.alpha = 1;
+                hitstrikeCanvas.blocksRaycasts = true;
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -377,7 +389,9 @@ public class GameController : MonoBehaviour
         endStatsCanvas.blocksRaycasts = true;
         //}
 
-        //enableGameCanvas(false);
+        gameCanvas.interactable = false;
+        gameCanvas.alpha = 0;
+        gameCanvas.blocksRaycasts = false;
 
         gcFSM.ChangeState(States.ShowingGameStats);
 
@@ -406,19 +420,4 @@ public class GameController : MonoBehaviour
         dsplyPitch.displayPitchType();
     }
 
-    //private void enableGameCanvas(bool no);
-    //{
-    //    if (no)
-    //    {
-    //        gameCanvas.interactable = false;
-    //        gameCanvas.alpha = 0;
-    //        gameCanvas.blocksRaycasts = false;
-    //    }  
-    //    else
-    //    {
-    //        gameCanvas.interactable = true;
-    //        gameCanvas.alpha = 0;
-    //        gameCanvas.blocksRaycasts = true;
-    //    } 
-    //}
 }

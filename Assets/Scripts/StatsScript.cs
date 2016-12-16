@@ -351,43 +351,58 @@ public class StatsScript : MonoBehaviour
 
     public int getPitchType()
     {
-        int fbp;
-        int.TryParse(Find_Player(index[0]).TotalFastballs, out fbp);
+        double fbp;
+        double.TryParse(Find_Player(index[0]).TotalFastballs, out fbp);
+        double temp;
+        double.TryParse(Find_Player("0").TotalPitchesThrown, out temp);
+        fbp=fbp/temp;
+        fbp *= 100;
 
-        int cbp;
-        int.TryParse(Find_Player(index[0]).TotalCurveballs, out cbp);
+        double cbp;
+        double.TryParse(Find_Player(index[0]).TotalCurveballs, out cbp);
+        cbp = cbp / temp;
+        cbp *= 100;
 
-        int chp;
-        int.TryParse(Find_Player(index[0]).TotalChangeups, out chp);
+        double chp;
+        double.TryParse(Find_Player(index[0]).TotalChangeups, out chp);
+        chp = chp / temp;
+        chp *= 100;
 
-        int slp;
-        int.TryParse(Find_Player(index[0]).TotalSliders, out slp);
+        double slp;
+        double.TryParse(Find_Player(index[0]).TotalSliders, out slp);
+       slp = slp / temp;
+        slp *= 100;
 
-        int sip;
-        int.TryParse(Find_Player(index[0]).TotalSinkers, out sip);
+        double sip;
+        double.TryParse(Find_Player(index[0]).TotalSinkers, out sip);
+        sip = sip / temp;
+        sip *= 100;
 
-        int rand = Random.Range(1, 3115);
+        double[] pitches = new double[5];
+        pitches[0] = fbp;
+        pitches[1] = cbp;
+        pitches[2] = slp;
+        pitches[3] = chp;
+        pitches[4] = sip;
+        
 
-        if (rand <= chp)
+        for(int i=0;i<5;i++)
         {
-            return 0;
+            if(i>0)
+            {
+                pitches[i] += pitches[i - 1];
+            }
         }
-        else if (rand <= cbp)
+        int rand = Random.Range(0, 99);
+        Debug.Log(rand);
+        for (int i = 0; i < 5; i++)
         {
-            return 1;
+            if(rand<=pitches[i])
+            {
+                return i;
+            }
         }
-        else if (rand <= slp)
-        {
-            return 2;
-        }
-        else if (rand <= fbp)
-        {
-            return 3;
-        }
-        else
-        {
-            return 4;
-        }
+        return -1;
 
     }
     public double getQudrent(string p, int t)

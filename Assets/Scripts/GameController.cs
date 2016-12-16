@@ -103,7 +103,7 @@ public class GameController : MonoBehaviour
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
         hitStats = new List<HitStats>();
-        
+
         topStats1 = GameObject.Find("Top1").GetComponent<Text>();
         topStats2 = GameObject.Find("Top2").GetComponent<Text>();
         farthestHit = GameObject.Find("Farthest").GetComponent<Text>();
@@ -116,12 +116,12 @@ public class GameController : MonoBehaviour
 
         endStatsCanvas = endStats.GetComponent<CanvasGroup>();
         gameCanvas = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
-        
+
     }
-        /// <summary>
-        /// Events we will listen for
-        /// </summary>
-        void OnEnable()
+    /// <summary>
+    /// Events we will listen for
+    /// </summary>
+    void OnEnable()
     {
 
         UIEvents.easyButtonClicked += EventEasyButtonClicked;
@@ -135,7 +135,7 @@ public class GameController : MonoBehaviour
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
-            
+
     }
     /// <summary>
     /// 
@@ -160,15 +160,17 @@ public class GameController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+
         var state = gcFSM.State;
 
         switch (state)
         {
             case States.Init:   //Wait until event happens
+                //enableGameCanvas(false);
                 break;
 
             case States.StartClick:
+                //enableGameCanvas(true);
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -218,22 +220,22 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Start Button was Clicked
     /// </summary>
-    
+
     private void EventEasyButtonClicked()
     {
 
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.ThrowPitch);
-       
-       
+
+
     }
     private void EventMediumButtonClicked()
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
-        
+
 
     }
     private void EventHardButtonClicked()
@@ -241,7 +243,7 @@ public class GameController : MonoBehaviour
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
-        
+
 
     }
     /// <summary>
@@ -252,7 +254,7 @@ public class GameController : MonoBehaviour
         //Debug.Log("In Exit Button CLicked Function");
         //try
         //{
-            //DisplayExitStats();
+        //DisplayExitStats();
         //}catch (Exception e)
         //{
         //    Debug.Log("Display Stats Failed: " + e.ToString());
@@ -275,7 +277,7 @@ public class GameController : MonoBehaviour
     private void HandleThrowPitch()
     {
         Pitcher = GameObject.Find("WBP_pitch 1");
-        if(Pitcher != null)
+        if (Pitcher != null)
         {
             pitch = Pitcher.GetComponent<Animation>();
             pitch.Play("Take 001");
@@ -299,7 +301,7 @@ public class GameController : MonoBehaviour
         audioS.PlayOneShot(audioS.clip, 0.7F);
         audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
-        
+
     }
     private void EventBallNotHit()
     {
@@ -320,8 +322,8 @@ public class GameController : MonoBehaviour
         hs.isHomerun = isHomerun;
 
         hitStats.Add(hs);
-        Debug.Log("HIT ADDDED" + distance);          
-                                  
+        Debug.Log("HIT ADDDED" + distance);
+
     }
     private void EventDisplayExitStats()
     {
@@ -332,11 +334,11 @@ public class GameController : MonoBehaviour
         string farthest = "";
         string average = "Average Hit: ";
         int farthestInt = 0;
-       // int numPitches = stats.GetNumPitches();
+        // int numPitches = stats.GetNumPitches();
         int totalDistance = 0;
         int averageDistance = 0;
         float battingAverage = 0f;
-        
+
         hitStats = hitStats.OrderByDescending(o => o.distance).ToList();
 
         foreach (HitStats hs in hitStats)
@@ -370,14 +372,12 @@ public class GameController : MonoBehaviour
         //Fade in stats at end of game
         //for (float x = 0; x <= 1; x = +.1f)
         //{
-            endStatsCanvas.alpha = 1;
-            endStatsCanvas.interactable = true;
-            endStatsCanvas.blocksRaycasts = true;
+        endStatsCanvas.alpha = 1;
+        endStatsCanvas.interactable = true;
+        endStatsCanvas.blocksRaycasts = true;
         //}
 
-        gameCanvas.interactable = false;
-        gameCanvas.alpha = 0;
-        gameCanvas.blocksRaycasts = false;
+        //enableGameCanvas(false);
 
         gcFSM.ChangeState(States.ShowingGameStats);
 
@@ -405,4 +405,20 @@ public class GameController : MonoBehaviour
     {
         dsplyPitch.displayPitchType();
     }
+
+    //private void enableGameCanvas(bool no);
+    //{
+    //    if (no)
+    //    {
+    //        gameCanvas.interactable = false;
+    //        gameCanvas.alpha = 0;
+    //        gameCanvas.blocksRaycasts = false;
+    //    }  
+    //    else
+    //    {
+    //        gameCanvas.interactable = true;
+    //        gameCanvas.alpha = 0;
+    //        gameCanvas.blocksRaycasts = true;
+    //    } 
+    //}
 }

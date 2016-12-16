@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour
     public Animation Throw;
     public Transform plate;
     public StatsScript s;
+    public int quadrent;
     List<GameObject>  _flags = new List<GameObject>();
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
@@ -54,11 +55,11 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        s = new StatsScript();
+        
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
 
-        Paths = StatsScript.pitch;
+       
         
         flagVis = true;
     }
@@ -70,6 +71,10 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Start()
     {
+       
+        Paths = 0;
+        quadrent = 0;
+
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
@@ -248,8 +253,8 @@ public class Ball : MonoBehaviour
     /// </summary>
     void shift()
     {
-        int quadrent = StatsScript.qaudrent;
-        Debug.Log(quadrent);
+        
+       
         switch (quadrent)
         {
             case 1:
@@ -385,7 +390,8 @@ public class Ball : MonoBehaviour
         trail.enabled = false;
         hit = false;
         i = 0;
-        Paths = (Random.Range(0, 5));
+        Paths = s.getPitchType();
+        quadrent = s.setQuadrent();
         num = pathArray[Paths].childCount;
 
         path = new Transform[num];
@@ -401,6 +407,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     void ChangespeedE()
     {
+        s = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+        Paths = s.getPitchType();
+        quadrent = s.setQuadrent();
         speed = 10;
     }
     /// <summary>
@@ -408,6 +417,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     void ChangespeedM()
     {
+        s = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+        Paths = s.getPitchType();
+        quadrent = s.setQuadrent();
         speed = 15;
     }
     /// <summary>
@@ -415,6 +427,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     void ChangespeedH()
     {
+        s = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
+        Paths = s.getPitchType();
+        quadrent = s.setQuadrent();
         speed = 20;
     }
 

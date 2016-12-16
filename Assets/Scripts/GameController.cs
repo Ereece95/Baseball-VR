@@ -371,13 +371,15 @@ public class GameController : MonoBehaviour
         //for (float x = 0; x <= 1; x = +.1f)
         //{
             endStatsCanvas.alpha = 1;
-            gameCanvas.interactable = true;
-            gameCanvas.blocksRaycasts = true;
+            endStatsCanvas.interactable = true;
+            endStatsCanvas.blocksRaycasts = true;
         //}
 
-        gameCanvas.interactable = false;
-        gameCanvas.alpha = 0;
-        gameCanvas.blocksRaycasts = false;
+
+        //Dont need
+        //gameCanvas.interactable = false;
+        //gameCanvas.alpha = 0;
+        //gameCanvas.blocksRaycasts = false;
 
         gcFSM.ChangeState(States.ShowingGameStats);
 

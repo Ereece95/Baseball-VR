@@ -14,6 +14,7 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler exitButtonClicked;
     public static event buttonHandler flagsButtonClicked;
     public static event buttonHandler pitchTypeButtonClicked;
+    public static event buttonHandler endGameStatsClicked;
 
     /// <summary>
     /// Send event when Easy button clicked. Listened for in GameController
@@ -69,5 +70,11 @@ public class UIEvents : MonoBehaviour {
     {
         if (pitchTypeButtonClicked != null)  //make sure someone is listening
             pitchTypeButtonClicked();        //Fire the event
+    }
+
+    public void EndGameStatsClicked()     //must be public to see in the button's onClick() method
+    {
+        if (endGameStatsClicked != null)  //make sure someone is listening
+            endGameStatsClicked();        //Fire the event
     }
 }

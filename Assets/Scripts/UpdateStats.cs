@@ -142,10 +142,10 @@ public class UpdateStats : MonoBehaviour {
             strikesText.color = Color.red;
         }
     }
-    public int GetNumPitches()
+    public float GetNumPitches()
     {
         int numPitches = strikes + hits;
-        return numPitches;
+        return (float)numPitches;
     }
 }
   

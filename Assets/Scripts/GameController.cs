@@ -408,13 +408,10 @@ public class GameController : MonoBehaviour
         farthestHit.text = farthest;
         battingAvgHit.text = batAvg;
 
-        //Fade in stats at end of game
-        //for (float x = 0; x <= 1; x = +.1f)
-        //{
+   
         endStatsCanvas.alpha = 1;
         endStatsCanvas.interactable = true;
         endStatsCanvas.blocksRaycasts = true;
-        //}
 
         //disables game canvas with buttons and hits and strikes canvas
         gameCanvas.interactable = false;
@@ -425,8 +422,7 @@ public class GameController : MonoBehaviour
         hitstrikeCanvas.blocksRaycasts = false;
 
         gcFSM.ChangeState(States.ShowingGameStats);
-
-        //TODO: will need to hide other panels that are visible through this panel
+        
        
     }
     private void EventFlagButton()

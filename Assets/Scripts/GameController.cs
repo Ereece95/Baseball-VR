@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
 using System;
-using System.Timers;
 using System.Linq;
 using UnityEngine.UI;
 using MonsterLove.StateMachine;
@@ -80,6 +79,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
+        stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
         dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitch") as DisplayPitch;
 
         audioObject = GameObject.Find("Audio Source");
@@ -289,7 +289,6 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
-        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
         
     }
@@ -310,7 +309,10 @@ public class GameController : MonoBehaviour
         hs.distance = distance;
         hs.isFoul = isFoul;
         hs.isHomerun = isHomerun;
-
+        if (isHomerun == true)
+        {
+            audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
+        }
         hitStats.Add(hs);
         Debug.Log("HIT ADDDED" + distance);          
                                   
@@ -318,57 +320,79 @@ public class GameController : MonoBehaviour
     void DisplayExitStats()
     {
 
+
         int count = 1;
+        int numHits = 0;
         string stats1 = "";
         string stats2 = "";
-        string farthest = "";
+        string farthest = "Farthest Hit: ";
         string average = "Average Hit: ";
+        string batAvg = "Batting Average: ";
         int farthestInt = 0;
-       // int numPitches = stats.GetNumPitches();
-        int totalDistance = 0;
-        int averageDistance = 0;
-        float battingAverage = 0f;
-        
+        float totalDistance = 0;
+        float averageDistance = 0;
+        float battingAverage = 0;
+
         hitStats = hitStats.OrderByDescending(o => o.distance).ToList();
 
         foreach (HitStats hs in hitStats)
         {
-            totalDistance = totalDistance + hs.distance;
             if (count <= 5)
             {
                 if (count == 1)
                 {
                     farthestInt = hs.distance;
-                    farthest = "Farthest Hit: " + farthestInt + " Ft";
+                    farthest = farthest + farthestInt + " Ft";
                 }
                 if (!hs.isFoul)
                 {
                     stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
                     count++;
+                    totalDistance = totalDistance + hs.distance;
+                    numHits++;
                 }
             }
             else if (count > 5 && count <= 10)
             {
-                stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
-                count++;
+                if (!hs.isFoul)
+                {
+                    stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
+                    count++;
+                    totalDistance = totalDistance + hs.distance;
+                    numHits++;
+                }
             }
         }
-        averageDistance = totalDistance / count;
-        averageHit.text = average + averageDistance;
+        if (stats.GetNumPitches() == 0)
+        {
+            battingAverage = 0;
+        }
+        else
+        { 
+        battingAverage = (numHits / stats.GetNumPitches());
+        }
+        batAvg = batAvg + (Mathf.Round(battingAverage * 1000f) / 1000f);
+        if ((count - 1) == 0)
+        {
+            averageDistance = 0;
+        }
+        else
+        {
+            averageDistance = totalDistance / (count - 1);
+        }
+        averageHit.text = average + averageDistance + " Ft";
         topStats1.text = stats1;
         topStats2.text = stats2;
         farthestHit.text = farthest;
+        battingAvgHit.text = batAvg;
 
-        //Fade in stats at end of game
-        //for (float x = 0; x <= 1; x = +.1f)
-        //{
-            endStatsCanvas.alpha = 1;
-        //}
+        endStatsCanvas.alpha = 1;
+        endStatsCanvas.interactable = true;
+        endStatsCanvas.blocksRaycasts = true;
+
+        
         //TODO: will need to hide other panels that are visible through this panel
-        //Timer(280);
-        //Timer myTimer = new Timer();
-        //myTimer.Interval = 50000;
-        //myTimer.Start();
+       
     }
     private void EventFlagButton()
     {

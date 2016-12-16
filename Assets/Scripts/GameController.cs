@@ -389,9 +389,13 @@ public class GameController : MonoBehaviour
         endStatsCanvas.blocksRaycasts = true;
         //}
 
+        //disables game canvas with buttons and hits and strikes canvas
         gameCanvas.interactable = false;
         gameCanvas.alpha = 0;
         gameCanvas.blocksRaycasts = false;
+        hitstrikeCanvas.interactable = false;
+        hitstrikeCanvas.alpha = 0;
+        hitstrikeCanvas.blocksRaycasts = false;
 
         gcFSM.ChangeState(States.ShowingGameStats);
 

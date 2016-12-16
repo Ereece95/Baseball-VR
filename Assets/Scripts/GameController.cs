@@ -248,7 +248,6 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
-        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
         
     }
@@ -269,7 +268,10 @@ public class GameController : MonoBehaviour
         hs.distance = distance;
         hs.isFoul = isFoul;
         hs.isHomerun = isHomerun;
-
+        if(isHomerun == true)
+        {
+            audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
+        }
         hitStats.Add(hs);
         Debug.Log("HIT ADDDED" + distance);          
                                   

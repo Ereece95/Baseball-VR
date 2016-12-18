@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;   //Lists
 using System;
-using System.Timers;
 using System.Linq;
 using UnityEngine.UI;
 using MonsterLove.StateMachine;
@@ -27,6 +26,7 @@ public enum States
     WaitForInput,
     Delay,
     ExitGame,
+    ShowingGameStats,
     StatsGot
 }
 
@@ -63,6 +63,8 @@ public class GameController : MonoBehaviour
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
+    private CanvasGroup gameCanvas;
+    private CanvasGroup hitstrikeCanvas;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -80,6 +82,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);  //persist across levels
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
+        stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
         dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitch") as DisplayPitch;
 
         audioObject = GameObject.Find("Audio Source");
@@ -101,7 +104,7 @@ public class GameController : MonoBehaviour
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
         hitStats = new List<HitStats>();
-        
+
         topStats1 = GameObject.Find("Top1").GetComponent<Text>();
         topStats2 = GameObject.Find("Top2").GetComponent<Text>();
         farthestHit = GameObject.Find("Farthest").GetComponent<Text>();
@@ -113,12 +116,14 @@ public class GameController : MonoBehaviour
 
 
         endStatsCanvas = endStats.GetComponent<CanvasGroup>();
-        
+        gameCanvas = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
+        hitstrikeCanvas = GameObject.Find("Stats").GetComponent<CanvasGroup>();
+
     }
-        /// <summary>
-        /// Events we will listen for
-        /// </summary>
-        void OnEnable()
+    /// <summary>
+    /// Events we will listen for
+    /// </summary>
+    void OnEnable()
     {
 
         UIEvents.easyButtonClicked += EventEasyButtonClicked;
@@ -128,10 +133,11 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked += EventNextPitchButton;
         UIEvents.flagsButtonClicked += EventFlagButton;
         UIEvents.pitchTypeButtonClicked += EventPitchTypeButton;
+        UIEvents.endGameStatsClicked += EventDisplayExitStats;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
-            
+
     }
     /// <summary>
     /// 
@@ -145,6 +151,7 @@ public class GameController : MonoBehaviour
         UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.flagsButtonClicked -= EventFlagButton;
         UIEvents.pitchTypeButtonClicked -= EventPitchTypeButton;
+        UIEvents.endGameStatsClicked -= EventDisplayExitStats;
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
@@ -155,15 +162,27 @@ public class GameController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+
         var state = gcFSM.State;
 
         switch (state)
         {
             case States.Init:   //Wait until event happens
+                gameCanvas.interactable = false;
+                gameCanvas.alpha = 0;
+                gameCanvas.blocksRaycasts = false;
+                hitstrikeCanvas.interactable = false;
+                hitstrikeCanvas.alpha = 0;
+                hitstrikeCanvas.blocksRaycasts = false;
                 break;
 
             case States.StartClick:
+                gameCanvas.interactable = true;
+                gameCanvas.alpha = 1;
+                gameCanvas.blocksRaycasts = true;
+                hitstrikeCanvas.interactable = true;
+                hitstrikeCanvas.alpha = 1;
+                hitstrikeCanvas.blocksRaycasts = true;
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -195,12 +214,15 @@ public class GameController : MonoBehaviour
             case States.StatsGot:
                 break;
 
+            case States.ShowingGameStats:
+                break;                                  //Stay here until end game stats button is clicked
+
             case States.ExitGame:
-//#if UNITY_EDITOR
-//                UnityEditor.EditorApplication.isPlaying = false;
-//#else
-//                    Application.Quit();
-//#endif
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit();
+#endif
                 break;
 
         }
@@ -210,22 +232,22 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Start Button was Clicked
     /// </summary>
-    
+
     private void EventEasyButtonClicked()
     {
 
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.ThrowPitch);
-       
-       
+        gcFSM.ChangeState(States.StartClick);
+
+
     }
     private void EventMediumButtonClicked()
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
-        
+
 
     }
     private void EventHardButtonClicked()
@@ -233,7 +255,7 @@ public class GameController : MonoBehaviour
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
-        
+
 
     }
     /// <summary>
@@ -241,10 +263,10 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
-        Debug.Log("In Exit Button CLicked Function");
+        //Debug.Log("In Exit Button CLicked Function");
         //try
         //{
-            DisplayExitStats();
+        //DisplayExitStats();
         //}catch (Exception e)
         //{
         //    Debug.Log("Display Stats Failed: " + e.ToString());
@@ -267,7 +289,7 @@ public class GameController : MonoBehaviour
     private void HandleThrowPitch()
     {
         Pitcher = GameObject.Find("WBP_pitch 1");
-        if(Pitcher != null)
+        if (Pitcher != null)
         {
             pitch = Pitcher.GetComponent<Animation>();
             pitch.Play("Take 001");
@@ -289,9 +311,8 @@ public class GameController : MonoBehaviour
     private void EventBallHit()
     {
         audioS.PlayOneShot(audioS.clip, 0.7F);
-        audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         gcFSM.ChangeState(States.BallHit);
-        
+
     }
     private void EventBallNotHit()
     {
@@ -310,65 +331,99 @@ public class GameController : MonoBehaviour
         hs.distance = distance;
         hs.isFoul = isFoul;
         hs.isHomerun = isHomerun;
-
+        if (isHomerun == true)
+        {
+            audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
+        }
         hitStats.Add(hs);
-        Debug.Log("HIT ADDDED" + distance);          
-                                  
+        Debug.Log("HIT ADDDED" + distance);
+
     }
-    void DisplayExitStats()
+    private void EventDisplayExitStats()
     {
 
+
         int count = 1;
+        int numHits = 0;
         string stats1 = "";
         string stats2 = "";
-        string farthest = "";
+        string farthest = "Farthest Hit: ";
         string average = "Average Hit: ";
+        string batAvg = "Batting Average: ";
         int farthestInt = 0;
-       // int numPitches = stats.GetNumPitches();
-        int totalDistance = 0;
-        int averageDistance = 0;
-        float battingAverage = 0f;
-        
+        float totalDistance = 0;
+        float averageDistance = 0;
+        float battingAverage = 0;
+
         hitStats = hitStats.OrderByDescending(o => o.distance).ToList();
 
         foreach (HitStats hs in hitStats)
         {
-            totalDistance = totalDistance + hs.distance;
             if (count <= 5)
             {
                 if (count == 1)
                 {
                     farthestInt = hs.distance;
-                    farthest = "Farthest Hit: " + farthestInt + " Ft";
+                    farthest = farthest + farthestInt + " Ft";
                 }
                 if (!hs.isFoul)
                 {
                     stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
                     count++;
+                    totalDistance = totalDistance + hs.distance;
+                    numHits++;
                 }
             }
             else if (count > 5 && count <= 10)
             {
-                stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
-                count++;
+                if (!hs.isFoul)
+                {
+                    stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
+                    count++;
+                    totalDistance = totalDistance + hs.distance;
+                    numHits++;
+                }
             }
         }
-        averageDistance = totalDistance / count;
-        averageHit.text = average + averageDistance;
+        if (stats.GetNumPitches() == 0)
+        {
+            battingAverage = 0;
+        }
+        else
+        { 
+        battingAverage = (numHits / stats.GetNumPitches());
+        }
+        batAvg = batAvg + (Mathf.Round(battingAverage * 1000f) / 1000f);
+        if ((count - 1) == 0)
+        {
+            averageDistance = 0;
+        }
+        else
+        {
+            averageDistance = totalDistance / (count - 1);
+        }
+        averageHit.text = average + averageDistance + " Ft";
         topStats1.text = stats1;
         topStats2.text = stats2;
         farthestHit.text = farthest;
+        battingAvgHit.text = batAvg;
 
-        //Fade in stats at end of game
-        //for (float x = 0; x <= 1; x = +.1f)
-        //{
-            endStatsCanvas.alpha = 1;
-        //}
-        //TODO: will need to hide other panels that are visible through this panel
-        //Timer(280);
-        //Timer myTimer = new Timer();
-        //myTimer.Interval = 50000;
-        //myTimer.Start();
+   
+        endStatsCanvas.alpha = 1;
+        endStatsCanvas.interactable = true;
+        endStatsCanvas.blocksRaycasts = true;
+
+        //disables game canvas with buttons and hits and strikes canvas
+        gameCanvas.interactable = false;
+        gameCanvas.alpha = 0;
+        gameCanvas.blocksRaycasts = false;
+        hitstrikeCanvas.interactable = false;
+        hitstrikeCanvas.alpha = 0;
+        hitstrikeCanvas.blocksRaycasts = false;
+
+        gcFSM.ChangeState(States.ShowingGameStats);
+        
+       
     }
     private void EventFlagButton()
     {
@@ -388,4 +443,5 @@ public class GameController : MonoBehaviour
     {
         dsplyPitch.displayPitchType();
     }
+
 }

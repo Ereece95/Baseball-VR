@@ -10,6 +10,7 @@ public class HitCam : MonoBehaviour {
     private Camera cam2;
     private Transform hitball;
     private GameController gc;
+    private bool hit = false;
 
     // Use this for initialization
     /// <summary>
@@ -29,7 +30,7 @@ public class HitCam : MonoBehaviour {
     /// Switches cameras to follow ball until the travel is done
     /// </summary>
 	void Update () {
-        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+         if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
         {
             cam1.enabled = false;
             cam2.enabled = true;

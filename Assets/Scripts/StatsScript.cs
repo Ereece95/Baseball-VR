@@ -394,7 +394,7 @@ public class StatsScript : MonoBehaviour
             }
         }
         int rand = Random.Range(0, 99);
-        Debug.Log(rand);
+        
         for (int i = 0; i < 5; i++)
         {
             if(rand<=pitches[i])

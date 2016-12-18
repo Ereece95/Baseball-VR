@@ -230,9 +230,8 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// Start Button was Clicked
+    /// A Start Button was Clicked
     /// </summary>
-
     private void EventEasyButtonClicked()
     {
 
@@ -242,6 +241,9 @@ public class GameController : MonoBehaviour
 
 
     }
+    /// <summary>
+    /// A Start Button was Clicked
+    /// </summary>
     private void EventMediumButtonClicked()
     {
         DestroyImmediate(startmenu);
@@ -250,6 +252,9 @@ public class GameController : MonoBehaviour
 
 
     }
+    /// <summary>
+    /// A Start Button was Clicked
+    /// </summary>
     private void EventHardButtonClicked()
     {
         DestroyImmediate(startmenu);
@@ -323,7 +328,12 @@ public class GameController : MonoBehaviour
     {
         return gcFSM.State;
     }
-
+    /// <summary>
+    /// Display how far the ball has gone in feet button
+    /// </summary>
+    /// <param name="distance"></param>
+    /// <param name="isFoul"></param>
+    /// <param name="isHomerun"></param>
     void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun)
     {
         gcFSM.ChangeState(States.WaitForInput);
@@ -339,6 +349,9 @@ public class GameController : MonoBehaviour
         Debug.Log("HIT ADDDED" + distance);
 
     }
+    /// <summary>
+    /// When leaving display stats for the player
+    /// </summary>
     private void EventDisplayExitStats()
     {
 

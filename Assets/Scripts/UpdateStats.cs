@@ -97,7 +97,9 @@ public class UpdateStats : MonoBehaviour {
     //  //  }
     //}
 
-
+    /// <summary>
+    /// When the ball is not hit increment the amount of strikes since every throw is a strike for now
+    /// </summary>
     public void EventBallNotHit()
     {
         strikes++;
@@ -105,7 +107,9 @@ public class UpdateStats : MonoBehaviour {
         strikesText.text = strikes.ToString();
         CheckStats();
     }
- 
+    /// <summary>
+    /// When the ball is hit increment the amount of hits
+    /// </summary>
     public void EventBallHit()
     {
         hits++;
@@ -113,6 +117,9 @@ public class UpdateStats : MonoBehaviour {
         hitsText.text = hits.ToString();
         CheckStats();
     }
+    /// <summary>
+    /// Displays the flags on the field or hids them
+    /// </summary>
     public void EventFlagButton()
     {
        

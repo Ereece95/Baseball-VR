@@ -40,7 +40,10 @@ public class StatsState : MonoBehaviour
     {
 	
 	}
-    
+    /// <summary>
+    /// Compares the information from the stats and chooses a pitch type based on them
+    /// </summary>
+    /// <returns></returns>
     public int getPitchType()
     {
         int fbp;
@@ -82,6 +85,12 @@ public class StatsState : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// Based on stats makes the ball go to a certain quadrant in the strike zone
+    /// </summary>
+    /// <param name="p">Used later to get the index from the stats</param>
+    /// <param name="t">used later to say what type of pitch will be thrown</param>
+    /// <returns></returns>
     public  double getQudrent(string p, int t)
     {
         double percent = -1;
@@ -108,6 +117,11 @@ public class StatsState : MonoBehaviour
         }
         return percent;
     }
+    /// <summary>
+    /// Increments through the stats and decides where to go for quadrants 1-13
+    /// for now if it goes above 9 it goes again since every throw is a strike
+    /// </summary>
+    /// <returns>returns -1 if something goes wrong</returns>
     public int setQuadrent()
     {
         double[] quad = new double[13];

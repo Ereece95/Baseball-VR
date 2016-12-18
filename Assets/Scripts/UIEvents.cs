@@ -65,13 +65,17 @@ public class UIEvents : MonoBehaviour {
         if (flagsButtonClicked != null)  //make sure someone is listening
             flagsButtonClicked();        //Fire the event
     }
-
+    /// <summary>
+    /// Displays the type of pitch a fast, curve, changeup, slider, or sinker
+    /// </summary>
     public void PitchTypeButtonClicked()     //must be public to see in the button's onClick() method
     {
         if (pitchTypeButtonClicked != null)  //make sure someone is listening
             pitchTypeButtonClicked();        //Fire the event
     }
-
+    /// <summary>
+    /// Displays stats like the farthest ball hit, average hits, average feet which the ball went
+    /// </summary>
     public void EndGameStatsClicked()     //must be public to see in the button's onClick() method
     {
         if (endGameStatsClicked != null)  //make sure someone is listening

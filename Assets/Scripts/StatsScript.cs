@@ -433,8 +433,8 @@ public class StatsScript : MonoBehaviour
     }
     public int setQuadrent()
     {
-        double[] quad = new double[13];
-        for (int i = 0; i < 13; i++)
+        double[] quad = new double[9];
+        for (int i = 0; i < 9; i++)
         {
             if (i != 0)
             {
@@ -446,15 +446,17 @@ public class StatsScript : MonoBehaviour
             }
         }
         int rand;
+       int max = System.Convert.ToInt32(quad[8]);
+            rand = Random.Range(0,max);
        
-            rand = Random.Range(0, 99);
-        
-        
-      
+
+
         for (int i = 0; i < 9; i++)
         {
             if (quad[i] >= rand)
             {
+                
+               
                 return i;
             }
         }

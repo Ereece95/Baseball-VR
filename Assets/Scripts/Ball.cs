@@ -253,7 +253,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void shift()
     {
-        
+
        
         switch (quadrent)
         {

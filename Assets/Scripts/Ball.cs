@@ -251,9 +251,7 @@ public class Ball : MonoBehaviour
         }
 
     }
-    /// <summary>
-    /// Change the balls path to go into the quadrant decided by the pitchers stats
-    /// </summary>
+    
     void shift()
     {
 

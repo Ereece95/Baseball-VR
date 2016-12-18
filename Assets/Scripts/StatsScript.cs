@@ -60,7 +60,10 @@ public class StatsScript : MonoBehaviour
 
     List<Row> rowList = new List<Row>();
     bool isLoaded = false;
-
+    /// <summary>
+    /// Checks to see if the file was loaded
+    /// </summary>
+    /// <returns></returns>
     public bool IsLoaded()
     {
         return isLoaded;
@@ -70,7 +73,10 @@ public class StatsScript : MonoBehaviour
     {
         return rowList;
     }
-
+    /// <summary>
+    /// Loads all the information
+    /// </summary>
+    /// <param name="csv"></param>
     public void Load(TextAsset csv)
     {
         rowList.Clear();

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 /// <summary>
 /// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
+/// </summary>
 public class Ball : MonoBehaviour
 {
     public GameObject ball;
@@ -404,6 +405,7 @@ public class Ball : MonoBehaviour
     }
     /// <summary>
     /// Easy speed of 10
+    /// Loads CSV2 which has a easier pitcher
     /// </summary>
     void ChangespeedE()
     {
@@ -414,6 +416,7 @@ public class Ball : MonoBehaviour
     }
     /// <summary>
     /// Medium speed of 15
+    /// Loads CSV2 which has a easier pitcher
     /// </summary>
     void ChangespeedM()
     {
@@ -424,6 +427,7 @@ public class Ball : MonoBehaviour
     }
     /// <summary>
     /// Hard speed of 20
+    /// Loads CSV which has a hard pitcher with more variety
     /// </summary>
     void ChangespeedH()
     {

@@ -23,6 +23,7 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
+    //The type of pitch
     int Paths;
     public delegate void BallHit();
     public static event BallHit ballHit;
@@ -30,7 +31,9 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
-    public StatsScript s;
+    //The Stats for the pitchers
+    public StatsScript stats;
+    //The Quadrent that the pitch will go too
     public int quadrent;
     List<GameObject>  _flags = new List<GameObject>();
 
@@ -390,8 +393,9 @@ public class Ball : MonoBehaviour
         trail.enabled = false;
         hit = false;
         i = 0;
-        Paths = s.getPitchType();
-        quadrent = s.setQuadrent();
+        //sets paths and quadrent equal to the new random values of the next pitch
+        Paths = stats.getPitchType();
+        quadrent = stats.setQuadrent();
         num = pathArray[Paths].childCount;
 
         path = new Transform[num];
@@ -404,32 +408,38 @@ public class Ball : MonoBehaviour
     }
     /// <summary>
     /// Easy speed of 10
+    /// Pitcher Archer C
     /// </summary>
     void ChangespeedE()
     {
-        s = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
-        Paths = s.getPitchType();
-        quadrent = s.setQuadrent();
+        //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
+        stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+        Paths = stats.getPitchType();
+        quadrent = stats.setQuadrent();
         speed = 10;
     }
     /// <summary>
     /// Medium speed of 15
+    /// Pitcher Archer C
     /// </summary>
     void ChangespeedM()
     {
-        s = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
-        Paths = s.getPitchType();
-        quadrent = s.setQuadrent();
+        //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
+        stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+        Paths = stats.getPitchType();
+        quadrent = stats.setQuadrent();
         speed = 15;
     }
     /// <summary>
     /// Hard speed of 20
+    /// Pitcher Areitta J
     /// </summary>
     void ChangespeedH()
     {
-        s = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
-        Paths = s.getPitchType();
-        quadrent = s.setQuadrent();
+        //sets stats equal to Arietta J's stats and sets the pitch and quadrent equal to a new random one
+        stats = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
+        Paths = stats.getPitchType();
+        quadrent = stats.setQuadrent();
         speed = 20;
     }
 

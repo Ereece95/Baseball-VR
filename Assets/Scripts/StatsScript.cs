@@ -11,6 +11,7 @@ public class StatsScript : MonoBehaviour
     public TextAsset file;
     public static int pitch;
     public static int qaudrent;
+    //An array of strings that point to a spesific row of the CSV file
     public string[] index;
     
 
@@ -26,7 +27,7 @@ public class StatsScript : MonoBehaviour
         index = new string[13];
 
         index[0] = "0";
-
+        //Each row in the CSV file is labeled 0-12 this loop fills up index to access any row in the CSV file
         for (int i = 1; i < 13; i++)
         {
             index[i] = i.ToString();
@@ -250,7 +251,10 @@ public class StatsScript : MonoBehaviour
         return rowList.FindAll(x => x.SI_L == find);
     }
 
-
+    /// <summary>
+    /// Returns the right handed fast ball pitch at row p
+    /// </summary>
+   
     public double getFBStatR(string p)
     {
         string sample = (Find_Player(p).FB_R);
@@ -260,6 +264,9 @@ public class StatsScript : MonoBehaviour
         double.TryParse(sample, out temp);
         return temp;
     }
+    /// <summary>
+    /// Returns the left handed fast ball pitch at row p
+    /// </summary>
 
     public double getFBStatL(string p)
     {
@@ -270,6 +277,10 @@ public class StatsScript : MonoBehaviour
         double.TryParse(sample, out temp);
         return temp;
     }
+    /// <summary>
+    /// Returns the right handed curve ball pitch at row p
+    /// </summary>
+
     public double getCVStatR(string p)
     {
         string sample = (Find_Player(p).CV_R);
@@ -280,6 +291,10 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    /// Returns the left handed curve ball pitch at row p
+    /// </summary>
+
     public double getCVStatL(string p)
     {
         string sample = (Find_Player(p).CV_L);
@@ -289,6 +304,11 @@ public class StatsScript : MonoBehaviour
         double.TryParse(sample, out temp);
         return temp;
     }
+
+    /// <summary>
+    /// Returns the right handed change up pitch at row p
+    /// </summary>
+
     public double getCHStatR(string p)
     {
         string sample = (Find_Player(p).CH_R);
@@ -299,6 +319,10 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    /// Returns the left handed change up pitch at row p
+    /// </summary>
+
     public double getCHStatL(string p)
     {
         string sample = (Find_Player(p).CH_L);
@@ -308,6 +332,9 @@ public class StatsScript : MonoBehaviour
         double.TryParse(sample, out temp);
         return temp;
     }
+    /// <summary>
+    ///  Returns the right handed slider pitch at row p
+    /// </summary>
 
     public double getSLStatR(string p)
     {
@@ -319,6 +346,9 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    ///  Returns the left handed slider pitch at row p
+    /// </summary>
     public double getSLStatL(string p)
     {
         string sample = (Find_Player(p).SL_L);
@@ -329,6 +359,9 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    ///  Returns the right handed sinker pitch at row p
+    /// </summary>
     public double getSIStatR(string p)
     {
         string sample = (Find_Player(p).SI_R);
@@ -339,6 +372,9 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    ///  Returns the left handed sinker pitch at row p
+    /// </summary>
     public double getSIStatL(string p)
     {
         string sample = (Find_Player(p).SI_L);
@@ -349,8 +385,13 @@ public class StatsScript : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    ///  Uses the pitcher stats to create several percent ranges between 0 and 100 , generates a random number between 0 and 100 and then 
+    ///  returns a number between 0 and 4 to represent a pitch based on the range that it landed in
+    /// </summary>
     public int getPitchType()
     {
+        //Generates the percent of fast balls thrown
         double fbp;
         double.TryParse(Find_Player(index[0]).TotalFastballs, out fbp);
         double temp;
@@ -358,30 +399,35 @@ public class StatsScript : MonoBehaviour
         fbp=fbp/temp;
         fbp *= 100;
 
-        double cbp;
-        double.TryParse(Find_Player(index[0]).TotalCurveballs, out cbp);
-        cbp = cbp / temp;
-        cbp *= 100;
+        //Generates the percent of curve balls thrown
+        double cvp;
+        double.TryParse(Find_Player(index[0]).TotalCurveballs, out cvp);
+        cvp = cvp / temp;
+        cvp *= 100;
 
+        //Generates the percent of change ups thrown
         double chp;
         double.TryParse(Find_Player(index[0]).TotalChangeups, out chp);
         chp = chp / temp;
         chp *= 100;
 
+        //Generates the percent of sliders thrown
         double slp;
         double.TryParse(Find_Player(index[0]).TotalSliders, out slp);
        slp = slp / temp;
         slp *= 100;
 
+        //Generates the percent of sinkers thrown
         double sip;
         double.TryParse(Find_Player(index[0]).TotalSinkers, out sip);
         sip = sip / temp;
         sip *= 100;
 
+        //An array of all the pitch percentages to create the ranges
         double[] pitches = new double[5];
         pitches[0] = chp;
         pitches[1] = fbp;
-        pitches[2] = cbp;
+        pitches[2] = cvp;
         pitches[3] = sip;
         pitches[4] = slp;
         
@@ -390,13 +436,17 @@ public class StatsScript : MonoBehaviour
         {
             if(i>0)
             {
+                //Creates a range from pitches[i-1] to pitches[i[ for the random number to fall into
+                //The larger the percent the bigger the range and the more likely the chance the random number will land in that range
                 pitches[i] += pitches[i - 1];
             }
         }
-        int rand = Random.Range(0, 99);
+       
+        int rand = Random.Range(0, 100);
         
         for (int i = 0; i < 5; i++)
         {
+            //If rand falls into the range of pitchers[i] then it returns i as the pitch type (a number 0-4)
             if(rand<=pitches[i])
             {
                 return i;
@@ -405,6 +455,10 @@ public class StatsScript : MonoBehaviour
         return -1;
 
     }
+    /// <summary>
+    /// Returns a single quadrent stack at row p, with pitch type p
+    /// </summary>
+    
     public double getQudrent(string p, int t)
     {
         double percent = -1;
@@ -413,31 +467,40 @@ public class StatsScript : MonoBehaviour
         {
             percent = getCHStatR(p);   
         }
-        else if (t == 1)
+        else if (t == 2)
         {
             percent = getCVStatR(p); 
         }
-        else if (t == 2)
-        {
-            percent = getSLStatR(p); 
-        }
         else if (t == 3)
+        {
+            percent = getSIStatR(p); 
+        }
+        else if (t == 1)
         {
             percent = getFBStatR(p);
         }
         else
         {
-            percent = getSIStatR(p);
+            percent = getSLStatR(p);
         }
         return percent;
     }
+
+    /// <summary>
+    /// Uses the pitcher stats to create several percent ranges between 0 and 100, generates a random number between 0 and 100 and then 
+    ///  returns a number between 0 through 9 to represent the quadrent based on the range that it landed in
+    /// </summary>
     public int setQuadrent()
     {
+        //An array to hold all of the quadrent percents 
         double[] quad = new double[9];
+
         for (int i = 0; i < 9; i++)
         {
             if (i != 0)
             {
+                //Creates a range from quad[i-1] to quad[i[ for the random number to fall into
+                //The larger the percent the bigger the range and the more likely the chance the random number will land in that range
                 quad[i] = quad[i - 1] + getQudrent(index[i], pitch);
             }
             else
@@ -445,12 +508,12 @@ public class StatsScript : MonoBehaviour
                 quad[i] = getQudrent(index[i], pitch);
             }
         }
-        int rand;
-       int max = System.Convert.ToInt32(quad[8]);
-            rand = Random.Range(0,max);
+       
+       
+          int rand = Random.Range(0,100);
        
 
-
+        //returns an int that will represent what quadrent the pitch will fall into based on the range it landed in
         for (int i = 0; i < 9; i++)
         {
             if (quad[i] >= rand)

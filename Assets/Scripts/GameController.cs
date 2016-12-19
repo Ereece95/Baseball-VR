@@ -27,7 +27,8 @@ public enum States
     Delay,
     ExitGame,
     ShowingGameStats,
-    StatsGot
+    StatsGot,
+    VideoPlay
 }
 
 
@@ -65,6 +66,8 @@ public class GameController : MonoBehaviour
     private CanvasGroup endStatsCanvas;
     private CanvasGroup gameCanvas;
     private CanvasGroup hitstrikeCanvas;
+    private VideoCompar video;
+    private VideoCompar videoCompare;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -119,6 +122,8 @@ public class GameController : MonoBehaviour
         gameCanvas = GameObject.Find("Canvas").GetComponent<CanvasGroup>();
         hitstrikeCanvas = GameObject.Find("Stats").GetComponent<CanvasGroup>();
 
+        video = GameObject.Find("Video").GetComponent("VideoCompar") as VideoCompar;
+        videoCompare = GameObject.Find("VideoCompare").GetComponent("VideoCompar") as VideoCompar;
     }
     /// <summary>
     /// Events we will listen for
@@ -134,6 +139,8 @@ public class GameController : MonoBehaviour
         UIEvents.flagsButtonClicked += EventFlagButton;
         UIEvents.pitchTypeButtonClicked += EventPitchTypeButton;
         UIEvents.endGameStatsClicked += EventDisplayExitStats;
+        UIEvents.videoButtonClicked += EventDisplayVideo;
+        UIEvents.videoCompareButtonClicked += EventDisplayVideoCompare;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -152,6 +159,8 @@ public class GameController : MonoBehaviour
         UIEvents.flagsButtonClicked -= EventFlagButton;
         UIEvents.pitchTypeButtonClicked -= EventPitchTypeButton;
         UIEvents.endGameStatsClicked -= EventDisplayExitStats;
+        UIEvents.videoButtonClicked -= EventDisplayVideo;
+        UIEvents.videoCompareButtonClicked -= EventDisplayVideoCompare;
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
@@ -216,6 +225,13 @@ public class GameController : MonoBehaviour
 
             case States.ShowingGameStats:
                 break;                                  //Stay here until end game stats button is clicked
+
+            case States.VideoPlay:
+                Timer(600);
+                gcFSM.ChangeState(States.WaitForInput);
+                video.video1.enabled = false;
+                videoCompare.video1.enabled = false;     
+                break;
 
             case States.ExitGame:
 #if UNITY_EDITOR
@@ -455,6 +471,23 @@ public class GameController : MonoBehaviour
     private void EventPitchTypeButton()
     {
         dsplyPitch.displayPitchType();
+    }
+
+    private void EventDisplayVideo()
+    {
+        if (GetState() == States.WaitForInput)
+        {
+            gcFSM.ChangeState(States.VideoPlay);
+            video.playVideo();
+        }
+    }
+    private void EventDisplayVideoCompare()
+    {
+        if (GetState() == States.WaitForInput)
+        {
+            gcFSM.ChangeState(States.VideoPlay);
+            videoCompare.playVideo();
+        }
     }
 
 }

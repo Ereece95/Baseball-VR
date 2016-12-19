@@ -62,9 +62,6 @@ public class Ball : MonoBehaviour
         
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
-
-       
-        
         flagVis = true;
     }
 

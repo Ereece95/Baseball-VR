@@ -15,6 +15,8 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler flagsButtonClicked;
     public static event buttonHandler pitchTypeButtonClicked;
     public static event buttonHandler endGameStatsClicked;
+    public static event buttonHandler videoButtonClicked;
+    public static event buttonHandler videoCompareButtonClicked;
 
     /// <summary>
     /// Send event when Easy button clicked. Listened for in GameController
@@ -80,5 +82,23 @@ public class UIEvents : MonoBehaviour {
     {
         if (endGameStatsClicked != null)  //make sure someone is listening
             endGameStatsClicked();        //Fire the event
+    }
+
+    /// <summary>
+    /// Displays video of swing
+    /// </summary>
+    public void VideoButtonClicked()     //must be public to see in the button's onClick() method
+    {
+        if (videoButtonClicked != null)  //make sure someone is listening
+            videoButtonClicked();        //Fire the event
+    }
+
+    /// <summary>
+    /// Displays video of professional swing
+    /// </summary>
+    public void VideoCompareButtonClicked()     //must be public to see in the button's onClick() method
+    {
+        if (videoCompareButtonClicked != null)  //make sure someone is listening
+            videoCompareButtonClicked();        //Fire the event
     }
 }

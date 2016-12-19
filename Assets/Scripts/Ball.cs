@@ -23,7 +23,9 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
-    //The type of pitch
+    /// <summary>
+    /// The type of pitch
+    /// </summary>
     int Paths;
     public delegate void BallHit();
     public static event BallHit ballHit;
@@ -31,9 +33,13 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
-    //The Stats for the pitchers
+    /// <summary>
+    /// The Stats for the pitchers
+    /// </summary>
     public StatsScript stats;
-    //The Quadrent that the pitch will go too
+    /// <summary>
+    /// The Quadrent that the pitch will go too
+    /// </summary>
     public int quadrent;
     List<GameObject>  _flags = new List<GameObject>();
     
@@ -151,7 +157,7 @@ public class Ball : MonoBehaviour
 
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
-                    int rotationY = (Random.Range(0, 90));
+                    int rotationY = (Random.Range(-5, 100));
                     int rotationX = (Random.Range(-10, -60));
                     rotationVector.y = rotationY;
                     rotationVector.x = rotationX;
@@ -219,7 +225,7 @@ public class Ball : MonoBehaviour
         //    RB.useGravity = false;
         //    Debug.Log("Foul Pole");
         //}
-        if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
+        if ((Col.gameObject.name == "Field"||Col.gameObject.name=="Homerun" )&& gc.GetState() == States.WaitForCollision)
         {
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
             flag.GetComponent<Renderer>().material.color = Color.red;
@@ -385,6 +391,7 @@ public class Ball : MonoBehaviour
         x = 0;
         contin = false;
         trail.Clear();
+        collideBat = false;
         RB.useGravity = false; //resets the ball physics for next pitch
         RB.velocity = Vector3.zero;
         trail.enabled = false;

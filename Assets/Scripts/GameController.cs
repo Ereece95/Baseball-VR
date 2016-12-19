@@ -380,13 +380,14 @@ public class GameController : MonoBehaviour
 
         foreach (HitStats hs in hitStats)
         {
+            if (hs.isFoul == false && (hs.distance > farthestInt))
+            {
+                farthestInt = hs.distance;
+            }
+
             if (count <= 5)
             {
-                if (count == 1)
-                {
-                    farthestInt = hs.distance;
-                    farthest = farthest + farthestInt + " Ft";
-                }
+                
                 if (!hs.isFoul)
                 {
                     stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
@@ -426,10 +427,11 @@ public class GameController : MonoBehaviour
         averageHit.text = average + (int)averageDistance + " Ft";
         topStats1.text = stats1;
         topStats2.text = stats2;
+        farthest = farthest + farthestInt + " Ft";
         farthestHit.text = farthest;
         battingAvgHit.text = batAvg;
+        
 
-   
         endStatsCanvas.alpha = 1;
         endStatsCanvas.interactable = true;
         endStatsCanvas.blocksRaycasts = true;
@@ -465,27 +467,26 @@ public class GameController : MonoBehaviour
         dsplyPitch.displayPitchType();
     }
 
-    private void EventDisplayVideo()
+}
+private void EventDisplayVideo()
+{
+    if (video.video1.enabled == false)
     {
-        if (video.video1.enabled == false)
-        {
-            video.playVideo();
-        }
-        else if (video.video1.enabled == true)
-        {
-            video.video1.enabled = false;
-        }
+        video.playVideo();
     }
-    private void EventDisplayVideoCompare()
+    else if (video.video1.enabled == true)
     {
-        if (videoCompare.video1.enabled == false)
-        {
-            videoCompare.playVideo();
-        }
-        else if (videoCompare.video1.enabled == true)
-        {
-            videoCompare.video1.enabled = false;
-        }
+        video.video1.enabled = false;
     }
-
+}
+private void EventDisplayVideoCompare()
+{
+    if (videoCompare.video1.enabled == false)
+    {
+        videoCompare.playVideo();
+    }
+    else if (videoCompare.video1.enabled == true)
+    {
+        videoCompare.video1.enabled = false;
+    }
 }

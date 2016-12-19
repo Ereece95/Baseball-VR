@@ -467,26 +467,28 @@ public class GameController : MonoBehaviour
         dsplyPitch.displayPitchType();
     }
 
+    private void EventDisplayVideo()
+    {
+        if (video.video1.enabled == false)
+        {
+            video.playVideo();
+        }
+        else if (video.video1.enabled == true)
+        {
+            video.video1.enabled = false;
+        }
+    }
+    private void EventDisplayVideoCompare()
+    {
+        if (videoCompare.video1.enabled == false)
+        {
+            videoCompare.playVideo();
+        }
+        else if (videoCompare.video1.enabled == true)
+        {
+            videoCompare.video1.enabled = false;
+        }
+    }
+
 }
-private void EventDisplayVideo()
-{
-    if (video.video1.enabled == false)
-    {
-        video.playVideo();
-    }
-    else if (video.video1.enabled == true)
-    {
-        video.video1.enabled = false;
-    }
-}
-private void EventDisplayVideoCompare()
-{
-    if (videoCompare.video1.enabled == false)
-    {
-        videoCompare.playVideo();
-    }
-    else if (videoCompare.video1.enabled == true)
-    {
-        videoCompare.video1.enabled = false;
-    }
-}
+

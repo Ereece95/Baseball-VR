@@ -529,6 +529,6 @@ public class StatsScript : MonoBehaviour
                 return i;
             }
         }
-        return -1;
+        return 0;
     }
 }

@@ -255,7 +255,7 @@ public class Ball : MonoBehaviour
     void shift()
     {
 
-       
+        Debug.Log(quadrent);
         switch (quadrent)
         {
             case 1:

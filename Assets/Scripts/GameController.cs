@@ -415,7 +415,7 @@ public class GameController : MonoBehaviour
         {
             averageDistance = totalDistance / (count - 1);
         }
-        averageHit.text = average + averageDistance + " Ft";
+        averageHit.text = average + (int)averageDistance + " Ft";
         topStats1.text = stats1;
         topStats2.text = stats2;
         farthestHit.text = farthest;

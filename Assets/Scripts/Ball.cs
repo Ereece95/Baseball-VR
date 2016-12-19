@@ -23,7 +23,9 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
-    //The type of pitch
+    /// <summary>
+    /// The type of pitch
+    /// </summary>
     int Paths;
     public delegate void BallHit();
     public static event BallHit ballHit;
@@ -31,9 +33,13 @@ public class Ball : MonoBehaviour
     private GameController gc;
     public Animation Throw;
     public Transform plate;
-    //The Stats for the pitchers
+    /// <summary>
+    /// The Stats for the pitchers
+    /// </summary>
     public StatsScript stats;
-    //The Quadrent that the pitch will go too
+    /// <summary>
+    /// The Quadrent that the pitch will go too
+    /// </summary>
     public int quadrent;
     List<GameObject>  _flags = new List<GameObject>();
     

@@ -11,7 +11,9 @@ public class StatsScript : MonoBehaviour
     public TextAsset file;
     public static int pitch;
     public static int qaudrent;
-    //An array of strings that point to a spesific row of the CSV file
+    /// <summary>
+    /// An array of strings that point to a spesific row of the CSV file
+    /// </summary>
     public string[] index;
     
 
@@ -395,9 +397,15 @@ public class StatsScript : MonoBehaviour
     ///  Uses the pitcher stats to create several percent ranges between 0 and 100 , generates a random number between 0 and 100 and then 
     ///  returns a number between 0 and 4 to represent a pitch based on the range that it landed in
     /// </summary>
+    /// <param name="fbp">Generates the percent of fast balls thrown  </param>
+    /// <param name="cvp">Generates the percent of curve balls thrown  </param>
+    /// <param name="chp">Generates the percent of change ups thrown  </param>
+    /// <param name="slp">Generates the percent of sliders thrown  </param>
+    /// <param name="sip">Generates the percent of sinkers thrown  </param>
+    /// <param name="pitches">An array of all the pitch percentages to create the ranges</param>
     public int getPitchType()
     {
-        //Generates the percent of fast balls thrown
+        
         double fbp;
         double.TryParse(Find_Player(index[0]).TotalFastballs, out fbp);
         double temp;
@@ -405,31 +413,31 @@ public class StatsScript : MonoBehaviour
         fbp=fbp/temp;
         fbp *= 100;
 
-        //Generates the percent of curve balls thrown
+        
         double cvp;
         double.TryParse(Find_Player(index[0]).TotalCurveballs, out cvp);
         cvp = cvp / temp;
         cvp *= 100;
 
-        //Generates the percent of change ups thrown
+        
         double chp;
         double.TryParse(Find_Player(index[0]).TotalChangeups, out chp);
         chp = chp / temp;
         chp *= 100;
 
-        //Generates the percent of sliders thrown
+        
         double slp;
         double.TryParse(Find_Player(index[0]).TotalSliders, out slp);
        slp = slp / temp;
         slp *= 100;
 
-        //Generates the percent of sinkers thrown
+        
         double sip;
         double.TryParse(Find_Player(index[0]).TotalSinkers, out sip);
         sip = sip / temp;
         sip *= 100;
 
-        //An array of all the pitch percentages to create the ranges
+        
         double[] pitches = new double[5];
         pitches[0] = chp;
         pitches[1] = fbp;
@@ -496,6 +504,7 @@ public class StatsScript : MonoBehaviour
     /// Uses the pitcher stats to create several percent ranges between 0 and 100, generates a random number between 0 and 100 and then 
     ///  returns a number between 0 through 9 to represent the quadrent based on the range that it landed in
     /// </summary>
+    /// <param name="quad">An array of all the pitch percentages to create the ranges</param>
     public int setQuadrent()
     {
         //An array to hold all of the quadrent percents 

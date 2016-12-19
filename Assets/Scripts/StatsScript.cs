@@ -499,9 +499,9 @@ public class StatsScript : MonoBehaviour
     public int setQuadrent()
     {
         //An array to hold all of the quadrent percents 
-        double[] quad = new double[9];
+        double[] quad = new double[13];
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 13; i++)
         {
             if (i != 0)
             {
@@ -517,7 +517,11 @@ public class StatsScript : MonoBehaviour
        
        
           int rand = Random.Range(0,100);
-       
+        while (rand > quad[8])
+        {
+            rand= Random.Range(0, 100);
+        }
+
 
         //returns an int that will represent what quadrent the pitch will fall into based on the range it landed in
         for (int i = 0; i < 9; i++)

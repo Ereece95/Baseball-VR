@@ -372,13 +372,14 @@ public class GameController : MonoBehaviour
 
         foreach (HitStats hs in hitStats)
         {
+            if (hs.isFoul == false && (hs.distance > farthestInt))
+            {
+                farthestInt = hs.distance;
+            }
+
             if (count <= 5)
             {
-                if (count == 1)
-                {
-                    farthestInt = hs.distance;
-                    farthest = farthest + farthestInt + " Ft";
-                }
+                
                 if (!hs.isFoul)
                 {
                     stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
@@ -418,10 +419,11 @@ public class GameController : MonoBehaviour
         averageHit.text = average + (int)averageDistance + " Ft";
         topStats1.text = stats1;
         topStats2.text = stats2;
+        farthest = farthest + farthestInt + " Ft";
         farthestHit.text = farthest;
         battingAvgHit.text = batAvg;
+        
 
-   
         endStatsCanvas.alpha = 1;
         endStatsCanvas.interactable = true;
         endStatsCanvas.blocksRaycasts = true;

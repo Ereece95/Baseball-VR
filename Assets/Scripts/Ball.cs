@@ -160,7 +160,7 @@ public class Ball : MonoBehaviour
 
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
-                    int rotationY = (Random.Range(0, 90));
+                    int rotationY = (Random.Range(-5, 100));
                     int rotationX = (Random.Range(-10, -60));
                     rotationVector.y = rotationY;
                     rotationVector.x = rotationX;
@@ -228,7 +228,7 @@ public class Ball : MonoBehaviour
         //    RB.useGravity = false;
         //    Debug.Log("Foul Pole");
         //}
-        if (Col.gameObject.name == "Field" && gc.GetState() == States.WaitForCollision)
+        if ((Col.gameObject.name == "Field"||Col.gameObject.name=="Homerun" )&& gc.GetState() == States.WaitForCollision)
         {
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
             flag.GetComponent<Renderer>().material.color = Color.red;

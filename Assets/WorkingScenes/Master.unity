@@ -254,8 +254,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 383.5, y: 299}
-  m_SizeDelta: {x: 767, y: 598}
+  m_AnchoredPosition: {x: 369.5, y: 242}
+  m_SizeDelta: {x: 739, y: 484}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &10986877
 GameObject:
@@ -2753,7 +2753,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 518749270}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 04ee5172dd0ca144ca1d6a2491da002a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3059,7 +3059,7 @@ GameObject:
   - 218: {fileID: 591186412}
   - 154: {fileID: 591186411}
   m_Layer: 0
-  m_Name: Extra Terrain
+  m_Name: Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

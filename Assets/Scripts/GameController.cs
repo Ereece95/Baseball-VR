@@ -27,8 +27,7 @@ public enum States
     Delay,
     ExitGame,
     ShowingGameStats,
-    StatsGot,
-    VideoPlay
+    StatsGot
 }
 
 
@@ -225,11 +224,6 @@ public class GameController : MonoBehaviour
 
             case States.ShowingGameStats:
                 break;                                  //Stay here until end game stats button is clicked
-
-            case States.VideoPlay:
-                Timer(20);
-                gcFSM.ChangeState(States.WaitForInput);    
-                break;
 
             case States.ExitGame:
 #if UNITY_EDITOR
@@ -473,18 +467,24 @@ public class GameController : MonoBehaviour
 
     private void EventDisplayVideo()
     {
-        if (GetState() == States.WaitForInput)
+        if (video.video1.enabled == false)
         {
-            gcFSM.ChangeState(States.VideoPlay);
             video.playVideo();
+        }
+        else if (video.video1.enabled == true)
+        {
+            video.video1.enabled = false;
         }
     }
     private void EventDisplayVideoCompare()
     {
-        if (GetState() == States.WaitForInput)
+        if (videoCompare.video1.enabled == false)
         {
-            gcFSM.ChangeState(States.VideoPlay);
             videoCompare.playVideo();
+        }
+        else if (videoCompare.video1.enabled == true)
+        {
+            videoCompare.video1.enabled = false;
         }
     }
 

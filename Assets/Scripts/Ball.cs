@@ -388,6 +388,7 @@ public class Ball : MonoBehaviour
         x = 0;
         contin = false;
         trail.Clear();
+        collideBat = false;
         RB.useGravity = false; //resets the ball physics for next pitch
         RB.velocity = Vector3.zero;
         trail.enabled = false;

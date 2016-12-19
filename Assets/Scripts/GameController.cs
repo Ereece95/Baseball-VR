@@ -227,7 +227,7 @@ public class GameController : MonoBehaviour
                 break;                                  //Stay here until end game stats button is clicked
 
             case States.VideoPlay:
-                Timer(60);
+                Timer(20);
                 gcFSM.ChangeState(States.WaitForInput);    
                 break;
 

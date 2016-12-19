@@ -5290,6 +5290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16a059e1dccb824297493ee5cec810b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  video1: {fileID: 976282779}
   movie: {fileID: 15200000, guid: d60bb2fbe4251df4cb7682a6db8c6e8b, type: 3}
 --- !u!82 &976282778
 AudioSource:
@@ -8159,6 +8160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16a059e1dccb824297493ee5cec810b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  video1: {fileID: 1593976539}
   movie: {fileID: 15200000, guid: 10dd11883e5d6f041bef281afc8a24a4, type: 3}
 --- !u!82 &1593976538
 AudioSource:

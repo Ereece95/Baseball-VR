@@ -176,21 +176,11 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
-                gameCanvas.interactable = false;
-                gameCanvas.alpha = 0;
-                gameCanvas.blocksRaycasts = false;
-                hitstrikeCanvas.interactable = false;
-                hitstrikeCanvas.alpha = 0;
-                hitstrikeCanvas.blocksRaycasts = false;
+                HideCanvas(true);
                 break;
 
             case States.StartClick:
-                gameCanvas.interactable = true;
-                gameCanvas.alpha = 1;
-                gameCanvas.blocksRaycasts = true;
-                hitstrikeCanvas.interactable = true;
-                hitstrikeCanvas.alpha = 1;
-                hitstrikeCanvas.blocksRaycasts = true;
+                HideCanvas(false);
                 gcFSM.ChangeState(States.ThrowPitch);
                 break;
 
@@ -437,12 +427,7 @@ public class GameController : MonoBehaviour
         endStatsCanvas.blocksRaycasts = true;
 
         //disables game canvas with buttons and hits and strikes canvas
-        gameCanvas.interactable = false;
-        gameCanvas.alpha = 0;
-        gameCanvas.blocksRaycasts = false;
-        hitstrikeCanvas.interactable = false;
-        hitstrikeCanvas.alpha = 0;
-        hitstrikeCanvas.blocksRaycasts = false;
+        HideCanvas(true);
 
         gcFSM.ChangeState(States.ShowingGameStats);
         
@@ -487,6 +472,28 @@ public class GameController : MonoBehaviour
         else if (videoCompare.video1.enabled == true)
         {
             videoCompare.video1.enabled = false;
+        }
+    }
+
+    private void HideCanvas(bool yes)
+    {
+        if (yes)
+        {
+            gameCanvas.interactable = false;
+            gameCanvas.alpha = 0;
+            gameCanvas.blocksRaycasts = false;
+            hitstrikeCanvas.interactable = false;
+            hitstrikeCanvas.alpha = 0;
+            hitstrikeCanvas.blocksRaycasts = false;
+        }
+        else
+        {
+            gameCanvas.interactable = true;
+            gameCanvas.alpha = 1;
+            gameCanvas.blocksRaycasts = true;
+            hitstrikeCanvas.interactable = true;
+            hitstrikeCanvas.alpha = 1;
+            hitstrikeCanvas.blocksRaycasts = true;
         }
     }
 

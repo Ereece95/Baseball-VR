@@ -216,7 +216,7 @@ public class Ball : MonoBehaviour
     {
         bool isFoul = false;
         bool isHomerun = false;
-
+        bool isCaught = false;
         //if(Col.gameObject.name == "Foul Pole")
         //{
         //    isHomerun = true;
@@ -225,6 +225,12 @@ public class Ball : MonoBehaviour
         //    RB.useGravity = false;
         //    Debug.Log("Foul Pole");
         //}
+        if (( Col.gameObject.tag == "Player")&& gc.GetState() == States.WaitForCollision)
+        {
+            RB.velocity = Vector3.zero;
+            isCaught = true;
+            Debug.Log("Ball Caught by " + Col.gameObject.name);
+        }
         if ((Col.gameObject.name == "Field"||Col.gameObject.name=="Homerun" )&& gc.GetState() == States.WaitForCollision)
         {
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);

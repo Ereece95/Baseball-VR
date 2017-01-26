@@ -379,9 +379,14 @@ public class GameController : MonoBehaviour
             if (count <= 5)
             {
                 
-                if (!hs.isFoul && !hs.isCaught)
+                if (!hs.isFoul)
                 {
-                    stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
+                    stats1 = stats1 + count + ") " + hs.distance + " ft";
+                    if(hs.isCaught == true)
+                    {
+                        stats1 = stats1 + " -- Out";
+                    }
+                    stats1 = stats1 + "\n";
                     count++;
                     totalDistance = totalDistance + hs.distance;
                     numHits++;
@@ -391,7 +396,12 @@ public class GameController : MonoBehaviour
             {
                 if (!hs.isFoul && !hs.isCaught)
                 {
-                    stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
+                    stats2 = stats2 + count + ") " + hs.distance + " ft\n";
+                    if (hs.isCaught == true)
+                    {
+                        stats1 = stats1 + " -- Out";
+                    }
+                    stats1 = stats1 + "\n";
                     count++;
                     totalDistance = totalDistance + hs.distance;
                     numHits++;

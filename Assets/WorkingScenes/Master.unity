@@ -161,7 +161,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 4.6, y: -16.7}
+  m_AnchoredPosition: {x: 8.2, y: -16.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9921317
@@ -2354,8 +2354,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 416165998}
   - 33: {fileID: 416165997}
-  - 136: {fileID: 416165996}
   - 23: {fileID: 416165995}
+  - 64: {fileID: 416165996}
   m_Layer: 0
   m_Name: RightFielder
   m_TagString: Player
@@ -2392,8 +2392,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!136 &416165996
-CapsuleCollider:
+--- !u!64 &416165996
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2401,10 +2401,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &416165997
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2462,8 +2461,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 425086648}
   - 33: {fileID: 425086647}
-  - 136: {fileID: 425086646}
   - 23: {fileID: 425086645}
+  - 64: {fileID: 425086646}
   m_Layer: 0
   m_Name: CenterFielder
   m_TagString: Player
@@ -2500,8 +2499,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!136 &425086646
-CapsuleCollider:
+--- !u!64 &425086646
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2509,10 +2508,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &425086647
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3549,7 +3547,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.4, y: 0}
+  m_AnchoredPosition: {x: 25.2, y: 0}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &647463093
@@ -8200,7 +8198,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112.5, y: -49.8999}
+  m_AnchoredPosition: {x: 127.8, y: -42.9}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564741422
@@ -8709,7 +8707,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.6, y: -16.7}
+  m_AnchoredPosition: {x: -25.9, y: -16.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1634788639
@@ -10570,7 +10568,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92.69, y: -42.9}
+  m_AnchoredPosition: {x: -141.6, y: -42.9}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919410663
@@ -11324,7 +11322,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.1, y: 0}
+  m_AnchoredPosition: {x: -14.3, y: 0}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2061742729
@@ -11359,7 +11357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hits
+  m_Text: Contacts
 --- !u!222 &2061742730
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11403,8 +11401,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 2111683129}
   - 33: {fileID: 2111683128}
-  - 136: {fileID: 2111683127}
   - 23: {fileID: 2111683126}
+  - 64: {fileID: 2111683127}
   m_Layer: 0
   m_Name: LeftFielder
   m_TagString: Player
@@ -11441,8 +11439,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!136 &2111683127
-CapsuleCollider:
+--- !u!64 &2111683127
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -11450,10 +11448,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &2111683128
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -44,7 +44,7 @@ public class Ball : MonoBehaviour
     List<GameObject>  _flags = new List<GameObject>();
     
 
-    public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
+    public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;   
     
     void OnEnable()
@@ -150,15 +150,15 @@ public class Ball : MonoBehaviour
 
                 if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
                 {
-                    int r = (Random.Range(600, 1800));
+                    int r = (Random.Range(1400, 1600));
                     float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
 
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
-                    int rotationY = (Random.Range(-5, 100));
-                    int rotationX = (Random.Range(-10, -60));
+                    int rotationY = (Random.Range(70, 100));
+                    int rotationX = (Random.Range(-15, -25));
                     rotationVector.y = rotationY;
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
@@ -191,6 +191,7 @@ public class Ball : MonoBehaviour
     {
         bool isHomerun = false;
         bool isFoul = false;
+        bool isCaught = false;
         if (collision.tag == "Catcher")
         {
             if (ballNotHit != null) ballNotHit();
@@ -202,7 +203,15 @@ public class Ball : MonoBehaviour
             RB.velocity = Vector3.zero;
             Debug.Log("Homerun");
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
+        }
+        if ((collision.tag == "Player") && gc.GetState() == States.WaitForCollision)
+        {
+            RB.velocity = Vector3.zero;
+            isCaught = true;
+            Debug.Log("Ball Caught");
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
     }
     //Stop the ball from moving when it contacts the field
@@ -225,12 +234,7 @@ public class Ball : MonoBehaviour
         //    RB.useGravity = false;
         //    Debug.Log("Foul Pole");
         //}
-        if (( Col.gameObject.tag == "Player")&& gc.GetState() == States.WaitForCollision)
-        {
-            RB.velocity = Vector3.zero;
-            isCaught = true;
-            Debug.Log("Ball Caught by " + Col.gameObject.name);
-        }
+       
         if ((Col.gameObject.name == "Field"||Col.gameObject.name=="Homerun" )&& gc.GetState() == States.WaitForCollision)
         {
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -243,17 +247,17 @@ public class Ball : MonoBehaviour
             if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
             {
                 isFoul = false;
-                Debug.Log("Fair ball" + ball.transform.position.x + " " + ball.transform.position.z);
+                //Debug.Log("Fair ball" + ball.transform.position.x + " " + ball.transform.position.z);
 
             }
             else
             {
                 isFoul = true;
-                Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
+                //Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
 
             }
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
         if (Col.gameObject.name == "baseball_bat_regular")
         {

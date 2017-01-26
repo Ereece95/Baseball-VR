@@ -332,19 +332,20 @@ public class GameController : MonoBehaviour
     /// <param name="distance"></param>
     /// <param name="isFoul"></param>
     /// <param name="isHomerun"></param>
-    void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun)
+    void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun, bool isCaught)
     {
         gcFSM.ChangeState(States.WaitForInput);
         hs = new HitStats();
         hs.distance = distance;
         hs.isFoul = isFoul;
         hs.isHomerun = isHomerun;
+        hs.isCaught = isCaught;
         if (isHomerun == true)
         {
             audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         }
         hitStats.Add(hs);
-        Debug.Log("HIT ADDDED" + distance);
+        //Debug.Log("HIT ADDDED" + distance);
 
     }
     /// <summary>
@@ -370,7 +371,7 @@ public class GameController : MonoBehaviour
 
         foreach (HitStats hs in hitStats)
         {
-            if (hs.isFoul == false && (hs.distance > farthestInt))
+            if ((hs.isFoul == false) && (hs.isCaught == false) && (hs.distance > farthestInt))
             {
                 farthestInt = hs.distance;
             }
@@ -378,7 +379,7 @@ public class GameController : MonoBehaviour
             if (count <= 5)
             {
                 
-                if (!hs.isFoul)
+                if (!hs.isFoul && !hs.isCaught)
                 {
                     stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
                     count++;
@@ -388,7 +389,7 @@ public class GameController : MonoBehaviour
             }
             else if (count > 5 && count <= 10)
             {
-                if (!hs.isFoul)
+                if (!hs.isFoul && !hs.isCaught)
                 {
                     stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
                     count++;

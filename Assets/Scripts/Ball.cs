@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
 {
     public GameObject ball;
     public GameObject hand;
+    public GameObject player;
     private TrailRenderer trail;
     int x = 0;
     public static bool flagVis;
@@ -78,7 +79,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Start()
     {
-       
+       player = GameObject.Find("Firstbaseman");
         Paths = 0;
         quadrent = 0;
 
@@ -180,6 +181,16 @@ public class Ball : MonoBehaviour
                 }
             }
 
+        }
+
+        if(gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+        {
+
+            FindClosestEnemy().GetComponent<Renderer>().enabled = true;
+        }
+        else
+        {
+            FindClosestEnemy();
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -624,4 +635,24 @@ public class Ball : MonoBehaviour
         return pitchType;
     }
 
+    GameObject FindClosestEnemy()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = ball.transform.position;
+        foreach (GameObject go in gos)
+        {
+            go.GetComponent<Renderer>().enabled = false;
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
 }

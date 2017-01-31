@@ -17,7 +17,7 @@ public class HitCam : MonoBehaviour {
     /// Initiates the cameras
     /// </summary>
     void Start () {
-        cam1 = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cam1 = GameObject.Find("[CameraRig]").GetComponent<Camera>();
         cam2 = GameObject.Find("Hit View Camera").GetComponent<Camera>();
         hitball = GameObject.Find("baseball_ball").transform;
         cam1.enabled = true;

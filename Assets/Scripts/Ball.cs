@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     public GameObject player;
     private TrailRenderer trail;
+    public float seconds;
     int x = 0;
     public static bool flagVis;
     //private Transform[] path = new Transform[11];
@@ -159,7 +160,7 @@ public class Ball : MonoBehaviour
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
                     int rotationY = (Random.Range(70, 100));
-                    int rotationX = (Random.Range(-15, -25));
+                    int rotationX = (Random.Range(-15, 10));
                     rotationVector.y = rotationY;
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
@@ -185,12 +186,11 @@ public class Ball : MonoBehaviour
 
         if(gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
         {
-
-            FindClosestEnemy().GetComponent<Renderer>().enabled = true;
+            FindClosetPlayer().GetComponent<Renderer>().enabled = true;
         }
         else
         {
-            FindClosestEnemy();
+            FindClosetPlayer();
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -635,15 +635,24 @@ public class Ball : MonoBehaviour
         return pitchType;
     }
 
-    GameObject FindClosestEnemy()
+    GameObject FindClosetPlayer()
     {
+        float x = 10f;
+        //float scale = (((9*x)-1) + 5);
+        float y = 0f;
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Player");
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
+        x = x + 1f;
         foreach (GameObject go in gos)
         {
+            Vector3 scale = transform.localScale;
+            y = (((9f * x) - 1f) + 5f);
+            scale.z = x;
+            scale.x = x;
+            go.transform.localScale = new Vector3(scale.x, 0.01f, scale.z);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
@@ -652,6 +661,7 @@ public class Ball : MonoBehaviour
                 closest = go;
                 distance = curDistance;
             }
+            
         }
         return closest;
     }

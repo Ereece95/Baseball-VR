@@ -44,7 +44,10 @@ public class Ball : MonoBehaviour
     /// </summary>
     public int quadrent;
     List<GameObject>  _flags = new List<GameObject>();
-    
+    public float timeStart;
+    public float timeCount;
+    public float timeEnd;
+    public float y;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;   
@@ -160,7 +163,7 @@ public class Ball : MonoBehaviour
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
                     int rotationY = (Random.Range(70, 100));
-                    int rotationX = (Random.Range(-15, 10));
+                    int rotationX = (Random.Range(-20, 20));
                     rotationVector.y = rotationY;
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
@@ -183,14 +186,17 @@ public class Ball : MonoBehaviour
             }
 
         }
-
-        if(gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+        if (gc.GetState() == States.WaitForCollision)
         {
-            FindClosetPlayer().GetComponent<Renderer>().enabled = true;
+            timeEnd = Time.time;
+        }
+        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+        {
+           FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
         }
         else
         {
-            FindClosetPlayer();
+            FindClosetPlayer((timeEnd - timeStart));
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -273,6 +279,7 @@ public class Ball : MonoBehaviour
         if (Col.gameObject.name == "baseball_bat_regular")
         {
             collideBat = true;
+            timeStart = Time.time;
         }
 
     }
@@ -635,24 +642,25 @@ public class Ball : MonoBehaviour
         return pitchType;
     }
 
-    GameObject FindClosetPlayer()
+    GameObject FindClosetPlayer(float timeCounter)
     {
         //float x = 10f;
-        //float scale = (((9*x)-1) + 5);
-        //float y = 0f;
+        //float scale = (((9*)-1) + 5);
+        Vector3 scale = transform.localScale;
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Player");
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
-       // x = x + 1f;
+        // x = x + 1f;
+        y = (((9f * timeCounter) - 1f) + 5f);
         foreach (GameObject go in gos)
         {
-            //Vector3 scale = transform.localScale;
-            //y = (((9f * x) - 1f) + 5f);
-            //scale.z = x;
-            //scale.x = x;
-           // go.transform.localScale = new Vector3(scale.x, 0.01f, scale.z);
+            
+            scale.x = y;
+            scale.z = y;
+            
+            go.transform.localScale = new Vector3(scale.x, 0.01f, scale.z);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

@@ -229,12 +229,6 @@ public class Ball : MonoBehaviour
         //}
         if ((Col.gameObject.name == "Field"||Col.gameObject.name=="Homerun" )&& gc.GetState() == States.WaitForCollision)
         {
-            GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            flag.GetComponent<Renderer>().material.color = Color.red;
-            flag.transform.localScale = new Vector3(1f, 0.005f, 1f);
-            flag.transform.position = ball.transform.position;
-            _flags.Add(flag);
-
             RB.velocity = Vector3.zero;
             if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
             {
@@ -248,6 +242,21 @@ public class Ball : MonoBehaviour
                 Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
                 dsplyFoul.displayFoulText();
             }
+
+            // Add a flag where the ball hits
+            GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            if (isFoul)
+            {
+                flag.GetComponent<Renderer>().material.color = Color.red;
+            }
+            else
+            {
+                flag.GetComponent<Renderer>().material.color = Color.blue;
+            }
+            flag.transform.localScale = new Vector3(1f, 0.005f, 1f);
+            flag.transform.position = ball.transform.position;
+            _flags.Add(flag);
+
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
         }

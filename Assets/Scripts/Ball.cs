@@ -13,6 +13,7 @@ public class Ball : MonoBehaviour
     private TrailRenderer trail;
     int x = 0;
     public static bool flagVis;
+    private DisplayFoulText dsplyFoul;          // for showing the player the ball is foul
     //private Transform[] path = new Transform[11];
     public Transform start;
     public Transform[] pathArray;
@@ -95,6 +96,7 @@ public class Ball : MonoBehaviour
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
+        dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
 
     }
     int i = 0;
@@ -244,7 +246,7 @@ public class Ball : MonoBehaviour
             {
                 isFoul = true;
                 Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
-
+                dsplyFoul.displayFoulText();
             }
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);

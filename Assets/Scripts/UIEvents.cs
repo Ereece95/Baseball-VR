@@ -83,7 +83,7 @@ public class UIEvents : MonoBehaviour {
         if (endGameStatsClicked != null)  //make sure someone is listening
             endGameStatsClicked();        //Fire the event
     }
-
+           
     /// <summary>
     /// Displays video of swing
     /// </summary>

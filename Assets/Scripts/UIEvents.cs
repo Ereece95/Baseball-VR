@@ -13,7 +13,7 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler nextPitchClicked;
     public static event buttonHandler exitButtonClicked;
     public static event buttonHandler flagsButtonClicked;
-    public static event buttonHandler pitchTypeButtonClicked;
+    public static event buttonHandler pitchTypeButtonClicked;      
     public static event buttonHandler endGameStatsClicked;
     public static event buttonHandler videoButtonClicked;
     public static event buttonHandler videoCompareButtonClicked;

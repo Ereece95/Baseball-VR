@@ -10,7 +10,9 @@ public class Ball : MonoBehaviour
 {
     public GameObject ball;
     public GameObject hand;
+    public GameObject player;
     private TrailRenderer trail;
+    public float seconds;
     int x = 0;
     public static bool flagVis;
     //private Transform[] path = new Transform[11];
@@ -41,12 +43,15 @@ public class Ball : MonoBehaviour
     /// The Quadrent that the pitch will go too
     /// </summary>
     public int quadrent;
-    List<GameObject>  _flags = new List<GameObject>();
-    
+    List<GameObject> _flags = new List<GameObject>();
+    public float timeStart;
+    public float timeCount;
+    public float timeEnd;
+    public float y;
 
-    public delegate void hitEvent(int distance, bool isFoul, bool isHomerun);    ///<Set up event
-    public static event hitEvent distanceHit;   
-    
+    public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
+    public static event hitEvent distanceHit;
+
     void OnEnable()
     {
         UIEvents.nextPitchClicked += rethrowpitch;
@@ -58,27 +63,27 @@ public class Ball : MonoBehaviour
     {
         UIEvents.nextPitchClicked -= rethrowpitch;
     }
-   
+
     /// <summary>
     /// Get the pitch from the stats with Paths
     /// and set the flags for when the ball hits the ground to true
     /// </summary>
     void Awake()
     {
-        
+
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         flagVis = true;
     }
 
-   
+
     /// <summary>
     /// num gets the child count of the path for the pitch chosen
     ///while shifting it for the quadrant chosen
     /// </summary>
     void Start()
     {
-       
+        player = GameObject.Find("Firstbaseman");
         Paths = 0;
         quadrent = 0;
 
@@ -109,7 +114,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Update()
     {
-      
+
         if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
         {
             //an if statment to have the ball released at a certain time
@@ -150,14 +155,14 @@ public class Ball : MonoBehaviour
 
                 if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
                 {
-                    int r = (Random.Range(600, 1800));
+                    int r = (Random.Range(1400, 1600));
                     float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
 
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
-                    int rotationY = (Random.Range(-5, 100));
+                    int rotationY = (Random.Range(10, 100));
                     int rotationX = (Random.Range(-10, -60));
                     rotationVector.y = rotationY;
                     rotationVector.x = rotationX;
@@ -181,6 +186,18 @@ public class Ball : MonoBehaviour
             }
 
         }
+        if (gc.GetState() == States.WaitForCollision)
+        {
+            timeEnd = Time.time;
+        }
+        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+        {
+            FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
+        }
+        else
+        {
+            FindClosetPlayer((timeEnd - timeStart));
+        }
     }
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>
@@ -191,6 +208,7 @@ public class Ball : MonoBehaviour
     {
         bool isHomerun = false;
         bool isFoul = false;
+        bool isCaught = false;
         if (collision.tag == "Catcher")
         {
             if (ballNotHit != null) ballNotHit();
@@ -202,7 +220,15 @@ public class Ball : MonoBehaviour
             RB.velocity = Vector3.zero;
             Debug.Log("Homerun");
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
+        }
+        if ((collision.tag == "Player") && gc.GetState() == States.WaitForCollision)
+        {
+            RB.velocity = Vector3.zero;
+            isCaught = true;
+            Debug.Log("Ball Caught");
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
     }
     //Stop the ball from moving when it contacts the field
@@ -216,7 +242,7 @@ public class Ball : MonoBehaviour
     {
         bool isFoul = false;
         bool isHomerun = false;
-
+        bool isCaught = false;
         //if(Col.gameObject.name == "Foul Pole")
         //{
         //    isHomerun = true;
@@ -225,7 +251,8 @@ public class Ball : MonoBehaviour
         //    RB.useGravity = false;
         //    Debug.Log("Foul Pole");
         //}
-        if ((Col.gameObject.name == "Field"||Col.gameObject.name=="Homerun" )&& gc.GetState() == States.WaitForCollision)
+
+        if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)
         {
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
             flag.GetComponent<Renderer>().material.color = Color.red;
@@ -237,25 +264,26 @@ public class Ball : MonoBehaviour
             if ((ball.transform.position.x >= 0) && (ball.transform.position.z >= 0))
             {
                 isFoul = false;
-                Debug.Log("Fair ball" + ball.transform.position.x + " " + ball.transform.position.z);
+                //Debug.Log("Fair ball" + ball.transform.position.x + " " + ball.transform.position.z);
 
             }
             else
             {
                 isFoul = true;
-                Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
+                //Debug.Log("Foul ball: X " + ball.transform.position.x + " " + ball.transform.position.z);
 
             }
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
-            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun);
+            if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
         if (Col.gameObject.name == "baseball_bat_regular")
         {
             collideBat = true;
+            timeStart = Time.time;
         }
 
     }
-    
+
     void shift()
     {
 
@@ -273,7 +301,7 @@ public class Ball : MonoBehaviour
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
-                    
+
 
                 }
                 // path[num].transform.position = new Vector3(path[num].transform.position.x, path[num - 1].transform.position.y + .4f, path[num - 1].transform.position.z);
@@ -381,11 +409,11 @@ public class Ball : MonoBehaviour
         }
 
     }
-    
-        /// <summary>
-        /// Sets everything back to its initial value to rethrow the pitch
-        /// </summary>
-        void rethrowpitch()
+
+    /// <summary>
+    /// Sets everything back to its initial value to rethrow the pitch
+    /// </summary>
+    void rethrowpitch()
     {
         ball.transform.position = hand.transform.position;
         x = 0;
@@ -614,4 +642,35 @@ public class Ball : MonoBehaviour
         return pitchType;
     }
 
+    GameObject FindClosetPlayer(float timeCounter)
+    {
+        //float x = 10f;
+        //float scale = (((9*)-1) + 5);
+        Vector3 scale = transform.localScale;
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = ball.transform.position;
+        // x = x + 1f;
+        y = (((9f * timeCounter) - 1f) + 5f);
+        foreach (GameObject go in gos)
+        {
+
+            scale.x = y;
+            scale.z = y;
+
+            go.transform.localScale = new Vector3(scale.x, 0.01f, scale.z);
+            go.GetComponent<Renderer>().enabled = false;
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+
+        }
+        return closest;
+    }
 }

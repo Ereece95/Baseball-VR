@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using UnityEngine.UI;
 using MonsterLove.StateMachine;
-using VRStandardAssets;
 
 
 
@@ -46,10 +45,6 @@ public class GameController : MonoBehaviour
     //Events we will listen for go in OnEnable()
 
     public static GameController gc = null; ///<Used for singleton design pattern
-    public event Action OnClick;
-
-
-
     private StateMachine<States> gcFSM;
     private Ball ball;
     private DisplayPitch dsplyPitch;
@@ -71,10 +66,6 @@ public class GameController : MonoBehaviour
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
-    
-    
-   
-
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -308,7 +299,6 @@ public class GameController : MonoBehaviour
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }
-
     /// <summary>
     /// Co-routine implementing a simple Timer
     /// </summary>
@@ -340,19 +330,20 @@ public class GameController : MonoBehaviour
     /// <param name="distance"></param>
     /// <param name="isFoul"></param>
     /// <param name="isHomerun"></param>
-    void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun)
+    void OnHitDistanceEvent(int distance, bool isFoul, bool isHomerun, bool isCaught)
     {
         gcFSM.ChangeState(States.WaitForInput);
         hs = new HitStats();
         hs.distance = distance;
         hs.isFoul = isFoul;
         hs.isHomerun = isHomerun;
+        hs.isCaught = isCaught;
         if (isHomerun == true)
         {
             audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         }
         hitStats.Add(hs);
-        Debug.Log("HIT ADDDED" + distance);
+        //Debug.Log("HIT ADDDED" + distance);
 
     }
     /// <summary>
@@ -378,17 +369,22 @@ public class GameController : MonoBehaviour
 
         foreach (HitStats hs in hitStats)
         {
-            if (hs.isFoul == false && (hs.distance > farthestInt))
+            if ((hs.isFoul == false) && (hs.isCaught == false) && (hs.distance > farthestInt))
             {
                 farthestInt = hs.distance;
             }
 
             if (count <= 5)
             {
-                
+
                 if (!hs.isFoul)
                 {
-                    stats1 = stats1 + count + ") " + hs.distance + " Ft\n";
+                    stats1 = stats1 + count + ") " + hs.distance + " ft";
+                    if (hs.isCaught == true)
+                    {
+                        stats1 = stats1 + " -- Out";
+                    }
+                    stats1 = stats1 + "\n";
                     count++;
                     totalDistance = totalDistance + hs.distance;
                     numHits++;
@@ -396,9 +392,14 @@ public class GameController : MonoBehaviour
             }
             else if (count > 5 && count <= 10)
             {
-                if (!hs.isFoul)
+                if (!hs.isFoul && !hs.isCaught)
                 {
-                    stats2 = stats2 + count + ") " + hs.distance + " Ft\n";
+                    stats2 = stats2 + count + ") " + hs.distance + " ft\n";
+                    if (hs.isCaught == true)
+                    {
+                        stats1 = stats1 + " -- Out";
+                    }
+                    stats1 = stats1 + "\n";
                     count++;
                     totalDistance = totalDistance + hs.distance;
                     numHits++;
@@ -410,8 +411,8 @@ public class GameController : MonoBehaviour
             battingAverage = 0;
         }
         else
-        { 
-        battingAverage = (numHits / stats.GetNumPitches());
+        {
+            battingAverage = (numHits / stats.GetNumPitches());
         }
         batAvg = batAvg + (Mathf.Round(battingAverage * 1000f) / 1000f);
         if ((count - 1) == 0)
@@ -428,7 +429,7 @@ public class GameController : MonoBehaviour
         farthest = farthest + farthestInt + " Ft";
         farthestHit.text = farthest;
         battingAvgHit.text = batAvg;
-        
+
 
         endStatsCanvas.alpha = 1;
         endStatsCanvas.interactable = true;
@@ -438,8 +439,8 @@ public class GameController : MonoBehaviour
         HideCanvas(true);
 
         gcFSM.ChangeState(States.ShowingGameStats);
-        
-       
+
+
     }
     private void EventFlagButton()
     {
@@ -506,4 +507,3 @@ public class GameController : MonoBehaviour
     }
 
 }
-

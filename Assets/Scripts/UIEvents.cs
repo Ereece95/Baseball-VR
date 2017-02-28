@@ -91,7 +91,7 @@ public class UIEvents : MonoBehaviour {
     {
         if (videoButtonClicked != null)  //make sure someone is listening
             videoButtonClicked();        //Fire the event
-    }
+    }    
 
     /// <summary>
     /// Displays video of professional swing
@@ -101,4 +101,8 @@ public class UIEvents : MonoBehaviour {
         if (videoCompareButtonClicked != null)  //make sure someone is listening
             videoCompareButtonClicked();        //Fire the event
     }
+    /////<summary>
+    /////This will make sure the user is in the right orientation (Righty vs. Lefty)
+    ///// </summary>
+    //public void 
 }

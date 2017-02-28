@@ -12,7 +12,7 @@ public class DisplayPitch : MonoBehaviour
     public Button displayButton;
     public Text pitchText;
     public Ball ball;
-    bool isHidden; // flag for when canvas is hidden
+    public bool isHidden; // flag for when canvas is hidden
     string pitchType; //type of pitch obtained from ball
     
                   

@@ -11,6 +11,8 @@ public class Ball : MonoBehaviour
     public GameObject ball;
     public GameObject hand;
     private TrailRenderer trail;
+    public SteamVR_TrackedObject trackedObj;
+    SteamVR_Controller.Device batController;
     int x = 0;
     public static bool flagVis;
     //private Transform[] path = new Transform[11];
@@ -95,6 +97,7 @@ public class Ball : MonoBehaviour
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
+        batController = SteamVR_Controller.Input((int)trackedObj.index);
 
     }
     int i = 0;
@@ -109,7 +112,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Update()
     {
-      
+        
         if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
         {
             //an if statment to have the ball released at a certain time
@@ -163,7 +166,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    RB.AddForce(transform.rotation * Vector3.forward * getForce(step, batController));
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }
@@ -614,4 +617,14 @@ public class Ball : MonoBehaviour
         return pitchType;
     }
 
+    public float getForce(float ballSpeed, SteamVR_Controller.Device batController)
+    {
+        float force;
+        float ballMass = 0.145f;
+        Vector3 vel = batController.velocity;
+        force = (((ballMass)*(batVel))-((ballMass)*(vel)
+
+
+        return force;
+    }
 }

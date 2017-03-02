@@ -545,7 +545,7 @@ public class Ball : MonoBehaviour
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
         Paths = stats.getPitchType();
         quadrent = stats.setQuadrent();
-        speed = 10;
+        speed = 20;
     }
     /// <summary>
     /// Medium speed of 15
@@ -557,7 +557,7 @@ public class Ball : MonoBehaviour
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
         Paths = stats.getPitchType();
         quadrent = stats.setQuadrent();
-        speed = 15;
+        speed = 30;
     }
     /// <summary>
     /// Hard speed of 20
@@ -569,7 +569,7 @@ public class Ball : MonoBehaviour
         stats = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
         Paths = stats.getPitchType();
         quadrent = stats.setQuadrent();
-        speed = 20;
+        speed = 40;
     }
 
     public void hideBallFlags()

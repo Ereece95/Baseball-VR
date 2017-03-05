@@ -84,8 +84,8 @@ public class Ball : MonoBehaviour
     void Start()
     {
        player = GameObject.Find("Firstbaseman");
-        Paths = 1;
-        quadrent = 8;
+        Paths = 0;
+        //quadrent = 8;
 
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
@@ -142,6 +142,8 @@ public class Ball : MonoBehaviour
             {
                 float step = speed * Time.deltaTime;
                 trail.enabled = true;
+                
+                
                 //when x reaches a spesific value it enables the trail and moves the ball
 
 
@@ -299,7 +301,7 @@ public class Ball : MonoBehaviour
     {
 
         Debug.Log(quadrent);
-        quadrent = 1;
+        //quadrent = 7;
         switch (quadrent)
         {
             case 1:
@@ -307,11 +309,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .15f, path[j].transform.position.y + .23f, path[j].transform.position.z + .15f);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y + .3f, path[j].transform.position.z + .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .15f, path[j].transform.position.y + .23f, path[j].transform.position.z + .15f);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y + .3f, path[j].transform.position.z + .2f);
                     }
                     
 
@@ -323,11 +325,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .3f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .3f, path[j].transform.position.z);
                     }
 
 
@@ -341,11 +343,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y + .23f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y + .3f, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y + .23f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y + .3f, path[j].transform.position.z - .2f);
                     }
                 }
                 break;
@@ -354,11 +356,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y, path[j].transform.position.z + .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y, path[j].transform.position.z + .2f);
                     }
                 }
                 break;
@@ -370,11 +372,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
                     }
                 }
                 break;
@@ -383,11 +385,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y - .3f, path[j].transform.position.z + .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y - .3f, path[j].transform.position.z + .2f);
                     }
                 }
                 break;
@@ -396,11 +398,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .3f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .3f, path[j].transform.position.z);
                     }
                 }
                 break;
@@ -409,11 +411,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .3f, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .3f, path[j].transform.position.z - .2f);
                     }
                 }
                 break;
@@ -467,11 +469,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .2f, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
                     }
 
 
@@ -483,11 +485,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .3f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .3f, path[j].transform.position.z);
                     }
 
 
@@ -501,11 +503,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y - .3f, path[j].transform.position.z + .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y - .3f, path[j].transform.position.z + .2f);
                     }
                 }
                 break;
@@ -514,11 +516,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
                     }
                 }
                 break;
@@ -530,11 +532,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y, path[j].transform.position.z + .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y, path[j].transform.position.z + .2f);
                     }
                 }
                 break;
@@ -543,11 +545,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y + .3f, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y + .3f, path[j].transform.position.z - .2f);
                     }
                 }
                 break;
@@ -556,11 +558,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .3f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .3f, path[j].transform.position.z);
                     }
                 }
                 break;
@@ -569,11 +571,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y + .2f, path[j].transform.position.z + .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .2f, path[j].transform.position.y + .2f, path[j].transform.position.z + .2f);
                     }
                 }
                 break;

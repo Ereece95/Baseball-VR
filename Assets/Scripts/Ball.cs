@@ -48,7 +48,7 @@ public class Ball : MonoBehaviour
     public float timeCount;
     public float timeEnd;
     public float y;
-
+    bool countstrike = true;
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;   
     
@@ -84,8 +84,8 @@ public class Ball : MonoBehaviour
     void Start()
     {
        player = GameObject.Find("Firstbaseman");
-        Paths = 0;
-        quadrent = 0;
+        Paths = 1;
+        quadrent = 8;
 
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
@@ -121,6 +121,7 @@ public class Ball : MonoBehaviour
 
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
+            
             if (contin == false)
             {
                 if (Throw["Take 001"].time < 1.40023f)
@@ -199,6 +200,8 @@ public class Ball : MonoBehaviour
             FindClosetPlayer((timeEnd - timeStart));
         }
     }
+
+    
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>
     /// the ball stops when it hits the catcher and calls ballNotHit()
@@ -209,9 +212,17 @@ public class Ball : MonoBehaviour
         bool isHomerun = false;
         bool isFoul = false;
         bool isCaught = false;
-        if (collision.tag == "Catcher")
+        if (collision.tag == "Catcher" && countstrike == true)
         {
-            if (ballNotHit != null) ballNotHit();
+
+            if (ballNotHit != null)
+            {
+                ballNotHit();
+                 ball.GetComponent<MeshRenderer>().enabled = false;
+                ball.GetComponent<SphereCollider>().enabled = false;
+               
+                countstrike = false;
+            }
         }
         if ((collision.tag == "Homerun") && (gc.GetState() == States.WaitForCollision))
         {
@@ -288,18 +299,19 @@ public class Ball : MonoBehaviour
     {
 
         Debug.Log(quadrent);
+        quadrent = 1;
         switch (quadrent)
         {
             case 1:
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .15f, path[j].transform.position.y + .23f, path[j].transform.position.z + .15f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x - .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x - .15f, path[j].transform.position.y + .23f, path[j].transform.position.z + .15f);
                     }
                     
 
@@ -309,7 +321,7 @@ public class Ball : MonoBehaviour
             case 2:
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y + .2f, path[j].transform.position.z);
                     }
@@ -327,13 +339,13 @@ public class Ball : MonoBehaviour
 
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y + .2f, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y + .23f, path[j].transform.position.z);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .4f, path[j].transform.position.y + .23f, path[j].transform.position.z);
                     }
                 }
                 break;
@@ -356,7 +368,7 @@ public class Ball : MonoBehaviour
             case 6:
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y, path[j].transform.position.z);
                     }
@@ -369,7 +381,7 @@ public class Ball : MonoBehaviour
             case 7:
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x - .4f, path[j].transform.position.y - .2f, path[j].transform.position.z);
                     }
@@ -382,7 +394,7 @@ public class Ball : MonoBehaviour
             case 8:
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .2f, path[j].transform.position.z);
                     }
@@ -395,7 +407,7 @@ public class Ball : MonoBehaviour
             case 9:
                 for (int j = 0; j < num; j++)
                 {
-                    if (num == 2 || j == num - 2)
+                    if (num == 2 || j == num - 1)
                     {
                         path[j].transform.position = new Vector3(path[j].transform.position.x + .3f, path[j].transform.position.y - .2f, path[j].transform.position.z);
                     }
@@ -415,7 +427,11 @@ public class Ball : MonoBehaviour
         /// </summary>
         void rethrowpitch()
     {
+        countstrike = true;
+        ball.GetComponent<MeshRenderer>().enabled = true;
+        ball.GetComponent<SphereCollider>().enabled = true;
         ball.transform.position = hand.transform.position;
+        
         x = 0;
         contin = false;
         trail.Clear();
@@ -425,12 +441,13 @@ public class Ball : MonoBehaviour
         trail.enabled = false;
         hit = false;
         i = 0;
+        
         shiftback();
         //sets paths and quadrent equal to the new random values of the next pitch
         Paths = stats.getPitchType();
         quadrent = stats.setQuadrent();
         num = pathArray[Paths].childCount;
-
+        
         path = new Transform[num];
 
 

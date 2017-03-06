@@ -80,7 +80,8 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Start()
     {
-       
+        
+
         Paths = 0;
         quadrent = 0;
 
@@ -621,8 +622,8 @@ public class Ball : MonoBehaviour
     {
         float force;
         float ballMass = 0.145f;
-        Vector3 vel = batController.velocity;
-        force = (((ballMass)*(batVel))-((ballMass)*(vel)
+        float vel = batController.velocity.magnitude;
+        force = ((ballMass * vel) - (ballMass * ballSpeed)) / 0.003f;
 
 
         return force;

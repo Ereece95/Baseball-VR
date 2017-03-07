@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);  //persist across levels
 
-        _controller = GetComponent<SteamVR_TrackedController>();
+        _controller = GameObject.Find("Controller(Left)").GetComponent<SteamVR_TrackedController>();
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
         stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
@@ -137,7 +137,6 @@ public class GameController : MonoBehaviour
         UIEvents.mediumButtonClicked += EventMediumButtonClicked;
         UIEvents.hardButtonClicked += EventHardButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
-        UIEvents.nextPitchClicked += EventNextPitchButton;
         UIEvents.flagsButtonClicked += EventFlagButton;
         UIEvents.pitchTypeButtonClicked += EventPitchTypeButton;
         UIEvents.endGameStatsClicked += EventDisplayExitStats;
@@ -159,7 +158,6 @@ public class GameController : MonoBehaviour
         UIEvents.mediumButtonClicked -= EventMediumButtonClicked;
         UIEvents.hardButtonClicked -= EventHardButtonClicked;
         UIEvents.exitButtonClicked -= EventExitButtonClicked;
-        UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.flagsButtonClicked -= EventFlagButton;
         UIEvents.pitchTypeButtonClicked -= EventPitchTypeButton;
         UIEvents.endGameStatsClicked -= EventDisplayExitStats;
@@ -209,7 +207,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.BallNotHit:
-                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
+                gcFSM.ChangeState(States.WaitForInput); //stays in this state until triggerClicked
                                                         // or EventExitButtonClicked
                 break;
 
@@ -298,16 +296,6 @@ public class GameController : MonoBehaviour
         //}
         gcFSM.ChangeState(States.ExitGame);
     }
-
-    /// <summary>
-    /// Next Pitch Button Clicked
-    /// TODO: Update to animation instead of reload scene
-    /// </summary>
-    private void EventNextPitchButton()
-    {
-        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
-    }
-
     /// <summary>
     /// State Machine Logic for ThrowPitch
     /// </summary>

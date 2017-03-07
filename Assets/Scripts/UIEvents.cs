@@ -11,7 +11,6 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler easyButtonClicked;
     public static event buttonHandler mediumButtonClicked;
     public static event buttonHandler hardButtonClicked;
-    public static event buttonHandler nextPitchClicked;
     public static event buttonHandler exitButtonClicked;
     public static event buttonHandler flagsButtonClicked;
     public static event buttonHandler pitchTypeButtonClicked;
@@ -50,14 +49,6 @@ public class UIEvents : MonoBehaviour {
     {
         if (exitButtonClicked != null)     //make sure someone is listening
             exitButtonClicked();       //Fire the event
-    }
-    /// <summary>
-    /// Send event when next pitch button clicked. Listened for in GameController
-    /// </summary>
-    public void NextPitchClicked()    //must be public to see in the button's onClick() method
-    {
-        if (nextPitchClicked != null)     //make sure someone is listening
-            nextPitchClicked();           //Fire the event
     }
 
     /// <summary>

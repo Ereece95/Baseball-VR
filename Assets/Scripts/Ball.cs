@@ -25,6 +25,7 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
+    int spinNum = 10;
     /// <summary>
     /// The type of pitch
     /// </summary>
@@ -114,7 +115,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Update()
     {
-      
+        plate.transform.Rotate(Vector3.left * spinNum);
+        plate.transform.Rotate(Vector3.up * spinNum);
+        spinNum =  + 2;
         if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
         {
             //an if statment to have the ball released at a certain time
@@ -142,7 +145,6 @@ public class Ball : MonoBehaviour
             {
                 float step = speed * Time.deltaTime;
                 trail.enabled = true;
-                
                 
                 //when x reaches a spesific value it enables the trail and moves the ball
 

@@ -18,6 +18,7 @@ public enum States
     StartClick,
     MainScene,
     ChooseOptions,
+    Orientation,
     ThrowPitch,
     ThrowPitchDone,
     BallHit,
@@ -66,6 +67,7 @@ public class GameController : MonoBehaviour
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
+    private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -81,6 +83,8 @@ public class GameController : MonoBehaviour
         else if (gc != this) Destroy(gameObject);  //kill it if another instance exists
 
         DontDestroyOnLoad(gameObject);  //persist across levels
+
+        _controller = GetComponent<SteamVR_TrackedController>();
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
         stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
@@ -142,6 +146,8 @@ public class GameController : MonoBehaviour
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
+        _controller.TriggerClicked += HandleTriggerClicked;
+        _controller.PadClicked += HandlePadClicked;
 
     }
     /// <summary>
@@ -162,6 +168,8 @@ public class GameController : MonoBehaviour
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
+        _controller.TriggerClicked -= HandleTriggerClicked;
+        _controller.PadClicked -= HandlePadClicked;
 
     }
     /// <summary>
@@ -180,9 +188,12 @@ public class GameController : MonoBehaviour
 
             case States.StartClick:
                 HideCanvas(false);
-                gcFSM.ChangeState(States.ThrowPitch);
+                gcFSM.ChangeState(States.Orientation);
                 break;
 
+            case States.Orientation:
+                //Wait for event to break out of this state (trigger hit to reflect proper stance)
+                break;
 
             case States.ThrowPitch:
                 //play animation to throw pitch
@@ -258,6 +269,18 @@ public class GameController : MonoBehaviour
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
 
+
+    }
+    private void HandleTriggerClicked(object sender, ClickedEventArgs e)
+    {
+        if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)
+        {
+            gcFSM.ChangeState(States.ThrowPitch);
+        }
+    }
+
+    private void HandlePadClicked(object sender, ClickedEventArgs e)
+    {
 
     }
     /// <summary>

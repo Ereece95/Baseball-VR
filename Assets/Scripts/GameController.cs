@@ -181,7 +181,6 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
-                //SetControllerVisible(_controller, false);
                 HideCanvas(true);
                 break;
 
@@ -275,6 +274,10 @@ public class GameController : MonoBehaviour
         if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)
         {
             gcFSM.ChangeState(States.ThrowPitch);
+        }
+        else if (gc.GetState() == States.StartClick || gc.GetState() == States.Init)
+        {
+            gcFSM.ChangeState(States.Orientation);
         }
     }
 
@@ -518,10 +521,6 @@ public class GameController : MonoBehaviour
             hitstrikeCanvas.blocksRaycasts = true;
         }
     }
-    void SetControllerVisible(SteamVR_TrackedController controller, bool visible)
-    {
-        foreach (SteamVR_RenderModel model in controller.GetComponentsInChildren<SteamVR_RenderModel>())
-            model.gameObject.SetActive(visible);
-    }
+
 
 }

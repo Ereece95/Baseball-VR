@@ -10,6 +10,8 @@ public class Bat : MonoBehaviour {
 
     public Transform cursorObject;
     public GameObject bat;
+    public GameObject cubeRight;
+    public GameObject cubeLeft; 
     private float depth = 1.5f;
     private GameController gc;
 
@@ -47,6 +49,16 @@ public class Bat : MonoBehaviour {
         Vector3 point = ray.origin + (ray.direction * depth);
 
         cursorObject.position = point;      
+        
+    }
+
+    void getStanceStraight(Collision collision)
+    {
+        //if(gc.GetState() == States.Orientation)
+    
+       //if(InputTracking.GetLocalPosition(VRNode.Head) == GameObject.FindObjectOfType<>_)
+
+        
         
     }
 }

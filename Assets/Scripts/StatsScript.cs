@@ -36,7 +36,7 @@ public class StatsScript : MonoBehaviour
         }
 
         pitch = getPitchType();
-        qaudrent = setQuadrent();
+        qaudrent = setQuadrent(true);
 
     }
     public class Row
@@ -470,10 +470,10 @@ public class StatsScript : MonoBehaviour
 
     }
     /// <summary>
-    /// Returns a single quadrent stack at row p, with pitch type p
+    /// Returns a single quadrent stack at row p, with pitch type p from the right side pitches.
     /// </summary>
     
-    public double getQudrent(string p, int t)
+    public double getQudrentR(string p, int t)
     {
         double percent = -1;
 
@@ -499,33 +499,78 @@ public class StatsScript : MonoBehaviour
         }
         return percent;
     }
+    /// <summary>
+    /// Returns a single quadrent stack at row p, with pitch type p from the left side pitches
+    /// </summary>
+    public double getQudrentL(string p, int t)
+    {
+        double percent = -1;
+
+        if (t == 0)
+        {
+            percent = getCHStatL(p);
+        }
+        else if (t == 2)
+        {
+            percent = getCVStatL(p);
+        }
+        else if (t == 3)
+        {
+            percent = getSIStatL(p);
+        }
+        else if (t == 1)
+        {
+            percent = getFBStatL(p);
+        }
+        else
+        {
+            percent = getSLStatL(p);
+        }
+        return percent;
+    }
 
     /// <summary>
     /// Uses the pitcher stats to create several percent ranges between 0 and 100, generates a random number between 0 and 100 and then 
     ///  returns a number between 0 through 9 to represent the quadrent based on the range that it landed in
     /// </summary>
     /// <param name="quad">An array of all the pitch percentages to create the ranges</param>
-    public int setQuadrent()
+    public int setQuadrent(bool side)
     {
         //An array to hold all of the quadrent percents 
         double[] quad = new double[13];
-
-        for (int i = 0; i < 13; i++)
+        if (side)
         {
-            if (i != 0)
+            for (int i = 0; i < 13; i++)
             {
-                //Creates a range from quad[i-1] to quad[i[ for the random number to fall into
-                //The larger the percent the bigger the range and the more likely the chance the random number will land in that range
-                quad[i] = quad[i - 1] + getQudrent(index[i], pitch);
-            }
-            else
-            {
-                quad[i] = getQudrent(index[i], pitch);
+                if (i != 0)
+                {
+                    //Creates a range from quad[i-1] to quad[i[ for the random number to fall into
+                    //The larger the percent the bigger the range and the more likely the chance the random number will land in that range
+                    quad[i] = quad[i - 1] + getQudrentR(index[i], pitch);
+                }
+                else
+                {
+                    quad[i] = getQudrentR(index[i], pitch);
+                }
             }
         }
-       
-       
-          int rand = Random.Range(0,100);
+        else 
+        {
+            for (int i = 0; i < 13; i++)
+            {
+                if (i != 0)
+                {
+                    //Creates a range from quad[i-1] to quad[i[ for the random number to fall into
+                    //The larger the percent the bigger the range and the more likely the chance the random number will land in that range
+                    quad[i] = quad[i - 1] + getQudrentL(index[i], pitch);
+                }
+                else
+                {
+                    quad[i] = getQudrentL(index[i], pitch);
+                }
+            }
+        }
+        int rand = Random.Range(0,100);
         while (rand > quad[8])
         {
             rand= Random.Range(0, 100);

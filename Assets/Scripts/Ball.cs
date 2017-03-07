@@ -49,6 +49,7 @@ public class Ball : MonoBehaviour
     public float timeCount;
     public float timeEnd;
     public float y;
+    public bool side;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
@@ -71,7 +72,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Awake()
     {
-
+        side = true;
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         flagVis = true;
@@ -439,7 +440,7 @@ public class Ball : MonoBehaviour
         shiftback();
         //sets paths and quadrent equal to the new random values of the next pitch
         Paths = stats.getPitchType();
-        quadrent = stats.setQuadrent();
+        quadrent = stats.setQuadrent(side);
         num = pathArray[Paths].childCount;
 
         path = new Transform[num];
@@ -583,7 +584,7 @@ public class Ball : MonoBehaviour
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
         Paths = stats.getPitchType();
-        quadrent = stats.setQuadrent();
+        quadrent = stats.setQuadrent(side);
         speed = 10;
     }
     /// <summary>
@@ -595,7 +596,7 @@ public class Ball : MonoBehaviour
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
         Paths = stats.getPitchType();
-        quadrent = stats.setQuadrent();
+        quadrent = stats.setQuadrent(side);
         speed = 15;
     }
     /// <summary>
@@ -607,7 +608,7 @@ public class Ball : MonoBehaviour
         //sets stats equal to Arietta J's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
         Paths = stats.getPitchType();
-        quadrent = stats.setQuadrent();
+        quadrent = stats.setQuadrent(side);
         speed = 20;
     }
 

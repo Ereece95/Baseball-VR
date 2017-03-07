@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using UnityEngine.UI;
 using MonsterLove.StateMachine;
+using VRStandardAssets;
 
 
 
@@ -46,6 +47,9 @@ public class GameController : MonoBehaviour
     //Events we will listen for go in OnEnable()
 
     public static GameController gc = null; ///<Used for singleton design pattern
+    public event Action OnClick;
+
+
 
     private StateMachine<States> gcFSM;
     private Ball ball;
@@ -68,6 +72,10 @@ public class GameController : MonoBehaviour
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
+    
+    
+   
+
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;

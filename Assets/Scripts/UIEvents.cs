@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using VRStandardAssets;
 
 /// <summary>
 /// Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags

@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
-    private SteamVR_TrackedController _controller;
+    //private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);  //persist across levels
 
-        _controller = GameObject.Find("Controller(Left)").GetComponent<SteamVR_TrackedController>();
+        //_controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
         stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
@@ -145,8 +145,8 @@ public class GameController : MonoBehaviour
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
-        _controller.TriggerClicked += HandleTriggerClicked;
-        _controller.PadClicked += HandlePadClicked;
+        //_controller.TriggerClicked += HandleTriggerClicked;
+        //_controller.PadClicked += HandlePadClicked;
 
     }
     /// <summary>
@@ -166,8 +166,8 @@ public class GameController : MonoBehaviour
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
-        _controller.TriggerClicked -= HandleTriggerClicked;
-        _controller.PadClicked -= HandlePadClicked;
+        //_controller.TriggerClicked -= HandleTriggerClicked;
+        //_controller.PadClicked -= HandlePadClicked;
 
     }
     /// <summary>
@@ -181,6 +181,7 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
+                //SetControllerVisible(_controller, false);
                 HideCanvas(true);
                 break;
 
@@ -269,7 +270,7 @@ public class GameController : MonoBehaviour
 
 
     }
-    private void HandleTriggerClicked(object sender, ClickedEventArgs e)
+    public void HandleTriggerClicked()
     {
         if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)
         {
@@ -277,10 +278,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void HandlePadClicked(object sender, ClickedEventArgs e)
-    {
+    //public void HandlePadClicked(object sender, ClickedEventArgs e)
+    //{
 
-    }
+    //}
     /// <summary>
     /// Exit Button was clicked
     /// </summary>
@@ -307,6 +308,7 @@ public class GameController : MonoBehaviour
             pitch = Pitcher.GetComponent<Animation>();
             pitch.Play("Take 001");
         }
+        ball.rethrowpitch();
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }
@@ -515,6 +517,11 @@ public class GameController : MonoBehaviour
             hitstrikeCanvas.alpha = 1;
             hitstrikeCanvas.blocksRaycasts = true;
         }
+    }
+    void SetControllerVisible(SteamVR_TrackedController controller, bool visible)
+    {
+        foreach (SteamVR_RenderModel model in controller.GetComponentsInChildren<SteamVR_RenderModel>())
+            model.gameObject.SetActive(visible);
     }
 
 }

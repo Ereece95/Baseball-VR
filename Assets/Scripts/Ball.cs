@@ -56,14 +56,13 @@ public class Ball : MonoBehaviour
 
     void OnEnable()
     {
-        UIEvents.nextPitchClicked += rethrowpitch;
         UIEvents.easyButtonClicked += ChangespeedE;
         UIEvents.mediumButtonClicked += ChangespeedM;
         UIEvents.hardButtonClicked += ChangespeedH;
     }
     void OnDisable()
     {
-        UIEvents.nextPitchClicked -= rethrowpitch;
+
     }
 
     /// <summary>
@@ -425,7 +424,7 @@ public class Ball : MonoBehaviour
     /// <summary>
     /// Sets everything back to its initial value to rethrow the pitch
     /// </summary>
-    void rethrowpitch()
+    public void rethrowpitch()
     {
         ball.transform.position = hand.transform.position;
         x = 0;

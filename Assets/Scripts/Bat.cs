@@ -40,7 +40,7 @@ public class Bat : MonoBehaviour {
 
     void batFollowCursor()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(cursorObject.position);
         Vector3 point = ray.origin + (ray.direction * depth);
 
         cursorObject.position = point;

@@ -47,7 +47,8 @@ public class Bat : MonoBehaviour {
 
         cursorObject.position = point;
 
-        //cursorObject.position = InputTracking.GetLocalPosition()
+        //gc = GameObject.Find("CameController").GetComponent("GameController") as GameController;
+        
         
     }
 }

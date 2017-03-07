@@ -27,6 +27,7 @@ public class Bat : MonoBehaviour {
     /// Sets the cursor true or false and whether the bat is true or false bassed on the state
     /// </summary>
 	void Update () {
+
         if (gc.GetState() == States.ThrowPitch || gc.GetState() == States.ThrowPitchDone)
         {
             Cursor.visible = false;
@@ -45,10 +46,7 @@ public class Bat : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 point = ray.origin + (ray.direction * depth);
 
-        cursorObject.position = point;
-
-        //gc = GameObject.Find("CameController").GetComponent("GameController") as GameController;
-        
+        cursorObject.position = point;      
         
     }
 }

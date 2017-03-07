@@ -167,7 +167,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    RB.AddForce(transform.rotation * Vector3.forward * getForce(step, batController));
+                    RB.AddForce(/*transform.rotation **/ Vector3.forward * getForce(step, batController));
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }

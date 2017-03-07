@@ -85,7 +85,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
        player = GameObject.Find("Firstbaseman");
-        Paths = 0;
+        Paths = 4;
         //quadrent = 8;
 
         RB = GetComponent<Rigidbody>();
@@ -115,9 +115,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Update()
     {
-        plate.transform.Rotate(Vector3.left * spinNum);
-        plate.transform.Rotate(Vector3.up * spinNum);
-        spinNum =  + 2;
+        //ball.transform.Rotate(Vector3.left * spinNum);
+        ball.transform.Rotate(Vector3.up * spinNum);
+        spinNum =  + 20;
         if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
         {
             //an if statment to have the ball released at a certain time

@@ -8,6 +8,8 @@ TagManager:
   - Homerun
   - Field
   - Player
+  - cubeRight
+  - cubeLeft
   layers:
   - Default
   - TransparentFX

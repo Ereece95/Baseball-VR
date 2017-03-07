@@ -27,7 +27,8 @@ public enum States
     Delay,
     ExitGame,
     ShowingGameStats,
-    StatsGot
+    StatsGot,
+    StanceIndicator
 }
 
 

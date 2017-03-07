@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.VR;
+
 
 /// <summary>
 /// Switching between the cursor and the bat 
@@ -44,5 +46,8 @@ public class Bat : MonoBehaviour {
         Vector3 point = ray.origin + (ray.direction * depth);
 
         cursorObject.position = point;
+
+        //cursorObject.position = InputTracking.GetLocalPosition()
+        
     }
 }

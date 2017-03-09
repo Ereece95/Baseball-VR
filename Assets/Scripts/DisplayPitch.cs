@@ -9,7 +9,6 @@ public class DisplayPitch : MonoBehaviour
 {
 
     public Canvas displayCanvas;
-    public GameObject displayBackground;
     public Button displayButton;
     public Text pitchText;
     public Ball ball;
@@ -21,7 +20,6 @@ public class DisplayPitch : MonoBehaviour
     {
         // find canvas and disable on start
         displayCanvas = GameObject.Find("DisplayPitchCanvas").GetComponent<Canvas>();
-        displayBackground = GameObject.Find("Pitch_Type").GetComponent<GameObject>();
         displayCanvas.enabled = false;
         isHidden = true;
 

@@ -3,25 +3,25 @@ using System.Collections;
 
 public class ControllerInput : MonoBehaviour {
 
-    private SteamVR_TrackedController _controller;
+    private SteamVR_TrackedController controller;
     private GameController gc;
 
-    void Awake()
+    void Start()
     {
-        _controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
+        controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 
     void OnEnable()
     {
-        _controller.TriggerClicked += HandleTriggerClicked;
-        _controller.PadClicked += HandlePadClicked;
+        controller.TriggerClicked += HandleTriggerClicked;
+        controller.PadClicked += HandlePadClicked;
     }
 
     void OnDisable()
     {
-        _controller.TriggerClicked -= HandleTriggerClicked;
-        _controller.PadClicked -= HandlePadClicked;
+        controller.TriggerClicked -= HandleTriggerClicked;
+        controller.PadClicked -= HandlePadClicked;
     }
   
     void HandleTriggerClicked(object sender, ClickedEventArgs e)

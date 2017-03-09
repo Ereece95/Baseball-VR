@@ -145,8 +145,6 @@ public class Ball : MonoBehaviour
                 trail.enabled = true;
                 //when x reaches a spesific value it enables the trail and moves the ball
 
-
-
                 if (ball.transform.position.x == path[i].position.x)
                 {
                     if (i != num - 1)

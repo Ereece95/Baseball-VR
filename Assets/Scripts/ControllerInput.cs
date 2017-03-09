@@ -8,12 +8,12 @@ public class ControllerInput : MonoBehaviour {
 
     void Start()
     {
-        controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 
     void OnEnable()
     {
+        controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
         controller.TriggerClicked += HandleTriggerClicked;
         controller.PadClicked += HandlePadClicked;
     }

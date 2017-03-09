@@ -18,6 +18,7 @@ public enum States
     StartClick,
     MainScene,
     ChooseOptions,
+    Orientation,
     ThrowPitch,
     ThrowPitchDone,
     BallHit,
@@ -27,8 +28,6 @@ public enum States
     Delay,
     ExitGame,
     ShowingGameStats,
-    Lefty,
-    Righty,
     StatsGot
 }
 
@@ -62,14 +61,13 @@ public class GameController : MonoBehaviour
     private GameObject Pitcher;
     private GameObject startmenu;
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
-    private GameObject leftyrightypanel;
-    private GameObject leftyrightybg; //leftyrighty background needs to be destoryed seperatley
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
     private CanvasGroup gameCanvas;
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
+    //private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
     HitStats hs = null;
     Ball Send = null;
@@ -85,6 +83,8 @@ public class GameController : MonoBehaviour
         else if (gc != this) Destroy(gameObject);  //kill it if another instance exists
 
         DontDestroyOnLoad(gameObject);  //persist across levels
+
+        //_controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
 
         ball = GameObject.Find("baseball_ball").GetComponent("Ball") as Ball;
         stats = GameObject.Find("Stats").GetComponent("UpdateStats") as UpdateStats;
@@ -104,9 +104,6 @@ public class GameController : MonoBehaviour
 
         startmenu = GameObject.Find("StartMenu");
         startmenubg = GameObject.Find("SF Scene Elements");
-
-        leftyrightypanel = GameObject.Find("LeftyRightPanel");
-        leftyrightybg = GameObject.Find("LeftyRightyBackground");
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -140,17 +137,16 @@ public class GameController : MonoBehaviour
         UIEvents.mediumButtonClicked += EventMediumButtonClicked;
         UIEvents.hardButtonClicked += EventHardButtonClicked;
         UIEvents.exitButtonClicked += EventExitButtonClicked;
-        UIEvents.nextPitchClicked += EventNextPitchButton;
         UIEvents.flagsButtonClicked += EventFlagButton;
         UIEvents.pitchTypeButtonClicked += EventPitchTypeButton;
         UIEvents.endGameStatsClicked += EventDisplayExitStats;
         UIEvents.videoButtonClicked += EventDisplayVideo;
         UIEvents.videoCompareButtonClicked += EventDisplayVideoCompare;
-        UIEvents.leftyButtonClicked += EventLeftyButtonClicked;
-        UIEvents.rightyButtonClicked += EventRightyButtonClicked;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
+        //_controller.TriggerClicked += HandleTriggerClicked;
+        //_controller.PadClicked += HandlePadClicked;
 
     }
     /// <summary>
@@ -162,7 +158,6 @@ public class GameController : MonoBehaviour
         UIEvents.mediumButtonClicked -= EventMediumButtonClicked;
         UIEvents.hardButtonClicked -= EventHardButtonClicked;
         UIEvents.exitButtonClicked -= EventExitButtonClicked;
-        UIEvents.nextPitchClicked -= EventNextPitchButton;
         UIEvents.flagsButtonClicked -= EventFlagButton;
         UIEvents.pitchTypeButtonClicked -= EventPitchTypeButton;
         UIEvents.endGameStatsClicked -= EventDisplayExitStats;
@@ -171,6 +166,8 @@ public class GameController : MonoBehaviour
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
+        //_controller.TriggerClicked -= HandleTriggerClicked;
+        //_controller.PadClicked -= HandlePadClicked;
 
     }
     /// <summary>
@@ -189,9 +186,12 @@ public class GameController : MonoBehaviour
 
             case States.StartClick:
                 HideCanvas(false);
-                gcFSM.ChangeState(States.ThrowPitch);
+                gcFSM.ChangeState(States.Orientation);
                 break;
 
+            case States.Orientation:
+                //Wait for event to break out of this state (trigger hit to reflect proper stance)
+                break;
 
             case States.ThrowPitch:
                 //play animation to throw pitch
@@ -207,7 +207,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.BallNotHit:
-                gcFSM.ChangeState(States.WaitForInput); //stays in this state until EventNextPitchButton
+                gcFSM.ChangeState(States.WaitForInput); //stays in this state until triggerClicked
                                                         // or EventExitButtonClicked
                 break;
 
@@ -240,8 +240,12 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventEasyButtonClicked()
     {
+
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
+
+
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -250,6 +254,9 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
+
+
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -258,7 +265,26 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
+
+
     }
+    public void HandleTriggerClicked()
+    {
+        if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)
+        {
+            gcFSM.ChangeState(States.ThrowPitch);
+        }
+        else if (gc.GetState() == States.StartClick || gc.GetState() == States.Init)
+        {
+            gcFSM.ChangeState(States.Orientation);
+        }
+    }
+
+    //public void HandlePadClicked(object sender, ClickedEventArgs e)
+    //{
+
+    //}
     /// <summary>
     /// Exit Button was clicked
     /// </summary>
@@ -274,16 +300,6 @@ public class GameController : MonoBehaviour
         //}
         gcFSM.ChangeState(States.ExitGame);
     }
-
-    /// <summary>
-    /// Next Pitch Button Clicked
-    /// TODO: Update to animation instead of reload scene
-    /// </summary>
-    private void EventNextPitchButton()
-    {
-        gcFSM.ChangeState(States.ThrowPitch);   //replay animation
-    }
-
     /// <summary>
     /// State Machine Logic for ThrowPitch
     /// </summary>
@@ -295,6 +311,7 @@ public class GameController : MonoBehaviour
             pitch = Pitcher.GetComponent<Animation>();
             pitch.Play("Take 001");
         }
+        ball.rethrowpitch();
         gcFSM.ChangeState(States.ThrowPitchDone);
         Timer(15);  ///<Wait for animation to play
     }
@@ -505,21 +522,5 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void EventLeftyButtonClicked()
-    {
-        DestroyImmediate(leftyrightypanel);
-        DestroyImmediate(leftyrightybg);
-        gcFSM.ChangeState(States.Lefty);
-        gcFSM.ChangeState(States.StartClick);
-
-    }
-
-    private void EventRightyButtonClicked()
-    {
-        DestroyImmediate(leftyrightypanel);
-        DestroyImmediate(leftyrightybg);
-        gcFSM.ChangeState(States.Righty);
-        gcFSM.ChangeState(States.StartClick);
-    }
 
 }

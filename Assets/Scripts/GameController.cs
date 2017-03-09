@@ -142,6 +142,8 @@ public class GameController : MonoBehaviour
         UIEvents.endGameStatsClicked += EventDisplayExitStats;
         UIEvents.videoButtonClicked += EventDisplayVideo;
         UIEvents.videoCompareButtonClicked += EventDisplayVideoCompare;
+        UIEvents.leftyButtonClicked += EventLeftyButtonClicked;
+        UIEvents.rightyButtonClicked += EventRightyButtonClicked;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -243,9 +245,7 @@ public class GameController : MonoBehaviour
 
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
+        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -254,9 +254,7 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
+        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -265,9 +263,7 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
+        //gcFSM.ChangeState(States.StartClick);
     }
     public void HandleTriggerClicked()
     {
@@ -522,4 +518,17 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void EventLeftyButtonClicked()
+    {
+        DestroyImmediate(startmenu);
+        DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
+    }
+
+    private void EventRightyButtonClicked()
+    {
+        DestroyImmediate(startmenu);
+        DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
+    }
 }

@@ -27,6 +27,8 @@ public enum States
     Delay,
     ExitGame,
     ShowingGameStats,
+    Lefty,
+    Righty,
     StatsGot
 }
 
@@ -60,6 +62,8 @@ public class GameController : MonoBehaviour
     private GameObject Pitcher;
     private GameObject startmenu;
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
+    private GameObject leftyrightypanel;
+    private GameObject leftyrightybg; //leftyrighty background needs to be destoryed seperatley
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
     private CanvasGroup gameCanvas;
@@ -101,6 +105,9 @@ public class GameController : MonoBehaviour
         startmenu = GameObject.Find("StartMenu");
         startmenubg = GameObject.Find("SF Scene Elements");
 
+        leftyrightypanel = GameObject.Find("LeftyRightPanel");
+        leftyrightybg = GameObject.Find("LeftyRightyBackground");
+
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
 
@@ -139,6 +146,8 @@ public class GameController : MonoBehaviour
         UIEvents.endGameStatsClicked += EventDisplayExitStats;
         UIEvents.videoButtonClicked += EventDisplayVideo;
         UIEvents.videoCompareButtonClicked += EventDisplayVideoCompare;
+        UIEvents.leftyButtonClicked += EventLeftyButtonClicked;
+        UIEvents.rightyButtonClicked += EventRightyButtonClicked;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -231,12 +240,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventEasyButtonClicked()
     {
-
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -245,9 +250,6 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -256,9 +258,6 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
     }
     /// <summary>
     /// Exit Button was clicked
@@ -504,6 +503,23 @@ public class GameController : MonoBehaviour
             hitstrikeCanvas.alpha = 1;
             hitstrikeCanvas.blocksRaycasts = true;
         }
+    }
+
+    private void EventLeftyButtonClicked()
+    {
+        DestroyImmediate(leftyrightypanel);
+        DestroyImmediate(leftyrightybg);
+        gcFSM.ChangeState(States.Lefty);
+        gcFSM.ChangeState(States.StartClick);
+
+    }
+
+    private void EventRightyButtonClicked()
+    {
+        DestroyImmediate(leftyrightypanel);
+        DestroyImmediate(leftyrightybg);
+        gcFSM.ChangeState(States.Righty);
+        gcFSM.ChangeState(States.StartClick);
     }
 
 }

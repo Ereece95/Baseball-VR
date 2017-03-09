@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     private TrailRenderer trail;
     public SteamVR_TrackedObject trackedObj;
-    SteamVR_Controller.Device batController;
+    public SteamVR_Controller.Device batController;
     int x = 0;
     public static bool flagVis;
     //private Transform[] path = new Transform[11];
@@ -71,6 +71,7 @@ public class Ball : MonoBehaviour
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         flagVis = true;
+        
     }
 
    
@@ -98,8 +99,9 @@ public class Ball : MonoBehaviour
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
+        trackedObj = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedObject>();
         batController = SteamVR_Controller.Input((int)trackedObj.index);
-
+        
     }
     int i = 0;
     bool collideBat = false; //to tell update if ball collided with bat
@@ -167,9 +169,9 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    ball.transform.position = Vector3.Reflect(ball.transform.position, batController.velocity);
+                   // ball.transform.position = Vector3.Reflect(ball.transform.position, batController.velocity);
                     Debug.Log("Bat velocity = " + batController.velocity.magnitude);
-                    //RB.AddForce(/*transform.rotation **/ Vector3.forward * getForce(step, batController));
+                    RB.AddForce(/*transform.rotation **/ Vector3.forward * getForce(step, batController));
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }

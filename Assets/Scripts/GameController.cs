@@ -522,6 +522,7 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
+        ball.side = false;
         gcFSM.ChangeState(States.StartClick);
     }
 
@@ -529,6 +530,7 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenu);
         DestroyImmediate(startmenubg);
+        ball.side = true;
         gcFSM.ChangeState(States.StartClick);
     }
 }

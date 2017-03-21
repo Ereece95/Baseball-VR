@@ -297,13 +297,11 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// For when trackpad is clicked
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public void HandlePadClicked(object sender, ClickedEventArgs e)
+    public void HandlePadClicked()
     {
+        optnsMenu = GameObject.Find("OptionsMenuCanvas");
         if (gc.GetState() == States.Orientation && gc.GetState() != States.StartClick && gc.GetState() != States.Init)
         {
-            optnsMenu = GameObject.Find("OptionsMenuCanvas");
             bool isVisible = false;
 
             if (!isVisible)

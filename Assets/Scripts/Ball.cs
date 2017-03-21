@@ -8,6 +8,7 @@ using System.Collections.Generic;
 /// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
 public class Ball : MonoBehaviour
 {
+    private GameObject controlInput;
     public GameObject ball;
     public GameObject hand;
     public GameObject player;
@@ -102,6 +103,7 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
+        controlInput = GameObject.Find("Controller (right)").GetComponent("Controller Input") as ControllerInput;
 
     }
     int i = 0;
@@ -168,12 +170,20 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+
+                    ball.transform.position = Vector3.Reflect(ball.transform.position,  );
+                    //Debug.Log("Bat velocity = " + batController.velocity.magnitude);
+                    //RB.AddForce(/*transform.rotation **/ Vector3.forward * getForce(step, batController));
                     collideBat = false;
                     if (ballHit != null) ballHit();
+
+                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    //collideBat = false;
+                    //if (ballHit != null) ballHit();
                 }
                 if (hit)
                 {
+
                     float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
                     double dist2 = System.Convert.ToDouble(dist);
                     dist2 = System.Math.Round(dist2, 2);

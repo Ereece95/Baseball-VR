@@ -27,7 +27,7 @@ public class DisplayFoulText : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        //if pitch type is displayed, set pitch type at each new pitch and display
+        //if foul ball, disable pitch type, display foul ball message
         if (foul && (gc.GetState() == States.WaitForInput))
         {
             displayCanvas.enabled = true;
@@ -37,6 +37,7 @@ public class DisplayFoulText : MonoBehaviour {
                 dsplyPitch.displayPitchType();
             }
         }
+        // otherwise reenable pitch type
         else
         {
             displayCanvas.enabled = false;

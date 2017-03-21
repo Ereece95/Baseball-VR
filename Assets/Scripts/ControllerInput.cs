@@ -36,7 +36,10 @@ public class ControllerInput : MonoBehaviour {
 
     void HandlePadClicked(object sender, ClickedEventArgs e)
     {
-        
+        if (gc.GetState() != States.Init && gc.GetState() != States.StartClick)
+        {
+            gc.HandlePadClicked();
+        }
     }
 
     void HandleGripClicked(object sender, ClickedEventArgs e)

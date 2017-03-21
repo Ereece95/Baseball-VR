@@ -8,7 +8,7 @@ using System.Collections.Generic;
 /// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
 public class Ball : MonoBehaviour
 {
-    private GameObject controlInput;
+    public ControllerInput controlInput;
     public GameObject ball;
     public GameObject hand;
     public GameObject player;
@@ -171,7 +171,7 @@ public class Ball : MonoBehaviour
                     transform.rotation = Quaternion.Euler(rotationVector);
 
 
-                    ball.transform.position = Vector3.Reflect(ball.transform.position,  );
+                    ball.transform.position = Vector3.Reflect(ball.transform.position, controlInput.GetVelocity());
                     //Debug.Log("Bat velocity = " + batController.velocity.magnitude);
                     //RB.AddForce(/*transform.rotation **/ Vector3.forward * getForce(step, batController));
                     collideBat = false;

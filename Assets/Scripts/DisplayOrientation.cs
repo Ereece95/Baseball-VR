@@ -2,23 +2,21 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class DisplayFoulText : MonoBehaviour {
+public class DisplayOrientation : MonoBehaviour {
 
     public Canvas displayCanvas;
     public Text pitchText;
     private DisplayPitch dsplyPitch;
     private GameController gc;
-    bool foul; // flag for when ball is foul
     bool disabledPitchType;
 
     void Start()
     {
         // find canvas and disable on start
-        displayCanvas = GameObject.Find("FoulBallCanvas").GetComponent<Canvas>();
+        displayCanvas = GameObject.Find("OrientationCanvas").GetComponent<Canvas>();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitch") as DisplayPitch;
         displayCanvas.enabled = false;
-        foul = true;
         disabledPitchType = false;
     }
 
@@ -27,8 +25,8 @@ public class DisplayFoulText : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        //if foul ball, disable pitch type, display foul ball message
-        if (foul && (gc.GetState() == States.WaitForInput))
+        // If state is orientation, display orientation message & disable pitch type
+        if (gc.GetState() == States.Orientation)
         {
             displayCanvas.enabled = true;
             if (dsplyPitch.isHidden == false)
@@ -37,20 +35,15 @@ public class DisplayFoulText : MonoBehaviour {
                 dsplyPitch.displayPitchType();
             }
         }
-        // otherwise reenable pitch type
+        //else, reenable pitch type
         else
         {
             displayCanvas.enabled = false;
-            foul = false;
             if (disabledPitchType == true)
             {
                 disabledPitchType = false;
                 dsplyPitch.displayPitchType();
             }
         }
-    }
-    public void displayFoulText()
-    {
-        foul = true;
     }
 }

@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
 using Valve.VR;
+using System;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class OptionsMenu : MonoBehaviour
         }
 
     }
-    void EnableMenu() // toggle for menu display, user presses down on controller to open, down again to close.
+    public void EnableMenu() // toggle for menu display, user presses down on controller to open, down again to close.
     {
         if (isVisible)
         {
@@ -59,4 +60,8 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    public static implicit operator GameObject(OptionsMenu v)
+    {
+        throw new NotImplementedException();
+    }
 }

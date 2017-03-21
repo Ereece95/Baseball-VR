@@ -16,17 +16,19 @@ public class ControllerInput : MonoBehaviour {
         controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
         controller.TriggerClicked += HandleTriggerClicked;
         controller.PadClicked += HandlePadClicked;
+        controller.Gripped += HandleGripClicked;
     }
 
     void OnDisable()
     {
         controller.TriggerClicked -= HandleTriggerClicked;
         controller.PadClicked -= HandlePadClicked;
+        controller.Gripped -= HandleGripClicked;
     }
-  
+
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
-        if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)
+        if (gc.GetState() == States.WaitForInput)
         {
             gc.HandleTriggerClicked();
         }
@@ -37,5 +39,11 @@ public class ControllerInput : MonoBehaviour {
         
     }
 
-   
+    void HandleGripClicked(object sender, ClickedEventArgs e)
+    {
+        if (gc.GetState() == States.Orientation)
+        {
+            gc.HandleGripClicked();
+        }
+    }
 }

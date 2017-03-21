@@ -271,7 +271,7 @@ public class GameController : MonoBehaviour
     }
     public void HandleTriggerClicked()
     {
-        if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)
+        if (gc.GetState() == States.WaitForInput)
         {
             gcFSM.ChangeState(States.ThrowPitch);
         }
@@ -280,7 +280,13 @@ public class GameController : MonoBehaviour
             gcFSM.ChangeState(States.Orientation);
         }
     }
-
+    public void HandleGripClicked()
+    {
+        if (gc.GetState() == States.Orientation)
+        {
+            gcFSM.ChangeState(States.ThrowPitch);
+        }
+    }
     //public void HandlePadClicked(object sender, ClickedEventArgs e)
     //{
 

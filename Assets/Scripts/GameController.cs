@@ -281,12 +281,14 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
+        DestroyImmediate(LeftyRightyMenu);
     }
 
     private void EventRightyButtonClicked()
     {
         DestroyImmediate(startmenubg);
         gcFSM.ChangeState(States.StartClick);
+        DestroyImmediate(LeftyRightyMenu);
     }
 
     private void EventBackButtonClicked()

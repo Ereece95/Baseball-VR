@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
-    private GameObject optnsMenu;
+    private OptionsMenu optnsMenu;
     //private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
     HitStats hs = null;
@@ -198,6 +198,7 @@ public class GameController : MonoBehaviour
 
             case States.Orientation:
                 //Wait for event to break out of this state (trigger hit to reflect proper stance)
+                Debug.Log("state = orientation state");
                 break;
 
             case States.ThrowPitch:
@@ -299,19 +300,18 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void HandlePadClicked()
     {
-        optnsMenu = GameObject.Find("OptionsMenuCanvas");
-        if (gc.GetState() == States.Orientation && gc.GetState() != States.StartClick && gc.GetState() != States.Init)
+        if ((gc.GetState() != States.StartClick) && (gc.GetState() != States.Init))
         {
             bool isVisible = false;
 
             if (!isVisible)
             {
-                optnsMenu.SetActive(true);
+                optnsMenu.EnableMenu();
                 isVisible = true;
             }
             else
             {
-                optnsMenu.SetActive(false);
+                optnsMenu.EnableMenu();
                 isVisible = false;
             }
         }
@@ -321,14 +321,6 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventExitButtonClicked()
     {
-        //Debug.Log("In Exit Button CLicked Function");
-        //try
-        //{
-        //DisplayExitStats();
-        //}catch (Exception e)
-        //{
-        //    Debug.Log("Display Stats Failed: " + e.ToString());
-        //}
         gcFSM.ChangeState(States.ExitGame);
     }
     /// <summary>
@@ -398,7 +390,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventDisplayExitStats()
     {
-
+        optnsMenu.EnableMenu();
 
         int count = 1;
         int numHits = 0;

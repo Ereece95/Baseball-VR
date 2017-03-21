@@ -45,7 +45,11 @@ public class GameController : MonoBehaviour
 
     //Events we will listen for go in OnEnable()
 
-    public static GameController gc = null; ///<Used for singleton design pattern
+    public static GameController gc = null;
+
+
+
+    ///<Used for singleton design pattern
     private StateMachine<States> gcFSM;
     private Ball ball;
     private DisplayPitch dsplyPitch;
@@ -67,6 +71,7 @@ public class GameController : MonoBehaviour
     private CanvasGroup hitstrikeCanvas;
     private VideoCompar video;
     private VideoCompar videoCompare;
+    private GameObject optnsMenu;
     //private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
     HitStats hs = null;
@@ -104,6 +109,8 @@ public class GameController : MonoBehaviour
 
         startmenu = GameObject.Find("StartMenu");
         startmenubg = GameObject.Find("SF Scene Elements");
+
+        optnsMenu = GameObject.Find("OptionsMenuCanvas").GetComponent("OptionsMenu") as OptionsMenu;
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -287,10 +294,28 @@ public class GameController : MonoBehaviour
             gcFSM.ChangeState(States.ThrowPitch);
         }
     }
-    //public void HandlePadClicked(object sender, ClickedEventArgs e)
-    //{
+    /// <summary>
+    /// For when trackpad is clicked
+    /// </summary>
+    public void HandlePadClicked()
+    {
+        optnsMenu = GameObject.Find("OptionsMenuCanvas");
+        if (gc.GetState() == States.Orientation && gc.GetState() != States.StartClick && gc.GetState() != States.Init)
+        {
+            bool isVisible = false;
 
-    //}
+            if (!isVisible)
+            {
+                optnsMenu.SetActive(true);
+                isVisible = true;
+            }
+            else
+            {
+                optnsMenu.SetActive(false);
+                isVisible = false;
+            }
+        }
+    }
     /// <summary>
     /// Exit Button was clicked
     /// </summary>

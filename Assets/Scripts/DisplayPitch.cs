@@ -23,6 +23,9 @@ public class DisplayPitch : MonoBehaviour
         displayCanvas.enabled = false;
         isHidden = true;
 
+        // Get pitch type text box
+        pitchText = GameObject.Find("PitchDisplay").GetComponent<Text>();
+
         // creat button listener for on click
         displayButton = displayButton.GetComponent<Button>();
 

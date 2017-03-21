@@ -5,7 +5,6 @@ using System.Collections;
 public class DisplayFoulText : MonoBehaviour {
 
     public Canvas displayCanvas;
-    public Text pitchText;
     private DisplayPitch dsplyPitch;
     private GameController gc;
     bool foul; // flag for when ball is foul

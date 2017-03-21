@@ -28,7 +28,8 @@ public enum States
     Delay,
     ExitGame,
     ShowingGameStats,
-    StatsGot
+    StatsGot,
+    OptionsDisplay
 }
 
 
@@ -202,6 +203,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.ThrowPitch:
+                Debug.Log("state = throwpitch");
                 //play animation to throw pitch
                 HandleThrowPitch();
                 break;
@@ -223,6 +225,7 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.WaitForInput:
+                Debug.Log("state = waitforinput state");
                 break;
 
             case States.StatsGot:
@@ -230,6 +233,10 @@ public class GameController : MonoBehaviour
 
             case States.ShowingGameStats:
                 break;                                  //Stay here until end game stats button is clicked
+
+            case States.OptionsDisplay:
+                Debug.Log("state = waitforinput state");
+                break;                                  // Wait for input
 
             case States.ExitGame:
 #if UNITY_EDITOR
@@ -281,6 +288,7 @@ public class GameController : MonoBehaviour
     {
         if (gc.GetState() == States.WaitForInput)
         {
+            Debug.Log("Changing state to throw pitch");
             gcFSM.ChangeState(States.ThrowPitch);
         }
         else if (gc.GetState() == States.StartClick || gc.GetState() == States.Init)
@@ -302,17 +310,15 @@ public class GameController : MonoBehaviour
     {
         if ((gc.GetState() != States.StartClick) && (gc.GetState() != States.Init))
         {
-            bool isVisible = false;
+            bool isVisible = optnsMenu.EnableMenu();
 
             if (!isVisible)
             {
-                optnsMenu.EnableMenu();
-                isVisible = true;
+                gcFSM.ChangeState(States.WaitForInput);
             }
             else
             {
-                optnsMenu.EnableMenu();
-                isVisible = false;
+                gcFSM.ChangeState(States.OptionsDisplay);
             }
         }
     }

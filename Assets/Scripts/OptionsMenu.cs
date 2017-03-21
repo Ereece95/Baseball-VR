@@ -46,17 +46,19 @@ public class OptionsMenu : MonoBehaviour
         //}
 
     }
-    public void EnableMenu() // toggle for menu display, user presses down on controller to open, down again to close.
+    public bool EnableMenu() // toggle for menu display, user presses down on controller to open, down again to close.
     {
         if (isVisible)
         {
             optionsCanvas.enabled = false;
             isVisible = false;
+            return false;
         }
         else
         {
             optionsCanvas.enabled = true;
             isVisible = true;
+            return true;
         }
     }
 

@@ -28,8 +28,10 @@ public class ControllerInput : MonoBehaviour {
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
+        Debug.Log("In Trigger Clicked");
         if (gc.GetState() == States.WaitForInput)
         {
+            Debug.Log("Sending to Game Controller to ThrowPitch");
             gc.HandleTriggerClicked();
         }
     }

@@ -174,17 +174,27 @@ public class Ball : MonoBehaviour
 
                     Vector3 batSwing = controlInput.GetVelocity();
                     Debug.Log("Batswing = " + batSwing);
+
+
+                    //try this
                     ball.transform.position = Vector3.Reflect(ball.transform.position, batSwing);
+
+                    //this
+                    //RB.AddForce(batSwing);
+
+                    //And this
+                    //RB.AddForce(batSwing, ForceMode.Force);
 
 
                     //Debug.Log("Bat velocity = " + batController.velocity.magnitude);
                     Debug.Log(controlInput.GetVelocity());
-                    //RB.AddForce(/*transform.rotation **/ Vector3.forward * controlInput.GetVelocity());
+                   
                   
                     collideBat = false;
                     if (ballHit != null) ballHit();
 
-                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+
+                    
                     //collideBat = false;
                     //if (ballHit != null) ballHit();
                 }

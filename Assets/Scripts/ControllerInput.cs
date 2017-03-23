@@ -53,9 +53,10 @@ public class ControllerInput : MonoBehaviour {
 
     public Vector3 GetVelocity()
     {
-        
+     
         Debug.Log("Entered function");
-        Vector3 vel = batController.velocity;
+       Vector3 vel = batController.velocity;
+        //Vector3 vel = batController.angularVelocity;
         Debug.Log(batController.velocity.magnitude);
         return vel;
     }

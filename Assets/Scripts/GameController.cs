@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
     //Events we will produce
     public delegate void gameEventHandler(int scoreMod);    ///<Set up event
     public static event gameEventHandler pitchCompleted;   //Call pitchCompleted
-
+    
     //Events we will listen for go in OnEnable()
 
     public static GameController gc = null;
@@ -64,8 +64,9 @@ public class GameController : MonoBehaviour
     private AudioSource audioCheer;
     private Animation pitch;
     private GameObject Pitcher;
-    private GameObject startmenu;
+    private GameObject MainMenu;
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
+    private GameObject LeftyRightyMenu;
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
     private CanvasGroup gameCanvas;
@@ -111,8 +112,9 @@ public class GameController : MonoBehaviour
         audioCheer = Cheer.GetComponent<AudioSource>();
         DontDestroyOnLoad(Cheer);
 
-        startmenu = GameObject.Find("StartMenu");
+        MainMenu = GameObject.Find("MainMenuPanel");
         startmenubg = GameObject.Find("SF Scene Elements");
+        LeftyRightyMenu = GameObject.Find("LeftyRightyMenu");
 
         optnsMenu = GameObject.Find("OptionsMenuCanvas").GetComponent("OptionsMenu") as OptionsMenu;
 
@@ -156,6 +158,9 @@ public class GameController : MonoBehaviour
         UIEvents.endGameStatsClicked += EventDisplayExitStats;
         UIEvents.videoButtonClicked += EventDisplayVideo;
         UIEvents.videoCompareButtonClicked += EventDisplayVideoCompare;
+        UIEvents.leftyButtonClicked += EventLeftyButtonClicked;
+        UIEvents.rightyButtonClicked += EventRightyButtonClicked;
+        UIEvents.backButtonClicked += EventBackButtonClicked;
         Ball.ballHit += EventBallHit;
         Ball.ballNotHit += EventBallNotHit;
         Ball.distanceHit += OnHitDistanceEvent;
@@ -177,6 +182,9 @@ public class GameController : MonoBehaviour
         UIEvents.endGameStatsClicked -= EventDisplayExitStats;
         UIEvents.videoButtonClicked -= EventDisplayVideo;
         UIEvents.videoCompareButtonClicked -= EventDisplayVideoCompare;
+        UIEvents.leftyButtonClicked -= EventLeftyButtonClicked;
+        UIEvents.rightyButtonClicked -= EventRightyButtonClicked;
+        UIEvents.backButtonClicked -= EventBackButtonClicked;
         Ball.distanceHit -= OnHitDistanceEvent;
         Ball.ballHit -= EventBallHit;
         Ball.ballNotHit -= EventBallNotHit;
@@ -195,6 +203,7 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
+                LeftyRightyMenu.SetActive(false);
                 HideCanvas(true);
                 break;
 
@@ -257,34 +266,55 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventEasyButtonClicked()
     {
-
-        DestroyImmediate(startmenu);
-        DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
+        MainMenu.SetActive(false);
+        LeftyRightyMenu.SetActive(true);
+        //DestroyImmediate(startmenu);
+        //DestroyImmediate(startmenubg);
+        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked
     /// </summary>
     private void EventMediumButtonClicked()
     {
-        DestroyImmediate(startmenu);
-        DestroyImmediate(startmenubg);
-        gcFSM.ChangeState(States.StartClick);
-
-
+        MainMenu.SetActive(false);
+        LeftyRightyMenu.SetActive(true);
+        //DestroyImmediate(startmenu);
+        //DestroyImmediate(startmenubg);
+        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked
     /// </summary>
     private void EventHardButtonClicked()
     {
-        DestroyImmediate(startmenu);
+        MainMenu.SetActive(false);
+        LeftyRightyMenu.SetActive(true);
+        //DestroyImmediate(startmenu);
+        //DestroyImmediate(startmenubg);
+        //gcFSM.ChangeState(States.StartClick);
+    }
+
+    private void EventLeftyButtonClicked()
+    {
         DestroyImmediate(startmenubg);
+        DestroyImmediate(LeftyRightyMenu);
         gcFSM.ChangeState(States.StartClick);
+        ball.side = false;
+    }
 
+    private void EventRightyButtonClicked()
+    {
+        DestroyImmediate(startmenubg);
+        DestroyImmediate(LeftyRightyMenu);
+        gcFSM.ChangeState(States.StartClick);
+        ball.side = true;
+    }
 
+    private void EventBackButtonClicked()
+    {
+        MainMenu.SetActive(true);
+        LeftyRightyMenu.SetActive(false);
     }
     public void HandleTriggerClicked()
     {

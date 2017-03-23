@@ -17,6 +17,9 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler endGameStatsClicked;
     public static event buttonHandler videoButtonClicked;
     public static event buttonHandler videoCompareButtonClicked;
+    public static event buttonHandler leftyButtonClicked;
+    public static event buttonHandler rightyButtonClicked;
+    public static event buttonHandler backButtonClicked;
 
     /// <summary>
     /// Send event when Easy button clicked. Listened for in GameController
@@ -41,6 +44,21 @@ public class UIEvents : MonoBehaviour {
     {
         if (hardButtonClicked != null)     //make sure someone is listening
             hardButtonClicked();       //Fire the event
+    }
+    public void LeftyButtonClicked()
+    {
+        if (leftyButtonClicked != null)
+            leftyButtonClicked();
+    }
+    public void RightyButtonClicked()
+    {
+        if (rightyButtonClicked != null)
+            rightyButtonClicked();
+    }
+    public void BackButtonClicked()
+    {
+        if (backButtonClicked != null)
+            backButtonClicked();
     }
     /// <summary>
     /// Send event when exit button clicked. Listened for in GameController

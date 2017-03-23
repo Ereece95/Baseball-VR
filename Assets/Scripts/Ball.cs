@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     public GameObject ball;
     public GameObject hand;
     public GameObject player;
+    public GameObject cameraRig;
     private TrailRenderer trail;
     public float seconds;
     int x = 0;
@@ -63,7 +64,9 @@ public class Ball : MonoBehaviour
     }
     void OnDisable()
     {
-
+        UIEvents.easyButtonClicked -= ChangespeedE;
+        UIEvents.mediumButtonClicked -= ChangespeedM;
+        UIEvents.hardButtonClicked -= ChangespeedH;
     }
 
     /// <summary>
@@ -72,7 +75,24 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        cameraRig = GameObject.Find("[CameraRig]");
         side = true;
+
+        if(side)
+        {
+            float x = cameraRig.transform.position.x;
+            float y = cameraRig.transform.position.y;
+            float z = cameraRig.transform.position.z;
+            cameraRig.transform.position.Set(x - 5, y, z + 5);
+        }
+        else
+        {
+            float x = cameraRig.transform.position.x;
+            float y = cameraRig.transform.position.y;
+            float z = cameraRig.transform.position.z;
+            cameraRig.transform.position.Set(x + 5, y, z - 5);
+        }
+
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         flagVis = true;

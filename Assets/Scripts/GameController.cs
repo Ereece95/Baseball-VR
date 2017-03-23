@@ -189,6 +189,7 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
+                LeftyRightyMenu.SetActive(false);
                 HideCanvas(true);
                 break;
 

@@ -199,11 +199,9 @@ public class GameController : MonoBehaviour
 
             case States.Orientation:
                 //Wait for event to break out of this state (trigger hit to reflect proper stance)
-                Debug.Log("state = orientation state");
                 break;
 
             case States.ThrowPitch:
-                Debug.Log("state = throwpitch");
                 //play animation to throw pitch
                 HandleThrowPitch();
                 break;
@@ -225,7 +223,6 @@ public class GameController : MonoBehaviour
                 break;
 
             case States.WaitForInput:
-                Debug.Log("state = waitforinput state");
                 break;
 
             case States.StatsGot:
@@ -235,7 +232,6 @@ public class GameController : MonoBehaviour
                 break;                                  //Stay here until end game stats button is clicked
 
             case States.OptionsDisplay:
-                Debug.Log("state = waitforinput state");
                 break;                                  // Wait for input
 
             case States.ExitGame:
@@ -288,7 +284,6 @@ public class GameController : MonoBehaviour
     {
         if (gc.GetState() == States.WaitForInput)
         {
-            Debug.Log("Changing state to throw pitch");
             gcFSM.ChangeState(States.ThrowPitch);
         }
         else if (gc.GetState() == States.StartClick || gc.GetState() == States.Init)
@@ -388,8 +383,6 @@ public class GameController : MonoBehaviour
             audioCheer.PlayOneShot(audioCheer.clip, 0.6F);
         }
         hitStats.Add(hs);
-        //Debug.Log("HIT ADDDED" + distance);
-
     }
     /// <summary>
     /// When leaving display stats for the player

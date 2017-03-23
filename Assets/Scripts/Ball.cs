@@ -59,16 +59,12 @@ public class Ball : MonoBehaviour
         UIEvents.easyButtonClicked += ChangespeedE;
         UIEvents.mediumButtonClicked += ChangespeedM;
         UIEvents.hardButtonClicked += ChangespeedH;
-        UIEvents.leftyButtonClicked += ChangePitcherLefty;
-        UIEvents.rightyButtonClicked += ChangePitcherRighty;
     }
     void OnDisable()
     {
         UIEvents.easyButtonClicked -= ChangespeedE;
         UIEvents.mediumButtonClicked -= ChangespeedM;
         UIEvents.hardButtonClicked -= ChangespeedH;
-        UIEvents.leftyButtonClicked -= ChangePitcherLefty;
-        UIEvents.rightyButtonClicked -= ChangePitcherRighty;
     }
 
     /// <summary>
@@ -613,16 +609,6 @@ public class Ball : MonoBehaviour
         Paths = stats.getPitchType();
         quadrent = stats.setQuadrent(side);
         speed = 20;
-    }
-
-    void ChangePitcherRighty()
-    {
-
-    }
-
-    void ChangePitcherLefty()
-    {
-
     }
 
     public void hideBallFlags()

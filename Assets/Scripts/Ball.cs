@@ -105,7 +105,7 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-        controlInput = GameObject.Find("[CameraRig]").GetComponent("ControllerInput") as ControllerInput;
+        controlInput = GameObject.Find("Controller (right)").GetComponent("ControllerInput") as ControllerInput;
 
     }
     int i = 0;

@@ -7,11 +7,12 @@ public class ControllerInput : MonoBehaviour {
     private SteamVR_TrackedController controller;
     private GameController gc;
     public SteamVR_TrackedObject trackedObj;
-    public SteamVR_Controller.Device batController { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
+    //public SteamVR_Controller.Device batController { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
+    public SteamVR_Controller.Device batController;
 
     void Start()
     {
-        trackedObj = GetComponent<SteamVR_TrackedObject>();
+        //trackedObj = GetComponent<SteamVR_TrackedObject>();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 
@@ -20,7 +21,7 @@ public class ControllerInput : MonoBehaviour {
         controller = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedController>();
         controller.TriggerClicked += HandleTriggerClicked;
         controller.PadClicked += HandlePadClicked;
-        //trackedObj = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedObject>();
+        trackedObj = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedObject>();
      }
 
     void OnDisable()
@@ -28,7 +29,12 @@ public class ControllerInput : MonoBehaviour {
         controller.TriggerClicked -= HandleTriggerClicked;
         controller.PadClicked -= HandlePadClicked;
     }
-  
+
+    void FixedUpdate()
+    {
+        batController = SteamVR_Controller.Input((int)trackedObj.index);
+    }
+
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
         if (gc.GetState() == States.Orientation || gc.GetState() == States.WaitForInput)

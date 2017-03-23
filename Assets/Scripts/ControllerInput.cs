@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
+[RequireComponent(typeof(SteamVR_TrackedObject))]
 public class ControllerInput : MonoBehaviour {
 
     private SteamVR_TrackedController controller;
@@ -55,7 +56,7 @@ public class ControllerInput : MonoBehaviour {
     {
      
         Debug.Log("Entered function");
-       Vector3 vel = batController.velocity;
+        Vector3 vel = batController.velocity;
         //Vector3 vel = batController.angularVelocity;
         Debug.Log(batController.velocity.magnitude);
         return vel;

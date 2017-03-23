@@ -60,6 +60,7 @@ public class Ball : MonoBehaviour
         UIEvents.easyButtonClicked += ChangespeedE;
         UIEvents.mediumButtonClicked += ChangespeedM;
         UIEvents.hardButtonClicked += ChangespeedH;
+       
     }
     void OnDisable()
     {
@@ -76,6 +77,7 @@ public class Ball : MonoBehaviour
         hit = false;
         trail = gameObject.GetComponent<TrailRenderer>();
         flagVis = true;
+        
     }
 
 
@@ -103,7 +105,7 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-        controlInput = GameObject.Find("Controller (right)").GetComponent("Controller Input") as ControllerInput;
+        controlInput = GameObject.Find("[CameraRig]").GetComponent("ControllerInput") as ControllerInput;
 
     }
     int i = 0;
@@ -171,7 +173,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-
+                    //Trying to access device velocity here from controllerInput script. Gets Null reference exception
                     Vector3 batSwing = controlInput.GetVelocity();
                     Debug.Log("Batswing = " + batSwing);
 

@@ -75,7 +75,7 @@ public class ViveControllerInput : BaseInputModule
 
 
                 if (CursorSprite == null)
-                    Debug.LogError("Set CursorSprite on " + this.gameObject.name + " to the sprite you want to use as your cursor.", this.gameObject);
+                    //Debug.LogError("Set CursorSprite on " + this.gameObject.name + " to the sprite you want to use as your cursor.", this.gameObject);
 
                 Cursors[index] = cursor.GetComponent<RectTransform>();
             }

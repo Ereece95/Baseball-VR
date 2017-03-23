@@ -430,7 +430,7 @@ public class Ball : MonoBehaviour
     /// <summary>
     /// Sets everything back to its initial value to rethrow the pitch
     /// </summary>
-    void rethrowpitch()
+    public void rethrowpitch()
     {
         countstrike = true;
         ball.GetComponent<MeshRenderer>().enabled = true;

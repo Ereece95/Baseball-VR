@@ -73,6 +73,9 @@ public class GameController : MonoBehaviour
     private VideoCompar video;
     private VideoCompar videoCompare;
     private OptionsMenu optnsMenu;
+    private ChangeColorOfBox rightchangeScript;
+    private ChangeColorOfBox leftchangeScript;
+
     //private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
     HitStats hs = null;
@@ -134,6 +137,9 @@ public class GameController : MonoBehaviour
 
         video = GameObject.Find("Video").GetComponent("VideoCompar") as VideoCompar;
         videoCompare = GameObject.Find("VideoCompare").GetComponent("VideoCompar") as VideoCompar;
+        rightchangeScript = GameObject.Find("RightBox").GetComponent("ChangeColorOfBox") as ChangeColorOfBox;
+        leftchangeScript = GameObject.Find("LeftBox").GetComponent("ChangeColorOfBox") as ChangeColorOfBox;
+
     }
     /// <summary>
     /// Events we will listen for
@@ -288,7 +294,6 @@ public class GameController : MonoBehaviour
     {
         if (gc.GetState() == States.WaitForInput)
         {
-            Debug.Log("Changing state to throw pitch");
             gcFSM.ChangeState(States.ThrowPitch);
         }
         else if (gc.GetState() == States.StartClick || gc.GetState() == States.Init)
@@ -300,6 +305,9 @@ public class GameController : MonoBehaviour
     {
         if (gc.GetState() == States.Orientation)
         {
+            leftchangeScript.changeBatterBoxColor();
+            rightchangeScript.changeBatterBoxColor();
+            Debug.Log("Changing state to throw pitch");
             gcFSM.ChangeState(States.ThrowPitch);
         }
     }

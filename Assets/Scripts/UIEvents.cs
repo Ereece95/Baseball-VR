@@ -26,6 +26,7 @@ public class UIEvents : MonoBehaviour {
     /// </summary>
     public void EasyButtonClicked()    //must be public to see in the button's onClick() method
     {
+        
         if (easyButtonClicked != null)     //make sure someone is listening
             easyButtonClicked();       //Fire the event
     }

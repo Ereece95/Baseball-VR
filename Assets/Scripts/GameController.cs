@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
     ///<Used for singleton design pattern
     private StateMachine<States> gcFSM;
     private Ball ball;
+    private GameObject LeftRightCanvas;
     private DisplayPitch dsplyPitch;
     private AudioClip hit;
     private AudioSource audioS;
@@ -115,6 +116,7 @@ public class GameController : MonoBehaviour
         MainMenu = GameObject.Find("MainMenuPanel");
         startmenubg = GameObject.Find("SF Scene Elements");
         LeftyRightyMenu = GameObject.Find("LeftRight").GetComponent<CanvasGroup>();
+        LeftRightCanvas = GameObject.Find("LeftRight");
 
         optnsMenu = GameObject.Find("OptionsMenuCanvas").GetComponent("OptionsMenu") as OptionsMenu;
 
@@ -203,12 +205,13 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
-               
+               // Debug.Log("Init");
                 HideCanvas(true);
                 break;
 
             case States.StartClick:
                 HideCanvas(false);
+                Debug.Log("Start");
                 gcFSM.ChangeState(States.Orientation);
                 break;
 
@@ -266,10 +269,13 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void EventEasyButtonClicked()
     {
+       
         MainMenu.SetActive(false);
         LeftyRightyMenu.interactable = true;
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
+        Debug.Log("Set to visible");
+
         //DestroyImmediate(startmenu);
         //DestroyImmediate(startmenubg);
         //gcFSM.ChangeState(States.StartClick);
@@ -303,6 +309,8 @@ public class GameController : MonoBehaviour
 
     private void EventLeftyButtonClicked()
     {
+        DestroyImmediate(LeftRightCanvas);
+
         DestroyImmediate(startmenubg);
         DestroyImmediate(LeftyRightyMenu);
         gcFSM.ChangeState(States.StartClick);
@@ -311,6 +319,8 @@ public class GameController : MonoBehaviour
 
     private void EventRightyButtonClicked()
     {
+
+        DestroyImmediate(LeftRightCanvas);
         DestroyImmediate(startmenubg);
         DestroyImmediate(LeftyRightyMenu);
         gcFSM.ChangeState(States.StartClick);

@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
     private GameObject Pitcher;
     private GameObject MainMenu;
     private GameObject startmenubg; //start menu background needs to be destroyed separately after start
-    private GameObject LeftyRightyMenu;
+    private CanvasGroup LeftyRightyMenu;
     public GameObject endStats;
     private CanvasGroup endStatsCanvas;
     private CanvasGroup gameCanvas;
@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
 
         MainMenu = GameObject.Find("MainMenuPanel");
         startmenubg = GameObject.Find("SF Scene Elements");
-        LeftyRightyMenu = GameObject.Find("LeftyRightyMenu");
+        LeftyRightyMenu = GameObject.Find("LeftRight").GetComponent<CanvasGroup>();
 
         optnsMenu = GameObject.Find("OptionsMenuCanvas").GetComponent("OptionsMenu") as OptionsMenu;
 
@@ -203,7 +203,7 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case States.Init:   //Wait until event happens
-                LeftyRightyMenu.SetActive(false);
+               
                 HideCanvas(true);
                 break;
 
@@ -267,7 +267,9 @@ public class GameController : MonoBehaviour
     private void EventEasyButtonClicked()
     {
         MainMenu.SetActive(false);
-        LeftyRightyMenu.SetActive(true);
+        LeftyRightyMenu.interactable = true;
+        LeftyRightyMenu.alpha = 1;
+        LeftyRightyMenu.blocksRaycasts = true;
         //DestroyImmediate(startmenu);
         //DestroyImmediate(startmenubg);
         //gcFSM.ChangeState(States.StartClick);
@@ -278,7 +280,9 @@ public class GameController : MonoBehaviour
     private void EventMediumButtonClicked()
     {
         MainMenu.SetActive(false);
-        LeftyRightyMenu.SetActive(true);
+        LeftyRightyMenu.interactable = true;
+        LeftyRightyMenu.alpha = 1;
+        LeftyRightyMenu.blocksRaycasts = true;
         //DestroyImmediate(startmenu);
         //DestroyImmediate(startmenubg);
         //gcFSM.ChangeState(States.StartClick);
@@ -289,7 +293,9 @@ public class GameController : MonoBehaviour
     private void EventHardButtonClicked()
     {
         MainMenu.SetActive(false);
-        LeftyRightyMenu.SetActive(true);
+        LeftyRightyMenu.interactable = true;
+        LeftyRightyMenu.alpha = 1;
+        LeftyRightyMenu.blocksRaycasts = true;
         //DestroyImmediate(startmenu);
         //DestroyImmediate(startmenubg);
         //gcFSM.ChangeState(States.StartClick);
@@ -314,7 +320,9 @@ public class GameController : MonoBehaviour
     private void EventBackButtonClicked()
     {
         MainMenu.SetActive(true);
-        LeftyRightyMenu.SetActive(false);
+        LeftyRightyMenu.interactable = false;
+        LeftyRightyMenu.alpha = 0;
+        LeftyRightyMenu.blocksRaycasts = false;
     }
     public void HandleTriggerClicked()
     {

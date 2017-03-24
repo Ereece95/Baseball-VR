@@ -5,9 +5,14 @@ public class ControllerInput : MonoBehaviour {
 
     private SteamVR_TrackedController controller;
     private GameController gc;
+    public SteamVR_TrackedObject trackedObj;
+    //public SteamVR_Controller.Device batController { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
+    public SteamVR_Controller.Device batController;
 
     void Start()
     {
+
+        //trackedObj = GetComponent<SteamVR_TrackedObject>();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
     }
 
@@ -24,6 +29,11 @@ public class ControllerInput : MonoBehaviour {
         controller.TriggerClicked -= HandleTriggerClicked;
         controller.PadClicked -= HandlePadClicked;
         controller.Gripped -= HandleGripClicked;
+    }
+
+    void FixedUpdate()
+    {
+        batController = SteamVR_Controller.Input((int)trackedObj.index);
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
@@ -51,5 +61,24 @@ public class ControllerInput : MonoBehaviour {
         {
             gc.HandleGripClicked();
         }
+    }
+    //public float getForce(float ballSpeed, SteamVR_Controller.Device batController)
+    //{
+    //    float force;
+    //    float ballMass = 0.145f;
+    //    float vel = batController.velocity.magnitude;
+    //    force = ((ballMass * vel) - (ballMass * ballSpeed)) / 0.003f;
+
+    //    return force;
+    //}
+
+    public Vector3 GetVelocity()
+    {
+
+        Debug.Log("Entered function");
+        Vector3 vel = batController.velocity;
+        //Vector3 vel = batController.angularVelocity;
+        Debug.Log(batController.velocity.magnitude);
+        return vel;
     }
 }

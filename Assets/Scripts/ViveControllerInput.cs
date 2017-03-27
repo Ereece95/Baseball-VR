@@ -52,7 +52,7 @@ public class ViveControllerInput : BaseInputModule
             ControllerCamera.clearFlags = CameraClearFlags.Nothing; //CameraClearFlags.Depth;
             ControllerCamera.cullingMask = 0; // 1 << LayerMask.NameToLayer("UI"); 
 
-            ControllerManager = GameObject.FindObjectOfType<SteamVR_ControllerManager>();
+            ControllerManager = FindObjectOfType<SteamVR_ControllerManager>();
             Controllers = new SteamVR_TrackedObject[] { ControllerManager.left.GetComponent<SteamVR_TrackedObject>(), ControllerManager.right.GetComponent<SteamVR_TrackedObject>() };
             ControllerDevices = new SteamVR_Controller.Device[Controllers.Length];
             Cursors = new RectTransform[Controllers.Length];

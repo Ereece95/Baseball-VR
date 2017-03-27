@@ -27,6 +27,7 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
+    float l = 0;
     /// <summary>
     /// The type of pitch
     /// </summary>
@@ -695,14 +696,20 @@ public class Ball : MonoBehaviour
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
         // x = x + 1f;
-        y = (((9f * timeCounter) - 1f) + 5f);
+        y = y + 5f;// (((4f * timeCounter) - 1f) + 5f);
         foreach (GameObject go in gos)
         {
 
             scale.x = y;
             scale.z = y;
-
-            go.transform.localScale = new Vector3(scale.x, 0.01f, scale.z);
+           
+           l = l + 0.005f;
+            if(l>20)
+            {
+                l = 20;
+            }
+            Debug.Log(l);
+            go.transform.localScale = new Vector3(l*1f, 0.01f, l*1f);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

@@ -699,7 +699,6 @@ public class Ball : MonoBehaviour
         y = y + 5f;// (((4f * timeCounter) - 1f) + 5f);
         foreach (GameObject go in gos)
         {
-
             scale.x = y;
             scale.z = y;
            
@@ -708,7 +707,12 @@ public class Ball : MonoBehaviour
             {
                 l = 20;
             }
-            Debug.Log(l);
+
+            if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)
+            {
+
+            }
+                Debug.Log(l);
             go.transform.localScale = new Vector3(l*1f, 0.01f, l*1f);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
@@ -718,7 +722,7 @@ public class Ball : MonoBehaviour
                 closest = go;
                 distance = curDistance;
             }
-
+            
         }
         return closest;
     }

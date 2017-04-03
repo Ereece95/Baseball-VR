@@ -8,6 +8,7 @@ using System.Collections.Generic;
 /// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
 public class Ball : MonoBehaviour
 {
+    public ControllerInput controlInput;
     public GameObject ball;
     public GameObject hand;
     public GameObject player;
@@ -124,6 +125,7 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
+        controlInput = GameObject.Find("Controller (right)").GetComponent("ControllerInput") as ControllerInput;
 
     }
     int i = 0;
@@ -181,6 +183,8 @@ public class Ball : MonoBehaviour
                     float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
+
+               
 
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
@@ -708,7 +712,7 @@ public class Ball : MonoBehaviour
                 l = 20;
             }
 
-            if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)
+          //  if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)
             {
 
             }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 /// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
 public class Ball : MonoBehaviour
 {
-    public ControllerInput controlInput;
+    public ControllerInput controllerInput;
     public GameObject ball;
     public GameObject hand;
     public GameObject player;
@@ -63,6 +63,7 @@ public class Ball : MonoBehaviour
         UIEvents.easyButtonClicked += ChangespeedE;
         UIEvents.mediumButtonClicked += ChangespeedM;
         UIEvents.hardButtonClicked += ChangespeedH;
+
     }
     void OnDisable()
     {
@@ -77,10 +78,11 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Awake()
     {
+
         cameraRig = GameObject.Find("[CameraRig]");
         side = true;
 
-        if(side)
+        if (side)
         {
             float x = cameraRig.transform.position.x;
             float y = cameraRig.transform.position.y;
@@ -125,7 +127,7 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-        controlInput = GameObject.Find("Controller (right)").GetComponent("ControllerInput") as ControllerInput;
+       // controllerInput.GetComponent("ControllerInput") as ControllerInput;
 
     }
     int i = 0;
@@ -184,7 +186,30 @@ public class Ball : MonoBehaviour
                     hit = true;
                     RB.useGravity = true;
 
-               
+
+                    //Trying to access device velocity here from controllerInput script. Gets Null reference exception
+                    Vector3 batSwing = controllerInput.GetVelocity();
+                    Debug.Log("Batswing = " + batSwing);
+
+
+                    //try this
+                    //ball.transform.position = Vector3.Reflect(ball.transform.position, batSwing);
+
+                    ////this
+                    ////RB.AddForce(batSwing);
+
+                    ////And this
+                    RB.AddForce(batSwing, ForceMode.Impulse);
+
+
+                    ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
+                    //Debug.Log(controlInput.GetVelocity());
+
+
+                    //collideBat = false;
+                    //if (ballHit != null) ballHit();
+
+
 
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
@@ -194,7 +219,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }
@@ -242,6 +267,7 @@ public class Ball : MonoBehaviour
                 ballNotHit();
                 ball.GetComponent<MeshRenderer>().enabled = false;
                 ball.GetComponent<SphereCollider>().enabled = false;
+
 
                 countstrike = false;
             }
@@ -303,6 +329,7 @@ public class Ball : MonoBehaviour
 
             // Add a flag where the ball hits
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            flag.GetComponent<BoxCollider>().enabled = false;
             if (isFoul)
             {
                 flag.GetComponent<Renderer>().material.color = Color.red;
@@ -311,7 +338,7 @@ public class Ball : MonoBehaviour
             {
                 flag.GetComponent<Renderer>().material.color = Color.blue;
             }
-            flag.transform.localScale = new Vector3(1f, 0.005f, 1f);
+            flag.transform.localScale = new Vector3(0.5f, 0.005f, 0.5f);
             flag.transform.position = ball.transform.position;
             _flags.Add(flag);
 
@@ -700,24 +727,19 @@ public class Ball : MonoBehaviour
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
         // x = x + 1f;
-        y = y + 5f;// (((4f * timeCounter) - 1f) + 5f);
+        y = (((4f * timeCounter) - 1f) + 5f);
         foreach (GameObject go in gos)
         {
             scale.x = y;
             scale.z = y;
-           
-           l = l + 0.005f;
-            if(l>20)
-            {
-                l = 20;
-            }
 
-          //  if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)
-            {
-
-            }
-                Debug.Log(l);
-            go.transform.localScale = new Vector3(l*1f, 0.01f, l*1f);
+            //l = l + 0.005f;
+            // if(l>20)
+            // {
+            //     l = 20;
+            // }
+            //  Debug.Log(l);
+            go.transform.localScale = new Vector3(l * 1f, 0.01f, l * 1f);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
@@ -726,7 +748,7 @@ public class Ball : MonoBehaviour
                 closest = go;
                 distance = curDistance;
             }
-            
+
         }
         return closest;
     }

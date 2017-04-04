@@ -32,7 +32,7 @@ public class ControllerInput : MonoBehaviour {
 
     void FixedUpdate()
     {
-        batController = SteamVR_Controller.Input((int)trackedObj.index);
+       // batController = SteamVR_Controller.Input((int)trackedObj.index);
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)

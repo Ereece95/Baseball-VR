@@ -21,6 +21,7 @@ public class ControllerInput : MonoBehaviour {
         controller.TriggerClicked += HandleTriggerClicked;
         controller.PadClicked += HandlePadClicked;
         controller.Gripped += HandleGripClicked;
+        trackedObj = GameObject.Find("Controller (right)").GetComponent<SteamVR_TrackedObject>();
     }
 
     void OnDisable()

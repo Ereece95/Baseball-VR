@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
+[RequireComponent(typeof(SteamVR_TrackedObject))]
 public class ControllerInput : MonoBehaviour {
 
     private SteamVR_TrackedController controller;
     private GameController gc;
+    public SteamVR_TrackedObject trackedObj;
+    //public SteamVR_Controller.Device batController { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
+    public SteamVR_Controller.Device batController;
 
     void Start()
     {
@@ -24,6 +28,11 @@ public class ControllerInput : MonoBehaviour {
         controller.TriggerClicked -= HandleTriggerClicked;
         controller.PadClicked -= HandlePadClicked;
         controller.Gripped -= HandleGripClicked;
+    }
+
+    void FixedUpdate()
+    {
+        batController = SteamVR_Controller.Input((int)trackedObj.index);
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e)
@@ -51,5 +60,15 @@ public class ControllerInput : MonoBehaviour {
         {
             gc.HandleGripClicked();
         }
+    }
+
+    public Vector3 GetVelocity()
+    {
+
+        Debug.Log("Entered function");
+        Vector3 vel = batController.velocity;
+        //Vector3 vel = batController.angularVelocity;
+        Debug.Log(batController.velocity.magnitude);
+        return vel;
     }
 }

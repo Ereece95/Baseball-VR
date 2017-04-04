@@ -8,6 +8,7 @@ using System.Collections.Generic;
 /// The code for the ball following a path based on stats from a pitcher at a certain time in the throw animation and after it is hit it flies in a random direction with a random force(For now). It displays a flag when it hits the ground and a collider of the bat
 public class Ball : MonoBehaviour
 {
+    public ControllerInput controllerInput;
     public GameObject ball;
     public GameObject hand;
     public GameObject player;
@@ -181,6 +182,31 @@ public class Ball : MonoBehaviour
                     hit = true;
                     RB.useGravity = true;
 
+
+                    //Trying to access device velocity here from controllerInput script. Gets Null reference exception
+                    Vector3 batSwing = controllerInput.GetVelocity();
+                    Debug.Log("Batswing = " + batSwing);
+
+
+                    //try this
+                    //ball.transform.position = Vector3.Reflect(ball.transform.position, batSwing);
+
+                    ////this
+                    ////RB.AddForce(batSwing);
+
+                    ////And this
+                    RB.AddForce(batSwing, ForceMode.Impulse);
+
+
+                    ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
+                    //Debug.Log(controlInput.GetVelocity());
+
+
+                    //collideBat = false;
+                    //if (ballHit != null) ballHit();
+
+
+
                     //This block will generate a random direction and angle for ball to travel
                     var rotationVector = transform.rotation.eulerAngles;
                     int rotationY = (Random.Range(10, 100));
@@ -189,7 +215,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }
@@ -298,6 +324,7 @@ public class Ball : MonoBehaviour
 
             // Add a flag where the ball hits
             GameObject flag = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            flag.GetComponent<BoxCollider>().enabled = false;
             if (isFoul)
             {
                 flag.GetComponent<Renderer>().material.color = Color.red;
@@ -306,7 +333,7 @@ public class Ball : MonoBehaviour
             {
                 flag.GetComponent<Renderer>().material.color = Color.blue;
             }
-            flag.transform.localScale = new Vector3(1f, 0.005f, 1f);
+            flag.transform.localScale = new Vector3(0.5f, 0.005f, 0.5f);
             flag.transform.position = ball.transform.position;
             _flags.Add(flag);
 

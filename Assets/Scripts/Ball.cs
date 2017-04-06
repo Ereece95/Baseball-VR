@@ -184,8 +184,8 @@ public class Ball : MonoBehaviour
 
 
                     //Trying to access device velocity here from controllerInput script. Gets Null reference exception
-                    Vector3 batSwing = controllerInput.GetVelocity();
-                    Debug.Log("Batswing = " + batSwing);
+                    //Vector3 batSwing = controllerInput.GetVelocity();
+                   // Debug.Log("Batswing = " + batSwing);
 
 
                     //try this
@@ -195,7 +195,7 @@ public class Ball : MonoBehaviour
                     ////RB.AddForce(batSwing);
 
                     ////And this
-                    RB.AddForce(batSwing, ForceMode.Impulse);
+                    //RB.AddForce(batSwing, ForceMode.Impulse);
 
 
                     ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
@@ -215,7 +215,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }
@@ -722,7 +722,7 @@ public class Ball : MonoBehaviour
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
         // x = x + 1f;
-        y = (((9f * timeCounter) - 1f) + 5f);
+        y = (((6f * timeCounter) - 1f) + 2f);
         foreach (GameObject go in gos)
         {
 

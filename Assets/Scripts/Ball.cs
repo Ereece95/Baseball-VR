@@ -54,6 +54,7 @@ public class Ball : MonoBehaviour
     public float y;
     bool countstrike = true;
     public bool side;
+    public bool ballTravel = false;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
@@ -225,10 +226,13 @@ public class Ball : MonoBehaviour
                 }
                 if (hit)
                 {
-                    float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
-                    double dist2 = System.Convert.ToDouble(dist);
-                    dist2 = System.Math.Round(dist2, 2);
-                    DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
+                    if (ballTravel)
+                    {
+                        float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
+                        double dist2 = System.Convert.ToDouble(dist);
+                        dist2 = System.Math.Round(dist2, 0);
+                        DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
+                    }
                 }
                 if (!hit)
                 {
@@ -302,6 +306,7 @@ public class Ball : MonoBehaviour
         bool isFoul = false;
         bool isHomerun = false;
         bool isCaught = false;
+        ballTravel = false;
         //if(Col.gameObject.name == "Foul Pole")
         //{
         //    isHomerun = true;
@@ -342,11 +347,14 @@ public class Ball : MonoBehaviour
             flag.transform.position = ball.transform.position;
             _flags.Add(flag);
 
+            ball.transform.position = flag.transform.position;
+
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
         if (Col.gameObject.name == "baseball_bat_regular")
         {
+            ballTravel = true;
             collideBat = true;
             timeStart = Time.time;
         }

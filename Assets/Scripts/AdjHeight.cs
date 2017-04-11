@@ -21,6 +21,9 @@ public class AdjHeight : MonoBehaviour
         heightType = 0;
         heightFeet = 5;
         heightInches = 8;
+
+        feetDisplay.text = heightFeet.ToString();
+        inchesDisplay.text = heightInches.ToString();
     }
 
     // Update is called once per frame
@@ -86,5 +89,10 @@ public class AdjHeight : MonoBehaviour
                 heightFeet--;
             }
         }
+    }
+    double convertHeight()
+    {
+        double newHeight = (heightFeet/3.28) + (heightInches * 0.0254);
+        return newHeight;
     }
 }

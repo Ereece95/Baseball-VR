@@ -3,20 +3,20 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class HeightAdjust : MonoBehaviour
+public class AdjHeight : MonoBehaviour
 {
 
     int heightFeet;
     int heightInches;
     int heightType;
 
-    Text feetDisplay;
-    Text inchesDisplay;
+    public Text feetDisplay;
+    public Text inchesDisplay;
     // Use this for initialization
     void Start()
     {
-        feetDisplay = GameObject.Find("feetDisplayBox").GetComponent<Text>();
-        inchesDisplay = GameObject.Find("inchDisplayBox").GetComponent<Text>();
+        feetDisplay = GameObject.Find("heightFeetText").GetComponent<Text>();
+        inchesDisplay = GameObject.Find("heightInchText").GetComponent<Text>();
 
         heightType = 0;
         heightFeet = 5;
@@ -71,10 +71,20 @@ public class HeightAdjust : MonoBehaviour
         if (Input.GetButton("UpButton"))
         {
             heightInches++;
+            if (heightInches > 11)
+            {
+                heightInches = 0;
+                heightFeet++;
+            }
         }
         else if (Input.GetButton("DownButton"))
         {
             heightInches--;
+            if (heightInches < 0)
+            {
+                heightInches = 0;
+                heightFeet--;
+            }
         }
     }
 }

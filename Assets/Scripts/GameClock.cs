@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameClock : MonoBehaviour
 {
-    private float timer = Time.deltaTime;
+    private float timer;
     private string clock;
     private Text clockText;
     private GameController gc;
@@ -26,6 +26,7 @@ public class GameClock : MonoBehaviour
 
     void Update()
     {
+        timer = Time.deltaTime;
         clockText.text = clock;
     }
 

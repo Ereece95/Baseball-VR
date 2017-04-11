@@ -28,7 +28,7 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
-    float l = 0;
+    float ringScale = 0;
     /// <summary>
     /// The type of pitch
     /// </summary>
@@ -733,13 +733,13 @@ public class Ball : MonoBehaviour
             scale.x = y;
             scale.z = y;
 
-            //l = l + 0.005f;
-            // if(l>20)
-            // {
-            //     l = 20;
-            // }
+          //  ringScale = ringScale + 0.005f;
+           //  if(ringScale>20)
+             {
+                // ringScale = 20;
+             }
             //  Debug.Log(l);
-            go.transform.localScale = new Vector3(l * 1f, 0.01f, l * 1f);
+            go.transform.localScale = new Vector3(ringScale * 1f, 0.01f, ringScale * 1f);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

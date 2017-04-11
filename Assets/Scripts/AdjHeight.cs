@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class HeightAdjustt : MonoBehaviour
+public class HeightAdjust : MonoBehaviour
 {
 
     int heightFeet;

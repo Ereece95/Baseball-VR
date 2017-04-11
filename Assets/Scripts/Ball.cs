@@ -730,8 +730,8 @@ public class Ball : MonoBehaviour
         y = (((4f * timeCounter) - 1f) + 5f);
         foreach (GameObject go in gos)
         {
-            scale.x = y;
-            scale.z = y;
+           // scale.x = y;
+           // scale.z = y;
 
           //  ringScale = ringScale + 0.005f;
            //  if(ringScale>20)
@@ -739,7 +739,7 @@ public class Ball : MonoBehaviour
                 // ringScale = 20;
              }
             //  Debug.Log(l);
-            go.transform.localScale = new Vector3(ringScale * 1f, 0.01f, ringScale * 1f);
+            go.transform.localScale = new Vector3(y, 0.01f, y);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

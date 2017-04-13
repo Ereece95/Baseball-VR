@@ -17,8 +17,9 @@ public class Ball : MonoBehaviour
     public float seconds;
     int x = 0;
     public static bool flagVis;
-    private DisplayFoulText dsplyFoul;          // for showing the player the ball is foul
+    private DisplayFoulText dsplyFoul;   // for showing the player the ball is foul
     //private Transform[] path = new Transform[11];
+    private homeruntext homerunText;
     public Transform start;
     public Transform[] pathArray;
     private float speed;
@@ -128,7 +129,8 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-       // controllerInput.GetComponent("ControllerInput") as ControllerInput;
+        homerunText = GameObject.Find("HomerunDisplay").GetComponent("homeruntext") as homeruntext;
+        // controllerInput.GetComponent("ControllerInput") as ControllerInput;
 
     }
     int i = 0;
@@ -298,7 +300,7 @@ public class Ball : MonoBehaviour
     /// <summary>
     /// the ball stops when it hits the ground
     /// Calculates the distance and places a flag so the user cna see where the ball touched the ground
-    /// 
+    /// If isHomerun collision occurs start particle system
     /// </summary>
     /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
@@ -311,9 +313,7 @@ public class Ball : MonoBehaviour
         //{
         //    isHomerun = true;
         //    isFoul = false;
-        //    RB.velocity = Vector3.zero;
-        //    RB.useGravity = false;
-        //    Debug.Log("Foul Pole");
+            
         //}
 
         if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)

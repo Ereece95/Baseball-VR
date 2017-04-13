@@ -9,6 +9,7 @@ public class homeruntext : MonoBehaviour
     //private DisplayPitch dsplyPitch;
     private GameController gc;
     bool homerun; // homerun has occured
+    bool pS;
     //bool disabledPitchType;
 
     void Start()
@@ -19,6 +20,7 @@ public class homeruntext : MonoBehaviour
         //dsplyPitch = GameObject.Find("DisplayPitchButton").GetComponent("DisplayPitch") as DisplayPitch;
         displayCanvas.enabled = false;
         homerun = true;
+        ParticleSystem pS = GetComponent<ParticleSystem>();
         //disabledPitchType = false;
     }
 
@@ -53,4 +55,5 @@ public class homeruntext : MonoBehaviour
     {
         homerun = true;
     }
+   
 }

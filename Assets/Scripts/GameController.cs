@@ -17,7 +17,6 @@ public enum States
     Init = 0,
     StartClick,
     MainScene,
-    ChooseOptions,
     Orientation,
     ThrowPitch,
     ThrowPitchDone,
@@ -75,8 +74,7 @@ public class GameController : MonoBehaviour
     private VideoCompar video;
     private VideoCompar videoCompare;
     private OptionsMenu optnsMenu;
-    private ChangeColorOfBox rightchangeScript;
-    private ChangeColorOfBox leftchangeScript;
+    private ChangeColorOfBox changeScript;
 
     //private SteamVR_TrackedController _controller;
     List<HitStats> hitStats = null;
@@ -141,8 +139,7 @@ public class GameController : MonoBehaviour
 
         video = GameObject.Find("Video").GetComponent("VideoCompar") as VideoCompar;
         videoCompare = GameObject.Find("VideoCompare").GetComponent("VideoCompar") as VideoCompar;
-        rightchangeScript = GameObject.Find("RightBox").GetComponent("ChangeColorOfBox") as ChangeColorOfBox;
-        leftchangeScript = GameObject.Find("LeftBox").GetComponent("ChangeColorOfBox") as ChangeColorOfBox;
+        changeScript = GameObject.Find("LeftBox").GetComponent("ChangeColorOfBox") as ChangeColorOfBox;
 
     }
     /// <summary>
@@ -349,8 +346,7 @@ public class GameController : MonoBehaviour
     {
         if (gc.GetState() == States.Orientation)
         {
-            leftchangeScript.changeBatterBoxColor();
-            rightchangeScript.changeBatterBoxColor();
+            changeScript.changeBatterBoxColor();
             Debug.Log("Changing state to throw pitch");
             gcFSM.ChangeState(States.ThrowPitch);
         }

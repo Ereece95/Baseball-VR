@@ -763,7 +763,7 @@ public class Ball : MonoBehaviour
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
         // x = x + 1f;
-        y = ((4f * timeCounter) - 1f);
+        y = ((9f * timeCounter) - 1f);
         Debug.Log(timeCounter);
         foreach (GameObject go in gos)
         {
@@ -773,11 +773,7 @@ public class Ball : MonoBehaviour
                 scale.z = y;
                 scale.y = .01f;
             }
-            l = l + 0.005f;
-            if (l > 20)
-            {
-                l = 20;
-            }
+           
           
             go.transform.localScale = scale;
             go.GetComponent<Renderer>().enabled = false;

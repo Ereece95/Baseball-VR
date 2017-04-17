@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     public GameObject player;
     public GameObject cameraRig;
+    public GameObject fireworks;
+    public GameObject homerunUIText;
     private TrailRenderer trail;
     public float seconds;
     int x = 0;
@@ -286,6 +288,8 @@ public class Ball : MonoBehaviour
             Debug.Log("Homerun");
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
+            homerunUIText.SetActive(true);
+            fireworks.SetActive(true);
         }
         if ((collision.tag == "Player") && gc.GetState() == States.WaitForCollision)
         {
@@ -492,6 +496,8 @@ public class Ball : MonoBehaviour
     /// </summary>
     public void rethrowpitch()
     {
+        homerunUIText.SetActive(false);
+        fireworks.SetActive(false);
         countstrike = true;
         ball.GetComponent<MeshRenderer>().enabled = true;
         ball.GetComponent<SphereCollider>().enabled = true;

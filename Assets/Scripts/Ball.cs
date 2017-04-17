@@ -11,8 +11,16 @@ public class Ball : MonoBehaviour
     public ControllerInput controllerInput;
     public GameObject ball;
     public GameObject hand;
-    public GameObject player;
+    //public GameObject player;
     public GameObject cameraRig;
+    private GameObject firstbaseman;
+    private GameObject secondbaseman;
+    private GameObject shortstop;
+    private GameObject thirdbaseman;
+    private GameObject pitcher;
+    private GameObject rightfielder;
+    private GameObject leftfielder;
+    private GameObject centerfielder;
     private TrailRenderer trail;
     public float seconds;
     int x = 0;
@@ -48,9 +56,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     public int quadrent;
     List<GameObject> _flags = new List<GameObject>();
-    public float timeStart;
-    public float timeCount;
-    public float timeEnd;
+    public float timeStart=0f;
+    //public float timeCount;
+    public float timeEnd=0f;
     public float y;
     bool countstrike = true;
     public bool side;
@@ -109,7 +117,7 @@ public class Ball : MonoBehaviour
     /// </summary>
     void Start()
     {
-        player = GameObject.Find("Firstbaseman");
+        
         Paths = 0;
         quadrent = 0;
 
@@ -127,7 +135,17 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-       // controllerInput.GetComponent("ControllerInput") as ControllerInput;
+        firstbaseman = GameObject.Find("Firstbaseman");
+        secondbaseman = GameObject.Find("Secondbaseman");
+        thirdbaseman = GameObject.Find("Thirdbaseman");
+        shortstop = GameObject.Find("Shortstop");
+        pitcher = GameObject.Find("Pitcher");
+        leftfielder = GameObject.Find("Leftfielder");
+        rightfielder = GameObject.Find("Rightfielder");
+        centerfielder = GameObject.Find("Centerfielder");
+        
+   
+        // controllerInput.GetComponent("ControllerInput") as ControllerInput;
 
     }
     int i = 0;
@@ -241,15 +259,28 @@ public class Ball : MonoBehaviour
         {
             timeEnd = Time.time;
         }
-        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+
+        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision /*|| gc.GetState() == States.WaitForInput*/)
         {
             FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
         }
         else
         {
-            FindClosetPlayer((timeEnd - timeStart));
+            firstbaseman.GetComponent<Renderer>().enabled = false;
+            secondbaseman.GetComponent<Renderer>().enabled = false;
+            shortstop.GetComponent<Renderer>().enabled = false;
+            thirdbaseman.GetComponent<Renderer>().enabled = false;
+            pitcher.GetComponent<Renderer>().enabled = false;
+            leftfielder.GetComponent<Renderer>().enabled = false;
+            centerfielder.GetComponent<Renderer>().enabled = false;
+            rightfielder.GetComponent<Renderer>().enabled = false;
         }
     }
+        //else
+        //{
+        //    FindClosetPlayer((timeEnd - timeStart));
+        //}
+ 
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>
     /// the ball stops when it hits the catcher and calls ballNotHit()
@@ -289,6 +320,11 @@ public class Ball : MonoBehaviour
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
+        //if (collision.tag == "baseballbat")
+        //{
+        //    collideBat = true;
+        //    timeStart = Time.time;
+        //}
     }
     //Stop the ball from moving when it contacts the field
     /// <summary>
@@ -524,11 +560,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .2f, path[j].transform.position.z - .2f);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .3f, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .3f, path[j].transform.position.z - .2f);
                     }
 
 
@@ -727,19 +763,23 @@ public class Ball : MonoBehaviour
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
         // x = x + 1f;
-        y = (((4f * timeCounter) - 1f) + 5f);
+        y = ((4f * timeCounter) - 1f);
+        Debug.Log(timeCounter);
         foreach (GameObject go in gos)
         {
-            scale.x = y;
-            scale.z = y;
-
-            //l = l + 0.005f;
-            // if(l>20)
-            // {
-            //     l = 20;
-            // }
-            //  Debug.Log(l);
-            go.transform.localScale = new Vector3(l * 1f, 0.01f, l * 1f);
+           if (y > 0)
+            {
+                scale.x = y;
+                scale.z = y;
+                scale.y = .01f;
+            }
+            l = l + 0.005f;
+            if (l > 20)
+            {
+                l = 20;
+            }
+          
+            go.transform.localScale = scale;
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

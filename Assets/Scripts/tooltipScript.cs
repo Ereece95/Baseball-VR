@@ -8,8 +8,8 @@ public class tooltipScript : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Button(new Rect(500, 50, 40, 25), new GUIContent("Help", instructions));
-        GUI.Label(new Rect(570, 40, 100, 400), GUI.tooltip);
+        GUI.Button(new Rect(400, 50, 40, 25), new GUIContent("Help", instructions));
+        GUI.Label(new Rect(450, 40, 100, 400), GUI.tooltip);
     }
     // Use this for initialization
     void Start ()

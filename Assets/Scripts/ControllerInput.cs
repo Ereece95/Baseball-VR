@@ -74,7 +74,6 @@ public class ControllerInput : MonoBehaviour
 
     //    return force;
     //}
-
     public Vector3 GetVelocity()
     {
 

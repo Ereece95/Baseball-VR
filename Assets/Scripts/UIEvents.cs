@@ -5,9 +5,11 @@ using VRStandardAssets;
 /// <summary>
 /// Buttons for Easy, Medium, and Hard pitches as well as Exit, nextpitch, show pitch, and hide flags
 /// </summary>
-public class UIEvents : MonoBehaviour {
+public class UIEvents : MonoBehaviour
+{
 
     public delegate void buttonHandler();
+    public static event buttonHandler heightSelectedClicked;
     public static event buttonHandler easyButtonClicked;
     public static event buttonHandler mediumButtonClicked;
     public static event buttonHandler hardButtonClicked;
@@ -21,12 +23,20 @@ public class UIEvents : MonoBehaviour {
     public static event buttonHandler rightyButtonClicked;
     public static event buttonHandler backButtonClicked;
 
+
+    public void HeightSelected()
+    {
+        if (heightSelectedClicked != null)
+        {
+            heightSelectedClicked();
+        }
+    }
     /// <summary>
     /// Send event when Easy button clicked. Listened for in GameController
     /// </summary>
     public void EasyButtonClicked()    //must be public to see in the button's onClick() method
     {
-        
+
         if (easyButtonClicked != null)     //make sure someone is listening
             easyButtonClicked();       //Fire the event
     }

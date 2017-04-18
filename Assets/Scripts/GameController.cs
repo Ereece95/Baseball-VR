@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
     ///<Used for singleton design pattern
     private StateMachine<States> gcFSM;
     private Ball ball;
+    private GameObject heightCanvas;
     private GameObject LeftRightCanvas;
     private DisplayPitch dsplyPitch;
     private AudioClip hit;
@@ -150,7 +151,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     void OnEnable()
     {
-
+        UIEvents.heightSelectedClicked += EventHeightChosen;
         UIEvents.easyButtonClicked += EventEasyButtonClicked;
         UIEvents.mediumButtonClicked += EventMediumButtonClicked;
         UIEvents.hardButtonClicked += EventHardButtonClicked;
@@ -175,6 +176,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     void OnDisable()
     {
+        UIEvents.heightSelectedClicked -= EventHeightChosen;
         UIEvents.easyButtonClicked -= EventEasyButtonClicked;
         UIEvents.mediumButtonClicked -= EventMediumButtonClicked;
         UIEvents.hardButtonClicked -= EventHardButtonClicked;
@@ -292,6 +294,15 @@ public class GameController : MonoBehaviour
         //DestroyImmediate(startmenu);
         //DestroyImmediate(startmenubg);
         //gcFSM.ChangeState(States.StartClick);
+    }
+    /// <summary>
+    /// User selected height and continued
+    /// </summary>
+    private void EventHeightChosen()
+    {
+        DestroyImmediate(heightCanvas);
+        DestroyImmediate(startmenubg);
+        gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked

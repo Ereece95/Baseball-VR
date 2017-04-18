@@ -44,6 +44,7 @@ public class DisplayOrientation : MonoBehaviour {
                 disabledPitchType = false;
                 dsplyPitch.displayPitchType();
             }
+            gc.enableOptions();
         }
     }
 }

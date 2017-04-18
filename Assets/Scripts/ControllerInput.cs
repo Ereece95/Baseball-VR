@@ -15,6 +15,7 @@ public class ControllerInput : MonoBehaviour
     {
         //trackedObj = GetComponent<SteamVR_TrackedObject>();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
+        height = GameObject.Find("heightAdjCanvas").GetComponent("AdjHeight") as AdjHeight;
     }
 
     void OnEnable()
@@ -51,11 +52,11 @@ public class ControllerInput : MonoBehaviour
 
     void HandlePadClicked(object sender, ClickedEventArgs e)
     {
-        if (e.padY < 0 && gc.GetState() != States.Init && gc.GetState() != States.StartClick)
+        if (e.padY < -0.5f && gc.GetState() != States.Init && gc.GetState() != States.StartClick)
         {
             gc.HandlePadClicked();
         }
-        if (e.padY > 0 && gc.GetState() == States.Init)
+        if (e.padY > 0.5f && gc.GetState() == States.Init)
         {
             if (height.feetInches == true)
             {
@@ -66,7 +67,7 @@ public class ControllerInput : MonoBehaviour
                 height.changeHeightInches(true);
             }
         }
-        if (e.padY < 0 && gc.GetState() == States.Init)
+        if (e.padY < -0.5f && gc.GetState() == States.Init)
         {
             if (height.feetInches == true)
             {
@@ -77,11 +78,11 @@ public class ControllerInput : MonoBehaviour
                 height.changeHeightInches(false);
             }
         }
-        if (e.padX < 0 && gc.GetState() == States.Init)
+        if (e.padX < -0.5f && gc.GetState() == States.Init)
         {
             height.switchHeightType(true);
         }
-        if (e.padX > 0 && gc.GetState() == States.Init)
+        if (e.padX > 0.5 && gc.GetState() == States.Init)
         {
             height.switchHeightType(false);
         }

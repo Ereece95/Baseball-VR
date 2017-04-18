@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
     private VideoCompar video;
     private VideoCompar videoCompare;
     private OptionsMenu optnsMenu;
+    private CanvasGroup optnsGroup;
     private ChangeColorOfBox rightchangeScript;
     private ChangeColorOfBox leftchangeScript;
 
@@ -124,8 +125,7 @@ public class GameController : MonoBehaviour
 
         heightGroup = GameObject.Find("heightAdjCanvas").GetComponent<CanvasGroup>();
         heightCanvas = GameObject.Find("heightAdjCanvas");
-
-
+        optnsGroup = GameObject.Find("OptionsMenuCanvas").GetComponent<CanvasGroup>();
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -622,6 +622,12 @@ public class GameController : MonoBehaviour
             hitstrikeCanvas.alpha = 1;
             hitstrikeCanvas.blocksRaycasts = true;
         }
+    }
+    public void enableOptions()
+    {
+        optnsGroup.interactable = true;
+        optnsGroup.alpha = 1;
+        optnsGroup.blocksRaycasts = true;
     }
 
 }

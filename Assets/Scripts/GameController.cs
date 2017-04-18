@@ -323,8 +323,7 @@ public class GameController : MonoBehaviour
         DestroyImmediate(LeftRightCanvas);
 
         DestroyImmediate(startmenubg);
-        DestroyImmediate(LeftyRightyMenu);
-        gcFSM.ChangeState(States.StartClick);
+        //DestroyImmediate(LeftyRightyMenu);
         ball.side = false;
     }
 
@@ -332,9 +331,8 @@ public class GameController : MonoBehaviour
     {
 
         DestroyImmediate(LeftRightCanvas);
-        DestroyImmediate(startmenubg);
+        //DestroyImmediate(startmenubg);
         DestroyImmediate(LeftyRightyMenu);
-        gcFSM.ChangeState(States.StartClick);
         ball.side = true;
     }
 

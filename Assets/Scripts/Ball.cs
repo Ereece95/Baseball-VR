@@ -13,8 +13,6 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     public GameObject player;
     public GameObject cameraRig;
-    public GameObject fireworks;
-    public GameObject homerunUIText;
     private TrailRenderer trail;
     public float seconds;
     int x = 0;
@@ -22,6 +20,7 @@ public class Ball : MonoBehaviour
     private DisplayFoulText dsplyFoul;   // for showing the player the ball is foul
     //private Transform[] path = new Transform[11];
     private homeruntext homerunText;
+    private startFireworks firework;
     public Transform start;
     public Transform[] pathArray;
     private float speed;
@@ -132,6 +131,7 @@ public class Ball : MonoBehaviour
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
         homerunText = GameObject.Find("HomerunDisplay").GetComponent("homeruntext") as homeruntext;
+        firework = GameObject.Find("fireworks").GetComponent("startFireworks") as startFireworks;
         // controllerInput.GetComponent("ControllerInput") as ControllerInput;
 
     }
@@ -288,8 +288,8 @@ public class Ball : MonoBehaviour
             Debug.Log("Homerun");
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
-            homerunUIText.SetActive(true);
-            fireworks.SetActive(true);
+            homerunText.HRText();
+            firework.fireStart();
         }
         if ((collision.tag == "Player") && gc.GetState() == States.WaitForCollision)
         {
@@ -496,8 +496,6 @@ public class Ball : MonoBehaviour
     /// </summary>
     public void rethrowpitch()
     {
-        homerunUIText.SetActive(false);
-        fireworks.SetActive(false);
         countstrike = true;
         ball.GetComponent<MeshRenderer>().enabled = true;
         ball.GetComponent<SphereCollider>().enabled = true;

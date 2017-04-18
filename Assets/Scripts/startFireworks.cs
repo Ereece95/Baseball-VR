@@ -1,21 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
-public class startFireworks : MonoBehaviour {
+public class startFireworks : MonoBehaviour
+{
 
-    public Transform firework;
+    public ParticleSystem.EmissionModule fire;
+    private GameController gc;
+    bool homerun; // homerun has occured
 
-	// Use this for initialization
-	void Start () {
-        firework.GetComponent<ParticleSystem> () .enableEmission = false; 
-	}
-    //void OnTriggerEnter(Collider fire)
-    //{
-        
-    //}
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    void Start()
+    {
+        // find firewroks and disable on start
+        fire = GameObject.Find("fireworks").GetComponent<ParticleSystem>().emission;
+        gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
+        homerun = true;
+    }
+
+    /// <summary>
+    /// Displays what pitch was thrown with abutton click
+    /// </summary>
+    void Update()
+    {
+        //if homerun it will display homerun
+        if (homerun && (gc.GetState() == States.WaitForInput))
+        {
+            fire.enabled = true;
+
+
+        }
+        // otherwise reenable pitch type
+        else
+        {
+            fire.enabled = false;
+            homerun = false;
+        }
+    }
+    public void fireStart()
+    {
+        homerun = true;
+    }
+
 }

@@ -38,7 +38,7 @@ public class homeruntext : MonoBehaviour
             homerun = false;
         }
     }
-    public void displayFoulText()
+    public void HRText()
     {
         homerun = true;
     }

@@ -3,15 +3,18 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class AdjHeight : MonoBehaviour
+public class AdjHeight : MonoBehaviour 
 {
 
     int heightFeet;
     int heightInches;
     int heightType;
-
+    public bool showtext;
+  
     public Text feetDisplay;
     public Text inchesDisplay;
+
+
     // Use this for initialization
     void Start()
     {

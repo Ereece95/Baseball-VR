@@ -4,7 +4,7 @@ using System;
 [RequireComponent(typeof(SteamVR_TrackedObject))]
 public class ControllerInput : MonoBehaviour
 {
-
+    private AdjHeight height;
     private SteamVR_TrackedController controller;
     private GameController gc;
     public SteamVR_TrackedObject trackedObj;
@@ -46,6 +46,7 @@ public class ControllerInput : MonoBehaviour
             Debug.Log("Sending to Game Controller to ThrowPitch");
             gc.HandleTriggerClicked();
         }
+
     }
 
     void HandlePadClicked(object sender, ClickedEventArgs e)
@@ -54,6 +55,37 @@ public class ControllerInput : MonoBehaviour
         {
             gc.HandlePadClicked();
         }
+        if (e.padY > 0 && gc.GetState() == States.Init)
+        {
+            if (height.feetInches == true)
+            {
+                height.changeHeightFeet(true);
+            }
+            else
+            {
+                height.changeHeightInches(true);
+            }
+        }
+        if (e.padY < 0 && gc.GetState() == States.Init)
+        {
+            if (height.feetInches == true)
+            {
+                height.changeHeightFeet(false);
+            }
+            else
+            {
+                height.changeHeightInches(false);
+            }
+        }
+        if (e.padX < 0 && gc.GetState() == States.Init)
+        {
+            height.switchHeightType(true);
+        }
+        if (e.padX > 0 && gc.GetState() == States.Init)
+        {
+            height.switchHeightType(false);
+        }
+       
 
     }
 

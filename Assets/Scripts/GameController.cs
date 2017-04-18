@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     private StateMachine<States> gcFSM;
     private Ball ball;
     private GameObject heightCanvas;
+    private CanvasGroup heightGroup;
     private GameObject LeftRightCanvas;
     private DisplayPitch dsplyPitch;
     private AudioClip hit;
@@ -120,6 +121,11 @@ public class GameController : MonoBehaviour
         LeftRightCanvas = GameObject.Find("LeftRight");
 
         optnsMenu = GameObject.Find("OptionsMenuCanvas").GetComponent("OptionsMenu") as OptionsMenu;
+
+        heightGroup = GameObject.Find("heightAdjCanvas").GetComponent<CanvasGroup>();
+        heightCanvas = GameObject.Find("heightAdjCanvas");
+
+
 
         //Initialize State Machine Engine		
         gcFSM = StateMachine<States>.Initialize(this, States.Init);
@@ -322,8 +328,11 @@ public class GameController : MonoBehaviour
     {
         DestroyImmediate(LeftRightCanvas);
 
-        DestroyImmediate(startmenubg);
+        //DestroyImmediate(startmenubg);
         DestroyImmediate(LeftyRightyMenu);
+        heightGroup.interactable = true;
+        heightGroup.alpha = 1;
+        heightGroup.blocksRaycasts = true;
         gcFSM.ChangeState(States.StartClick);
         ball.side = false;
     }
@@ -332,8 +341,11 @@ public class GameController : MonoBehaviour
     {
 
         DestroyImmediate(LeftRightCanvas);
-        DestroyImmediate(startmenubg);
+        //DestroyImmediate(startmenubg);
         DestroyImmediate(LeftyRightyMenu);
+        heightGroup.interactable = true;
+        heightGroup.alpha = 1;
+        heightGroup.blocksRaycasts = true;
         gcFSM.ChangeState(States.StartClick);
         ball.side = true;
     }

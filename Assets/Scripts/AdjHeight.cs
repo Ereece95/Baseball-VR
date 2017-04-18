@@ -3,14 +3,14 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class AdjHeight : MonoBehaviour 
+public class AdjHeight : MonoBehaviour
 {
 
     int heightFeet;
     int heightInches;
     int heightType;
-    public bool showtext;
-  
+    public bool feetInches;
+
     public Text feetDisplay;
     public Text inchesDisplay;
 
@@ -33,20 +33,12 @@ public class AdjHeight : MonoBehaviour
     void Update()
     {
         heightType = getType();
-        switch (heightType)
-        {
-            case 0:
-                changeHeightFeet();
-                string height1 = heightFeet.ToString();
-                feetDisplay.text = height1;
-                break;
-            case 1:
-                changeHeightInches();
-                string height2 = heightInches.ToString();
-                inchesDisplay.text = height2;
-                break;
 
-        }
+        string height1 = heightFeet.ToString();
+        feetDisplay.text = height1;
+
+        string height2 = heightInches.ToString();
+        inchesDisplay.text = height2;
     }
     int getType()
     {
@@ -61,20 +53,20 @@ public class AdjHeight : MonoBehaviour
         }
         return type;
     }
-    void changeHeightFeet()
+    public void changeHeightFeet(bool heightType)
     {
-        if (Input.GetButton("UpButton"))
+        if (heightType == true)
         {
             heightFeet++;
         }
-        else if (Input.GetButton("DownButton"))
+        else if (heightType == false)
         {
             heightFeet--;
         }
     }
-    void changeHeightInches()
+    public void changeHeightInches(bool heightType)
     {
-        if (Input.GetButton("UpButton"))
+        if (heightType)
         {
             heightInches++;
             if (heightInches > 11)
@@ -83,7 +75,7 @@ public class AdjHeight : MonoBehaviour
                 heightFeet++;
             }
         }
-        else if (Input.GetButton("DownButton"))
+        else
         {
             heightInches--;
             if (heightInches < 0)
@@ -93,9 +85,13 @@ public class AdjHeight : MonoBehaviour
             }
         }
     }
+    public void switchHeightType(bool type)
+    {
+        feetInches = type;
+    }
     double convertHeight()
     {
-        double newHeight = (heightFeet/3.28) + (heightInches * 0.0254);
+        double newHeight = (heightFeet / 3.28) + (heightInches * 0.0254);
         return newHeight;
     }
 }

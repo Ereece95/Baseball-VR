@@ -669,13 +669,30 @@ public class Ball : MonoBehaviour
     {
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = EASYFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = EASYCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = EASYCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = EASYSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = EASYSINKER;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = EASYCHANGEUP;
-        speed = EASYCURVEBALL;
-        speed = EASYFASTBALL;
-        speed = EASYSINKER;
-        speed = EASYSLIDER;
     }
     /// <summary>
     /// Medium speed 10mph less than Arrieta stats
@@ -684,13 +701,30 @@ public class Ball : MonoBehaviour
     {
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = MEDIUMFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = MEDIUMCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = MEDIUMCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = MEDIUMSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = MEDIUMSINKER;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = MEDIUMCHANGEUP;
-        speed = MEDIUMCURVEBALL;
-        speed = MEDIUMFASTBALL;
-        speed = MEDIUMSINKER;
-        speed = MEDIUMSLIDER;
     }
     /// <summary>
     /// Pitcher Areitta J, used actual 2016 stats for speed
@@ -699,13 +733,30 @@ public class Ball : MonoBehaviour
     {
         //sets stats equal to Arietta J's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = HARDFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = HARDCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = HARDCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = HARDSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = HARDSINKER;
+        }
+      
         quadrent = stats.setQuadrent(side);
-        speed = HARDCHANGEUP;
-        speed = HARDCURVEBALL;
-        speed = HARDFASTBALL;
-        speed = HARDSINKER;
-        speed = HARDSLIDER;
     }
 
     public void hideBallFlags()

@@ -8,7 +8,7 @@ public class homeruntext : MonoBehaviour
     public Canvas displayCanvas;
     private GameController gc;
     bool homerun; // homerun has occured
-    bool p5;
+    //bool p5;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class homeruntext : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         displayCanvas.enabled = false;
         homerun = true;
-        ParticleSystem pS = GetComponent<ParticleSystem>();
+        //ParticleSystem pS = GetComponent<ParticleSystem>();
     }
 
     /// <summary>

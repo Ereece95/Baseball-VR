@@ -59,11 +59,11 @@ public class Ball : MonoBehaviour
     public bool side;
     public bool ballTravel = false;
 
-    public const int EASYFASTBALL = 31;
-    public const int EASYCURVEBALL = 25;
-    public const int EASYSLIDER = 29;
-    public const int EASYSINKER = 31;
-    public const int EASYCHANGEUP = 29;
+    public const int EASYFASTBALL = 16;
+    public const int EASYCURVEBALL = 12;
+    public const int EASYSLIDER = 15;
+    public const int EASYSINKER = 16;
+    public const int EASYCHANGEUP = 15;
     public const int MEDIUMFASTBALL = 36;
     public const int MEDIUMCURVEBALL = 30;
     public const int MEDIUMSLIDER = 34;

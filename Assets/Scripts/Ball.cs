@@ -186,7 +186,7 @@ public class Ball : MonoBehaviour
 
                 if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
                 {
-                    int r = (Random.Range(1400, 1600));
+                    int r = (Random.Range(600, 800));
                     float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
@@ -204,7 +204,7 @@ public class Ball : MonoBehaviour
                     ////RB.AddForce(batSwing);
 
                     ////And this
-                    RB.AddForce(batSwing, ForceMode.Impulse);
+                    //RB.AddForce(batSwing, ForceMode.Impulse);
 
 
                     ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
@@ -224,7 +224,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }
@@ -751,7 +751,7 @@ public class Ball : MonoBehaviour
                 // ringScale = 20;
              }
             //  Debug.Log(l);
-            go.transform.localScale = new Vector3(y, 0.01f, y);
+           // go.transform.localScale = new Vector3(y, 0.01f, y);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

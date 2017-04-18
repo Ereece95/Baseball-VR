@@ -13,6 +13,7 @@ public class startFireworks : MonoBehaviour
     {
         // find firewroks and disable on start
         fire = GameObject.Find("fireworks").GetComponent<ParticleSystem>().emission;
+        fire.enabled = false;
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         homerun = true;
     }

@@ -59,21 +59,21 @@ public class Ball : MonoBehaviour
     public bool side;
     public bool ballTravel = false;
 
-    public const int EASYFASTBALL = 71;
-    public const int EASYCURVEBALL = 57;
-    public const int EASYSLIDER = 66;
-    public const int EASYSINKER = 71;
-    public const int EASYCHANGEUP = 66;
-    public const int MEDIUMFASTBALL = 81;
-    public const int MEDIUMCURVEBALL = 67;
-    public const int MEDIUMSLIDER = 76;
-    public const int MEDIUMSINKER = 81;
-    public const int MEDIUMCHANGEUP = 76;
-    public const int HARDFASTBALL = 91;
-    public const int HARDCURVEBALL = 77;
-    public const int HARDSLIDER = 86;
-    public const int HARDSINKER = 91;
-    public const int HARDCHANGEUP = 86;
+    public const int EASYFASTBALL = 31;
+    public const int EASYCURVEBALL = 25;
+    public const int EASYSLIDER = 29;
+    public const int EASYSINKER = 31;
+    public const int EASYCHANGEUP = 29;
+    public const int MEDIUMFASTBALL = 36;
+    public const int MEDIUMCURVEBALL = 30;
+    public const int MEDIUMSLIDER = 34;
+    public const int MEDIUMSINKER = 36;
+    public const int MEDIUMCHANGEUP = 34;
+    public const int HARDFASTBALL = 40;
+    public const int HARDCURVEBALL = 34;
+    public const int HARDSLIDER = 38;
+    public const int HARDSINKER = 40;
+    public const int HARDCHANGEUP = 38;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
@@ -675,23 +675,23 @@ public class Ball : MonoBehaviour
         Paths = stats.getPitchType();
         if (Paths == 1)
         {
-            speed = EASYFASTBALL;
+            speed = EASYFASTBALL / 2;
         }
         else if (Paths == 2)
         {
-            speed = EASYCURVEBALL;
+            speed = EASYCURVEBALL/4;
         }
         else if (Paths == 0)
         {
-            speed = EASYCHANGEUP;
+            speed = EASYCHANGEUP / 2;
         }
         else if (Paths == 4)
         {
-            speed = EASYSLIDER;
+            speed = EASYSLIDER / 2;
         }
         else if (Paths == 3)
         {
-            speed = EASYSINKER;
+            speed = EASYSINKER / 2;
         }
 
         quadrent = stats.setQuadrent(side);

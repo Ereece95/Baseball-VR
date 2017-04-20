@@ -54,7 +54,7 @@ public class ControllerInput : MonoBehaviour
     {
         Debug.Log("In pad clicked. e.padY = " + e.padY.ToString());
         Debug.Log("State = " + gc.GetState());
-        if (e.padY < -0.5f && gc.GetState() != States.Init && gc.GetState() != States.StartClick)
+        if (e.padY < -0.5f && gc.GetState() == gc.GetState())
         {
             gc.HandlePadClicked();
         }

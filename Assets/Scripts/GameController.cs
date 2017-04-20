@@ -269,6 +269,7 @@ public class GameController : MonoBehaviour
                 break;
 
         }
+        Debug.Log("state = " + GetState());
 
     }
 
@@ -283,10 +284,6 @@ public class GameController : MonoBehaviour
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
         Debug.Log("Set to visible");
-
-        //DestroyImmediate(startmenu);
-        //DestroyImmediate(startmenubg);
-        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked
@@ -297,9 +294,6 @@ public class GameController : MonoBehaviour
         LeftyRightyMenu.interactable = true;
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
-        //DestroyImmediate(startmenu);
-        //DestroyImmediate(startmenubg);
-        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// User selected height and continued
@@ -319,9 +313,6 @@ public class GameController : MonoBehaviour
         LeftyRightyMenu.interactable = true;
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
-        //DestroyImmediate(startmenu);
-        //DestroyImmediate(startmenubg);
-        //gcFSM.ChangeState(States.StartClick);
     }
 
     private void EventLeftyButtonClicked()
@@ -333,7 +324,6 @@ public class GameController : MonoBehaviour
         heightGroup.interactable = true;
         heightGroup.alpha = 1;
         heightGroup.blocksRaycasts = true;
-        gcFSM.ChangeState(States.StartClick);
         ball.side = false;
     }
 
@@ -346,7 +336,6 @@ public class GameController : MonoBehaviour
         heightGroup.interactable = true;
         heightGroup.alpha = 1;
         heightGroup.blocksRaycasts = true;
-        gcFSM.ChangeState(States.StartClick);
         ball.side = true;
     }
 

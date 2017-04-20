@@ -9,8 +9,6 @@ public class AdjHeight : MonoBehaviour
     int heightFeet;
     int heightInches;
     int heightType;
-    string height1;
-    string height2;
     public bool feetInches;
 
     public Text feetDisplay;
@@ -35,12 +33,9 @@ public class AdjHeight : MonoBehaviour
     void Update()
     {
         //heightType = getType();
+        feetDisplay.text = heightFeet.ToString();
 
-        height1 = heightFeet.ToString();
-        feetDisplay.text = height1;
-
-        height2 = heightInches.ToString();
-        inchesDisplay.text = height2;
+        inchesDisplay.text = heightInches.ToString();
     }
     //int getType()
     //{

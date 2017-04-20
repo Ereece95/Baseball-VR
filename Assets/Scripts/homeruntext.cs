@@ -26,20 +26,26 @@ public class homeruntext : MonoBehaviour
     void Update()
     {
         //if homerun it will display homerun
+        Debug.Log("homerunupdate");
         if (homerun && (gc.GetState() == States.WaitForInput))
         {
             displayCanvas.enabled = true;
+            Debug.Log("inif");
+            Debug.Log("state=" + gc.GetState());
             
         }
         // otherwise reenable pitch type
         else
         {
+            Debug.Log("inelse");
             displayCanvas.enabled = false;
             homerun = false;
+            Debug.Log("state=" + gc.GetState());
         }
     }
     public void HRText()
     {
+        Debug.Log("enableHR");
         homerun = true;
     }
    

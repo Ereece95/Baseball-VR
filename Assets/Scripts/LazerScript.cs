@@ -68,7 +68,7 @@ public class LazerScript : MonoBehaviour
             if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100))
             {
                 hitPoint = hit.point;
-                ShowLaser(hit);
+                //ShowLaser(hit);
                 if (hit.collider.tag == "Button")
                 {
                     Debug.Log("Found it");
@@ -81,17 +81,17 @@ public class LazerScript : MonoBehaviour
         }
     }
 
-    private void ShowLaser(RaycastHit hit)
-    {
-        // 1
-        laser.SetActive(true);
-        // 2
-        laserTransform.position = Vector3.Lerp(trackedObj.transform.position, hitPoint, .5f);
-        // 3
-        laserTransform.LookAt(hitPoint);
-        // 4
-        laserTransform.localScale = new Vector3(laserTransform.localScale.x, laserTransform.localScale.y,
-            hit.distance);
-    }
+    //private void ShowLaser(RaycastHit hit)
+    //{
+    //    // 1
+    //    laser.SetActive(true);
+    //    // 2
+    //    laserTransform.position = Vector3.Lerp(trackedObj.transform.position, hitPoint, .5f);
+    //    // 3
+    //    laserTransform.LookAt(hitPoint);
+    //    // 4
+    //    laserTransform.localScale = new Vector3(laserTransform.localScale.x, laserTransform.localScale.y,
+    //        hit.distance);
+    //}
 
 }

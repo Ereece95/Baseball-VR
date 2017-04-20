@@ -35,13 +35,14 @@ public class homeruntext : MonoBehaviour
             
         }
         // otherwise reenable pitch type
-        else
+        else if (gc.GetState() != States.WaitForInput)
         {
             Debug.Log("inelse");
             displayCanvas.enabled = false;
             homerun = false;
             Debug.Log("state=" + gc.GetState());
         }
+        
     }
     public void HRText()
     {

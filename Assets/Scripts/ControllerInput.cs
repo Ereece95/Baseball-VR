@@ -52,7 +52,7 @@ public class ControllerInput : MonoBehaviour
 
     void HandlePadClicked(object sender, ClickedEventArgs e)
     {
-        if (e.padY < -0.5f && gc.GetState() != States.Init && gc.GetState() != States.StartClick)
+        if (e.padY < -0.5f && gc.GetState() == States.WaitForInput)
         {
             gc.HandlePadClicked();
         }

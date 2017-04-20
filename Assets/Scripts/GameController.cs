@@ -297,9 +297,6 @@ public class GameController : MonoBehaviour
         LeftyRightyMenu.interactable = true;
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
-        //DestroyImmediate(startmenu);
-        //DestroyImmediate(startmenubg);
-        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// User selected height and continued
@@ -319,9 +316,6 @@ public class GameController : MonoBehaviour
         LeftyRightyMenu.interactable = true;
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
-        //DestroyImmediate(startmenu);
-        //DestroyImmediate(startmenubg);
-        //gcFSM.ChangeState(States.StartClick);
     }
 
     private void EventLeftyButtonClicked()
@@ -333,7 +327,6 @@ public class GameController : MonoBehaviour
         heightGroup.interactable = true;
         heightGroup.alpha = 1;
         heightGroup.blocksRaycasts = true;
-        gcFSM.ChangeState(States.StartClick);
         ball.side = false;
     }
 
@@ -346,7 +339,6 @@ public class GameController : MonoBehaviour
         heightGroup.interactable = true;
         heightGroup.alpha = 1;
         heightGroup.blocksRaycasts = true;
-        gcFSM.ChangeState(States.StartClick);
         ball.side = true;
     }
 
@@ -363,10 +355,10 @@ public class GameController : MonoBehaviour
         {
             gcFSM.ChangeState(States.ThrowPitch);
         }
-        else if (gc.GetState() == States.StartClick || gc.GetState() == States.Init)
-        {
-            gcFSM.ChangeState(States.Orientation);
-        }
+        //else if (gc.GetState() == States.StartClick)
+        //{
+        //    gcFSM.ChangeState(States.Orientation);
+        //}
     }
     public void HandleGripClicked()
     {
@@ -381,7 +373,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// For when trackpad is clicked
     /// </summary>
-    public void HandlePadClicked()
+    public void HandlePadPressed()
     {
         if ((gc.GetState() != States.StartClick) && (gc.GetState() != States.Init))
         {

@@ -21,7 +21,8 @@ public class Ball : MonoBehaviour
     public static bool flagVis;
     private DisplayFoulText dsplyFoul;   // for showing the player the ball is foul
     //private Transform[] path = new Transform[11];
-   // private homeruntext homerunText;
+    private homeruntext homerunText;
+    private startFireworks firework;
     public Transform start;
     public Transform[] pathArray;
     private float speed;
@@ -147,7 +148,8 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-       // homeruntext = GameObject.Find("HomerunDisplay").GetComponent("homeruntext") as homeruntext;
+        homerunText = GameObject.Find("HomerunDisplay").GetComponent("homeruntext") as homeruntext;
+        firework = GameObject.Find("fireworks").GetComponent("startFireworks") as startFireworks;
         // controllerInput.GetComponent("ControllerInput") as ControllerInput;
 
     }
@@ -304,8 +306,8 @@ public class Ball : MonoBehaviour
             Debug.Log("Homerun");
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
-           // homerunUIText.SetActive(true);
-            //fireworks.SetActive(true);
+            homerunText.HRText();
+            firework.fireStart();
         }
         if ((collision.tag == "Player") && gc.GetState() == States.WaitForCollision)
         {
@@ -826,7 +828,7 @@ public class Ball : MonoBehaviour
                 // ringScale = 20;
              }
             //  Debug.Log(l);
-            go.transform.localScale = new Vector3(y, 0.01f, y);
+           // go.transform.localScale = new Vector3(y, 0.01f, y);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

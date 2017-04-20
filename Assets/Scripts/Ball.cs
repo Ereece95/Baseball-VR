@@ -55,6 +55,22 @@ public class Ball : MonoBehaviour
     bool countstrike = true;
     public bool side;
 
+    public const int EASYFASTBALL = 31;
+    public const int EASYCURVEBALL = 25;
+    public const int EASYSLIDER = 29;
+    public const int EASYSINKER = 31;
+    public const int EASYCHANGEUP = 29;
+    public const int MEDIUMFASTBALL = 36;
+    public const int MEDIUMCURVEBALL = 30;
+    public const int MEDIUMSLIDER = 34;
+    public const int MEDIUMSINKER = 36;
+    public const int MEDIUMCHANGEUP = 34;
+    public const int HARDFASTBALL = 40;
+    public const int HARDCURVEBALL = 34;
+    public const int HARDSLIDER = 38;
+    public const int HARDSINKER = 40;
+    public const int HARDCHANGEUP = 38;
+
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
 
@@ -645,34 +661,96 @@ public class Ball : MonoBehaviour
     {
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = EASYFASTBALL / 2;
+        }
+        else if (Paths == 2)
+        {
+            speed = EASYCURVEBALL / 4;
+        }
+        else if (Paths == 0)
+        {
+            speed = EASYCHANGEUP / 2;
+        }
+        else if (Paths == 4)
+        {
+            speed = EASYSLIDER / 2;
+        }
+        else if (Paths == 3)
+        {
+            speed = EASYSINKER / 2;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = 10;
     }
     /// <summary>
-    /// Medium speed of 15
-    /// Pitcher Archer C
+    /// Medium speed 10mph less than Arrieta stats
     /// </summary>
     void ChangespeedM()
     {
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = MEDIUMFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = MEDIUMCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = MEDIUMCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = MEDIUMSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = MEDIUMSINKER;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = 15;
     }
     /// <summary>
-    /// Hard speed of 20
-    /// Pitcher Areitta J
+    /// Pitcher Areitta J, used actual 2016 stats for speed
     /// </summary>
     void ChangespeedH()
     {
         //sets stats equal to Arietta J's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = HARDFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = HARDCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = HARDCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = HARDSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = HARDSINKER;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = 20;
     }
+
 
     public void hideBallFlags()
     {

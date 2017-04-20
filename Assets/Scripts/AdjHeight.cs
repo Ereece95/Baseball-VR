@@ -32,9 +32,9 @@ public class AdjHeight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //heightType = getType();
+        Debug.Log("In Adjust Update");
+        Debug.Log("Height Inches = " + heightInches.ToString());
         feetDisplay.text = heightFeet.ToString();
-
         inchesDisplay.text = heightInches.ToString();
     }
     //int getType()
@@ -71,6 +71,7 @@ public class AdjHeight : MonoBehaviour
         {
             Debug.Log("inches up");
             heightInches = heightInches + 1;
+            Debug.Log("inches = " + heightInches.ToString());
             if (heightInches > 11)
             {
                 heightInches = 0;
@@ -81,6 +82,7 @@ public class AdjHeight : MonoBehaviour
         {
             Debug.Log("inches down");
             heightInches = heightInches - 1;
+            Debug.Log("inches = " + heightInches.ToString());
             if (heightInches < 0)
             {
                 heightInches =11;

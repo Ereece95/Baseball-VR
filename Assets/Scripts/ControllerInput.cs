@@ -52,38 +52,50 @@ public class ControllerInput : MonoBehaviour
 
     void HandlePadClicked(object sender, ClickedEventArgs e)
     {
-        if (e.padY < -0.5f && gc.GetState() == States.WaitForInput)
+        Debug.Log("In pad clicked. e.padY = " + e.padY.ToString());
+        Debug.Log("State = " + gc.GetState());
+        if (e.padY < -0.5f && gc.GetState() != States.Init && gc.GetState() != States.StartClick)
         {
             gc.HandlePadClicked();
         }
         if (e.padY > 0.5f && gc.GetState() == States.Init)
         {
+            Debug.Log("Change feet/inches int");
             if (height.feetInches == true)
             {
+                Debug.Log("Change feet up");
+
                 height.changeHeightFeet(true);
             }
             else
             {
+                Debug.Log("Change inches up");
+
                 height.changeHeightInches(true);
             }
         }
         if (e.padY < -0.5f && gc.GetState() == States.Init)
         {
+            Debug.Log("Change feet/inches int");
             if (height.feetInches == true)
             {
+                Debug.Log("Change feet down");
                 height.changeHeightFeet(false);
             }
             else
             {
+                Debug.Log("Change inches down");
                 height.changeHeightInches(false);
             }
         }
         if (e.padX < -0.5f && gc.GetState() == States.Init)
         {
+            Debug.Log("Change to feet");
             height.switchHeightType(true);
         }
         if (e.padX > 0.5 && gc.GetState() == States.Init)
         {
+            Debug.Log("Change to inches");
             height.switchHeightType(false);
         }
        

@@ -269,6 +269,7 @@ public class GameController : MonoBehaviour
                 break;
 
         }
+        Debug.Log("state = " + GetState());
 
     }
 
@@ -283,10 +284,6 @@ public class GameController : MonoBehaviour
         LeftyRightyMenu.alpha = 1;
         LeftyRightyMenu.blocksRaycasts = true;
         Debug.Log("Set to visible");
-
-        //DestroyImmediate(startmenu);
-        //DestroyImmediate(startmenubg);
-        //gcFSM.ChangeState(States.StartClick);
     }
     /// <summary>
     /// A Start Button was Clicked

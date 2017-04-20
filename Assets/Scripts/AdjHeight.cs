@@ -56,12 +56,12 @@ public class AdjHeight : MonoBehaviour
         if (heightType == true)
         {
             Debug.Log("feet up");
-            heightFeet++;
+            heightFeet = heightFeet + 1;
         }
         else if (heightType == false)
         {
             Debug.Log("feet down");
-            heightFeet--;
+            heightFeet = heightFeet - 1;
         }
     }
     public void changeHeightInches(bool heightType)
@@ -70,21 +70,21 @@ public class AdjHeight : MonoBehaviour
         if (heightType)
         {
             Debug.Log("inches up");
-            heightInches++;
+            heightInches = heightInches + 1;
             if (heightInches > 11)
             {
                 heightInches = 0;
-                heightFeet++;
+                heightFeet = heightFeet + 1;
             }
         }
         else
         {
             Debug.Log("inches down");
-            heightInches--;
+            heightInches = heightInches - 1;
             if (heightInches < 0)
             {
-                heightInches = 0;
-                heightFeet--;
+                heightInches =11;
+                heightFeet = heightFeet - 1;
             }
         }
     }

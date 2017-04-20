@@ -22,8 +22,8 @@ public class AdjHeight : MonoBehaviour
         inchesDisplay = GameObject.Find("heightInchText").GetComponent<Text>();
 
         //heightType = 0;
-        heightFeet = 5;
-        heightInches = 8;
+       // heightFeet = 5;
+       // heightInches = 8;
 
         feetDisplay.text = heightFeet.ToString();
         inchesDisplay.text = heightInches.ToString();
@@ -34,8 +34,14 @@ public class AdjHeight : MonoBehaviour
     {
         Debug.Log("In Adjust Update");
         Debug.Log("Height Inches = " + heightInches.ToString());
-        feetDisplay.text = heightFeet.ToString();
-        inchesDisplay.text = heightInches.ToString();
+
+        // heightFeet = heightFeet + 1;
+
+        Debug.Log("HeightFeet in update= " + heightFeet.ToString());
+
+        //feetDisplay.text = "";
+        //feetDisplay.text = heightFeet.ToString();
+        //inchesDisplay.text = heightInches.ToString();
     }
     //int getType()
     //{
@@ -57,11 +63,13 @@ public class AdjHeight : MonoBehaviour
         {
             Debug.Log("feet up");
             heightFeet = heightFeet + 1;
+            feetDisplay.text = heightFeet.ToString();
         }
         else if (heightType == false)
         {
             Debug.Log("feet down");
             heightFeet = heightFeet - 1;
+            feetDisplay.text = heightFeet.ToString();
         }
     }
     public void changeHeightInches(bool heightType)
@@ -71,22 +79,28 @@ public class AdjHeight : MonoBehaviour
         {
             Debug.Log("inches up");
             heightInches = heightInches + 1;
+            inchesDisplay.text = heightInches.ToString();
             Debug.Log("inches = " + heightInches.ToString());
             if (heightInches > 11)
             {
                 heightInches = 0;
                 heightFeet = heightFeet + 1;
+                inchesDisplay.text = heightInches.ToString();
+                feetDisplay.text = heightFeet.ToString();
             }
         }
         else
         {
             Debug.Log("inches down");
             heightInches = heightInches - 1;
+            inchesDisplay.text = heightInches.ToString();
             Debug.Log("inches = " + heightInches.ToString());
             if (heightInches < 0)
             {
                 heightInches =11;
                 heightFeet = heightFeet - 1;
+                feetDisplay.text = heightFeet.ToString();
+                inchesDisplay.text = heightInches.ToString();
             }
         }
     }

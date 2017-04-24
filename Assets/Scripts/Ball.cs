@@ -204,8 +204,8 @@ public class Ball : MonoBehaviour
 
                 if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
                 {
-                    int r = (Random.Range(1500, 1600));
-                    float hitForce = (1 * r);
+                    //int r = (Random.Range(1500, 1600));
+                    //float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
 
@@ -222,7 +222,7 @@ public class Ball : MonoBehaviour
                     ////RB.AddForce(batSwing);
 
                     ////And this
-                    //RB.AddForce(batSwing, ForceMode.Impulse);
+                    RB.AddForce(batSwing, ForceMode.Impulse);
 
 
                     ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
@@ -242,7 +242,7 @@ public class Ball : MonoBehaviour
                     rotationVector.x = rotationX;
                     transform.rotation = Quaternion.Euler(rotationVector);
 
-                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                    //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
                     collideBat = false;
                     if (ballHit != null) ballHit();
                 }

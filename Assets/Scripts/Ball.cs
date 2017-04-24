@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
     private Rigidbody RB;
     public Transform[] path;
     int num;
-    float l = 0;
+    float ringScale = 0;
     /// <summary>
     /// The type of pitch
     /// </summary>
@@ -56,6 +56,7 @@ public class Ball : MonoBehaviour
     public float y;
     bool countstrike = true;
     public bool side;
+    public bool ballTravel = false;
     public bool changeHeight = true;
     AdjHeight userHeight;
 
@@ -237,10 +238,13 @@ public class Ball : MonoBehaviour
                 }
                 if (hit)
                 {
-                    float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
-                    double dist2 = System.Convert.ToDouble(dist);
-                    dist2 = System.Math.Round(dist2, 2);
-                    DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
+                    if (ballTravel)
+                    {
+                        float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
+                        double dist2 = System.Convert.ToDouble(dist);
+                        dist2 = System.Math.Round(dist2, 0);
+                        DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
+                    }
                 }
                 if (!hit)
                 {
@@ -314,6 +318,7 @@ public class Ball : MonoBehaviour
         bool isFoul = false;
         bool isHomerun = false;
         bool isCaught = false;
+        ballTravel = false;
         //if(Col.gameObject.name == "Foul Pole")
         //{
         //    isHomerun = true;
@@ -354,11 +359,14 @@ public class Ball : MonoBehaviour
             flag.transform.position = ball.transform.position;
             _flags.Add(flag);
 
+            ball.transform.position = flag.transform.position;
+
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
         if (Col.gameObject.name == "baseball_bat_regular")
         {
+            ballTravel = true;
             collideBat = true;
             timeStart = Time.time;
         }
@@ -741,16 +749,16 @@ public class Ball : MonoBehaviour
         y = (((4f * timeCounter) - 1f) + 5f);
         foreach (GameObject go in gos)
         {
-            scale.x = y;
-            scale.z = y;
+           // scale.x = y;
+           // scale.z = y;
 
-            //l = l + 0.005f;
-            // if(l>20)
-            // {
-            //     l = 20;
-            // }
+          //  ringScale = ringScale + 0.005f;
+           //  if(ringScale>20)
+             {
+                // ringScale = 20;
+             }
             //  Debug.Log(l);
-            go.transform.localScale = new Vector3(l * 1f, 0.01f, l * 1f);
+            go.transform.localScale = new Vector3(y, 0.01f, y);
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

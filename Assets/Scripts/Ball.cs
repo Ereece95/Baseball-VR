@@ -56,6 +56,7 @@ public class Ball : MonoBehaviour
     public float y;
     bool countstrike = true;
     public bool side;
+    public bool changeHeight = true;
     AdjHeight userHeight;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
@@ -116,7 +117,7 @@ public class Ball : MonoBehaviour
         Paths = 0;
         quadrent = 0;
 
-        heightPanel = GameObject.Find("heighAdjCanvas");
+        heightPanel = GameObject.Find("heightAdjCanvas");
         userHeight = heightPanel.GetComponent<AdjHeight>();
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
@@ -128,7 +129,7 @@ public class Ball : MonoBehaviour
             path[j] = pathArray[Paths].GetChild(j);
 
         }
-        strikeZoneHeight();
+        strikeZoneHeightBase();
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
@@ -156,6 +157,10 @@ public class Ball : MonoBehaviour
 
             //sets the position of the ball to the pitchers hand while the
             //throwing animation is running
+            if(changeHeight == true)
+            {
+            strikeZoneHeight();
+            }
             if (contin == false)
             {
                 if (Throw["Take 001"].time < 1.40023f)
@@ -530,11 +535,11 @@ public class Ball : MonoBehaviour
                 {
                     if (num == 2 || j == num - 2)
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .2f, path[j].transform.position.z - .2f);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .3f, path[j].transform.position.z - .2f);
                     }
                     else
                     {
-                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y, path[j].transform.position.z - .2f);
+                        path[j].transform.position = new Vector3(path[j].transform.position.x + .2f, path[j].transform.position.y - .3f, path[j].transform.position.z - .2f);
                     }
 
 
@@ -760,15 +765,41 @@ public class Ball : MonoBehaviour
     }
     void strikeZoneHeight()
     {
+        userHeight.convertHeight();
         float heightFactor = userHeight.getHeight();
+        GameObject Strikezone = GameObject.Find("Strike Zone");
 
         for (int i = 0; i < 5; i++)
         {
-            for (int n = 0; n < num; n++)
+            int num = pathArray[i].childCount;
+
+            path = new Transform[num];
+            for (int n = 0; n < pathArray[i].childCount; n++)
             {
                 path[n] = pathArray[i].GetChild(n);
-                path[n].transform.position = new Vector3(path[n].transform.position.x, path[n].transform.position.y + heightFactor, path[n].transform.position.z);
+                path[n].transform.position = new Vector3(path[n].transform.position.x, path[n].transform.position.y + (heightFactor-0.53f), path[n].transform.position.z);
             }
         }
+        Strikezone.transform.position = new Vector3(Strikezone.transform.position.x, Strikezone.transform.position.y + (heightFactor - 0.53f), Strikezone.transform.position.z);
+
+        changeHeight = false;
     }
+    void strikeZoneHeightBase()
+    {
+        GameObject Strikezone = GameObject.Find("Strike Zone");
+
+        for (int i = 0; i < 5; i++)
+        {
+            int num = pathArray[i].childCount;
+
+            path = new Transform[num];
+            for (int n = 0; n < pathArray[i].childCount; n++)
+            {
+                path[n] = pathArray[i].GetChild(n);
+                path[n].transform.position = new Vector3(path[n].transform.position.x, path[n].transform.position.y - 1.01f, path[n].transform.position.z);
+            }
+        }
+        Strikezone.transform.position = new Vector3(Strikezone.transform.position.x, Strikezone.transform.position.y -1.01f, Strikezone.transform.position.z);
+    }
+
 }

@@ -6,9 +6,10 @@ using System.Collections;
 public class AdjHeight : MonoBehaviour
 {
 
-    int heightFeet;
-    int heightInches;
-    int heightType;
+    float heightFeet;
+    float heightInches;
+     //     int heightType;
+    float newHeight;
     public bool feetInches;
 
     public Text feetDisplay;
@@ -109,9 +110,12 @@ public class AdjHeight : MonoBehaviour
         Debug.Log("Change feet/inches type");
         feetInches = type;
     }
-    double convertHeight()
+    public void convertHeight()
     {
-        double newHeight = (heightFeet / 3.28) + (heightInches * 0.0254);
+        newHeight = (heightFeet / 3.28f) + (heightInches * 0.0254f);
+    }
+    public float getHeight()
+    {
         return newHeight;
     }
 }

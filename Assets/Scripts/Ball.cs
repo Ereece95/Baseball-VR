@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     public GameObject player;
     public GameObject cameraRig;
+    public AdjHeight ah;
+    public GameObject heightPanel;
     private TrailRenderer trail;
     public float seconds;
     int x = 0;
@@ -54,6 +56,7 @@ public class Ball : MonoBehaviour
     public float y;
     bool countstrike = true;
     public bool side;
+    AdjHeight userHeight;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
@@ -113,6 +116,8 @@ public class Ball : MonoBehaviour
         Paths = 0;
         quadrent = 0;
 
+        heightPanel = GameObject.Find("heighAdjCanvas");
+        userHeight = heightPanel.GetComponent<AdjHeight>();
         RB = GetComponent<Rigidbody>();
         trail.enabled = false;
         num = pathArray[Paths].childCount;
@@ -123,11 +128,13 @@ public class Ball : MonoBehaviour
             path[j] = pathArray[Paths].GetChild(j);
 
         }
+        strikeZoneHeight();
         shift();
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
-       // controllerInput.GetComponent("ControllerInput") as ControllerInput;
+        // controllerInput.GetComponent("ControllerInput") as ControllerInput;
+
 
     }
     int i = 0;
@@ -355,7 +362,6 @@ public class Ball : MonoBehaviour
 
     void shift()
     {
-
         Debug.Log(quadrent);
         switch (quadrent)
         {
@@ -751,5 +757,18 @@ public class Ball : MonoBehaviour
 
         }
         return closest;
+    }
+    void strikeZoneHeight()
+    {
+        float heightFactor = userHeight.getHeight();
+
+        for (int i = 0; i < 5; i++)
+        {
+            for (int n = 0; n < num; n++)
+            {
+                path[n] = pathArray[i].GetChild(n);
+                path[n].transform.position = new Vector3(path[n].transform.position.x, path[n].transform.position.y + heightFactor, path[n].transform.position.z);
+            }
+        }
     }
 }

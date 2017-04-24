@@ -199,8 +199,8 @@ public class Ball : MonoBehaviour
 
                 if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
                 {
-                    int r = (Random.Range(1400, 1600));
-                    float hitForce = (1 * r);
+                   // int r = (Random.Range(1400, 1600));
+                   // float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
 
@@ -266,14 +266,20 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            firstbaseman.GetComponent<Renderer>().enabled = false;
-            secondbaseman.GetComponent<Renderer>().enabled = false;
-            shortstop.GetComponent<Renderer>().enabled = false;
-            thirdbaseman.GetComponent<Renderer>().enabled = false;
-            pitcher.GetComponent<Renderer>().enabled = false;
-            leftfielder.GetComponent<Renderer>().enabled = false;
-            centerfielder.GetComponent<Renderer>().enabled = false;
-            rightfielder.GetComponent<Renderer>().enabled = false;
+            //firstbaseman.GetComponent<Renderer>().enabled = false;
+            //secondbaseman.GetComponent<Renderer>().enabled = false;
+            //shortstop.GetComponent<Renderer>().enabled = false;
+            //thirdbaseman.GetComponent<Renderer>().enabled = false;
+            //pitcher.GetComponent<Renderer>().enabled = false;
+            //leftfielder.GetComponent<Renderer>().enabled = false;
+            //centerfielder.GetComponent<Renderer>().enabled = false;
+            //rightfielder.GetComponent<Renderer>().enabled = false;
+            GameObject[] gos;
+            gos = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject go in gos)
+            {
+                go.GetComponent<Renderer>().enabled = false;
+            }
         }
     }
         //else

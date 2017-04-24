@@ -267,13 +267,20 @@ public class Ball : MonoBehaviour
         {
             timeEnd = Time.time;
         }
-        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+
+        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision /*|| gc.GetState() == States.WaitForInput*/)
         {
             FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
         }
         else
         {
-            FindClosetPlayer((timeEnd - timeStart));
+
+            GameObject[] gos;
+            gos = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject go in gos)
+            {
+                go.GetComponent<Renderer>().enabled = false;
+            }
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -317,6 +324,7 @@ public class Ball : MonoBehaviour
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
+        
     }
     //Stop the ball from moving when it contacts the field
     /// <summary>
@@ -815,20 +823,18 @@ public class Ball : MonoBehaviour
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
-        // x = x + 1f;
-        y = (((4f * timeCounter) - 1f) + 5f);
+       
+        y = ((9f * timeCounter) - 1f);
         foreach (GameObject go in gos)
         {
-           // scale.x = y;
-           // scale.z = y;
+            if (y > 0)
+            {
+                scale.x = y;
+                scale.z = y;
+                scale.y = .01f;
+            }
 
-          //  ringScale = ringScale + 0.005f;
-           //  if(ringScale>20)
-             {
-                // ringScale = 20;
-             }
-            //  Debug.Log(l);
-           // go.transform.localScale = new Vector3(y, 0.01f, y);
+            go.transform.localScale = scale;
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

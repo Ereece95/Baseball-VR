@@ -248,7 +248,7 @@ public class Ball : MonoBehaviour
                 }
                 if (hit)
                 {
-                    if (ballTravel)
+                    if (ballTravel) //3.28084
                     {
                         float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
                         double dist2 = System.Convert.ToDouble(dist);
@@ -311,7 +311,7 @@ public class Ball : MonoBehaviour
             isFoul = false;
             RB.velocity = Vector3.zero;
             Debug.Log("Homerun");
-            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position)); //3.28084
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
             homerunText.HRText();
             firework.fireStart();

@@ -13,14 +13,18 @@ public class Ball : MonoBehaviour
     public GameObject hand;
     public GameObject player;
     public GameObject cameraRig;
+   // public GameObject fireworks;
+   // public GameObject homerunUIText;
     public AdjHeight ah;
     public GameObject heightPanel;
     private TrailRenderer trail;
     public float seconds;
     int x = 0;
     public static bool flagVis;
-    private DisplayFoulText dsplyFoul;          // for showing the player the ball is foul
+    private DisplayFoulText dsplyFoul;   // for showing the player the ball is foul
     //private Transform[] path = new Transform[11];
+    private homeruntext homerunText;
+    private startFireworks firework;
     public Transform start;
     public Transform[] pathArray;
     private float speed;
@@ -59,6 +63,22 @@ public class Ball : MonoBehaviour
     public bool ballTravel = false;
     public bool changeHeight = true;
     AdjHeight userHeight;
+
+    public const int EASYFASTBALL = 16;
+    public const int EASYCURVEBALL = 12;
+    public const int EASYSLIDER = 15;
+    public const int EASYSINKER = 16;
+    public const int EASYCHANGEUP = 15;
+    public const int MEDIUMFASTBALL = 36;
+    public const int MEDIUMCURVEBALL = 30;
+    public const int MEDIUMSLIDER = 34;
+    public const int MEDIUMSINKER = 36;
+    public const int MEDIUMCHANGEUP = 34;
+    public const int HARDFASTBALL = 40;
+    public const int HARDCURVEBALL = 34;
+    public const int HARDSLIDER = 38;
+    public const int HARDSINKER = 40;
+    public const int HARDCHANGEUP = 38;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
@@ -135,6 +155,9 @@ public class Ball : MonoBehaviour
         gc = GameObject.Find("GameController").GetComponent("GameController") as GameController;
         plate = GameObject.Find("Home Plate").transform;
         dsplyFoul = GameObject.Find("FoulBallDisplay").GetComponent("DisplayFoulText") as DisplayFoulText;
+        homerunText = GameObject.Find("HomerunDisplay").GetComponent("homeruntext") as homeruntext;
+        firework = GameObject.Find("fireworks").GetComponent("startFireworks") as startFireworks;
+        // controllerInput.GetComponent("ControllerInput") as ControllerInput;
         // controllerInput.GetComponent("ControllerInput") as ControllerInput;
 
 
@@ -194,8 +217,8 @@ public class Ball : MonoBehaviour
 
                 if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
                 {
-                    int r = (Random.Range(1400, 1600));
-                    float hitForce = (1 * r);
+                    //int r = (Random.Range(1500, 1600));
+                    //float hitForce = (1 * r);
                     hit = true;
                     RB.useGravity = true;
 
@@ -238,7 +261,7 @@ public class Ball : MonoBehaviour
                 }
                 if (hit)
                 {
-                    if (ballTravel)
+                    if (ballTravel) //3.28084
                     {
                         float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
                         double dist2 = System.Convert.ToDouble(dist);
@@ -257,13 +280,20 @@ public class Ball : MonoBehaviour
         {
             timeEnd = Time.time;
         }
-        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision || gc.GetState() == States.WaitForInput)
+
+        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision /*|| gc.GetState() == States.WaitForInput*/)
         {
             FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
         }
         else
         {
-            FindClosetPlayer((timeEnd - timeStart));
+
+            GameObject[] gos;
+            gos = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject go in gos)
+            {
+                go.GetComponent<Renderer>().enabled = false;
+            }
         }
     }
     //Stop the ball when it hits catcher and registers a strike
@@ -294,8 +324,10 @@ public class Ball : MonoBehaviour
             isFoul = false;
             RB.velocity = Vector3.zero;
             Debug.Log("Homerun");
-            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
+            float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position)); //3.28084
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
+            homerunText.HRText();
+            firework.fireStart();
         }
         if ((collision.tag == "Player") && gc.GetState() == States.WaitForCollision)
         {
@@ -305,12 +337,13 @@ public class Ball : MonoBehaviour
             float distance = 3.28084f * (Vector3.Distance(plate.position, transform.position));
             if (distanceHit != null) distanceHit((int)distance, isFoul, isHomerun, isCaught);
         }
+        
     }
     //Stop the ball from moving when it contacts the field
     /// <summary>
     /// the ball stops when it hits the ground
     /// Calculates the distance and places a flag so the user cna see where the ball touched the ground
-    /// 
+    /// If isHomerun collision occurs start particle system
     /// </summary>
     /// <param name="Col">Used to know when ball hits the field and when to stop it</param>
     void OnCollisionEnter(Collision Col)
@@ -323,9 +356,7 @@ public class Ball : MonoBehaviour
         //{
         //    isHomerun = true;
         //    isFoul = false;
-        //    RB.velocity = Vector3.zero;
-        //    RB.useGravity = false;
-        //    Debug.Log("Foul Pole");
+            
         //}
 
         if ((Col.gameObject.name == "Field" || Col.gameObject.name == "Homerun") && gc.GetState() == States.WaitForCollision)
@@ -503,6 +534,8 @@ public class Ball : MonoBehaviour
     /// </summary>
     public void rethrowpitch()
     {
+       // homerunUIText.SetActive(false);
+      //  fireworks.SetActive(false);
         countstrike = true;
         ball.GetComponent<MeshRenderer>().enabled = true;
         ball.GetComponent<SphereCollider>().enabled = true;
@@ -656,41 +689,98 @@ public class Ball : MonoBehaviour
 
         }
     }
-    /// <summary>
-    /// Easy speed of 10
-    /// Pitcher Archer C
-    /// </summary>
     void ChangespeedE()
     {
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = EASYFASTBALL / 2;
+        }
+        else if (Paths == 2)
+        {
+            speed = EASYCURVEBALL/4;
+        }
+        else if (Paths == 0)
+        {
+            speed = EASYCHANGEUP / 2;
+        }
+        else if (Paths == 4)
+        {
+            speed = EASYSLIDER / 2;
+        }
+        else if (Paths == 3)
+        {
+            speed = EASYSINKER / 2;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = 10;
     }
     /// <summary>
-    /// Medium speed of 15
-    /// Pitcher Archer C
+    /// Medium speed 10mph less than Arrieta stats
     /// </summary>
     void ChangespeedM()
     {
         //sets stats equal to Archer C's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV2").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = MEDIUMFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = MEDIUMCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = MEDIUMCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = MEDIUMSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = MEDIUMSINKER;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = 15;
     }
     /// <summary>
-    /// Hard speed of 20
-    /// Pitcher Areitta J
+    /// Pitcher Areitta J, used actual 2016 stats for speed
     /// </summary>
     void ChangespeedH()
     {
         //sets stats equal to Arietta J's stats and sets the pitch and quadrent equal to a new random one
         stats = GameObject.Find("CSV").GetComponent<StatsScript>() as StatsScript;
+
         Paths = stats.getPitchType();
+        if (Paths == 1)
+        {
+            speed = HARDFASTBALL;
+        }
+        else if (Paths == 2)
+        {
+            speed = HARDCURVEBALL;
+        }
+        else if (Paths == 0)
+        {
+            speed = HARDCHANGEUP;
+        }
+        else if (Paths == 4)
+        {
+            speed = HARDSLIDER;
+        }
+        else if (Paths == 3)
+        {
+            speed = HARDSINKER;
+        }
+
         quadrent = stats.setQuadrent(side);
-        speed = 20;
     }
 
     public void hideBallFlags()
@@ -745,20 +835,18 @@ public class Ball : MonoBehaviour
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = ball.transform.position;
-        // x = x + 1f;
-        y = (((4f * timeCounter) - 1f) + 5f);
+       
+        y = ((9f * timeCounter) - 1f);
         foreach (GameObject go in gos)
         {
-           // scale.x = y;
-           // scale.z = y;
+            if (y > 0)
+            {
+                scale.x = y;
+                scale.z = y;
+                scale.y = .01f;
+            }
 
-          //  ringScale = ringScale + 0.005f;
-           //  if(ringScale>20)
-             {
-                // ringScale = 20;
-             }
-            //  Debug.Log(l);
-            go.transform.localScale = new Vector3(y, 0.01f, y);
+            go.transform.localScale = scale;
             go.GetComponent<Renderer>().enabled = false;
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;

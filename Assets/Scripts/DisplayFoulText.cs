@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class DisplayFoulText : MonoBehaviour {
+public class DisplayFoulText : MonoBehaviour
+{
 
     public Canvas displayCanvas;
     private DisplayPitch dsplyPitch;

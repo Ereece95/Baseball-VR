@@ -33,6 +33,7 @@ public class Ball : MonoBehaviour
     bool hit;
     private Rigidbody RB;
     public Transform[] path;
+    public Vector3 ballVector;
     int num;
     float ringScale = 0;
     /// <summary>
@@ -63,22 +64,23 @@ public class Ball : MonoBehaviour
     public bool ballTravel = false;
     public bool changeHeight = true;
     AdjHeight userHeight;
+    bool ballFell = false;
 
     public const int EASYFASTBALL = 16;
     public const int EASYCURVEBALL = 12;
     public const int EASYSLIDER = 15;
     public const int EASYSINKER = 16;
     public const int EASYCHANGEUP = 15;
-    public const int MEDIUMFASTBALL = 36;
-    public const int MEDIUMCURVEBALL = 30;
-    public const int MEDIUMSLIDER = 34;
-    public const int MEDIUMSINKER = 36;
-    public const int MEDIUMCHANGEUP = 34;
-    public const int HARDFASTBALL = 40;
-    public const int HARDCURVEBALL = 34;
-    public const int HARDSLIDER = 38;
-    public const int HARDSINKER = 40;
-    public const int HARDCHANGEUP = 38;
+    public const int MEDIUMFASTBALL = 26;
+    public const int MEDIUMCURVEBALL = 20;
+    public const int MEDIUMSLIDER = 24;
+    public const int MEDIUMSINKER = 26;
+    public const int MEDIUMCHANGEUP = 24;
+    public const int HARDFASTBALL = 30;
+    public const int HARDCURVEBALL = 26;
+    public const int HARDSLIDER = 28;
+    public const int HARDSINKER = 30;
+    public const int HARDCHANGEUP = 28;
 
     public delegate void hitEvent(int distance, bool isFoul, bool isHomerun, bool isCaught);    ///<Set up event
     public static event hitEvent distanceHit;
@@ -159,7 +161,7 @@ public class Ball : MonoBehaviour
         firework = GameObject.Find("fireworks").GetComponent("startFireworks") as startFireworks;
         // controllerInput.GetComponent("ControllerInput") as ControllerInput;
         // controllerInput.GetComponent("ControllerInput") as ControllerInput;
-
+        ballVector = ball.transform.position;
 
     }
     int i = 0;
@@ -175,126 +177,137 @@ public class Ball : MonoBehaviour
     void Update()
     {
 
-        if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
+        if ((ball.transform.position.y < 0f) && (ballFell == false))
         {
-            //an if statment to have the ball released at a certain time
+            ballFell = true;
+            ballVector = ball.transform.position;
+            ballVector.y = 0.5f;
+            trail.enabled = false;
+            trail.Clear();
+            ball.transform.position = ballVector;
+            RB.velocity = Vector3.zero;
+        }
 
-            //sets the position of the ball to the pitchers hand while the
-            //throwing animation is running
-            if(changeHeight == true)
+        if ((gc.GetState() != States.Init) && (gc.GetState() != States.StartClick))
             {
-            strikeZoneHeight();
-            }
-            if (contin == false)
-            {
-                if (Throw["Take 001"].time < 1.40023f)
+                //an if statment to have the ball released at a certain time
+
+                //sets the position of the ball to the pitchers hand while the
+                //throwing animation is running
+                if (changeHeight == true)
                 {
-                    //sets the position of the ball to the pitchers hand while the
-                    //throwing animation is running
-                    if (Throw["Take 001"].time != num24)
+                    strikeZoneHeight();
+                }
+                if (contin == false)
+                {
+                    if (Throw["Take 001"].time < 1.40023f)
                     {
-                        ball.transform.position = hand.transform.position;
+                        //sets the position of the ball to the pitchers hand while the
+                        //throwing animation is running
+                        if (Throw["Take 001"].time != num24)
+                        {
+                            ball.transform.position = hand.transform.position;
+                        }
+                    }
+                    else
+                    {
+                        contin = true;
                     }
                 }
                 else
                 {
-                    contin = true;
+                    float step = speed * Time.deltaTime;
+                    if (ball.transform.position.y > 2)
+                    {
+                        trail.enabled = true;
+                    }
+                    //when x reaches a spesific value it enables the trail and moves the ball
+
+                    if (ball.transform.position.x == path[i].position.x)
+                    {
+                        if (i != num - 1)
+                        {
+                            i++;
+                        }
+                    }
+
+                    if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
+                    {
+                        int r = (Random.Range(500, 900));
+                        float hitForce = (1 * r);
+                        hit = true;
+                        RB.useGravity = true;
+
+
+                        //Trying to access device velocity here from controllerInput script. Gets Null reference exception
+                        Vector3 batSwing = controllerInput.GetVelocity();
+                        Debug.Log("Batswing = " + batSwing);
+
+
+
+
+                        ////And this
+                        RB.AddForce(batSwing, ForceMode.Impulse);
+
+
+                        ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
+                        //Debug.Log(controlInput.GetVelocity());
+
+
+                        //collideBat = false;
+                        //if (ballHit != null) ballHit();
+
+
+
+                        //This block will generate a random direction and angle for ball to travel
+                        var rotationVector = transform.rotation.eulerAngles;
+                        int rotationY = (Random.Range(10, 100));
+                        int rotationX = (Random.Range(-10, -60));
+                        rotationVector.y = rotationY;
+                        rotationVector.x = rotationX;
+                        transform.rotation = Quaternion.Euler(rotationVector);
+
+                        //RB.AddForce(transform.rotation * Vector3.forward * hitForce);
+                        collideBat = false;
+                        if (ballHit != null) ballHit();
+                    }
+                    if (hit)
+                    {
+                        if (ballTravel) //3.28084
+                        {
+                            float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
+                            double dist2 = System.Convert.ToDouble(dist);
+                            dist2 = System.Math.Round(dist2, 0);
+                            DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
+                        }
+                    }
+                    if (!hit)
+                    {
+                        ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+                    }
                 }
+
+            }
+            if (gc.GetState() == States.WaitForCollision)
+            {
+                timeEnd = Time.time;
+            }
+
+            if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision /*|| gc.GetState() == States.WaitForInput*/)
+            {
+                FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
             }
             else
             {
-                float step = speed * Time.deltaTime;
-                trail.enabled = true;
-                //when x reaches a spesific value it enables the trail and moves the ball
 
-                if (ball.transform.position.x == path[i].position.x)
+                GameObject[] gos;
+                gos = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject go in gos)
                 {
-                    if (i != num - 1)
-                    {
-                        i++;
-                    }
-                }
-
-                if ((collideBat == true) && (gc.GetState() != States.WaitForInput) && (gc.GetState() != States.BallNotHit) && (gc.GetState() != States.BallHit))
-                {
-                    int r = (Random.Range(500, 900));
-                    float hitForce = (1 * r);
-                    hit = true;
-                    RB.useGravity = true;
-
-
-                    //Trying to access device velocity here from controllerInput script. Gets Null reference exception
-                    Vector3 batSwing = controllerInput.GetVelocity();
-                    Debug.Log("Batswing = " + batSwing);
-
-
-                    //try this
-                    //ball.transform.position = Vector3.Reflect(ball.transform.position, batSwing);
-
-                    ////this
-                    ////RB.AddForce(batSwing);
-
-                    ////And this
-                   // RB.AddForce(batSwing, ForceMode.Impulse);
-
-
-                    ////Debug.Log("Bat velocity = " + batController.velocity.magnitude);
-                    //Debug.Log(controlInput.GetVelocity());
-
-
-                    //collideBat = false;
-                    //if (ballHit != null) ballHit();
-
-
-
-                    //This block will generate a random direction and angle for ball to travel
-                    var rotationVector = transform.rotation.eulerAngles;
-                    int rotationY = (Random.Range(10, 100));
-                    int rotationX = (Random.Range(-10, -60));
-                    rotationVector.y = rotationY;
-                    rotationVector.x = rotationX;
-                    transform.rotation = Quaternion.Euler(rotationVector);
-
-                    RB.AddForce(transform.rotation * Vector3.forward * hitForce);
-                    collideBat = false;
-                    if (ballHit != null) ballHit();
-                }
-                if (hit)
-                {
-                    if (ballTravel) //3.28084
-                    {
-                        float dist = 3.28084f * Vector3.Distance(start.position, ball.transform.position);
-                        double dist2 = System.Convert.ToDouble(dist);
-                        dist2 = System.Math.Round(dist2, 0);
-                        DistDisplay.text = "Distance: " + (dist2.ToString()) + " ft";
-                    }
-                }
-                if (!hit)
-                {
-                    ball.transform.position = Vector3.MoveTowards(ball.transform.position, path[i].position, step);
+                    go.GetComponent<Renderer>().enabled = false;
                 }
             }
-
-        }
-        if (gc.GetState() == States.WaitForCollision)
-        {
-            timeEnd = Time.time;
-        }
-
-        if (gc.GetState() == States.BallHit || gc.GetState() == States.WaitForCollision /*|| gc.GetState() == States.WaitForInput*/)
-        {
-            FindClosetPlayer((timeEnd - timeStart)).GetComponent<Renderer>().enabled = true;
-        }
-        else
-        {
-
-            GameObject[] gos;
-            gos = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject go in gos)
-            {
-                go.GetComponent<Renderer>().enabled = false;
-            }
-        }
+        
     }
     //Stop the ball when it hits catcher and registers a strike
     /// <summary>
@@ -534,8 +547,9 @@ public class Ball : MonoBehaviour
     /// </summary>
     public void rethrowpitch()
     {
-       // homerunUIText.SetActive(false);
-      //  fireworks.SetActive(false);
+        // homerunUIText.SetActive(false);
+        //  fireworks.SetActive(false);
+        ballFell = false;
         countstrike = true;
         ball.GetComponent<MeshRenderer>().enabled = true;
         ball.GetComponent<SphereCollider>().enabled = true;

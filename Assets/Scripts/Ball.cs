@@ -419,7 +419,7 @@ public class Ball : MonoBehaviour
 
     void shift()
     {
-        Debug.Log(quadrent);
+        Debug.Log("The quadrent is = " + quadrent);
         switch (quadrent)
         {
             case 1:
@@ -520,6 +520,7 @@ public class Ball : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("The j is = " + j);
                         path[j].transform.position = new Vector3(path[j].transform.position.x, path[j].transform.position.y - .3f, path[j].transform.position.z);
                     }
                 }

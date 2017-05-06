@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/VRSampleScenes/Scenes/Shooter180.unity
   - enabled: 1
     path: Assets/WorkingScenes/Master.unity
+  - enabled: 0
+    path: Assets/Showcase Demo scene.unity
